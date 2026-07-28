@@ -1,0 +1,9 @@
+session_id,user_id,user_name,department,timestamp,hour_of_day,event_type,source_ip,city,country,latitude,longitude,device_id,is_known_device,role_requested,role_rank,mfa_failed,mfa_success,password_reset,anomaly_type,risk_label
+ly02npPc,admin,Unknown User,Unknown,2026-06-23T12:30:54.532000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,1,0,none,LOW
+fB8sftLA,945bcb78-2b9e-4afd-9960-268238238b31,Unknown User,Unknown,2026-06-23T12:29:58.957000,12,code_to_token,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,0,0,none,LOW
+fB8sftLA,admin,Unknown User,Unknown,2026-06-23T12:29:58.554000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,1,0,none,LOW
+1782198055,admin,Unknown User,Unknown,2026-06-23T12:29:53.040000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,1,0,0,failed_login,MEDIUM
+1782198055,admin,Unknown User,Unknown,2026-06-23T12:29:46.217000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,1,0,0,failed_login,MEDIUM
+1782198055,admin,Unknown User,Unknown,2026-06-23T12:29:41.813000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,1,0,0,failed_login,HIGH
+KIzstasi,945bcb78-2b9e-4afd-9960-268238238b31,Unknown User,Unknown,2026-06-23T12:29:19.659000,12,code_to_token,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,0,0,none,LOW
+KIzstasi,admin,Unknown User,Unknown,2026-06-23T12:29:18.328000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,1,0,none,LOW

@@ -1,0 +1,695 @@
+session_id,user_id,user_name,department,timestamp,event_type,country,city,impossible_travel,hours_since_last,mfa_fail_count,is_known_device,country_deviation,hour_sin,hour_cos,is_business_hours,role_rank,role_escalation,pwd_reset_7d,peer_zscore,risk_label,anomaly_type
+6fc8700e,kim_j,Kim Junho,Sales,2025-01-01T02:00:00,login,Japan,Tokyo,0,0.0,0,1,0,0.5,0.866,0,0,0,1,0.873,MEDIUM,password_reset_flood
+0fd0f831,kim_j,Kim Junho,Sales,2025-01-01T02:15:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,2,0.873,MEDIUM,password_reset_flood
+ceebe667,kim_j,Kim Junho,Sales,2025-01-01T02:30:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,3,0.873,MEDIUM,password_reset_flood
+8b812b71,sato_m,Sato Miyuki,Finance,2025-01-01T03:00:00,login,UK,London,0,0.0,0,0,0,0.7071,0.7071,0,2,1,0,-0.135,MEDIUM,new_country_login
+723a107d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T08:30:00,login,Japan,Tokyo,0,0.0,0,1,0,0.866,-0.5,1,0,0,0,2.897,LOW,none
+b9b57322,kim_j,Kim Junho,Sales,2025-01-01T08:42:00,login,Japan,Tokyo,0,6.2,0,1,0,0.866,-0.5,1,1,1,3,0.873,LOW,none
+30f7d4e4,ito_k,Ito Kenji,Finance,2025-01-01T08:55:00,login,Japan,Nagoya,0,0.0,0,1,0,0.866,-0.5,1,0,0,0,-0.135,LOW,none
+965d52da,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T09:01:00,login,Japan,Tokyo,0,0.52,0,1,0,0.7071,-0.7071,1,0,0,0,2.897,LOW,none
+d79033ba,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T09:13:00,login,Japan,Tokyo,0,0.2,0,1,0,0.7071,-0.7071,1,0,0,0,2.897,LOW,none
+61178fe4,admin45,Admin User 45,IT Operations,2025-01-01T09:22:00,login,Japan,Tokyo,0,0.0,0,1,0,0.7071,-0.7071,1,1,0,0,1.758,LOW,none
+e1a58a17,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T09:43:00,login,Japan,Tokyo,0,0.5,0,1,0,0.7071,-0.7071,1,1,0,0,2.897,LOW,none
+21b49fca,nakamura_a,Nakamura Aoi,DevOps,2025-01-01T09:43:00,login,Japan,Tokyo,0,0.0,0,1,0,0.7071,-0.7071,1,1,0,0,1.215,LOW,none
+2820c8a9,yamada_r,Yamada Riko,HR,2025-01-01T10:34:00,login,Japan,Tokyo,0,0.0,0,1,0,0.5,-0.866,1,0,0,0,0.881,LOW,none
+2d6d7dcb,sato_m,Sato Miyuki,Finance,2025-01-01T10:44:00,login,Japan,Osaka,1,7.73,0,1,0,0.5,-0.866,1,1,0,0,-0.135,LOW,none
+26236ba7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T10:45:00,login,Russia,Moscow,1,1.03,0,0,0,0.5,-0.866,1,3,1,0,2.897,HIGH,impossible_travel
+7c6388f6,yamada_r,Yamada Riko,HR,2025-01-01T11:42:00,login,Japan,Tokyo,0,1.13,0,1,0,0.2588,-0.9659,1,0,0,0,0.881,LOW,none
+9e2ed0d2,suzuki_t,Suzuki Takeshi,Engineering,2025-01-01T11:52:00,login,Japan,Tokyo,0,0.0,0,1,0,0.2588,-0.9659,1,1,0,0,-1.225,LOW,none
+8c38c009,chen_w,Chen Wei,Engineering,2025-01-01T11:58:00,login,Japan,Tokyo,0,0.0,0,1,0,0.2588,-0.9659,1,0,0,0,-1.225,LOW,none
+eb5d2f77,yamada_r,Yamada Riko,HR,2025-01-01T13:00:00,login,Japan,Tokyo,0,1.3,0,1,0,-0.2588,-0.9659,1,4,1,0,0.881,HIGH,privilege_escalation
+aa49f16f,ito_k,Ito Kenji,Finance,2025-01-01T13:14:00,login,Japan,Nagoya,0,4.32,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.135,LOW,none
+87ce3bac,nakamura_a,Nakamura Aoi,DevOps,2025-01-01T14:38:00,login,Japan,Tokyo,0,4.92,0,1,0,-0.5,-0.866,1,1,0,0,1.215,LOW,none
+50d0713d,nakamura_a,Nakamura Aoi,DevOps,2025-01-01T15:33:00,login,Japan,Tokyo,0,0.92,0,1,0,-0.7071,-0.7071,1,0,0,0,1.215,LOW,none
+dd17a9f0,admin45,Admin User 45,IT Operations,2025-01-01T15:34:00,login,Japan,Tokyo,0,6.2,0,1,0,-0.7071,-0.7071,1,1,0,0,1.758,LOW,none
+f5a946a1,park_s,Park Soyeon,Marketing,2025-01-01T16:34:00,login,Japan,Tokyo,0,0.0,0,1,0,-0.866,-0.5,1,1,0,0,-0.183,LOW,none
+421443d7,park_s,Park Soyeon,Marketing,2025-01-01T18:29:00,login,Japan,Tokyo,0,1.92,0,1,0,-1.0,-0.0,1,1,0,0,-0.183,LOW,none
+0460823a,admin45,Admin User 45,IT Operations,2025-01-01T22:00:00,login,Japan,Tokyo,0,6.43,1,0,0,-0.5,0.866,0,3,1,0,1.758,MEDIUM,mfa_brute_force
+fb2acc4c,admin45,Admin User 45,IT Operations,2025-01-01T22:02:00,login,Japan,Tokyo,0,0.03,2,0,0,-0.5,0.866,0,3,1,0,1.758,MEDIUM,mfa_brute_force
+ab3175c4,admin45,Admin User 45,IT Operations,2025-01-01T22:04:00,login,Japan,Tokyo,0,0.03,3,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+33fa5c79,admin45,Admin User 45,IT Operations,2025-01-01T22:06:00,login,Japan,Tokyo,0,0.03,4,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+ea2583ef,admin45,Admin User 45,IT Operations,2025-01-01T22:08:00,login,Japan,Tokyo,0,0.03,5,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+60657a69,ito_k,Ito Kenji,Finance,2025-01-02T09:15:00,login,Japan,Nagoya,0,20.02,0,1,0,0.7071,-0.7071,1,0,0,0,-0.135,LOW,none
+eccafc89,yamada_r,Yamada Riko,HR,2025-01-02T09:15:00,login,Japan,Tokyo,0,20.25,0,1,0,0.7071,-0.7071,1,0,0,0,-0.378,LOW,none
+e087b571,sato_m,Sato Miyuki,Finance,2025-01-02T09:59:00,login,Japan,Osaka,0,23.25,0,1,0,0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+e76ae77d,kim_j,Kim Junho,Sales,2025-01-02T10:08:00,login,Japan,Tokyo,0,25.43,0,1,0,0.5,-0.866,1,0,0,3,0.145,LOW,none
+26182f43,ito_k,Ito Kenji,Finance,2025-01-02T10:27:00,login,Japan,Nagoya,0,1.2,0,1,0,0.5,-0.866,1,1,0,0,-0.135,LOW,none
+0423fbfc,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-02T10:29:00,login,Japan,Tokyo,0,23.73,0,1,0,0.5,-0.866,1,1,0,0,-0.195,LOW,none
+f654c022,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-02T10:32:00,login,Japan,Tokyo,0,0.05,0,1,0,0.5,-0.866,1,1,0,0,-0.195,LOW,none
+64d11b6c,suzuki_t,Suzuki Takeshi,Engineering,2025-01-02T11:34:00,login,Japan,Tokyo,0,23.7,0,1,0,0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+069c913b,suzuki_t,Suzuki Takeshi,Engineering,2025-01-02T13:04:00,login,Japan,Tokyo,0,1.5,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+c380c4d1,chen_w,Chen Wei,Engineering,2025-01-02T13:27:00,login,Japan,Tokyo,0,25.48,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+3dff4341,chen_w,Chen Wei,Engineering,2025-01-02T14:12:00,login,Japan,Tokyo,0,0.75,0,1,0,-0.5,-0.866,1,0,0,0,-0.195,LOW,none
+1dd7f9fe,kim_j,Kim Junho,Sales,2025-01-02T14:42:00,login,Japan,Tokyo,0,4.57,0,1,0,-0.5,-0.866,1,1,1,3,0.145,LOW,none
+20118166,nakamura_a,Nakamura Aoi,DevOps,2025-01-02T15:51:00,login,Japan,Tokyo,0,24.3,0,1,0,-0.7071,-0.7071,1,0,0,0,-1.137,LOW,none
+52a55993,sato_m,Sato Miyuki,Finance,2025-01-02T16:49:00,login,Japan,Osaka,0,6.83,0,1,0,-0.866,-0.5,1,1,0,0,1.021,LOW,none
+936c7bfa,admin45,Admin User 45,IT Operations,2025-01-02T17:05:00,login,Japan,Tokyo,0,18.95,0,1,0,-0.9659,-0.2588,1,1,0,0,-0.947,LOW,none
+120e9702,sato_m,Sato Miyuki,Finance,2025-01-02T17:12:00,login,Japan,Osaka,0,0.38,0,1,0,-0.9659,-0.2588,1,1,0,0,1.021,LOW,none
+9a73a51f,kim_j,Kim Junho,Sales,2025-01-02T17:27:00,login,Japan,Tokyo,0,2.75,0,1,0,-0.9659,-0.2588,1,0,0,3,0.145,LOW,none
+5b69c308,yamada_r,Yamada Riko,HR,2025-01-02T17:35:00,login,Japan,Tokyo,0,8.33,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.378,LOW,none
+e6758937,suzuki_t,Suzuki Takeshi,Engineering,2025-01-02T18:03:00,login,Japan,Tokyo,0,4.98,0,1,0,-1.0,-0.0,1,0,0,0,0.836,LOW,none
+eff823d4,park_s,Park Soyeon,Marketing,2025-01-02T18:41:00,login,Japan,Tokyo,0,24.2,0,1,0,-1.0,-0.0,1,0,0,0,-1.278,LOW,none
+04a2449c,sato_m,Sato Miyuki,Finance,2025-01-03T08:24:00,login,Japan,Osaka,0,15.2,0,1,0,0.866,-0.5,1,1,0,0,-0.135,LOW,none
+6b2cddf6,nakamura_a,Nakamura Aoi,DevOps,2025-01-03T09:40:00,login,Japan,Tokyo,0,17.82,0,1,0,0.7071,-0.7071,1,1,0,0,-1.137,LOW,none
+14aa4929,park_s,Park Soyeon,Marketing,2025-01-03T09:47:00,login,Japan,Tokyo,0,15.1,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+3205a1b7,park_s,Park Soyeon,Marketing,2025-01-03T09:56:00,login,Japan,Tokyo,0,0.15,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+c6f2743a,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-03T09:59:00,login,Japan,Tokyo,0,23.45,0,1,0,0.7071,-0.7071,1,0,0,0,-1.225,LOW,none
+d816f066,kim_j,Kim Junho,Sales,2025-01-03T10:04:00,login,Japan,Tokyo,0,16.62,0,1,0,0.5,-0.866,1,0,0,3,-1.309,LOW,none
+35685867,admin45,Admin User 45,IT Operations,2025-01-03T11:03:00,login,Japan,Tokyo,0,17.97,0,1,0,0.2588,-0.9659,1,1,0,0,-0.045,LOW,none
+deef1a59,yamada_r,Yamada Riko,HR,2025-01-03T11:37:00,login,Japan,Tokyo,0,18.03,0,1,0,0.2588,-0.9659,1,0,0,0,0.881,LOW,none
+16530a50,sato_m,Sato Miyuki,Finance,2025-01-03T11:55:00,login,Japan,Osaka,0,3.52,0,1,0,0.2588,-0.9659,1,0,0,0,-0.135,LOW,none
+5553c54e,suzuki_t,Suzuki Takeshi,Engineering,2025-01-03T12:29:00,login,Japan,Tokyo,0,18.43,0,1,0,0.0,-1.0,1,0,0,0,0.836,LOW,none
+b3aabb5b,park_s,Park Soyeon,Marketing,2025-01-03T12:39:00,login,Japan,Tokyo,0,2.72,0,1,0,0.0,-1.0,1,1,0,0,0.913,LOW,none
+e7bf313b,ito_k,Ito Kenji,Finance,2025-01-03T13:13:00,login,Japan,Nagoya,0,26.77,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.29,LOW,none
+29a17b0a,yamada_r,Yamada Riko,HR,2025-01-03T13:15:00,login,Japan,Tokyo,0,1.63,0,1,0,-0.2588,-0.9659,1,1,0,0,0.881,LOW,none
+da938090,chen_w,Chen Wei,Engineering,2025-01-03T13:18:00,login,Japan,Tokyo,0,23.1,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.225,LOW,none
+cda86998,suzuki_t,Suzuki Takeshi,Engineering,2025-01-03T16:16:00,login,Japan,Tokyo,0,3.78,0,1,0,-0.866,-0.5,1,1,0,0,0.836,LOW,none
+7d68d75b,admin45,Admin User 45,IT Operations,2025-01-03T16:42:00,login,Japan,Tokyo,0,5.65,0,1,0,-0.866,-0.5,1,0,0,0,-0.045,LOW,none
+82227f98,admin45,Admin User 45,IT Operations,2025-01-03T17:30:00,login,Japan,Tokyo,0,0.8,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.045,LOW,none
+5e5d43a7,yamada_r,Yamada Riko,HR,2025-01-03T17:36:00,login,Japan,Tokyo,0,4.35,0,1,0,-0.9659,-0.2588,1,1,0,0,0.881,LOW,none
+9fee2c2d,suzuki_t,Suzuki Takeshi,Engineering,2025-01-03T17:36:00,login,Japan,Tokyo,0,1.33,0,1,0,-0.9659,-0.2588,1,0,0,0,0.836,LOW,none
+b1c90faa,suzuki_t,Suzuki Takeshi,Engineering,2025-01-04T08:06:00,login,Japan,Tokyo,0,14.5,0,1,0,0.866,-0.5,1,1,0,0,-0.195,LOW,none
+44fc72ba,admin45,Admin User 45,IT Operations,2025-01-04T08:11:00,login,Japan,Tokyo,0,14.68,0,1,0,0.866,-0.5,1,1,0,0,-0.045,LOW,none
+7c386484,kim_j,Kim Junho,Sales,2025-01-04T08:54:00,login,Japan,Tokyo,0,22.83,0,1,0,0.866,-0.5,1,0,0,3,0.145,LOW,none
+d058969f,sato_m,Sato Miyuki,Finance,2025-01-04T08:57:00,login,Japan,Osaka,0,21.03,0,1,0,0.866,-0.5,1,0,0,0,1.021,LOW,none
+a1e6145c,admin45,Admin User 45,IT Operations,2025-01-04T09:22:00,login,Japan,Tokyo,0,1.18,0,1,0,0.7071,-0.7071,1,0,0,0,-0.045,LOW,none
+225f24da,park_s,Park Soyeon,Marketing,2025-01-04T09:46:00,login,Japan,Tokyo,0,21.12,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+c11f04d6,yamada_r,Yamada Riko,HR,2025-01-04T09:56:00,login,Japan,Tokyo,0,16.33,0,1,0,0.7071,-0.7071,1,0,0,0,0.881,LOW,none
+2b3828f0,sato_m,Sato Miyuki,Finance,2025-01-04T10:27:00,login,Japan,Osaka,0,1.5,0,1,0,0.5,-0.866,1,0,0,0,1.021,LOW,none
+c9f31eb1,sato_m,Sato Miyuki,Finance,2025-01-04T10:34:00,login,Japan,Osaka,0,0.12,0,1,0,0.5,-0.866,1,1,0,0,1.021,LOW,none
+76657621,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-04T10:40:00,login,Japan,Tokyo,0,24.68,0,1,0,0.5,-0.866,1,0,0,0,-0.195,LOW,none
+0d9d2653,kim_j,Kim Junho,Sales,2025-01-04T11:17:00,login,Japan,Tokyo,0,2.38,0,1,0,0.2588,-0.9659,1,0,0,3,0.145,LOW,none
+b7df4935,yamada_r,Yamada Riko,HR,2025-01-04T11:25:00,login,Japan,Tokyo,0,1.48,0,1,0,0.2588,-0.9659,1,1,0,0,0.881,LOW,none
+24b91121,admin45,Admin User 45,IT Operations,2025-01-04T11:55:00,login,Japan,Tokyo,0,2.55,0,1,0,0.2588,-0.9659,1,0,0,0,-0.045,LOW,none
+cac45ab3,chen_w,Chen Wei,Engineering,2025-01-04T12:02:00,login,Japan,Tokyo,0,22.73,0,1,0,0.0,-1.0,1,0,0,0,-1.225,LOW,none
+d7c188bd,nakamura_a,Nakamura Aoi,DevOps,2025-01-04T12:18:00,login,Japan,Tokyo,0,26.63,0,1,0,0.0,-1.0,1,1,0,0,-1.137,LOW,none
+e9b71b74,yamada_r,Yamada Riko,HR,2025-01-04T12:22:00,login,Japan,Tokyo,0,0.95,0,1,0,0.0,-1.0,1,1,0,0,0.881,LOW,none
+8dc84512,suzuki_t,Suzuki Takeshi,Engineering,2025-01-04T13:27:00,login,Japan,Tokyo,0,5.35,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+ee41f69f,ito_k,Ito Kenji,Finance,2025-01-04T14:44:00,login,Japan,Nagoya,0,25.52,0,1,0,-0.5,-0.866,1,0,0,0,-0.135,LOW,none
+36811189,kim_j,Kim Junho,Sales,2025-01-04T15:22:00,login,Japan,Tokyo,0,4.08,0,1,0,-0.7071,-0.7071,1,0,0,3,0.145,LOW,none
+cc909a36,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-04T16:45:00,login,Japan,Tokyo,0,6.08,0,1,0,-0.866,-0.5,1,0,0,0,-0.195,LOW,none
+d0ffd323,ito_k,Ito Kenji,Finance,2025-01-04T18:24:00,login,Japan,Nagoya,0,3.67,0,1,0,-1.0,-0.0,1,1,0,0,-0.135,LOW,none
+baa2ba6b,park_s,Park Soyeon,Marketing,2025-01-04T18:46:00,login,Japan,Tokyo,0,9.0,0,1,0,-1.0,-0.0,1,1,0,0,0.913,LOW,none
+837f2c78,park_s,Park Soyeon,Marketing,2025-01-04T18:58:00,login,Japan,Tokyo,0,0.2,0,1,0,-1.0,-0.0,1,1,0,0,0.913,LOW,none
+e67f088b,park_s,Park Soyeon,Marketing,2025-01-05T09:08:00,login,Japan,Tokyo,0,14.17,0,1,0,0.7071,-0.7071,1,0,0,0,0.913,LOW,none
+61a04391,kim_j,Kim Junho,Sales,2025-01-05T10:41:00,login,Japan,Tokyo,0,19.32,0,1,0,0.5,-0.866,1,0,0,3,0.145,LOW,none
+b256c6df,park_s,Park Soyeon,Marketing,2025-01-05T10:45:00,login,Japan,Tokyo,0,1.62,0,1,0,0.5,-0.866,1,0,0,0,0.913,LOW,none
+194bc1b4,kim_j,Kim Junho,Sales,2025-01-05T11:11:00,login,Japan,Tokyo,0,0.5,0,1,0,0.2588,-0.9659,1,0,0,3,0.145,LOW,none
+16c27629,admin45,Admin User 45,IT Operations,2025-01-05T11:30:00,login,Japan,Tokyo,0,23.58,0,1,0,0.2588,-0.9659,1,1,0,0,-0.947,LOW,none
+95d3ed1b,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-05T11:32:00,login,Japan,Tokyo,0,18.78,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+b4a27709,chen_w,Chen Wei,Engineering,2025-01-05T12:15:00,login,Japan,Tokyo,0,24.22,0,1,0,0.0,-1.0,1,1,0,0,-0.195,LOW,none
+53d5cab8,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-05T12:32:00,login,Japan,Tokyo,0,1.0,0,1,0,0.0,-1.0,1,0,0,0,0.836,LOW,none
+accb7cc3,ito_k,Ito Kenji,Finance,2025-01-05T13:19:00,login,Japan,Nagoya,0,18.92,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.135,LOW,none
+c2bca472,park_s,Park Soyeon,Marketing,2025-01-05T13:34:00,login,Japan,Tokyo,0,2.82,0,1,0,-0.2588,-0.9659,1,1,0,0,0.913,LOW,none
+162f15b1,nakamura_a,Nakamura Aoi,DevOps,2025-01-05T14:31:00,login,Japan,Tokyo,0,26.22,0,1,0,-0.5,-0.866,1,1,0,0,1.215,LOW,none
+9e152fe8,ito_k,Ito Kenji,Finance,2025-01-05T14:57:00,login,Japan,Nagoya,0,1.63,0,1,0,-0.5,-0.866,1,1,0,0,-0.135,LOW,none
+d3f8fe28,yamada_r,Yamada Riko,HR,2025-01-05T15:08:00,login,Japan,Tokyo,0,26.77,0,1,0,-0.7071,-0.7071,1,1,0,0,-1.637,LOW,none
+6e935962,suzuki_t,Suzuki Takeshi,Engineering,2025-01-05T15:28:00,login,Japan,Tokyo,0,26.02,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.195,LOW,none
+2e0a5274,chen_w,Chen Wei,Engineering,2025-01-05T16:31:00,login,Japan,Tokyo,0,4.27,0,1,0,-0.866,-0.5,1,1,0,0,-0.195,LOW,none
+0f4e06a3,nakamura_a,Nakamura Aoi,DevOps,2025-01-05T16:51:00,login,Japan,Tokyo,0,2.33,0,1,0,-0.866,-0.5,1,1,0,0,1.215,LOW,none
+a8ef9e35,kim_j,Kim Junho,Sales,2025-01-05T17:12:00,login,Japan,Tokyo,0,6.02,0,1,0,-0.9659,-0.2588,1,1,1,3,0.145,LOW,none
+b3424629,suzuki_t,Suzuki Takeshi,Engineering,2025-01-05T17:52:00,login,Japan,Tokyo,0,2.4,0,1,0,-0.9659,-0.2588,1,1,0,0,-0.195,LOW,none
+408ec868,sato_m,Sato Miyuki,Finance,2025-01-05T18:19:00,login,Japan,Osaka,0,31.75,0,1,0,-1.0,-0.0,1,0,0,0,-1.29,LOW,none
+20536231,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-05T18:20:00,login,Japan,Tokyo,0,5.8,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+ca83f266,nakamura_a,Nakamura Aoi,DevOps,2025-01-05T18:51:00,login,Japan,Tokyo,0,2.0,0,1,0,-1.0,-0.0,1,0,0,0,1.215,LOW,none
+857e8f79,kim_j,Kim Junho,Sales,2025-01-06T02:00:00,login,Japan,Tokyo,0,8.8,0,1,0,0.5,0.866,0,0,0,4,2.328,MEDIUM,password_reset_flood
+5b5609a9,kim_j,Kim Junho,Sales,2025-01-06T02:15:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,5,2.328,MEDIUM,password_reset_flood
+f60b983a,kim_j,Kim Junho,Sales,2025-01-06T02:30:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,6,2.328,MEDIUM,password_reset_flood
+02a2d2a5,sato_m,Sato Miyuki,Finance,2025-01-06T03:00:00,login,USA,New York,1,8.68,0,0,0,0.7071,0.7071,0,2,1,0,1.021,MEDIUM,new_country_login
+c3470399,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-06T08:30:00,login,Japan,Tokyo,0,14.17,0,1,0,0.866,-0.5,1,0,0,0,0.836,LOW,none
+6ca9acac,admin45,Admin User 45,IT Operations,2025-01-06T08:47:00,login,Japan,Tokyo,0,21.28,0,1,0,0.866,-0.5,1,1,0,0,1.758,LOW,none
+1c802942,ito_k,Ito Kenji,Finance,2025-01-06T09:15:00,login,Japan,Nagoya,0,18.3,0,1,0,0.7071,-0.7071,1,1,0,0,-1.29,LOW,none
+190c9653,chen_w,Chen Wei,Engineering,2025-01-06T09:17:00,login,Japan,Tokyo,0,16.77,0,1,0,0.7071,-0.7071,1,0,0,0,0.836,LOW,none
+7ce595e8,suzuki_t,Suzuki Takeshi,Engineering,2025-01-06T09:27:00,login,Japan,Tokyo,0,15.58,0,1,0,0.7071,-0.7071,1,1,0,0,-0.195,LOW,none
+c560d521,kim_j,Kim Junho,Sales,2025-01-06T09:37:00,login,Japan,Tokyo,0,7.12,0,1,0,0.7071,-0.7071,1,1,1,6,2.328,LOW,none
+509e09b6,admin45,Admin User 45,IT Operations,2025-01-06T09:49:00,login,Japan,Tokyo,0,1.03,0,1,0,0.7071,-0.7071,1,0,0,0,1.758,LOW,none
+ca7d82f3,sato_m,Sato Miyuki,Finance,2025-01-06T10:03:00,login,Japan,Osaka,1,7.05,0,1,0,0.5,-0.866,1,1,0,0,1.021,LOW,none
+7735ec82,park_s,Park Soyeon,Marketing,2025-01-06T10:31:00,login,Japan,Tokyo,0,20.95,0,1,0,0.5,-0.866,1,1,0,0,-0.183,LOW,none
+6281147f,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-06T10:45:00,login,Russia,Moscow,1,2.25,0,0,0,0.5,-0.866,1,3,1,0,0.836,HIGH,impossible_travel
+788b4770,kim_j,Kim Junho,Sales,2025-01-06T11:29:00,login,Japan,Tokyo,0,1.87,0,1,0,0.2588,-0.9659,1,1,1,6,2.328,LOW,none
+262fc65b,park_s,Park Soyeon,Marketing,2025-01-06T13:17:00,login,Japan,Tokyo,0,2.77,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.183,LOW,none
+5c15233b,yamada_r,Yamada Riko,HR,2025-01-06T14:00:00,login,Japan,Tokyo,0,22.87,0,1,0,-0.5,-0.866,1,4,1,0,0.881,HIGH,privilege_escalation
+55386360,suzuki_t,Suzuki Takeshi,Engineering,2025-01-06T14:11:00,login,Japan,Tokyo,0,4.73,0,1,0,-0.5,-0.866,1,1,0,0,-0.195,LOW,none
+a92b5407,yamada_r,Yamada Riko,HR,2025-01-06T14:42:00,login,Japan,Tokyo,0,0.7,0,1,0,-0.5,-0.866,1,0,0,0,0.881,LOW,none
+734eec0c,sato_m,Sato Miyuki,Finance,2025-01-06T15:20:00,login,Japan,Osaka,0,5.28,0,1,0,-0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+ea747577,nakamura_a,Nakamura Aoi,DevOps,2025-01-06T15:41:00,login,Japan,Tokyo,0,20.83,0,1,0,-0.7071,-0.7071,1,1,0,0,-1.137,LOW,none
+13427ec2,chen_w,Chen Wei,Engineering,2025-01-06T17:17:00,login,Japan,Tokyo,0,8.0,0,1,0,-0.9659,-0.2588,1,0,0,0,0.836,LOW,none
+0a6b2d53,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-06T17:34:00,login,Japan,Tokyo,1,6.82,0,1,0,-0.9659,-0.2588,1,1,0,0,0.836,LOW,none
+5b48888c,chen_w,Chen Wei,Engineering,2025-01-06T17:39:00,login,Japan,Tokyo,0,0.37,0,1,0,-0.9659,-0.2588,1,1,0,0,0.836,LOW,none
+541eb7ae,kim_j,Kim Junho,Sales,2025-01-06T17:47:00,login,Japan,Tokyo,0,6.3,0,1,0,-0.9659,-0.2588,1,0,0,6,2.328,LOW,none
+d5968974,yamada_r,Yamada Riko,HR,2025-01-06T18:38:00,login,Japan,Tokyo,0,3.93,0,1,0,-1.0,-0.0,1,0,0,0,0.881,LOW,none
+71aac6b8,admin45,Admin User 45,IT Operations,2025-01-06T22:00:00,login,Japan,Tokyo,0,12.18,1,0,0,-0.5,0.866,0,3,1,0,1.758,MEDIUM,mfa_brute_force
+0b93da87,admin45,Admin User 45,IT Operations,2025-01-06T22:02:00,login,Japan,Tokyo,0,0.03,2,0,0,-0.5,0.866,0,3,1,0,1.758,MEDIUM,mfa_brute_force
+7f9382a9,admin45,Admin User 45,IT Operations,2025-01-06T22:04:00,login,Japan,Tokyo,0,0.03,3,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+21b0357c,admin45,Admin User 45,IT Operations,2025-01-06T22:06:00,login,Japan,Tokyo,0,0.03,4,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+39fcfdc4,admin45,Admin User 45,IT Operations,2025-01-06T22:08:00,login,Japan,Tokyo,0,0.03,5,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+a2814678,suzuki_t,Suzuki Takeshi,Engineering,2025-01-07T08:09:00,login,Japan,Tokyo,0,17.97,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+ba23ccae,kim_j,Kim Junho,Sales,2025-01-07T08:36:00,login,Japan,Tokyo,0,14.82,0,1,0,0.866,-0.5,1,1,1,6,0.145,LOW,none
+7eb20d66,yamada_r,Yamada Riko,HR,2025-01-07T09:25:00,login,Japan,Tokyo,0,14.78,0,1,0,0.7071,-0.7071,1,0,0,0,-0.378,LOW,none
+672208fb,suzuki_t,Suzuki Takeshi,Engineering,2025-01-07T09:35:00,login,Japan,Tokyo,0,1.43,0,1,0,0.7071,-0.7071,1,0,0,0,0.836,LOW,none
+83b59e9a,yamada_r,Yamada Riko,HR,2025-01-07T10:03:00,login,Japan,Tokyo,0,0.63,0,1,0,0.5,-0.866,1,1,0,0,-0.378,LOW,none
+b44169c2,admin45,Admin User 45,IT Operations,2025-01-07T10:12:00,login,Japan,Tokyo,0,12.07,0,1,0,0.5,-0.866,1,1,0,0,-0.045,LOW,none
+7b724b92,sato_m,Sato Miyuki,Finance,2025-01-07T11:07:00,login,Japan,Osaka,0,19.78,0,1,0,0.2588,-0.9659,1,1,0,0,1.021,LOW,none
+036b6018,park_s,Park Soyeon,Marketing,2025-01-07T11:11:00,login,Japan,Tokyo,0,21.9,0,1,0,0.2588,-0.9659,1,0,0,0,-1.278,LOW,none
+af4f580c,chen_w,Chen Wei,Engineering,2025-01-07T11:40:00,login,Japan,Tokyo,0,18.02,0,1,0,0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+29f27f3f,nakamura_a,Nakamura Aoi,DevOps,2025-01-07T11:41:00,login,Japan,Tokyo,0,20.0,0,1,0,0.2588,-0.9659,1,1,0,0,0.039,LOW,none
+d1295076,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-07T12:14:00,login,Japan,Tokyo,0,18.67,0,1,0,0.0,-1.0,1,0,0,0,-1.225,LOW,none
+fbcd854a,admin45,Admin User 45,IT Operations,2025-01-07T12:14:00,login,Japan,Tokyo,0,2.03,0,1,0,0.0,-1.0,1,0,0,0,-0.045,LOW,none
+58156be6,chen_w,Chen Wei,Engineering,2025-01-07T12:36:00,login,Japan,Tokyo,0,0.93,0,1,0,0.0,-1.0,1,0,0,0,-0.195,LOW,none
+9771862b,ito_k,Ito Kenji,Finance,2025-01-07T12:44:00,login,Japan,Nagoya,0,27.48,0,1,0,0.0,-1.0,1,0,0,0,-0.135,LOW,none
+c476737c,sato_m,Sato Miyuki,Finance,2025-01-07T13:22:00,login,Japan,Osaka,0,2.25,0,1,0,-0.2588,-0.9659,1,1,0,0,1.021,LOW,none
+ed52494b,sato_m,Sato Miyuki,Finance,2025-01-07T13:30:00,login,Japan,Osaka,0,0.13,0,1,0,-0.2588,-0.9659,1,1,0,0,1.021,LOW,none
+dc4ca67a,suzuki_t,Suzuki Takeshi,Engineering,2025-01-07T14:28:00,login,Japan,Tokyo,0,4.88,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+2bab9bd9,kim_j,Kim Junho,Sales,2025-01-07T16:08:00,login,Japan,Tokyo,0,7.53,0,1,0,-0.866,-0.5,1,0,0,6,0.145,LOW,none
+665b340e,kim_j,Kim Junho,Sales,2025-01-07T16:18:00,login,Japan,Tokyo,0,0.17,0,1,0,-0.866,-0.5,1,1,1,6,0.145,LOW,none
+21120d6e,ito_k,Ito Kenji,Finance,2025-01-07T17:30:00,login,Japan,Nagoya,0,4.77,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.135,LOW,none
+a3017bc9,admin45,Admin User 45,IT Operations,2025-01-07T17:48:00,login,Japan,Tokyo,0,5.57,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.045,LOW,none
+048cb70c,nakamura_a,Nakamura Aoi,DevOps,2025-01-07T18:37:00,login,Japan,Tokyo,0,6.93,0,1,0,-1.0,-0.0,1,1,0,0,0.039,LOW,none
+f40b6248,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-08T08:10:00,login,Japan,Tokyo,0,19.93,0,1,0,0.866,-0.5,1,1,0,0,-1.225,LOW,none
+60c9efc6,park_s,Park Soyeon,Marketing,2025-01-08T09:29:00,login,Japan,Tokyo,0,22.3,0,1,0,0.7071,-0.7071,1,0,0,0,0.913,LOW,none
+6d679a06,admin45,Admin User 45,IT Operations,2025-01-08T10:30:00,login,Japan,Tokyo,0,16.7,0,1,0,0.5,-0.866,1,1,0,0,-0.045,LOW,none
+60da4555,chen_w,Chen Wei,Engineering,2025-01-08T11:17:00,login,Japan,Tokyo,0,22.68,0,1,0,0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+b396cc0c,ito_k,Ito Kenji,Finance,2025-01-08T12:32:00,login,Japan,Nagoya,0,19.03,0,1,0,0.0,-1.0,1,1,0,0,1.021,LOW,none
+c08973ed,park_s,Park Soyeon,Marketing,2025-01-08T12:35:00,login,Japan,Tokyo,0,3.1,0,1,0,0.0,-1.0,1,1,0,0,0.913,LOW,none
+fdadb058,sato_m,Sato Miyuki,Finance,2025-01-08T12:44:00,login,Japan,Osaka,0,23.23,0,1,0,0.0,-1.0,1,1,0,0,-0.135,LOW,none
+dcda67f1,nakamura_a,Nakamura Aoi,DevOps,2025-01-08T12:53:00,login,Japan,Tokyo,0,18.27,0,1,0,0.0,-1.0,1,0,0,0,0.039,LOW,none
+a090b8b2,suzuki_t,Suzuki Takeshi,Engineering,2025-01-08T13:07:00,login,Japan,Tokyo,0,22.65,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.195,LOW,none
+e2088946,admin45,Admin User 45,IT Operations,2025-01-08T13:38:00,login,Japan,Tokyo,0,3.13,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.045,LOW,none
+b8ec224d,nakamura_a,Nakamura Aoi,DevOps,2025-01-08T13:59:00,login,Japan,Tokyo,0,1.1,0,1,0,-0.2588,-0.9659,1,0,0,0,0.039,LOW,none
+7d1fe136,kim_j,Kim Junho,Sales,2025-01-08T14:21:00,login,Japan,Tokyo,0,22.05,0,1,0,-0.5,-0.866,1,0,0,3,-0.582,LOW,none
+15cd2124,yamada_r,Yamada Riko,HR,2025-01-08T14:44:00,login,Japan,Tokyo,0,28.68,0,1,0,-0.5,-0.866,1,1,0,0,-0.378,LOW,none
+6d0ba4c5,yamada_r,Yamada Riko,HR,2025-01-08T14:52:00,login,Japan,Tokyo,0,0.13,0,1,0,-0.5,-0.866,1,1,0,0,-0.378,LOW,none
+ee88e225,park_s,Park Soyeon,Marketing,2025-01-08T15:07:00,login,Japan,Tokyo,0,2.53,0,1,0,-0.7071,-0.7071,1,0,0,0,0.913,LOW,none
+db807f0b,ito_k,Ito Kenji,Finance,2025-01-08T15:15:00,login,Japan,Nagoya,0,2.72,0,1,0,-0.7071,-0.7071,1,0,0,0,1.021,LOW,none
+bed3191d,sato_m,Sato Miyuki,Finance,2025-01-08T15:28:00,login,Japan,Osaka,0,2.73,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.135,LOW,none
+bdcd5df0,suzuki_t,Suzuki Takeshi,Engineering,2025-01-08T16:29:00,login,Japan,Tokyo,0,3.37,0,1,0,-0.866,-0.5,1,0,0,0,-0.195,LOW,none
+61dbab0c,ito_k,Ito Kenji,Finance,2025-01-08T17:32:00,login,Japan,Nagoya,0,2.28,0,1,0,-0.9659,-0.2588,1,0,0,0,1.021,LOW,none
+bb527cdf,chen_w,Chen Wei,Engineering,2025-01-08T17:48:00,login,Japan,Tokyo,0,6.52,0,1,0,-0.9659,-0.2588,1,1,0,0,-0.195,LOW,none
+1d74c8f1,kim_j,Kim Junho,Sales,2025-01-08T18:52:00,login,Japan,Tokyo,0,4.52,0,1,0,-1.0,-0.0,1,0,0,3,-0.582,LOW,none
+709b7fbc,admin45,Admin User 45,IT Operations,2025-01-08T18:53:00,login,Japan,Tokyo,0,5.25,0,1,0,-1.0,-0.0,1,1,0,0,-0.045,LOW,none
+ea7d50bd,sato_m,Sato Miyuki,Finance,2025-01-09T08:20:00,login,Japan,Osaka,0,16.87,0,1,0,0.866,-0.5,1,1,0,0,-0.135,LOW,none
+c5bcf458,chen_w,Chen Wei,Engineering,2025-01-09T08:20:00,login,Japan,Tokyo,0,14.53,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+e227fd97,chen_w,Chen Wei,Engineering,2025-01-09T09:28:00,login,Japan,Tokyo,0,1.13,0,1,0,0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+dbf29cfd,kim_j,Kim Junho,Sales,2025-01-09T09:33:00,login,Japan,Tokyo,0,14.68,0,1,0,0.7071,-0.7071,1,0,0,3,-0.582,LOW,none
+3d64b77a,park_s,Park Soyeon,Marketing,2025-01-09T10:11:00,login,Japan,Tokyo,0,19.07,0,1,0,0.5,-0.866,1,1,0,0,-1.278,LOW,none
+0db42a24,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-09T11:44:00,login,Japan,Tokyo,0,27.57,0,1,0,0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+286abdd7,suzuki_t,Suzuki Takeshi,Engineering,2025-01-09T12:14:00,login,Japan,Tokyo,0,19.75,0,1,0,0.0,-1.0,1,1,0,0,-0.195,LOW,none
+6238e0a2,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-09T13:21:00,login,Japan,Tokyo,0,1.62,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+5650208b,yamada_r,Yamada Riko,HR,2025-01-09T13:39:00,login,Japan,Tokyo,0,22.78,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.378,LOW,none
+23399562,chen_w,Chen Wei,Engineering,2025-01-09T14:09:00,login,Japan,Tokyo,0,4.68,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+e15d2136,kim_j,Kim Junho,Sales,2025-01-09T14:55:00,login,Japan,Tokyo,0,5.37,0,1,0,-0.5,-0.866,1,0,0,3,-0.582,LOW,none
+250edbef,nakamura_a,Nakamura Aoi,DevOps,2025-01-09T15:16:00,login,Japan,Tokyo,0,25.28,0,1,0,-0.7071,-0.7071,1,1,0,0,0.039,LOW,none
+d709a20b,ito_k,Ito Kenji,Finance,2025-01-09T15:58:00,login,Japan,Nagoya,0,22.43,0,1,0,-0.7071,-0.7071,1,0,0,0,-1.29,LOW,none
+3b7aefcd,suzuki_t,Suzuki Takeshi,Engineering,2025-01-09T16:02:00,login,Japan,Tokyo,0,3.8,0,1,0,-0.866,-0.5,1,0,0,0,-0.195,LOW,none
+bbded20e,admin45,Admin User 45,IT Operations,2025-01-09T16:37:00,login,Japan,Tokyo,0,21.73,0,1,0,-0.866,-0.5,1,0,0,0,-0.947,LOW,none
+a4254192,nakamura_a,Nakamura Aoi,DevOps,2025-01-09T18:34:00,login,Japan,Tokyo,0,3.3,0,1,0,-1.0,-0.0,1,0,0,0,0.039,LOW,none
+f37fdeb7,sato_m,Sato Miyuki,Finance,2025-01-09T18:50:00,login,Japan,Osaka,0,10.5,0,1,0,-1.0,-0.0,1,1,0,0,-0.135,LOW,none
+86475fd8,yamada_r,Yamada Riko,HR,2025-01-09T18:54:00,login,Japan,Tokyo,0,5.25,0,1,0,-1.0,-0.0,1,1,0,0,-0.378,LOW,none
+3cf5e38d,ito_k,Ito Kenji,Finance,2025-01-10T08:02:00,login,Japan,Nagoya,0,16.07,0,1,0,0.866,-0.5,1,1,0,0,1.021,LOW,none
+16ed8a0c,chen_w,Chen Wei,Engineering,2025-01-10T08:16:00,login,Japan,Tokyo,0,18.12,0,1,0,0.866,-0.5,1,1,0,0,-0.195,LOW,none
+6847d8fa,kim_j,Kim Junho,Sales,2025-01-10T08:19:00,login,Japan,Tokyo,0,17.4,0,1,0,0.866,-0.5,1,0,0,3,0.145,LOW,none
+c7cd6957,admin45,Admin User 45,IT Operations,2025-01-10T08:58:00,login,Japan,Tokyo,0,16.35,0,1,0,0.866,-0.5,1,1,0,0,-0.045,LOW,none
+1ed8d538,kim_j,Kim Junho,Sales,2025-01-10T10:05:00,login,Japan,Tokyo,0,1.77,0,1,0,0.5,-0.866,1,1,1,3,0.145,LOW,none
+16aff855,kim_j,Kim Junho,Sales,2025-01-10T10:12:00,login,Japan,Tokyo,0,0.12,0,1,0,0.5,-0.866,1,1,1,3,0.145,LOW,none
+cfd8e70d,yamada_r,Yamada Riko,HR,2025-01-10T10:16:00,login,Japan,Tokyo,0,15.37,0,1,0,0.5,-0.866,1,1,0,0,-0.378,LOW,none
+bdd6c698,admin45,Admin User 45,IT Operations,2025-01-10T11:38:00,login,Japan,Tokyo,0,2.67,0,1,0,0.2588,-0.9659,1,0,0,0,-0.045,LOW,none
+f308d9ca,suzuki_t,Suzuki Takeshi,Engineering,2025-01-10T11:55:00,login,Japan,Tokyo,0,19.88,0,1,0,0.2588,-0.9659,1,1,0,0,-1.225,LOW,none
+bee15e37,ito_k,Ito Kenji,Finance,2025-01-10T11:56:00,login,Japan,Nagoya,0,3.9,0,1,0,0.2588,-0.9659,1,1,0,0,1.021,LOW,none
+8b016a64,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-10T12:12:00,login,Japan,Tokyo,0,22.85,0,1,0,0.0,-1.0,1,1,0,0,-0.195,LOW,none
+42ba1e0a,nakamura_a,Nakamura Aoi,DevOps,2025-01-10T13:13:00,login,Japan,Tokyo,0,18.65,0,1,0,-0.2588,-0.9659,1,1,0,0,1.215,LOW,none
+7c5686b8,yamada_r,Yamada Riko,HR,2025-01-10T13:51:00,login,Japan,Tokyo,0,3.58,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.378,LOW,none
+4131b9dd,park_s,Park Soyeon,Marketing,2025-01-10T15:01:00,login,Japan,Tokyo,0,28.83,0,1,0,-0.7071,-0.7071,1,0,0,0,-1.278,LOW,none
+28f73be2,nakamura_a,Nakamura Aoi,DevOps,2025-01-10T15:39:00,login,Japan,Tokyo,0,2.43,0,1,0,-0.7071,-0.7071,1,1,0,0,1.215,LOW,none
+71c43f32,ito_k,Ito Kenji,Finance,2025-01-10T15:58:00,login,Japan,Nagoya,0,4.03,0,1,0,-0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+39d525d3,nakamura_a,Nakamura Aoi,DevOps,2025-01-10T16:26:00,login,Japan,Tokyo,0,0.78,0,1,0,-0.866,-0.5,1,1,0,0,1.215,LOW,none
+53d120d4,admin45,Admin User 45,IT Operations,2025-01-10T17:16:00,login,Japan,Tokyo,0,5.63,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.045,LOW,none
+5f60baaa,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-10T17:19:00,login,Japan,Tokyo,0,5.12,0,1,0,-0.9659,-0.2588,1,1,0,0,-0.195,LOW,none
+c8da2a67,sato_m,Sato Miyuki,Finance,2025-01-10T17:22:00,login,Japan,Osaka,0,22.53,0,1,0,-0.9659,-0.2588,1,1,0,0,-0.135,LOW,none
+8ec2025b,chen_w,Chen Wei,Engineering,2025-01-10T18:16:00,login,Japan,Tokyo,0,10.0,0,1,0,-1.0,-0.0,1,1,0,0,-0.195,LOW,none
+49bab359,sato_m,Sato Miyuki,Finance,2025-01-10T18:25:00,login,Japan,Osaka,0,1.05,0,1,0,-1.0,-0.0,1,0,0,0,-0.135,LOW,none
+936a8870,sato_m,Sato Miyuki,Finance,2025-01-11T01:00:00,login,UK,London,1,6.58,0,0,0,0.2588,0.9659,0,2,1,0,-0.135,MEDIUM,new_country_login
+047ca005,kim_j,Kim Junho,Sales,2025-01-11T02:00:00,login,Japan,Tokyo,0,15.8,0,1,0,0.5,0.866,0,0,0,4,0.873,MEDIUM,password_reset_flood
+66338b92,kim_j,Kim Junho,Sales,2025-01-11T02:15:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,5,0.873,MEDIUM,password_reset_flood
+1d5a3d30,kim_j,Kim Junho,Sales,2025-01-11T02:30:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,6,0.873,MEDIUM,password_reset_flood
+ba34a3fd,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T08:30:00,login,Japan,Tokyo,0,15.18,0,1,0,0.866,-0.5,1,0,0,0,1.867,LOW,none
+a8d54505,suzuki_t,Suzuki Takeshi,Engineering,2025-01-11T08:30:00,login,Japan,Tokyo,0,20.58,0,1,0,0.866,-0.5,1,1,0,0,-1.225,LOW,none
+a7c72049,sato_m,Sato Miyuki,Finance,2025-01-11T08:50:00,login,Japan,Osaka,1,7.83,0,1,0,0.866,-0.5,1,0,0,0,-0.135,LOW,none
+fc12f780,ito_k,Ito Kenji,Finance,2025-01-11T09:05:00,login,Japan,Nagoya,0,17.12,0,1,0,0.7071,-0.7071,1,0,0,0,1.021,LOW,none
+5f36e1bf,chen_w,Chen Wei,Engineering,2025-01-11T09:08:00,login,Japan,Tokyo,0,14.87,0,1,0,0.7071,-0.7071,1,1,0,0,-0.195,LOW,none
+bfe33e21,ito_k,Ito Kenji,Finance,2025-01-11T09:20:00,login,Japan,Nagoya,0,0.25,0,1,0,0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+66b0a3a7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T09:43:00,login,Japan,Tokyo,0,1.22,0,1,0,0.7071,-0.7071,1,1,0,0,1.867,LOW,none
+d354fd14,park_s,Park Soyeon,Marketing,2025-01-11T09:54:00,login,Japan,Tokyo,0,18.88,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+76eea534,admin45,Admin User 45,IT Operations,2025-01-11T10:08:00,login,Japan,Tokyo,0,16.87,0,1,0,0.5,-0.866,1,0,0,0,2.209,LOW,none
+b5e55701,kim_j,Kim Junho,Sales,2025-01-11T10:16:00,login,Japan,Tokyo,0,7.77,0,1,0,0.5,-0.866,1,0,0,6,0.873,LOW,none
+49fda337,nakamura_a,Nakamura Aoi,DevOps,2025-01-11T10:35:00,login,Japan,Tokyo,0,18.15,0,1,0,0.5,-0.866,1,1,0,0,0.039,LOW,none
+179c83fb,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T10:45:00,login,Russia,Moscow,1,1.03,0,0,0,0.5,-0.866,1,3,1,0,1.867,HIGH,impossible_travel
+d9535a05,admin45,Admin User 45,IT Operations,2025-01-11T10:50:00,login,Japan,Tokyo,0,0.7,0,1,0,0.5,-0.866,1,1,0,0,2.209,LOW,none
+5377edf9,park_s,Park Soyeon,Marketing,2025-01-11T11:26:00,login,Japan,Tokyo,0,1.53,0,1,0,0.2588,-0.9659,1,1,0,0,0.913,LOW,none
+7e06862f,admin45,Admin User 45,IT Operations,2025-01-11T11:37:00,login,Japan,Tokyo,0,0.78,0,1,0,0.2588,-0.9659,1,0,0,0,2.209,LOW,none
+6bf9bd45,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T12:12:00,login,Japan,Tokyo,1,1.45,0,1,0,0.0,-1.0,1,1,0,0,1.867,LOW,none
+24189aae,park_s,Park Soyeon,Marketing,2025-01-11T12:29:00,login,Japan,Tokyo,0,1.05,0,1,0,0.0,-1.0,1,0,0,0,0.913,LOW,none
+344f23db,ito_k,Ito Kenji,Finance,2025-01-11T13:09:00,login,Japan,Nagoya,0,3.82,0,1,0,-0.2588,-0.9659,1,0,0,0,1.021,LOW,none
+87e33620,nakamura_a,Nakamura Aoi,DevOps,2025-01-11T14:22:00,login,Japan,Tokyo,0,3.78,0,1,0,-0.5,-0.866,1,0,0,0,0.039,LOW,none
+70a9fe05,chen_w,Chen Wei,Engineering,2025-01-11T15:04:00,login,Japan,Tokyo,0,5.93,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.195,LOW,none
+67977322,yamada_r,Yamada Riko,HR,2025-01-11T15:32:00,login,Japan,Tokyo,0,25.68,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.378,LOW,none
+32b46b3e,yamada_r,Yamada Riko,HR,2025-01-11T17:00:00,login,Japan,Tokyo,0,1.47,0,1,0,-0.9659,-0.2588,1,4,1,0,-0.378,HIGH,privilege_escalation
+a8bc9477,admin45,Admin User 45,IT Operations,2025-01-11T22:00:00,login,Japan,Tokyo,0,10.38,1,0,0,-0.5,0.866,0,3,1,0,2.209,MEDIUM,mfa_brute_force
+308f9a5f,admin45,Admin User 45,IT Operations,2025-01-11T22:02:00,login,Japan,Tokyo,0,0.03,2,0,0,-0.5,0.866,0,3,1,0,2.209,MEDIUM,mfa_brute_force
+1101ec69,admin45,Admin User 45,IT Operations,2025-01-11T22:04:00,login,Japan,Tokyo,0,0.03,3,0,0,-0.5,0.866,0,3,1,0,2.209,HIGH,mfa_brute_force
+5238d179,admin45,Admin User 45,IT Operations,2025-01-11T22:06:00,login,Japan,Tokyo,0,0.03,4,0,0,-0.5,0.866,0,3,1,0,2.209,HIGH,mfa_brute_force
+68c34a68,admin45,Admin User 45,IT Operations,2025-01-11T22:08:00,login,Japan,Tokyo,0,0.03,5,0,0,-0.5,0.866,0,3,1,0,2.209,HIGH,mfa_brute_force
+0519cb8c,chen_w,Chen Wei,Engineering,2025-01-12T08:27:00,login,Japan,Tokyo,0,17.38,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+70868eef,suzuki_t,Suzuki Takeshi,Engineering,2025-01-12T08:31:00,login,Japan,Tokyo,0,24.02,0,1,0,0.866,-0.5,1,0,0,0,-1.225,LOW,none
+4fb4a0aa,kim_j,Kim Junho,Sales,2025-01-12T08:43:00,login,Japan,Tokyo,0,22.45,0,1,0,0.866,-0.5,1,1,1,6,0.145,LOW,none
+3bf1ea33,park_s,Park Soyeon,Marketing,2025-01-12T10:51:00,login,Japan,Tokyo,0,22.37,0,1,0,0.5,-0.866,1,1,0,0,-0.183,LOW,none
+52fdbbd0,sato_m,Sato Miyuki,Finance,2025-01-12T10:55:00,login,Japan,Osaka,0,26.08,0,1,0,0.5,-0.866,1,1,0,0,1.021,LOW,none
+98f7c08a,ito_k,Ito Kenji,Finance,2025-01-12T11:27:00,login,Japan,Nagoya,0,22.3,0,1,0,0.2588,-0.9659,1,0,0,0,-1.29,LOW,none
+9154d94b,chen_w,Chen Wei,Engineering,2025-01-12T11:32:00,login,Japan,Tokyo,0,3.08,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+d80b617b,yamada_r,Yamada Riko,HR,2025-01-12T11:49:00,login,Japan,Tokyo,0,18.82,0,1,0,0.2588,-0.9659,1,1,0,0,0.881,LOW,none
+50849ff8,park_s,Park Soyeon,Marketing,2025-01-12T12:07:00,login,Japan,Tokyo,0,1.27,0,1,0,0.0,-1.0,1,0,0,0,-0.183,LOW,none
+0cc505af,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-12T12:22:00,login,Japan,Tokyo,0,24.17,0,1,0,0.0,-1.0,1,0,0,0,0.836,LOW,none
+1597ba01,sato_m,Sato Miyuki,Finance,2025-01-12T12:44:00,login,Japan,Osaka,0,1.82,0,1,0,0.0,-1.0,1,1,0,0,1.021,LOW,none
+496978e3,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-12T13:07:00,login,Japan,Tokyo,0,0.75,0,1,0,-0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+33e55903,nakamura_a,Nakamura Aoi,DevOps,2025-01-12T13:14:00,login,Japan,Tokyo,0,22.87,0,1,0,-0.2588,-0.9659,1,0,0,0,0.039,LOW,none
+2ab0a002,chen_w,Chen Wei,Engineering,2025-01-12T13:36:00,login,Japan,Tokyo,0,2.07,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+88ab8aff,admin45,Admin User 45,IT Operations,2025-01-12T13:49:00,login,Japan,Tokyo,0,15.68,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.045,LOW,none
+8914d3d1,kim_j,Kim Junho,Sales,2025-01-12T14:31:00,login,Japan,Tokyo,0,5.8,0,1,0,-0.5,-0.866,1,1,1,6,0.145,LOW,none
+5af0a117,yamada_r,Yamada Riko,HR,2025-01-12T14:38:00,login,Japan,Tokyo,0,2.82,0,1,0,-0.5,-0.866,1,0,0,0,0.881,LOW,none
+a1606b15,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-12T15:14:00,login,Japan,Tokyo,0,2.12,0,1,0,-0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+9521ccff,admin45,Admin User 45,IT Operations,2025-01-12T15:21:00,login,Japan,Tokyo,0,1.53,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.045,LOW,none
+46da1a3b,kim_j,Kim Junho,Sales,2025-01-12T16:07:00,login,Japan,Tokyo,0,1.6,0,1,0,-0.866,-0.5,1,1,1,6,0.145,LOW,none
+76b06c49,sato_m,Sato Miyuki,Finance,2025-01-12T17:39:00,login,Japan,Osaka,0,4.92,0,1,0,-0.9659,-0.2588,1,1,0,0,1.021,LOW,none
+72cd1da9,admin45,Admin User 45,IT Operations,2025-01-12T18:01:00,login,Japan,Tokyo,0,2.67,0,1,0,-1.0,-0.0,1,0,0,0,-0.045,LOW,none
+ab5fe60f,nakamura_a,Nakamura Aoi,DevOps,2025-01-12T18:07:00,login,Japan,Tokyo,0,4.88,0,1,0,-1.0,-0.0,1,1,0,0,0.039,LOW,none
+da49a0ba,yamada_r,Yamada Riko,HR,2025-01-12T18:37:00,login,Japan,Tokyo,0,3.98,0,1,0,-1.0,-0.0,1,1,0,0,0.881,LOW,none
+ddded3d7,admin45,Admin User 45,IT Operations,2025-01-13T08:03:00,login,Japan,Tokyo,0,14.03,0,1,0,0.866,-0.5,1,1,0,0,-0.496,LOW,none
+b31056dd,kim_j,Kim Junho,Sales,2025-01-13T08:28:00,login,Japan,Tokyo,0,16.35,0,1,0,0.866,-0.5,1,1,1,3,0.145,LOW,none
+361c850b,yamada_r,Yamada Riko,HR,2025-01-13T08:50:00,login,Japan,Tokyo,0,14.22,0,1,0,0.866,-0.5,1,0,0,0,0.881,LOW,none
+27137938,sato_m,Sato Miyuki,Finance,2025-01-13T09:30:00,login,Japan,Osaka,0,15.85,0,1,0,0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+36f9b8eb,ito_k,Ito Kenji,Finance,2025-01-13T09:32:00,login,Japan,Nagoya,0,22.08,0,1,0,0.7071,-0.7071,1,1,0,0,-0.135,LOW,none
+2a881355,admin45,Admin User 45,IT Operations,2025-01-13T09:39:00,login,Japan,Tokyo,0,1.6,0,1,0,0.7071,-0.7071,1,1,0,0,-0.496,LOW,none
+5e8cfa69,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-13T10:15:00,login,Japan,Tokyo,0,19.02,0,1,0,0.5,-0.866,1,0,0,0,0.836,LOW,none
+865142a0,nakamura_a,Nakamura Aoi,DevOps,2025-01-13T10:38:00,login,Japan,Tokyo,0,16.52,0,1,0,0.5,-0.866,1,0,0,0,1.215,LOW,none
+b4e211a8,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-13T10:38:00,login,Japan,Tokyo,0,0.38,0,1,0,0.5,-0.866,1,0,0,0,0.836,LOW,none
+10b5da08,ito_k,Ito Kenji,Finance,2025-01-13T11:14:00,login,Japan,Nagoya,0,1.7,0,1,0,0.2588,-0.9659,1,0,0,0,-0.135,LOW,none
+12d3206e,yamada_r,Yamada Riko,HR,2025-01-13T12:24:00,login,Japan,Tokyo,0,3.57,0,1,0,0.0,-1.0,1,1,0,0,0.881,LOW,none
+758c5614,park_s,Park Soyeon,Marketing,2025-01-13T13:19:00,login,Japan,Tokyo,0,25.2,0,1,0,-0.2588,-0.9659,1,0,0,0,-1.278,LOW,none
+2aa750e0,nakamura_a,Nakamura Aoi,DevOps,2025-01-13T13:43:00,login,Japan,Tokyo,0,3.08,0,1,0,-0.2588,-0.9659,1,1,0,0,1.215,LOW,none
+d5737c76,kim_j,Kim Junho,Sales,2025-01-13T13:45:00,login,Japan,Tokyo,0,5.28,0,1,0,-0.2588,-0.9659,1,0,0,3,0.145,LOW,none
+57e5a83b,chen_w,Chen Wei,Engineering,2025-01-13T14:41:00,login,Japan,Tokyo,0,25.08,0,1,0,-0.5,-0.866,1,0,0,0,0.836,LOW,none
+d4c4d21b,yamada_r,Yamada Riko,HR,2025-01-13T15:28:00,login,Japan,Tokyo,0,3.07,0,1,0,-0.7071,-0.7071,1,1,0,0,0.881,LOW,none
+395d3c36,kim_j,Kim Junho,Sales,2025-01-13T16:09:00,login,Japan,Tokyo,0,2.4,0,1,0,-0.866,-0.5,1,1,1,3,0.145,LOW,none
+0b03a881,sato_m,Sato Miyuki,Finance,2025-01-13T17:03:00,login,Japan,Osaka,0,7.55,0,1,0,-0.9659,-0.2588,1,0,0,0,1.021,LOW,none
+8ab8c8f1,nakamura_a,Nakamura Aoi,DevOps,2025-01-13T17:51:00,login,Japan,Tokyo,0,4.13,0,1,0,-0.9659,-0.2588,1,1,0,0,1.215,LOW,none
+6d231f64,suzuki_t,Suzuki Takeshi,Engineering,2025-01-13T18:09:00,login,Japan,Tokyo,0,33.63,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+06ad79e1,suzuki_t,Suzuki Takeshi,Engineering,2025-01-13T18:24:00,login,Japan,Tokyo,0,0.25,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+433ff28a,chen_w,Chen Wei,Engineering,2025-01-13T18:25:00,login,Japan,Tokyo,0,3.73,0,1,0,-1.0,-0.0,1,0,0,0,0.836,LOW,none
+ab970f83,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-13T18:31:00,login,Japan,Tokyo,0,7.88,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+2be4c89b,sato_m,Sato Miyuki,Finance,2025-01-13T18:40:00,login,Japan,Osaka,0,1.62,0,1,0,-1.0,-0.0,1,1,0,0,1.021,LOW,none
+c67dbd24,suzuki_t,Suzuki Takeshi,Engineering,2025-01-13T18:58:00,login,Japan,Tokyo,0,0.57,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+b1eacb99,chen_w,Chen Wei,Engineering,2025-01-13T18:58:00,login,Japan,Tokyo,0,0.55,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+1f1ee4bf,ito_k,Ito Kenji,Finance,2025-01-14T08:39:00,login,Japan,Nagoya,0,21.42,0,1,0,0.866,-0.5,1,0,0,0,1.021,LOW,none
+8ef989a7,ito_k,Ito Kenji,Finance,2025-01-14T08:40:00,login,Japan,Nagoya,0,0.02,0,1,0,0.866,-0.5,1,0,0,0,1.021,LOW,none
+48f9f9c3,suzuki_t,Suzuki Takeshi,Engineering,2025-01-14T08:57:00,login,Japan,Tokyo,0,13.98,0,1,0,0.866,-0.5,1,0,0,0,0.836,LOW,none
+173f18b8,sato_m,Sato Miyuki,Finance,2025-01-14T10:55:00,login,Japan,Osaka,0,16.25,0,1,0,0.5,-0.866,1,0,0,0,1.021,LOW,none
+d0fc5e0a,yamada_r,Yamada Riko,HR,2025-01-14T11:01:00,login,Japan,Tokyo,0,19.55,0,1,0,0.2588,-0.9659,1,0,0,0,-0.378,LOW,none
+e6cdf682,park_s,Park Soyeon,Marketing,2025-01-14T12:07:00,login,Japan,Tokyo,0,22.8,0,1,0,0.0,-1.0,1,0,0,0,-1.278,LOW,none
+c94ff133,admin45,Admin User 45,IT Operations,2025-01-14T12:28:00,login,Japan,Tokyo,0,26.82,0,1,0,0.0,-1.0,1,1,0,0,-0.947,LOW,none
+cf3240d4,sato_m,Sato Miyuki,Finance,2025-01-14T13:35:00,login,Japan,Osaka,0,2.67,0,1,0,-0.2588,-0.9659,1,0,0,0,1.021,LOW,none
+82cbdcad,suzuki_t,Suzuki Takeshi,Engineering,2025-01-14T13:50:00,login,Japan,Tokyo,0,4.88,0,1,0,-0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+4e3392e8,ito_k,Ito Kenji,Finance,2025-01-14T15:04:00,login,Japan,Nagoya,0,6.4,0,1,0,-0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+c49bb4ce,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-14T15:14:00,login,Japan,Tokyo,0,20.72,0,1,0,-0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+ed1986b6,suzuki_t,Suzuki Takeshi,Engineering,2025-01-14T15:44:00,login,Japan,Tokyo,0,1.9,0,1,0,-0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+07b012da,kim_j,Kim Junho,Sales,2025-01-14T15:56:00,login,Japan,Tokyo,0,23.78,0,1,0,-0.7071,-0.7071,1,0,0,3,-1.309,LOW,none
+1058d2e1,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-14T15:57:00,login,Japan,Tokyo,0,0.72,0,1,0,-0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+0dfb91bd,yamada_r,Yamada Riko,HR,2025-01-14T16:23:00,login,Japan,Tokyo,0,5.37,0,1,0,-0.866,-0.5,1,1,0,0,-0.378,LOW,none
+c10cf4a9,sato_m,Sato Miyuki,Finance,2025-01-14T16:26:00,login,Japan,Osaka,0,2.85,0,1,0,-0.866,-0.5,1,0,0,0,1.021,LOW,none
+b1f38cf5,chen_w,Chen Wei,Engineering,2025-01-14T16:46:00,login,Japan,Tokyo,0,21.8,0,1,0,-0.866,-0.5,1,0,0,0,-1.225,LOW,none
+6a19940d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-14T17:28:00,login,Japan,Tokyo,0,1.52,0,1,0,-0.9659,-0.2588,1,1,0,0,0.836,LOW,none
+cfbe9a63,nakamura_a,Nakamura Aoi,DevOps,2025-01-14T18:42:00,login,Japan,Tokyo,0,24.85,0,1,0,-1.0,-0.0,1,1,0,0,-1.137,LOW,none
+0b937b50,chen_w,Chen Wei,Engineering,2025-01-15T08:04:00,login,Japan,Tokyo,0,15.3,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+d1bdeb12,admin45,Admin User 45,IT Operations,2025-01-15T08:18:00,login,Japan,Tokyo,0,19.83,0,1,0,0.866,-0.5,1,0,0,0,-0.496,LOW,none
+102d03e8,admin45,Admin User 45,IT Operations,2025-01-15T08:20:00,login,Japan,Tokyo,0,0.03,0,1,0,0.866,-0.5,1,1,0,0,-0.496,LOW,none
+b3c37331,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-15T08:22:00,login,Japan,Tokyo,0,14.9,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+c75a9afe,park_s,Park Soyeon,Marketing,2025-01-15T08:38:00,login,Japan,Tokyo,0,20.52,0,1,0,0.866,-0.5,1,1,0,0,0.913,LOW,none
+7a4cf531,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-15T08:40:00,login,Japan,Tokyo,0,0.3,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+f2a2dd38,kim_j,Kim Junho,Sales,2025-01-15T08:55:00,login,Japan,Tokyo,0,16.98,0,1,0,0.866,-0.5,1,1,1,3,0.145,LOW,none
+23415086,nakamura_a,Nakamura Aoi,DevOps,2025-01-15T10:31:00,login,Japan,Tokyo,0,15.82,0,1,0,0.5,-0.866,1,0,0,0,-1.137,LOW,none
+3ddd49c8,suzuki_t,Suzuki Takeshi,Engineering,2025-01-15T10:34:00,login,Japan,Tokyo,0,18.83,0,1,0,0.5,-0.866,1,1,0,0,0.836,LOW,none
+a8492fee,yamada_r,Yamada Riko,HR,2025-01-15T13:11:00,login,Japan,Tokyo,0,20.8,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.378,LOW,none
+3b6d96c6,kim_j,Kim Junho,Sales,2025-01-15T13:27:00,login,Japan,Tokyo,0,4.53,0,1,0,-0.2588,-0.9659,1,1,1,3,0.145,LOW,none
+496d0a83,chen_w,Chen Wei,Engineering,2025-01-15T13:39:00,login,Japan,Tokyo,0,5.58,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+f6e61350,suzuki_t,Suzuki Takeshi,Engineering,2025-01-15T13:42:00,login,Japan,Tokyo,0,3.13,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+9a8f64cb,suzuki_t,Suzuki Takeshi,Engineering,2025-01-15T14:10:00,login,Japan,Tokyo,0,0.47,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+d558affd,ito_k,Ito Kenji,Finance,2025-01-15T14:20:00,login,Japan,Nagoya,0,23.27,0,1,0,-0.5,-0.866,1,0,0,0,-0.135,LOW,none
+5a8337f5,park_s,Park Soyeon,Marketing,2025-01-15T15:02:00,login,Japan,Tokyo,0,6.4,0,1,0,-0.7071,-0.7071,1,0,0,0,0.913,LOW,none
+a592d035,kim_j,Kim Junho,Sales,2025-01-15T15:16:00,login,Japan,Tokyo,0,1.82,0,1,0,-0.7071,-0.7071,1,0,0,3,0.145,LOW,none
+de419bcc,sato_m,Sato Miyuki,Finance,2025-01-15T15:40:00,login,Japan,Osaka,0,23.23,0,1,0,-0.7071,-0.7071,1,0,0,0,1.021,LOW,none
+be30fff4,ito_k,Ito Kenji,Finance,2025-01-15T15:48:00,login,Japan,Nagoya,0,1.47,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.135,LOW,none
+34cc2e44,yamada_r,Yamada Riko,HR,2025-01-15T16:17:00,login,Japan,Tokyo,0,3.1,0,1,0,-0.866,-0.5,1,1,0,0,-0.378,LOW,none
+2546fcc1,sato_m,Sato Miyuki,Finance,2025-01-15T16:21:00,login,Japan,Osaka,0,0.68,0,1,0,-0.866,-0.5,1,1,0,0,1.021,LOW,none
+16d55ecc,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-15T16:32:00,login,Japan,Tokyo,0,7.87,0,1,0,-0.866,-0.5,1,1,0,0,0.836,LOW,none
+8c82ea04,sato_m,Sato Miyuki,Finance,2025-01-15T18:06:00,login,Japan,Osaka,0,1.75,0,1,0,-1.0,-0.0,1,0,0,0,1.021,LOW,none
+91289696,chen_w,Chen Wei,Engineering,2025-01-15T18:10:00,login,Japan,Tokyo,0,4.52,0,1,0,-1.0,-0.0,1,0,0,0,0.836,LOW,none
+91cd8625,park_s,Park Soyeon,Marketing,2025-01-15T18:23:00,login,Japan,Tokyo,0,3.35,0,1,0,-1.0,-0.0,1,1,0,0,0.913,LOW,none
+62a7d899,sato_m,Sato Miyuki,Finance,2025-01-16T02:00:00,login,South Korea,Seoul,0,7.9,0,0,0,0.5,0.866,0,2,1,0,1.021,MEDIUM,new_country_login
+2551e5db,kim_j,Kim Junho,Sales,2025-01-16T02:00:00,login,Japan,Tokyo,0,10.73,0,1,0,0.5,0.866,0,0,0,4,2.328,MEDIUM,password_reset_flood
+9d380683,kim_j,Kim Junho,Sales,2025-01-16T02:15:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,5,2.328,MEDIUM,password_reset_flood
+2639e8f5,kim_j,Kim Junho,Sales,2025-01-16T02:30:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,6,2.328,MEDIUM,password_reset_flood
+a664050a,park_s,Park Soyeon,Marketing,2025-01-16T08:10:00,login,Japan,Tokyo,0,13.78,0,1,0,0.866,-0.5,1,1,0,0,0.913,LOW,none
+85ac1571,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T08:30:00,login,Japan,Tokyo,0,15.97,0,1,0,0.866,-0.5,1,0,0,0,1.867,LOW,none
+992f65f8,kim_j,Kim Junho,Sales,2025-01-16T09:08:00,login,Japan,Tokyo,0,6.63,0,1,0,0.7071,-0.7071,1,0,0,6,2.328,LOW,none
+1fbfd15c,nakamura_a,Nakamura Aoi,DevOps,2025-01-16T09:20:00,login,Japan,Tokyo,0,22.82,0,1,0,0.7071,-0.7071,1,1,0,0,0.039,LOW,none
+2ae72994,yamada_r,Yamada Riko,HR,2025-01-16T10:19:00,login,Japan,Tokyo,0,18.03,0,1,0,0.5,-0.866,1,0,0,0,2.14,LOW,none
+68ea435d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T10:45:00,login,Russia,Moscow,1,2.25,0,0,0,0.5,-0.866,1,3,1,0,1.867,HIGH,impossible_travel
+1138f759,sato_m,Sato Miyuki,Finance,2025-01-16T10:45:00,login,Japan,Osaka,0,8.75,0,1,0,0.5,-0.866,1,1,0,0,1.021,LOW,none
+f30dcf3e,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T10:54:00,login,Japan,Tokyo,1,0.15,0,1,0,0.5,-0.866,1,1,0,0,1.867,LOW,none
+5323bef9,yamada_r,Yamada Riko,HR,2025-01-16T11:22:00,login,Japan,Tokyo,0,1.05,0,1,0,0.2588,-0.9659,1,0,0,0,2.14,LOW,none
+90bed409,park_s,Park Soyeon,Marketing,2025-01-16T12:41:00,login,Japan,Tokyo,0,4.52,0,1,0,0.0,-1.0,1,1,0,0,0.913,LOW,none
+651e3852,nakamura_a,Nakamura Aoi,DevOps,2025-01-16T13:25:00,login,Japan,Tokyo,0,4.08,0,1,0,-0.2588,-0.9659,1,1,0,0,0.039,LOW,none
+c9d7d757,ito_k,Ito Kenji,Finance,2025-01-16T13:38:00,login,Japan,Nagoya,0,21.83,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.29,LOW,none
+c39c595e,chen_w,Chen Wei,Engineering,2025-01-16T14:39:00,login,Japan,Tokyo,0,20.48,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+52965eeb,admin45,Admin User 45,IT Operations,2025-01-16T15:01:00,login,Japan,Tokyo,0,30.68,0,1,0,-0.7071,-0.7071,1,1,0,0,1.307,LOW,none
+2cdd7806,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T15:13:00,login,Japan,Tokyo,0,4.32,0,1,0,-0.7071,-0.7071,1,1,0,0,1.867,LOW,none
+e4a45c2e,kim_j,Kim Junho,Sales,2025-01-16T15:33:00,login,Japan,Tokyo,0,6.42,0,1,0,-0.7071,-0.7071,1,1,1,6,2.328,LOW,none
+94171262,yamada_r,Yamada Riko,HR,2025-01-16T17:00:00,login,Japan,Tokyo,0,5.63,0,1,0,-0.9659,-0.2588,1,4,1,0,2.14,HIGH,privilege_escalation
+36a43d8d,chen_w,Chen Wei,Engineering,2025-01-16T17:21:00,login,Japan,Tokyo,0,2.7,0,1,0,-0.9659,-0.2588,1,0,0,0,0.836,LOW,none
+94ce1103,suzuki_t,Suzuki Takeshi,Engineering,2025-01-16T17:37:00,login,Japan,Tokyo,0,27.45,0,1,0,-0.9659,-0.2588,1,0,0,0,-1.225,LOW,none
+a858d63f,sato_m,Sato Miyuki,Finance,2025-01-16T18:22:00,login,Japan,Osaka,0,7.62,0,1,0,-1.0,-0.0,1,1,0,0,1.021,LOW,none
+3fda6be7,park_s,Park Soyeon,Marketing,2025-01-16T18:25:00,login,Japan,Tokyo,0,5.73,0,1,0,-1.0,-0.0,1,1,0,0,0.913,LOW,none
+cdd79028,kim_j,Kim Junho,Sales,2025-01-16T18:33:00,login,Japan,Tokyo,0,3.0,0,1,0,-1.0,-0.0,1,0,0,6,2.328,LOW,none
+1776f920,yamada_r,Yamada Riko,HR,2025-01-16T18:35:00,login,Japan,Tokyo,0,1.58,0,1,0,-1.0,-0.0,1,0,0,0,2.14,LOW,none
+8454136b,chen_w,Chen Wei,Engineering,2025-01-16T18:49:00,login,Japan,Tokyo,0,1.47,0,1,0,-1.0,-0.0,1,0,0,0,0.836,LOW,none
+28bc7720,admin45,Admin User 45,IT Operations,2025-01-16T22:00:00,login,Japan,Tokyo,0,6.98,1,0,0,-0.5,0.866,0,3,1,0,1.307,MEDIUM,mfa_brute_force
+7fc19473,admin45,Admin User 45,IT Operations,2025-01-16T22:02:00,login,Japan,Tokyo,0,0.03,2,0,0,-0.5,0.866,0,3,1,0,1.307,MEDIUM,mfa_brute_force
+605e82eb,admin45,Admin User 45,IT Operations,2025-01-16T22:04:00,login,Japan,Tokyo,0,0.03,3,0,0,-0.5,0.866,0,3,1,0,1.307,HIGH,mfa_brute_force
+1958be2b,admin45,Admin User 45,IT Operations,2025-01-16T22:06:00,login,Japan,Tokyo,0,0.03,4,0,0,-0.5,0.866,0,3,1,0,1.307,HIGH,mfa_brute_force
+cd2588b1,admin45,Admin User 45,IT Operations,2025-01-16T22:08:00,login,Japan,Tokyo,0,0.03,5,0,0,-0.5,0.866,0,3,1,0,1.307,HIGH,mfa_brute_force
+2a89f9f8,kim_j,Kim Junho,Sales,2025-01-17T08:03:00,login,Japan,Tokyo,0,13.5,0,1,0,0.866,-0.5,1,1,1,6,-0.582,LOW,none
+5c0aab69,suzuki_t,Suzuki Takeshi,Engineering,2025-01-17T08:25:00,login,Japan,Tokyo,0,14.8,0,1,0,0.866,-0.5,1,0,0,0,-0.195,LOW,none
+7d8e469f,admin45,Admin User 45,IT Operations,2025-01-17T09:25:00,login,Japan,Tokyo,0,11.28,0,1,0,0.7071,-0.7071,1,0,0,0,-0.496,LOW,none
+97936bde,nakamura_a,Nakamura Aoi,DevOps,2025-01-17T10:20:00,login,Japan,Tokyo,0,20.92,0,1,0,0.5,-0.866,1,0,0,0,1.215,LOW,none
+7dfc88b0,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-17T11:09:00,login,Japan,Tokyo,0,19.93,0,1,0,0.2588,-0.9659,1,0,0,0,-0.195,LOW,none
+d770fde6,suzuki_t,Suzuki Takeshi,Engineering,2025-01-17T12:04:00,login,Japan,Tokyo,0,3.65,0,1,0,0.0,-1.0,1,1,0,0,-0.195,LOW,none
+6f4d4cb0,ito_k,Ito Kenji,Finance,2025-01-17T13:51:00,login,Japan,Nagoya,0,24.22,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.29,LOW,none
+3015cba1,sato_m,Sato Miyuki,Finance,2025-01-17T13:59:00,login,Japan,Osaka,0,19.62,0,1,0,-0.2588,-0.9659,1,0,0,0,-1.29,LOW,none
+386dbd93,yamada_r,Yamada Riko,HR,2025-01-17T14:08:00,login,Japan,Tokyo,0,19.55,0,1,0,-0.5,-0.866,1,1,0,0,-1.637,LOW,none
+60bc8e75,chen_w,Chen Wei,Engineering,2025-01-17T14:23:00,login,Japan,Tokyo,0,19.57,0,1,0,-0.5,-0.866,1,1,0,0,-0.195,LOW,none
+4e772db7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-17T14:55:00,login,Japan,Tokyo,0,3.77,0,1,0,-0.5,-0.866,1,0,0,0,-0.195,LOW,none
+00348933,admin45,Admin User 45,IT Operations,2025-01-17T16:29:00,login,Japan,Tokyo,0,7.07,0,1,0,-0.866,-0.5,1,1,0,0,-0.496,LOW,none
+0f0fae43,nakamura_a,Nakamura Aoi,DevOps,2025-01-17T16:34:00,login,Japan,Tokyo,0,6.23,0,1,0,-0.866,-0.5,1,1,0,0,1.215,LOW,none
+4c9a38f8,park_s,Park Soyeon,Marketing,2025-01-17T17:32:00,login,Japan,Tokyo,0,23.12,0,1,0,-0.9659,-0.2588,1,0,0,0,-1.278,LOW,none
+54dfa7d0,chen_w,Chen Wei,Engineering,2025-01-17T17:43:00,login,Japan,Tokyo,0,3.33,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.195,LOW,none
+2c41a6ae,nakamura_a,Nakamura Aoi,DevOps,2025-01-17T17:47:00,login,Japan,Tokyo,0,1.22,0,1,0,-0.9659,-0.2588,1,1,0,0,1.215,LOW,none
+16c38e7d,kim_j,Kim Junho,Sales,2025-01-17T18:43:00,login,Japan,Tokyo,0,10.67,0,1,0,-1.0,-0.0,1,1,1,6,-0.582,LOW,none
+470a99b7,admin45,Admin User 45,IT Operations,2025-01-18T08:36:00,login,Japan,Tokyo,0,16.12,0,1,0,0.866,-0.5,1,0,0,0,-0.947,LOW,none
+19a7da39,park_s,Park Soyeon,Marketing,2025-01-18T09:22:00,login,Japan,Tokyo,0,15.83,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+b0b1e75c,park_s,Park Soyeon,Marketing,2025-01-18T10:18:00,login,Japan,Tokyo,0,0.93,0,1,0,0.5,-0.866,1,1,0,0,0.913,LOW,none
+e71ceb41,sato_m,Sato Miyuki,Finance,2025-01-18T10:33:00,login,Japan,Osaka,0,20.57,0,1,0,0.5,-0.866,1,0,0,0,1.021,LOW,none
+52c3843e,yamada_r,Yamada Riko,HR,2025-01-18T11:35:00,login,Japan,Tokyo,0,21.45,0,1,0,0.2588,-0.9659,1,1,0,0,0.881,LOW,none
+c38a0b61,ito_k,Ito Kenji,Finance,2025-01-18T11:52:00,login,Japan,Nagoya,0,22.02,0,1,0,0.2588,-0.9659,1,1,0,0,-1.29,LOW,none
+30c4dc1e,suzuki_t,Suzuki Takeshi,Engineering,2025-01-18T12:35:00,login,Japan,Tokyo,0,24.52,0,1,0,0.0,-1.0,1,0,0,0,-1.225,LOW,none
+a35116af,chen_w,Chen Wei,Engineering,2025-01-18T12:45:00,login,Japan,Tokyo,0,19.03,0,1,0,0.0,-1.0,1,1,0,0,-0.195,LOW,none
+b9f69ebf,yamada_r,Yamada Riko,HR,2025-01-18T13:11:00,login,Japan,Tokyo,0,1.6,0,1,0,-0.2588,-0.9659,1,1,0,0,0.881,LOW,none
+f2ad359b,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-18T13:21:00,login,Japan,Tokyo,0,22.43,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.225,LOW,none
+e9c152e6,chen_w,Chen Wei,Engineering,2025-01-18T13:35:00,login,Japan,Tokyo,0,0.83,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+b092e214,nakamura_a,Nakamura Aoi,DevOps,2025-01-18T13:45:00,login,Japan,Tokyo,0,19.97,0,1,0,-0.2588,-0.9659,1,0,0,0,1.215,LOW,none
+347259b9,kim_j,Kim Junho,Sales,2025-01-18T14:09:00,login,Japan,Tokyo,0,19.43,0,1,0,-0.5,-0.866,1,0,0,3,-0.582,LOW,none
+0242fae0,nakamura_a,Nakamura Aoi,DevOps,2025-01-18T16:14:00,login,Japan,Tokyo,0,2.48,0,1,0,-0.866,-0.5,1,0,0,0,1.215,LOW,none
+fe6889af,park_s,Park Soyeon,Marketing,2025-01-18T16:24:00,login,Japan,Tokyo,0,6.1,0,1,0,-0.866,-0.5,1,1,0,0,0.913,LOW,none
+d45a6f6a,nakamura_a,Nakamura Aoi,DevOps,2025-01-18T17:15:00,login,Japan,Tokyo,0,1.02,0,1,0,-0.9659,-0.2588,1,0,0,0,1.215,LOW,none
+cd591f33,sato_m,Sato Miyuki,Finance,2025-01-18T17:36:00,login,Japan,Osaka,0,7.05,0,1,0,-0.9659,-0.2588,1,0,0,0,1.021,LOW,none
+e961d9fa,kim_j,Kim Junho,Sales,2025-01-18T17:58:00,login,Japan,Tokyo,0,3.82,0,1,0,-0.9659,-0.2588,1,0,0,3,-0.582,LOW,none
+3cc5b1b8,sato_m,Sato Miyuki,Finance,2025-01-18T18:01:00,login,Japan,Osaka,0,0.42,0,1,0,-1.0,-0.0,1,1,0,0,1.021,LOW,none
+3b8596bd,yamada_r,Yamada Riko,HR,2025-01-18T18:49:00,login,Japan,Tokyo,0,5.63,0,1,0,-1.0,-0.0,1,1,0,0,0.881,LOW,none
+37aaedef,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-19T08:35:00,login,Japan,Tokyo,0,19.23,0,1,0,0.866,-0.5,1,1,0,0,-1.225,LOW,none
+eab6c92b,park_s,Park Soyeon,Marketing,2025-01-19T08:42:00,login,Japan,Tokyo,0,16.3,0,1,0,0.866,-0.5,1,1,0,0,0.913,LOW,none
+cb273a27,admin45,Admin User 45,IT Operations,2025-01-19T08:58:00,login,Japan,Tokyo,0,24.37,0,1,0,0.866,-0.5,1,1,0,0,-0.045,LOW,none
+8e514bbe,admin45,Admin User 45,IT Operations,2025-01-19T10:59:00,login,Japan,Tokyo,0,2.02,0,1,0,0.5,-0.866,1,1,0,0,-0.045,LOW,none
+add77014,admin45,Admin User 45,IT Operations,2025-01-19T10:59:00,login,Japan,Tokyo,0,0.0,0,1,0,0.5,-0.866,1,0,0,0,-0.045,LOW,none
+74852bd0,chen_w,Chen Wei,Engineering,2025-01-19T11:28:00,login,Japan,Tokyo,0,21.88,0,1,0,0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+39d5384b,nakamura_a,Nakamura Aoi,DevOps,2025-01-19T13:04:00,login,Japan,Tokyo,0,19.82,0,1,0,-0.2588,-0.9659,1,0,0,0,1.215,LOW,none
+b8c2bead,ito_k,Ito Kenji,Finance,2025-01-19T13:39:00,login,Japan,Nagoya,0,25.78,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.135,LOW,none
+74c73edd,yamada_r,Yamada Riko,HR,2025-01-19T13:50:00,login,Japan,Tokyo,0,19.02,0,1,0,-0.2588,-0.9659,1,0,0,0,0.881,LOW,none
+e444d9e4,chen_w,Chen Wei,Engineering,2025-01-19T13:59:00,login,Japan,Tokyo,0,2.52,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.195,LOW,none
+d1884197,suzuki_t,Suzuki Takeshi,Engineering,2025-01-19T14:42:00,login,Japan,Tokyo,0,26.12,0,1,0,-0.5,-0.866,1,0,0,0,-1.225,LOW,none
+65fec5f5,park_s,Park Soyeon,Marketing,2025-01-19T14:43:00,login,Japan,Tokyo,0,6.02,0,1,0,-0.5,-0.866,1,0,0,0,0.913,LOW,none
+e1b7190a,ito_k,Ito Kenji,Finance,2025-01-19T15:09:00,login,Japan,Nagoya,0,1.5,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.135,LOW,none
+aa7e186c,kim_j,Kim Junho,Sales,2025-01-19T15:17:00,login,Japan,Tokyo,0,21.32,0,1,0,-0.7071,-0.7071,1,0,0,3,0.145,LOW,none
+876e7419,sato_m,Sato Miyuki,Finance,2025-01-19T15:41:00,login,Japan,Osaka,0,21.67,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.135,LOW,none
+baf39006,yamada_r,Yamada Riko,HR,2025-01-19T15:41:00,login,Japan,Tokyo,0,1.85,0,1,0,-0.7071,-0.7071,1,0,0,0,0.881,LOW,none
+254d2ba2,nakamura_a,Nakamura Aoi,DevOps,2025-01-19T15:48:00,login,Japan,Tokyo,0,2.73,0,1,0,-0.7071,-0.7071,1,0,0,0,1.215,LOW,none
+f3af1a14,park_s,Park Soyeon,Marketing,2025-01-19T17:00:00,login,Japan,Tokyo,0,2.28,0,1,0,-0.9659,-0.2588,1,1,0,0,0.913,LOW,none
+04a349f8,kim_j,Kim Junho,Sales,2025-01-19T17:06:00,login,Japan,Tokyo,0,1.82,0,1,0,-0.9659,-0.2588,1,1,1,3,0.145,LOW,none
+c3513703,nakamura_a,Nakamura Aoi,DevOps,2025-01-19T17:55:00,login,Japan,Tokyo,0,2.12,0,1,0,-0.9659,-0.2588,1,1,0,0,1.215,LOW,none
+dd78b31a,sato_m,Sato Miyuki,Finance,2025-01-19T18:03:00,login,Japan,Osaka,0,2.37,0,1,0,-1.0,-0.0,1,0,0,0,-0.135,LOW,none
+99dda117,kim_j,Kim Junho,Sales,2025-01-19T18:34:00,login,Japan,Tokyo,0,1.47,0,1,0,-1.0,-0.0,1,0,0,3,0.145,LOW,none
+ce989613,yamada_r,Yamada Riko,HR,2025-01-19T18:57:00,login,Japan,Tokyo,0,3.27,0,1,0,-1.0,-0.0,1,1,0,0,0.881,LOW,none
+2d3bcd14,chen_w,Chen Wei,Engineering,2025-01-20T08:15:00,login,Japan,Tokyo,0,18.27,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+4aa12246,sato_m,Sato Miyuki,Finance,2025-01-20T08:47:00,login,Japan,Osaka,0,14.73,0,1,0,0.866,-0.5,1,0,0,0,1.021,LOW,none
+0ee1e6c7,chen_w,Chen Wei,Engineering,2025-01-20T09:02:00,login,Japan,Tokyo,0,0.78,0,1,0,0.7071,-0.7071,1,0,0,0,0.836,LOW,none
+4797a3b1,chen_w,Chen Wei,Engineering,2025-01-20T09:06:00,login,Japan,Tokyo,0,0.07,0,1,0,0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+b9281a7e,admin45,Admin User 45,IT Operations,2025-01-20T09:34:00,login,Japan,Tokyo,0,22.58,0,1,0,0.7071,-0.7071,1,0,0,0,-0.496,LOW,none
+3d09b543,park_s,Park Soyeon,Marketing,2025-01-20T10:42:00,login,Japan,Tokyo,0,17.7,0,1,0,0.5,-0.866,1,1,0,0,0.913,LOW,none
+3beb2f14,suzuki_t,Suzuki Takeshi,Engineering,2025-01-20T11:29:00,login,Japan,Tokyo,0,20.78,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+dc1c337b,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-20T11:36:00,login,Japan,Tokyo,0,27.02,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+52fd5a72,park_s,Park Soyeon,Marketing,2025-01-20T11:48:00,login,Japan,Tokyo,0,1.1,0,1,0,0.2588,-0.9659,1,0,0,0,0.913,LOW,none
+d58dc7eb,park_s,Park Soyeon,Marketing,2025-01-20T11:52:00,login,Japan,Tokyo,0,0.07,0,1,0,0.2588,-0.9659,1,1,0,0,0.913,LOW,none
+931133bb,suzuki_t,Suzuki Takeshi,Engineering,2025-01-20T11:53:00,login,Japan,Tokyo,0,0.4,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+95ba5665,sato_m,Sato Miyuki,Finance,2025-01-20T12:46:00,login,Japan,Osaka,0,3.98,0,1,0,0.0,-1.0,1,1,0,0,1.021,LOW,none
+1664c0c3,yamada_r,Yamada Riko,HR,2025-01-20T13:07:00,login,Japan,Tokyo,0,18.17,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.378,LOW,none
+41f91494,nakamura_a,Nakamura Aoi,DevOps,2025-01-20T13:41:00,login,Japan,Tokyo,0,19.77,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.137,LOW,none
+aab3fe29,yamada_r,Yamada Riko,HR,2025-01-20T14:24:00,login,Japan,Tokyo,0,1.28,0,1,0,-0.5,-0.866,1,0,0,0,-0.378,LOW,none
+b95e09c3,sato_m,Sato Miyuki,Finance,2025-01-20T14:29:00,login,Japan,Osaka,0,1.72,0,1,0,-0.5,-0.866,1,1,0,0,1.021,LOW,none
+8bc2186e,admin45,Admin User 45,IT Operations,2025-01-20T15:02:00,login,Japan,Tokyo,0,5.47,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.496,LOW,none
+e5a6555a,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-20T15:05:00,login,Japan,Tokyo,0,3.48,0,1,0,-0.7071,-0.7071,1,0,0,0,0.836,LOW,none
+816b52bf,suzuki_t,Suzuki Takeshi,Engineering,2025-01-20T15:43:00,login,Japan,Tokyo,0,3.83,0,1,0,-0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+78f90011,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-20T16:28:00,login,Japan,Tokyo,0,1.38,0,1,0,-0.866,-0.5,1,0,0,0,0.836,LOW,none
+fc0b989c,ito_k,Ito Kenji,Finance,2025-01-20T16:37:00,login,Japan,Nagoya,0,25.47,0,1,0,-0.866,-0.5,1,1,0,0,-1.29,LOW,none
+ce67add6,kim_j,Kim Junho,Sales,2025-01-20T18:46:00,login,Japan,Tokyo,0,24.2,0,1,0,-1.0,-0.0,1,1,1,3,-1.309,LOW,none
+4efad14d,sato_m,Sato Miyuki,Finance,2025-01-21T01:00:00,login,South Korea,Seoul,0,10.52,0,0,0,0.2588,0.9659,0,2,1,0,2.176,MEDIUM,new_country_login
+1128c97b,kim_j,Kim Junho,Sales,2025-01-21T02:00:00,login,Japan,Tokyo,0,7.23,0,1,0,0.5,0.866,0,0,0,4,1.6,MEDIUM,password_reset_flood
+aa9839e1,kim_j,Kim Junho,Sales,2025-01-21T02:15:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,5,1.6,MEDIUM,password_reset_flood
+86d7dcda,kim_j,Kim Junho,Sales,2025-01-21T02:30:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,6,1.6,MEDIUM,password_reset_flood
+bb24d9ad,ito_k,Ito Kenji,Finance,2025-01-21T08:00:00,login,Japan,Nagoya,0,15.38,0,1,0,0.866,-0.5,1,0,0,0,1.021,LOW,none
+bd206102,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T08:30:00,login,Japan,Tokyo,0,16.03,0,1,0,0.866,-0.5,1,0,0,0,1.867,LOW,none
+565e6a3f,sato_m,Sato Miyuki,Finance,2025-01-21T09:34:00,login,Japan,Osaka,0,8.57,0,1,0,0.7071,-0.7071,1,0,0,0,2.176,LOW,none
+c5190cfe,admin45,Admin User 45,IT Operations,2025-01-21T09:47:00,login,Japan,Tokyo,0,18.75,0,1,0,0.7071,-0.7071,1,0,0,0,2.209,LOW,none
+0b90df69,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T10:19:00,login,Japan,Tokyo,0,1.82,0,1,0,0.5,-0.866,1,0,0,0,1.867,LOW,none
+868d319c,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T10:45:00,login,Russia,Moscow,1,0.43,0,0,0,0.5,-0.866,1,3,1,0,1.867,HIGH,impossible_travel
+4dad7a3e,sato_m,Sato Miyuki,Finance,2025-01-21T11:21:00,login,Japan,Osaka,0,1.78,0,1,0,0.2588,-0.9659,1,1,0,0,2.176,LOW,none
+e76736b5,ito_k,Ito Kenji,Finance,2025-01-21T12:34:00,login,Japan,Nagoya,0,4.57,0,1,0,0.0,-1.0,1,0,0,0,1.021,LOW,none
+9315126a,nakamura_a,Nakamura Aoi,DevOps,2025-01-21T12:52:00,login,Japan,Tokyo,0,23.18,0,1,0,0.0,-1.0,1,1,0,0,1.215,LOW,none
+65290c4b,chen_w,Chen Wei,Engineering,2025-01-21T13:10:00,login,Japan,Tokyo,0,28.07,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+e7ab30b3,suzuki_t,Suzuki Takeshi,Engineering,2025-01-21T13:14:00,login,Japan,Tokyo,0,21.52,0,1,0,-0.2588,-0.9659,1,0,0,0,-1.225,LOW,none
+e7f82988,admin45,Admin User 45,IT Operations,2025-01-21T13:19:00,login,Japan,Tokyo,0,3.53,0,1,0,-0.2588,-0.9659,1,0,0,0,2.209,LOW,none
+401e0813,sato_m,Sato Miyuki,Finance,2025-01-21T14:26:00,login,Japan,Osaka,0,3.08,0,1,0,-0.5,-0.866,1,1,0,0,2.176,LOW,none
+6ae97243,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T15:15:00,login,Japan,Tokyo,1,4.5,0,1,0,-0.7071,-0.7071,1,1,0,0,1.867,LOW,none
+4ace8c16,ito_k,Ito Kenji,Finance,2025-01-21T15:23:00,login,Japan,Nagoya,0,2.82,0,1,0,-0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+6b3e42f7,nakamura_a,Nakamura Aoi,DevOps,2025-01-21T16:09:00,login,Japan,Tokyo,0,3.28,0,1,0,-0.866,-0.5,1,0,0,0,1.215,LOW,none
+965bca20,kim_j,Kim Junho,Sales,2025-01-21T16:41:00,login,Japan,Tokyo,0,14.18,0,1,0,-0.866,-0.5,1,1,1,6,1.6,LOW,none
+a29a8133,kim_j,Kim Junho,Sales,2025-01-21T16:56:00,login,Japan,Tokyo,0,0.25,0,1,0,-0.866,-0.5,1,1,1,6,1.6,LOW,none
+9f35df59,yamada_r,Yamada Riko,HR,2025-01-21T17:00:00,login,Japan,Tokyo,0,26.6,0,1,0,-0.9659,-0.2588,1,4,1,0,-0.378,HIGH,privilege_escalation
+05642b3b,yamada_r,Yamada Riko,HR,2025-01-21T17:55:00,login,Japan,Tokyo,0,0.92,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.378,LOW,none
+740434fb,park_s,Park Soyeon,Marketing,2025-01-21T18:03:00,login,Japan,Tokyo,0,30.18,0,1,0,-1.0,-0.0,1,0,0,0,0.913,LOW,none
+3a67acdc,park_s,Park Soyeon,Marketing,2025-01-21T18:03:00,login,Japan,Tokyo,0,0.0,0,1,0,-1.0,-0.0,1,1,0,0,0.913,LOW,none
+d185592f,park_s,Park Soyeon,Marketing,2025-01-21T18:14:00,login,Japan,Tokyo,0,0.18,0,1,0,-1.0,-0.0,1,0,0,0,0.913,LOW,none
+c02fc25e,chen_w,Chen Wei,Engineering,2025-01-21T18:21:00,login,Japan,Tokyo,0,5.18,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+96f21e0d,nakamura_a,Nakamura Aoi,DevOps,2025-01-21T18:27:00,login,Japan,Tokyo,0,2.3,0,1,0,-1.0,-0.0,1,0,0,0,1.215,LOW,none
+d45b1ae9,admin45,Admin User 45,IT Operations,2025-01-21T18:35:00,login,Japan,Tokyo,0,5.27,0,1,0,-1.0,-0.0,1,1,0,0,2.209,LOW,none
+afdebafe,chen_w,Chen Wei,Engineering,2025-01-21T18:47:00,login,Japan,Tokyo,0,0.43,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+1f0fa98d,admin45,Admin User 45,IT Operations,2025-01-21T22:00:00,login,Japan,Tokyo,0,3.42,1,0,0,-0.5,0.866,0,3,1,0,2.209,MEDIUM,mfa_brute_force
+ec5d1969,admin45,Admin User 45,IT Operations,2025-01-21T22:02:00,login,Japan,Tokyo,0,0.03,2,0,0,-0.5,0.866,0,3,1,0,2.209,MEDIUM,mfa_brute_force
+13a64a06,admin45,Admin User 45,IT Operations,2025-01-21T22:04:00,login,Japan,Tokyo,0,0.03,3,0,0,-0.5,0.866,0,3,1,0,2.209,HIGH,mfa_brute_force
+4f37c072,admin45,Admin User 45,IT Operations,2025-01-21T22:06:00,login,Japan,Tokyo,0,0.03,4,0,0,-0.5,0.866,0,3,1,0,2.209,HIGH,mfa_brute_force
+6c5d8ca2,admin45,Admin User 45,IT Operations,2025-01-21T22:08:00,login,Japan,Tokyo,0,0.03,5,0,0,-0.5,0.866,0,3,1,0,2.209,HIGH,mfa_brute_force
+2b6c06a4,ito_k,Ito Kenji,Finance,2025-01-22T09:05:00,login,Japan,Nagoya,0,17.7,0,1,0,0.7071,-0.7071,1,1,0,0,1.021,LOW,none
+3c9f0b58,nakamura_a,Nakamura Aoi,DevOps,2025-01-22T09:08:00,login,Japan,Tokyo,0,14.68,0,1,0,0.7071,-0.7071,1,0,0,0,0.039,LOW,none
+16ab42a1,admin45,Admin User 45,IT Operations,2025-01-22T10:05:00,login,Japan,Tokyo,0,11.95,0,1,0,0.5,-0.866,1,1,0,0,-0.496,LOW,none
+a0cf15f8,ito_k,Ito Kenji,Finance,2025-01-22T10:24:00,login,Japan,Nagoya,0,1.32,0,1,0,0.5,-0.866,1,1,0,0,1.021,LOW,none
+16a81803,chen_w,Chen Wei,Engineering,2025-01-22T10:50:00,login,Japan,Tokyo,0,16.05,0,1,0,0.5,-0.866,1,1,0,0,0.836,LOW,none
+c92368aa,sato_m,Sato Miyuki,Finance,2025-01-22T12:43:00,login,Japan,Osaka,0,22.28,0,1,0,0.0,-1.0,1,0,0,0,-1.29,LOW,none
+cf58517e,ito_k,Ito Kenji,Finance,2025-01-22T12:51:00,login,Japan,Nagoya,0,2.45,0,1,0,0.0,-1.0,1,0,0,0,1.021,LOW,none
+844d7907,yamada_r,Yamada Riko,HR,2025-01-22T12:57:00,login,Japan,Tokyo,0,19.03,0,1,0,0.0,-1.0,1,0,0,0,0.881,LOW,none
+4cced64d,yamada_r,Yamada Riko,HR,2025-01-22T13:01:00,login,Japan,Tokyo,0,0.07,0,1,0,-0.2588,-0.9659,1,0,0,0,0.881,LOW,none
+a40d3a84,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-22T13:25:00,login,Japan,Tokyo,0,22.17,0,1,0,-0.2588,-0.9659,1,0,0,0,-1.225,LOW,none
+608518b0,chen_w,Chen Wei,Engineering,2025-01-22T14:14:00,login,Japan,Tokyo,0,3.4,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+aaf263eb,park_s,Park Soyeon,Marketing,2025-01-22T14:27:00,login,Japan,Tokyo,0,20.22,0,1,0,-0.5,-0.866,1,1,0,0,-0.183,LOW,none
+f631267c,admin45,Admin User 45,IT Operations,2025-01-22T14:35:00,login,Japan,Tokyo,0,4.5,0,1,0,-0.5,-0.866,1,0,0,0,-0.496,LOW,none
+b09fa99f,yamada_r,Yamada Riko,HR,2025-01-22T14:59:00,login,Japan,Tokyo,0,1.97,0,1,0,-0.5,-0.866,1,1,0,0,0.881,LOW,none
+2f121b92,park_s,Park Soyeon,Marketing,2025-01-22T15:31:00,login,Japan,Tokyo,0,1.07,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.183,LOW,none
+e3d75763,nakamura_a,Nakamura Aoi,DevOps,2025-01-22T16:35:00,login,Japan,Tokyo,0,7.45,0,1,0,-0.866,-0.5,1,0,0,0,0.039,LOW,none
+9fceb4cb,kim_j,Kim Junho,Sales,2025-01-22T17:30:00,login,Japan,Tokyo,0,24.57,0,1,0,-0.9659,-0.2588,1,0,0,6,-0.582,LOW,none
+bb18dab8,chen_w,Chen Wei,Engineering,2025-01-22T17:38:00,login,Japan,Tokyo,0,3.4,0,1,0,-0.9659,-0.2588,1,1,0,0,0.836,LOW,none
+824f0ce6,suzuki_t,Suzuki Takeshi,Engineering,2025-01-22T17:53:00,login,Japan,Tokyo,0,28.65,0,1,0,-0.9659,-0.2588,1,1,0,0,-1.225,LOW,none
+fe5e2685,kim_j,Kim Junho,Sales,2025-01-22T17:54:00,login,Japan,Tokyo,0,0.4,0,1,0,-0.9659,-0.2588,1,0,0,6,-0.582,LOW,none
+444e5e98,yamada_r,Yamada Riko,HR,2025-01-23T08:25:00,login,Japan,Tokyo,0,17.43,0,1,0,0.866,-0.5,1,1,0,0,-0.378,LOW,none
+d0c0d1eb,chen_w,Chen Wei,Engineering,2025-01-23T10:43:00,login,Japan,Tokyo,0,17.08,0,1,0,0.5,-0.866,1,1,0,0,-0.195,LOW,none
+ab7e1e85,suzuki_t,Suzuki Takeshi,Engineering,2025-01-23T11:30:00,login,Japan,Tokyo,0,17.62,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+43dd6583,suzuki_t,Suzuki Takeshi,Engineering,2025-01-23T13:18:00,login,Japan,Tokyo,0,1.8,0,1,0,-0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+abc0d217,yamada_r,Yamada Riko,HR,2025-01-23T13:28:00,login,Japan,Tokyo,0,5.05,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.378,LOW,none
+cf9907ce,nakamura_a,Nakamura Aoi,DevOps,2025-01-23T13:44:00,login,Japan,Tokyo,0,21.15,0,1,0,-0.2588,-0.9659,1,0,0,0,1.215,LOW,none
+546275bd,admin45,Admin User 45,IT Operations,2025-01-23T14:19:00,login,Japan,Tokyo,0,23.73,0,1,0,-0.5,-0.866,1,0,0,0,-0.496,LOW,none
+93d6f9f9,chen_w,Chen Wei,Engineering,2025-01-23T14:23:00,login,Japan,Tokyo,0,3.67,0,1,0,-0.5,-0.866,1,0,0,0,-0.195,LOW,none
+aa9cad50,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-23T14:24:00,login,Japan,Tokyo,0,24.98,0,1,0,-0.5,-0.866,1,0,0,0,-0.195,LOW,none
+1eb8ee3c,admin45,Admin User 45,IT Operations,2025-01-23T15:09:00,login,Japan,Tokyo,0,0.83,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.496,LOW,none
+00536c6a,nakamura_a,Nakamura Aoi,DevOps,2025-01-23T15:37:00,login,Japan,Tokyo,0,1.88,0,1,0,-0.7071,-0.7071,1,1,0,0,1.215,LOW,none
+2149cc0b,park_s,Park Soyeon,Marketing,2025-01-23T15:51:00,login,Japan,Tokyo,0,24.33,0,1,0,-0.7071,-0.7071,1,0,0,0,-1.278,LOW,none
+d17e284e,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-23T16:05:00,login,Japan,Tokyo,0,1.68,0,1,0,-0.866,-0.5,1,1,0,0,-0.195,LOW,none
+1aaec7ad,suzuki_t,Suzuki Takeshi,Engineering,2025-01-23T17:08:00,login,Japan,Tokyo,0,3.83,0,1,0,-0.9659,-0.2588,1,1,0,0,0.836,LOW,none
+87d81c99,ito_k,Ito Kenji,Finance,2025-01-23T18:09:00,login,Japan,Nagoya,0,29.3,0,1,0,-1.0,-0.0,1,1,0,0,-0.135,LOW,none
+d13c099e,sato_m,Sato Miyuki,Finance,2025-01-23T18:24:00,login,Japan,Osaka,0,29.68,0,1,0,-1.0,-0.0,1,0,0,0,-1.29,LOW,none
+97bda671,ito_k,Ito Kenji,Finance,2025-01-23T18:31:00,login,Japan,Nagoya,0,0.37,0,1,0,-1.0,-0.0,1,1,0,0,-0.135,LOW,none
+0a8f7533,kim_j,Kim Junho,Sales,2025-01-23T18:31:00,login,Japan,Tokyo,0,24.62,0,1,0,-1.0,-0.0,1,1,1,3,-1.309,LOW,none
+15576b73,nakamura_a,Nakamura Aoi,DevOps,2025-01-23T18:42:00,login,Japan,Tokyo,0,3.08,0,1,0,-1.0,-0.0,1,0,0,0,1.215,LOW,none
+320a9334,sato_m,Sato Miyuki,Finance,2025-01-24T09:00:00,login,Japan,Osaka,0,14.6,0,1,0,0.7071,-0.7071,1,1,0,0,-0.135,LOW,none
+0f4aaef5,yamada_r,Yamada Riko,HR,2025-01-24T09:01:00,login,Japan,Tokyo,0,19.55,0,1,0,0.7071,-0.7071,1,0,0,0,-1.637,LOW,none
+cf4a8d30,admin45,Admin User 45,IT Operations,2025-01-24T09:18:00,login,Japan,Tokyo,0,18.15,0,1,0,0.7071,-0.7071,1,0,0,0,-0.496,LOW,none
+bcd834de,kim_j,Kim Junho,Sales,2025-01-24T10:22:00,login,Japan,Tokyo,0,15.85,0,1,0,0.5,-0.866,1,1,1,3,0.145,LOW,none
+0f2c041d,nakamura_a,Nakamura Aoi,DevOps,2025-01-24T10:23:00,login,Japan,Tokyo,0,15.68,0,1,0,0.5,-0.866,1,0,0,0,1.215,LOW,none
+7f125332,ito_k,Ito Kenji,Finance,2025-01-24T11:17:00,login,Japan,Nagoya,0,16.77,0,1,0,0.2588,-0.9659,1,0,0,0,-1.29,LOW,none
+85392976,suzuki_t,Suzuki Takeshi,Engineering,2025-01-24T11:33:00,login,Japan,Tokyo,0,18.42,0,1,0,0.2588,-0.9659,1,0,0,0,-1.225,LOW,none
+af71af21,kim_j,Kim Junho,Sales,2025-01-24T11:33:00,login,Japan,Tokyo,0,1.18,0,1,0,0.2588,-0.9659,1,1,1,3,0.145,LOW,none
+2e5a5c90,nakamura_a,Nakamura Aoi,DevOps,2025-01-24T12:42:00,login,Japan,Tokyo,0,2.32,0,1,0,0.0,-1.0,1,1,0,0,1.215,LOW,none
+d092158d,chen_w,Chen Wei,Engineering,2025-01-24T15:14:00,login,Japan,Tokyo,0,24.85,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.195,LOW,none
+a78e0495,park_s,Park Soyeon,Marketing,2025-01-24T15:37:00,login,Japan,Tokyo,0,23.77,0,1,0,-0.7071,-0.7071,1,1,0,0,-1.278,LOW,none
+5be34017,kim_j,Kim Junho,Sales,2025-01-24T15:46:00,login,Japan,Tokyo,0,4.22,0,1,0,-0.7071,-0.7071,1,1,1,3,0.145,LOW,none
+3a813667,sato_m,Sato Miyuki,Finance,2025-01-24T16:35:00,login,Japan,Osaka,0,7.58,0,1,0,-0.866,-0.5,1,1,0,0,-0.135,LOW,none
+02fa1308,nakamura_a,Nakamura Aoi,DevOps,2025-01-24T17:25:00,login,Japan,Tokyo,0,4.72,0,1,0,-0.9659,-0.2588,1,1,0,0,1.215,LOW,none
+4ccf06cf,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-24T17:41:00,login,Japan,Tokyo,0,25.6,0,1,0,-0.9659,-0.2588,1,1,0,0,-1.225,LOW,none
+ab4b915f,chen_w,Chen Wei,Engineering,2025-01-24T18:27:00,login,Japan,Tokyo,0,3.22,0,1,0,-1.0,-0.0,1,0,0,0,-0.195,LOW,none
+e9378de2,admin45,Admin User 45,IT Operations,2025-01-24T18:37:00,login,Japan,Tokyo,0,9.32,0,1,0,-1.0,-0.0,1,1,0,0,-0.496,LOW,none
+a8879a7b,yamada_r,Yamada Riko,HR,2025-01-25T08:50:00,login,Japan,Tokyo,0,23.82,0,1,0,0.866,-0.5,1,1,0,0,0.881,LOW,none
+99fa8b5c,chen_w,Chen Wei,Engineering,2025-01-25T09:28:00,login,Japan,Tokyo,0,15.02,0,1,0,0.7071,-0.7071,1,0,0,0,0.836,LOW,none
+20daf359,admin45,Admin User 45,IT Operations,2025-01-25T10:11:00,login,Japan,Tokyo,0,15.57,0,1,0,0.5,-0.866,1,1,0,0,-0.045,LOW,none
+1900b0d1,nakamura_a,Nakamura Aoi,DevOps,2025-01-25T10:15:00,login,Japan,Tokyo,0,16.83,0,1,0,0.5,-0.866,1,1,0,0,-1.137,LOW,none
+aa603dcf,sato_m,Sato Miyuki,Finance,2025-01-25T10:32:00,login,Japan,Osaka,0,17.95,0,1,0,0.5,-0.866,1,1,0,0,-0.135,LOW,none
+ba3ee313,chen_w,Chen Wei,Engineering,2025-01-25T11:19:00,login,Japan,Tokyo,0,1.85,0,1,0,0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+3e863781,yamada_r,Yamada Riko,HR,2025-01-25T11:34:00,login,Japan,Tokyo,0,2.73,0,1,0,0.2588,-0.9659,1,0,0,0,0.881,LOW,none
+8a3253e6,park_s,Park Soyeon,Marketing,2025-01-25T11:52:00,login,Japan,Tokyo,0,20.25,0,1,0,0.2588,-0.9659,1,0,0,0,-1.278,LOW,none
+28e134a4,ito_k,Ito Kenji,Finance,2025-01-25T12:18:00,login,Japan,Nagoya,0,25.02,0,1,0,0.0,-1.0,1,0,0,0,1.021,LOW,none
+7135e66a,ito_k,Ito Kenji,Finance,2025-01-25T12:38:00,login,Japan,Nagoya,0,0.33,0,1,0,0.0,-1.0,1,1,0,0,1.021,LOW,none
+50680a30,admin45,Admin User 45,IT Operations,2025-01-25T13:00:00,login,Japan,Tokyo,0,2.82,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.045,LOW,none
+7c463067,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-25T13:07:00,login,Japan,Tokyo,0,19.43,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.195,LOW,none
+c79f3d68,kim_j,Kim Junho,Sales,2025-01-25T14:45:00,login,Japan,Tokyo,0,22.98,0,1,0,-0.5,-0.866,1,1,1,3,-0.582,LOW,none
+2049e401,ito_k,Ito Kenji,Finance,2025-01-25T14:58:00,login,Japan,Nagoya,0,2.33,0,1,0,-0.5,-0.866,1,1,0,0,1.021,LOW,none
+7c06ce73,suzuki_t,Suzuki Takeshi,Engineering,2025-01-25T15:34:00,login,Japan,Tokyo,0,28.02,0,1,0,-0.7071,-0.7071,1,1,0,0,-0.195,LOW,none
+391a9d0a,kim_j,Kim Junho,Sales,2025-01-25T16:32:00,login,Japan,Tokyo,0,1.78,0,1,0,-0.866,-0.5,1,1,1,3,-0.582,LOW,none
+5ebeae29,suzuki_t,Suzuki Takeshi,Engineering,2025-01-25T16:52:00,login,Japan,Tokyo,0,1.3,0,1,0,-0.866,-0.5,1,0,0,0,-0.195,LOW,none
+a3849d48,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-25T17:11:00,login,Japan,Tokyo,0,4.07,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.195,LOW,none
+da9da438,sato_m,Sato Miyuki,Finance,2025-01-25T17:24:00,login,Japan,Osaka,0,6.87,0,1,0,-0.9659,-0.2588,1,0,0,0,-0.135,LOW,none
+a92f2982,chen_w,Chen Wei,Engineering,2025-01-25T17:44:00,login,Japan,Tokyo,0,6.42,0,1,0,-0.9659,-0.2588,1,1,0,0,0.836,LOW,none
+e9719ad9,yamada_r,Yamada Riko,HR,2025-01-25T17:47:00,login,Japan,Tokyo,0,6.22,0,1,0,-0.9659,-0.2588,1,0,0,0,0.881,LOW,none
+d241d36d,admin45,Admin User 45,IT Operations,2025-01-25T18:59:00,login,Japan,Tokyo,0,5.98,0,1,0,-1.0,-0.0,1,0,0,0,-0.045,LOW,none
+6c1db517,kim_j,Kim Junho,Sales,2025-01-26T02:00:00,login,Japan,Tokyo,0,9.47,0,1,0,0.5,0.866,0,0,0,4,1.6,MEDIUM,password_reset_flood
+5d77c5df,kim_j,Kim Junho,Sales,2025-01-26T02:15:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,5,1.6,MEDIUM,password_reset_flood
+6c845102,kim_j,Kim Junho,Sales,2025-01-26T02:30:00,login,Japan,Tokyo,0,0.25,0,1,0,0.5,0.866,0,0,0,6,1.6,MEDIUM,password_reset_flood
+ec754bda,sato_m,Sato Miyuki,Finance,2025-01-26T05:00:00,login,UK,London,1,11.6,0,0,0,0.9659,0.2588,0,2,1,0,2.176,MEDIUM,new_country_login
+efbc6ee8,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T08:30:00,login,Japan,Tokyo,0,15.32,0,1,0,0.866,-0.5,1,0,0,0,2.897,LOW,none
+81f390e8,park_s,Park Soyeon,Marketing,2025-01-26T08:39:00,login,Japan,Tokyo,0,20.78,0,1,0,0.866,-0.5,1,1,0,0,0.913,LOW,none
+a8fabe29,suzuki_t,Suzuki Takeshi,Engineering,2025-01-26T09:06:00,login,Japan,Tokyo,0,16.23,0,1,0,0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+89b2f5d9,ito_k,Ito Kenji,Finance,2025-01-26T09:37:00,login,Japan,Nagoya,0,18.65,0,1,0,0.7071,-0.7071,1,1,0,0,-1.29,LOW,none
+ee1d6e59,sato_m,Sato Miyuki,Finance,2025-01-26T09:46:00,login,Japan,Osaka,1,4.77,0,1,0,0.7071,-0.7071,1,1,0,0,2.176,LOW,none
+0e498bc3,nakamura_a,Nakamura Aoi,DevOps,2025-01-26T10:15:00,login,Japan,Tokyo,0,24.0,0,1,0,0.5,-0.866,1,0,0,0,0.039,LOW,none
+0a6dea1c,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T10:45:00,login,Russia,Moscow,1,2.25,0,0,0,0.5,-0.866,1,3,1,0,2.897,HIGH,impossible_travel
+b248c7db,kim_j,Kim Junho,Sales,2025-01-26T10:55:00,login,Japan,Tokyo,0,8.42,0,1,0,0.5,-0.866,1,0,0,6,1.6,LOW,none
+74a1d787,yamada_r,Yamada Riko,HR,2025-01-26T11:30:00,login,Japan,Tokyo,0,17.72,0,1,0,0.2588,-0.9659,1,0,0,0,-0.378,LOW,none
+7ae0bf1c,park_s,Park Soyeon,Marketing,2025-01-26T11:40:00,login,Japan,Tokyo,0,3.02,0,1,0,0.2588,-0.9659,1,1,0,0,0.913,LOW,none
+b46a3fe3,kim_j,Kim Junho,Sales,2025-01-26T12:05:00,login,Japan,Tokyo,0,1.17,0,1,0,0.0,-1.0,1,0,0,6,1.6,LOW,none
+60b261ba,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T12:44:00,login,Japan,Tokyo,1,1.98,0,1,0,0.0,-1.0,1,1,0,0,2.897,LOW,none
+7b57c38e,suzuki_t,Suzuki Takeshi,Engineering,2025-01-26T13:52:00,login,Japan,Tokyo,0,4.77,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+1f1bef11,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T14:28:00,login,Japan,Tokyo,0,1.73,0,1,0,-0.5,-0.866,1,0,0,0,2.897,LOW,none
+3c3f9413,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T14:31:00,login,Japan,Tokyo,0,0.05,0,1,0,-0.5,-0.866,1,1,0,0,2.897,LOW,none
+dd653702,chen_w,Chen Wei,Engineering,2025-01-26T14:49:00,login,Japan,Tokyo,0,21.08,0,1,0,-0.5,-0.866,1,0,0,0,-1.225,LOW,none
+643fb2a5,admin45,Admin User 45,IT Operations,2025-01-26T15:01:00,login,Japan,Tokyo,0,20.03,0,1,0,-0.7071,-0.7071,1,0,0,0,1.758,LOW,none
+b2804dbd,suzuki_t,Suzuki Takeshi,Engineering,2025-01-26T15:04:00,login,Japan,Tokyo,0,1.2,0,1,0,-0.7071,-0.7071,1,1,0,0,0.836,LOW,none
+262fa50f,sato_m,Sato Miyuki,Finance,2025-01-26T15:17:00,login,Japan,Osaka,0,5.52,0,1,0,-0.7071,-0.7071,1,1,0,0,2.176,LOW,none
+bc2ec990,park_s,Park Soyeon,Marketing,2025-01-26T15:55:00,login,Japan,Tokyo,0,4.25,0,1,0,-0.7071,-0.7071,1,0,0,0,0.913,LOW,none
+210722ad,sato_m,Sato Miyuki,Finance,2025-01-26T16:25:00,login,Japan,Osaka,0,1.13,0,1,0,-0.866,-0.5,1,1,0,0,2.176,LOW,none
+6d1a2cf7,yamada_r,Yamada Riko,HR,2025-01-26T17:00:00,login,Japan,Tokyo,0,5.5,0,1,0,-0.9659,-0.2588,1,4,1,0,-0.378,HIGH,privilege_escalation
+bb858d26,nakamura_a,Nakamura Aoi,DevOps,2025-01-26T17:38:00,login,Japan,Tokyo,0,7.38,0,1,0,-0.9659,-0.2588,1,0,0,0,0.039,LOW,none
+ad5a54e3,admin45,Admin User 45,IT Operations,2025-01-26T18:48:00,login,Japan,Tokyo,0,3.78,0,1,0,-1.0,-0.0,1,0,0,0,1.758,LOW,none
+54f11d68,admin45,Admin User 45,IT Operations,2025-01-26T22:00:00,login,Japan,Tokyo,0,3.2,1,0,0,-0.5,0.866,0,3,1,0,1.758,MEDIUM,mfa_brute_force
+3d50cd86,admin45,Admin User 45,IT Operations,2025-01-26T22:02:00,login,Japan,Tokyo,0,0.03,2,0,0,-0.5,0.866,0,3,1,0,1.758,MEDIUM,mfa_brute_force
+0bfdbcab,admin45,Admin User 45,IT Operations,2025-01-26T22:04:00,login,Japan,Tokyo,0,0.03,3,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+1322c947,admin45,Admin User 45,IT Operations,2025-01-26T22:06:00,login,Japan,Tokyo,0,0.03,4,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+7225d991,admin45,Admin User 45,IT Operations,2025-01-26T22:08:00,login,Japan,Tokyo,0,0.03,5,0,0,-0.5,0.866,0,3,1,0,1.758,HIGH,mfa_brute_force
+5a10ad33,admin45,Admin User 45,IT Operations,2025-01-27T08:16:00,login,Japan,Tokyo,0,10.13,0,1,0,0.866,-0.5,1,0,0,0,-0.947,LOW,none
+fa4a91d6,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-27T08:50:00,login,Japan,Tokyo,0,18.32,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+bc0d5394,kim_j,Kim Junho,Sales,2025-01-27T09:40:00,login,Japan,Tokyo,0,21.58,0,1,0,0.7071,-0.7071,1,1,1,6,-0.582,LOW,none
+9736bec7,park_s,Park Soyeon,Marketing,2025-01-27T10:07:00,login,Japan,Tokyo,0,18.2,0,1,0,0.5,-0.866,1,0,0,0,0.913,LOW,none
+26880f82,sato_m,Sato Miyuki,Finance,2025-01-27T10:24:00,login,Japan,Osaka,0,17.98,0,1,0,0.5,-0.866,1,1,0,0,-0.135,LOW,none
+b0a075b2,park_s,Park Soyeon,Marketing,2025-01-27T10:31:00,login,Japan,Tokyo,0,0.4,0,1,0,0.5,-0.866,1,1,0,0,0.913,LOW,none
+cb3fb16c,park_s,Park Soyeon,Marketing,2025-01-27T10:47:00,login,Japan,Tokyo,0,0.27,0,1,0,0.5,-0.866,1,0,0,0,0.913,LOW,none
+02179d9a,sato_m,Sato Miyuki,Finance,2025-01-27T10:48:00,login,Japan,Osaka,0,0.4,0,1,0,0.5,-0.866,1,0,0,0,-0.135,LOW,none
+529872b4,suzuki_t,Suzuki Takeshi,Engineering,2025-01-27T11:03:00,login,Japan,Tokyo,0,19.98,0,1,0,0.2588,-0.9659,1,0,0,0,-0.195,LOW,none
+df50216f,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-27T11:31:00,login,Japan,Tokyo,0,2.68,0,1,0,0.2588,-0.9659,1,0,0,0,0.836,LOW,none
+ee9522d7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-27T12:13:00,login,Japan,Tokyo,0,0.7,0,1,0,0.0,-1.0,1,1,0,0,0.836,LOW,none
+bf2971cd,nakamura_a,Nakamura Aoi,DevOps,2025-01-27T13:03:00,login,Japan,Tokyo,0,19.42,0,1,0,-0.2588,-0.9659,1,0,0,0,0.039,LOW,none
+ccd10d37,ito_k,Ito Kenji,Finance,2025-01-27T13:51:00,login,Japan,Nagoya,0,28.23,0,1,0,-0.2588,-0.9659,1,1,0,0,-1.29,LOW,none
+40f801d5,chen_w,Chen Wei,Engineering,2025-01-27T15:39:00,login,Japan,Tokyo,0,24.83,0,1,0,-0.7071,-0.7071,1,1,0,0,-1.225,LOW,none
+a7c1db67,kim_j,Kim Junho,Sales,2025-01-27T16:18:00,login,Japan,Tokyo,0,6.63,0,1,0,-0.866,-0.5,1,1,1,6,-0.582,LOW,none
+8a94c982,yamada_r,Yamada Riko,HR,2025-01-27T16:58:00,login,Japan,Tokyo,0,23.97,0,1,0,-0.866,-0.5,1,0,0,0,-1.637,LOW,none
+6b41ffc1,suzuki_t,Suzuki Takeshi,Engineering,2025-01-27T17:40:00,login,Japan,Tokyo,0,6.62,0,1,0,-0.9659,-0.2588,1,1,0,0,-0.195,LOW,none
+04f39785,nakamura_a,Nakamura Aoi,DevOps,2025-01-27T17:40:00,login,Japan,Tokyo,0,4.62,0,1,0,-0.9659,-0.2588,1,1,0,0,0.039,LOW,none
+6e66509d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-28T08:02:00,login,Japan,Tokyo,0,19.82,0,1,0,0.866,-0.5,1,0,0,0,-0.195,LOW,none
+da61ef66,suzuki_t,Suzuki Takeshi,Engineering,2025-01-28T08:09:00,login,Japan,Tokyo,0,14.48,0,1,0,0.866,-0.5,1,0,0,0,0.836,LOW,none
+80728cba,yamada_r,Yamada Riko,HR,2025-01-28T08:21:00,login,Japan,Tokyo,0,15.38,0,1,0,0.866,-0.5,1,1,0,0,0.881,LOW,none
+79616c23,kim_j,Kim Junho,Sales,2025-01-28T08:25:00,login,Japan,Tokyo,0,16.12,0,1,0,0.866,-0.5,1,1,1,3,0.145,LOW,none
+58b888b4,sato_m,Sato Miyuki,Finance,2025-01-28T08:35:00,login,Japan,Osaka,0,21.78,0,1,0,0.866,-0.5,1,0,0,0,-0.135,LOW,none
+22e1de68,nakamura_a,Nakamura Aoi,DevOps,2025-01-28T09:10:00,login,Japan,Tokyo,0,15.5,0,1,0,0.7071,-0.7071,1,0,0,0,-1.137,LOW,none
+02a07998,chen_w,Chen Wei,Engineering,2025-01-28T09:37:00,login,Japan,Tokyo,0,17.97,0,1,0,0.7071,-0.7071,1,0,0,0,0.836,LOW,none
+88fd1583,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-28T09:57:00,login,Japan,Tokyo,0,1.92,0,1,0,0.7071,-0.7071,1,0,0,0,-0.195,LOW,none
+59741a79,chen_w,Chen Wei,Engineering,2025-01-28T10:15:00,login,Japan,Tokyo,0,0.63,0,1,0,0.5,-0.866,1,1,0,0,0.836,LOW,none
+dc9134f4,park_s,Park Soyeon,Marketing,2025-01-28T11:08:00,login,Japan,Tokyo,0,24.35,0,1,0,0.2588,-0.9659,1,0,0,0,-0.183,LOW,none
+08853a20,kim_j,Kim Junho,Sales,2025-01-28T11:18:00,login,Japan,Tokyo,0,2.88,0,1,0,0.2588,-0.9659,1,0,0,3,0.145,LOW,none
+14ee9907,ito_k,Ito Kenji,Finance,2025-01-28T11:28:00,login,Japan,Nagoya,0,21.62,0,1,0,0.2588,-0.9659,1,1,0,0,-0.135,LOW,none
+86dde963,suzuki_t,Suzuki Takeshi,Engineering,2025-01-28T11:57:00,login,Japan,Tokyo,0,3.8,0,1,0,0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+1e1f3ccc,suzuki_t,Suzuki Takeshi,Engineering,2025-01-28T12:06:00,login,Japan,Tokyo,0,0.15,0,1,0,0.0,-1.0,1,0,0,0,0.836,LOW,none
+4ad83a51,kim_j,Kim Junho,Sales,2025-01-28T12:20:00,login,Japan,Tokyo,0,1.03,0,1,0,0.0,-1.0,1,1,1,3,0.145,LOW,none
+cafdb1de,admin45,Admin User 45,IT Operations,2025-01-28T13:17:00,login,Japan,Tokyo,0,29.02,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.496,LOW,none
+b8c234f1,park_s,Park Soyeon,Marketing,2025-01-28T13:20:00,login,Japan,Tokyo,0,2.2,0,1,0,-0.2588,-0.9659,1,1,0,0,-0.183,LOW,none
+32df23f2,yamada_r,Yamada Riko,HR,2025-01-28T14:01:00,login,Japan,Tokyo,0,5.67,0,1,0,-0.5,-0.866,1,1,0,0,0.881,LOW,none
+1c47e926,chen_w,Chen Wei,Engineering,2025-01-28T14:04:00,login,Japan,Tokyo,0,3.82,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+fb3c46ac,sato_m,Sato Miyuki,Finance,2025-01-28T14:58:00,login,Japan,Osaka,0,6.38,0,1,0,-0.5,-0.866,1,0,0,0,-0.135,LOW,none
+951ab0b2,ito_k,Ito Kenji,Finance,2025-01-28T15:20:00,login,Japan,Nagoya,0,3.87,0,1,0,-0.7071,-0.7071,1,0,0,0,-0.135,LOW,none
+38b17126,yamada_r,Yamada Riko,HR,2025-01-28T15:49:00,login,Japan,Tokyo,0,1.8,0,1,0,-0.7071,-0.7071,1,0,0,0,0.881,LOW,none
+fd1a1463,admin45,Admin User 45,IT Operations,2025-01-28T18:57:00,login,Japan,Tokyo,0,5.67,0,1,0,-1.0,-0.0,1,0,0,0,-0.496,LOW,none
+7dade785,sato_m,Sato Miyuki,Finance,2025-01-29T08:25:00,login,Japan,Osaka,0,17.45,0,1,0,0.866,-0.5,1,0,0,0,-1.29,LOW,none
+59e531c9,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-29T08:43:00,login,Japan,Tokyo,0,22.77,0,1,0,0.866,-0.5,1,1,0,0,-0.195,LOW,none
+e6ec9c11,yamada_r,Yamada Riko,HR,2025-01-29T09:37:00,login,Japan,Tokyo,0,17.8,0,1,0,0.7071,-0.7071,1,0,0,0,0.881,LOW,none
+39340c27,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-29T10:05:00,login,Japan,Tokyo,0,1.37,0,1,0,0.5,-0.866,1,1,0,0,-0.195,LOW,none
+ca2a80d5,admin45,Admin User 45,IT Operations,2025-01-29T10:07:00,login,Japan,Tokyo,0,15.17,0,1,0,0.5,-0.866,1,0,0,0,-0.947,LOW,none
+c5185000,kim_j,Kim Junho,Sales,2025-01-29T10:12:00,login,Japan,Tokyo,0,21.87,0,1,0,0.5,-0.866,1,1,1,3,-1.309,LOW,none
+fbb91b55,suzuki_t,Suzuki Takeshi,Engineering,2025-01-29T10:17:00,login,Japan,Tokyo,0,22.18,0,1,0,0.5,-0.866,1,1,0,0,0.836,LOW,none
+04b5cc7b,nakamura_a,Nakamura Aoi,DevOps,2025-01-29T11:42:00,login,Japan,Tokyo,0,26.53,0,1,0,0.2588,-0.9659,1,1,0,0,-1.137,LOW,none
+9a8f2182,yamada_r,Yamada Riko,HR,2025-01-29T11:57:00,login,Japan,Tokyo,0,2.33,0,1,0,0.2588,-0.9659,1,0,0,0,0.881,LOW,none
+50741b76,yamada_r,Yamada Riko,HR,2025-01-29T13:07:00,login,Japan,Tokyo,0,1.17,0,1,0,-0.2588,-0.9659,1,1,0,0,0.881,LOW,none
+499815af,ito_k,Ito Kenji,Finance,2025-01-29T13:24:00,login,Japan,Nagoya,0,22.07,0,1,0,-0.2588,-0.9659,1,0,0,0,1.021,LOW,none
+1c266214,park_s,Park Soyeon,Marketing,2025-01-29T13:30:00,login,Japan,Tokyo,0,24.17,0,1,0,-0.2588,-0.9659,1,1,0,0,0.913,LOW,none
+56c51016,park_s,Park Soyeon,Marketing,2025-01-29T14:12:00,login,Japan,Tokyo,0,0.7,0,1,0,-0.5,-0.866,1,0,0,0,0.913,LOW,none
+379c9498,suzuki_t,Suzuki Takeshi,Engineering,2025-01-29T14:52:00,login,Japan,Tokyo,0,4.58,0,1,0,-0.5,-0.866,1,1,0,0,0.836,LOW,none
+a6b55fd9,park_s,Park Soyeon,Marketing,2025-01-29T15:03:00,login,Japan,Tokyo,0,0.85,0,1,0,-0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+eea9e2c4,ito_k,Ito Kenji,Finance,2025-01-29T15:33:00,login,Japan,Nagoya,0,2.15,0,1,0,-0.7071,-0.7071,1,0,0,0,1.021,LOW,none
+ae300309,ito_k,Ito Kenji,Finance,2025-01-29T17:14:00,login,Japan,Nagoya,0,1.68,0,1,0,-0.9659,-0.2588,1,1,0,0,1.021,LOW,none
+e794e47e,chen_w,Chen Wei,Engineering,2025-01-29T17:39:00,login,Japan,Tokyo,0,27.58,0,1,0,-0.9659,-0.2588,1,1,0,0,-1.225,LOW,none
+fb88e0dd,suzuki_t,Suzuki Takeshi,Engineering,2025-01-29T18:27:00,login,Japan,Tokyo,0,3.58,0,1,0,-1.0,-0.0,1,1,0,0,0.836,LOW,none
+05853fe5,nakamura_a,Nakamura Aoi,DevOps,2025-01-30T08:03:00,login,Japan,Tokyo,0,20.35,0,1,0,0.866,-0.5,1,1,0,0,-1.137,LOW,none
+4405f1c3,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-30T08:48:00,login,Japan,Tokyo,0,22.72,0,1,0,0.866,-0.5,1,1,0,0,0.836,LOW,none
+fef10f33,park_s,Park Soyeon,Marketing,2025-01-30T09:15:00,login,Japan,Tokyo,0,18.2,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+de6a2c43,park_s,Park Soyeon,Marketing,2025-01-30T09:52:00,login,Japan,Tokyo,0,0.62,0,1,0,0.7071,-0.7071,1,1,0,0,0.913,LOW,none
+540ea218,kim_j,Kim Junho,Sales,2025-01-30T10:10:00,login,Japan,Tokyo,0,23.97,0,1,0,0.5,-0.866,1,1,1,3,-0.582,LOW,none
+ed10d752,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-30T10:11:00,login,Japan,Tokyo,0,1.38,0,1,0,0.5,-0.866,1,1,0,0,0.836,LOW,none
+759e303a,sato_m,Sato Miyuki,Finance,2025-01-30T10:31:00,login,Japan,Osaka,0,26.1,0,1,0,0.5,-0.866,1,0,0,0,1.021,LOW,none
+14d0a9a9,sato_m,Sato Miyuki,Finance,2025-01-30T10:36:00,login,Japan,Osaka,0,0.08,0,1,0,0.5,-0.866,1,1,0,0,1.021,LOW,none
+fa6d1e82,admin45,Admin User 45,IT Operations,2025-01-30T10:49:00,login,Japan,Tokyo,0,24.7,0,1,0,0.5,-0.866,1,1,0,0,-0.045,LOW,none
+45cf3cd2,park_s,Park Soyeon,Marketing,2025-01-30T11:40:00,login,Japan,Tokyo,0,1.8,0,1,0,0.2588,-0.9659,1,1,0,0,0.913,LOW,none
+95014485,ito_k,Ito Kenji,Finance,2025-01-30T11:44:00,login,Japan,Nagoya,0,18.5,0,1,0,0.2588,-0.9659,1,1,0,0,-1.29,LOW,none
+5e997dcf,admin45,Admin User 45,IT Operations,2025-01-30T11:51:00,login,Japan,Tokyo,0,1.03,0,1,0,0.2588,-0.9659,1,1,0,0,-0.045,LOW,none
+b2673f8a,admin45,Admin User 45,IT Operations,2025-01-30T13:03:00,login,Japan,Tokyo,0,1.2,0,1,0,-0.2588,-0.9659,1,0,0,0,-0.045,LOW,none
+2f672808,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-30T13:58:00,login,Japan,Tokyo,0,3.78,0,1,0,-0.2588,-0.9659,1,1,0,0,0.836,LOW,none
+eec62b6c,suzuki_t,Suzuki Takeshi,Engineering,2025-01-30T14:19:00,login,Japan,Tokyo,0,19.87,0,1,0,-0.5,-0.866,1,0,0,0,-1.225,LOW,none
+9a60ada2,yamada_r,Yamada Riko,HR,2025-01-30T16:44:00,login,Japan,Tokyo,0,27.62,0,1,0,-0.866,-0.5,1,0,0,0,-1.637,LOW,none
+d80b818a,sato_m,Sato Miyuki,Finance,2025-01-30T17:14:00,login,Japan,Osaka,0,6.63,0,1,0,-0.9659,-0.2588,1,1,0,0,1.021,LOW,none
+c2fe75b9,chen_w,Chen Wei,Engineering,2025-01-30T17:25:00,login,Japan,Tokyo,0,23.77,0,1,0,-0.9659,-0.2588,1,0,0,0,-1.225,LOW,none
+cb9b97b4,kim_j,Kim Junho,Sales,2025-01-30T18:25:00,login,Japan,Tokyo,0,8.25,0,1,0,-1.0,-0.0,1,1,1,3,-0.582,LOW,none

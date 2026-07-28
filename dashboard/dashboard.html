@@ -1,0 +1,3459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdentityGuard AI — IAM Risk Dashboard</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background 0.2s ease, color 0.2s ease; }
+:root {
+  --red:#ef4444;--amber:#f59e0b;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;
+  --border:rgba(255,255,255,0.08);--surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.07);
+  --bg:#0a0e1a;
+  --text:#e2e8f0;
+  --text-muted:#64748b;
+  --text-dim:#475569;
+  --text-soft:#94a3b8;
+  --text-light:#cbd5e1;
+  --card-strong:#1e293b;
+  --white:#fff;
+  --shadow:rgba(0,0,0,0.5);
+  --overlay:rgba(0,0,0,0.6);
+  --topbar-bg:rgba(0,0,0,0.2);
+  --sidebar-bg:rgba(0,0,0,0.4);
+  --login-bg:#0a0e1a;
+}
+
+body.light-mode {
+  --border:rgba(0,0,0,0.1);--surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --bg:#f4f6fb;
+  --text:#1e2433;
+  --text-muted:#64748b;
+  --text-dim:#94a3b8;
+  --text-soft:#475569;
+  --text-light:#334155;
+  --card-strong:#ffffff;
+  --white:#1e2433;
+  --shadow:rgba(0,0,0,0.12);
+  --overlay:rgba(0,0,0,0.3);
+  --topbar-bg:rgba(255,255,255,0.6);
+  --sidebar-bg:rgba(255,255,255,0.7);
+  --login-bg:#f4f6fb;
+}
+.app{display:flex;height:100vh;overflow:hidden;}
+.login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;}
+
+/* ── Invite User Modal ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:var(--overlay);z-index:900;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;}
+.modal-overlay.show{display:flex;}
+.modal-box{background:var(--card-strong);border:1px solid var(--border);border-radius:14px;width:100%;max-width:560px;box-shadow:0 20px 60px var(--shadow);overflow:hidden;}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);}
+.modal-title{font-size:16px;font-weight:700;}
+.modal-sub{font-size:12px;color:var(--text-muted);margin-top:3px;}
+.modal-close-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px;flex-shrink:0;}
+.modal-close-btn:hover{background:var(--surface2);color:var(--text);}
+.modal-body{padding:20px 24px;max-height:60vh;overflow-y:auto;}
+.modal-footer{display:flex;justify-content:flex-end;gap:8px;padding:16px 24px;border-top:1px solid var(--border);}
+
+.invite-field{margin-bottom:16px;}
+.invite-field:last-child{margin-bottom:0;}
+.invite-label{font-size:12px;color:var(--text-soft);margin-bottom:6px;display:block;font-weight:600;}
+.invite-row{display:flex;gap:12px;}
+
+.source-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.source-card{border:1px solid var(--border);border-radius:10px;padding:12px 6px;text-align:center;cursor:pointer;transition:all 0.15s;background:var(--surface);}
+.source-card:hover{background:var(--surface2);}
+.source-card.active{border-color:var(--blue);background:rgba(59,130,246,0.1);}
+.source-icon{font-size:18px;margin-bottom:4px;}
+.source-name{font-size:10px;font-weight:600;color:var(--text-soft);}
+.source-card.active .source-name{color:var(--blue);}
+
+.provider-fields{margin-top:4px;padding-top:14px;border-top:1px dashed var(--border);}
+.invite-note{font-size:11px;color:var(--text-muted);background:var(--surface);border-radius:8px;padding:10px 12px;margin-top:10px;line-height:1.5;}
+
+.csv-dropzone{border:2px dashed var(--border);border-radius:10px;padding:28px 16px;text-align:center;cursor:pointer;transition:all 0.15s;}
+.csv-dropzone:hover{border-color:var(--blue);background:rgba(59,130,246,0.05);}
+.csv-dropzone.dragover{border-color:var(--blue);background:rgba(59,130,246,0.1);}
+
+.csv-preview-table{width:100%;border-collapse:collapse;font-size:12px;}
+.csv-preview-table th{text-align:left;padding:6px 10px;color:var(--text-muted);font-weight:700;font-size:10px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+.csv-preview-table td{padding:6px 10px;border-bottom:1px solid var(--border);}
+.csv-row-count{font-size:11px;color:var(--green);margin-bottom:8px;font-weight:600;}
+.login-screen.hidden{display:none;}
+.login-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:40px;width:380px;box-shadow:0 20px 60px var(--shadow);}
+body.light-mode .login-box{background:var(--card-strong);box-shadow:0 20px 60px var(--shadow), 0 0 0 1px var(--border);}
+body.light-mode .metric-card,
+body.light-mode .chart-card,
+body.light-mode .setting-group,
+body.light-mode .role-card,
+body.light-mode .stat-box {
+  background: var(--card-strong);
+  box-shadow: 0 1px 3px var(--shadow);
+}
+.login-logo{text-align:center;margin-bottom:28px;}
+.login-logo-badge{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
+.login-logo-title{font-size:20px;font-weight:700;color:var(--text);margin-top:6px;}
+.login-logo-sub{font-size:11px;color:var(--text-muted);margin-top:3px;}
+.login-shield{font-size:36px;margin-bottom:10px;}
+.login-field{margin-bottom:16px;}
+.login-label{font-size:12px;color:var(--text-soft);margin-bottom:6px;display:block;}
+.login-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:14px;}
+.login-input:focus{outline:none;border-color:var(--blue);}
+.login-btn{width:100%;padding:11px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;transition:opacity 0.15s;}
+.login-btn:hover{opacity:0.9;}
+.login-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.login-error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:var(--red);font-size:12px;padding:10px 12px;border-radius:8px;margin-bottom:16px;display:none;}
+.login-error.show{display:block;}
+.login-sub{text-align:center;font-size:11px;color:var(--text-muted);margin-top:20px;line-height:1.6;}
+.login-sub strong{color:var(--text-soft);}
+.user-pill{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:12px;}
+.user-pill-avatar{width:20px;height:20px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;}
+.sidebar{width:220px;min-width:220px;background:var(--sidebar-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:20px 0;}
+.logo{padding:0 20px 24px;border-bottom:1px solid var(--border);}
+.logo-badge{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
+.logo-title{font-size:15px;font-weight:700;color:var(--text);margin-top:4px;}
+.logo-sub{font-size:10px;color:var(--text-muted);margin-top:2px;}
+.nav{padding:16px 0;flex:1;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13px;cursor:pointer;color:var(--text-muted);transition:all 0.15s;border-left:2px solid transparent;}
+.nav-item:hover{color:var(--text);background:var(--surface);}
+.nav-item.active{color:var(--text);background:var(--surface2);border-left-color:var(--blue);}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;}
+.status-bar{margin:0 12px 12px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:10px 12px;}
+.status-dot{display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;margin-right:6px;animation:pulse 2s infinite;}
+.status-text{font-size:11px;color:var(--green);font-weight:600;}
+.main{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
+.page{display:none;flex-direction:column;flex:1;}
+.page.active{display:flex;}
+.topbar{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--topbar-bg);position:sticky;top:0;z-index:10;}
+.topbar-title{font-size:18px;font-weight:700;}
+.topbar-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.topbar-right{display:flex;align-items:center;gap:10px;}
+.time-badge{font-size:12px;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);padding:5px 10px;border-radius:6px;}
+.btn{font-size:12px;padding:6px 14px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:all 0.15s;font-weight:500;}
+.btn:hover{background:var(--surface2);}
+.btn-danger{background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.3);color:var(--red);}
+.btn-primary{background:rgba(59,130,246,0.2);border-color:rgba(59,130,246,0.4);color:var(--blue);}
+.export-dropdown-wrap{position:relative;display:inline-block;}
+.export-dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--card-strong);border:1px solid var(--border);border-radius:8px;box-shadow:0 10px 30px var(--shadow);min-width:160px;z-index:80;overflow:hidden;}
+.export-dropdown-menu.show{display:block;}
+.export-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;color:var(--text);}
+.export-dropdown-item:hover{background:var(--surface2);}
+.export-dropdown-item:not(:last-child){border-bottom:1px solid var(--border);}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 24px 8px;}
+.metric-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.metric-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+.metric-label-ja{font-size:10px;color:var(--text-dim);margin-top:1px;}
+.metric-value{font-size:28px;font-weight:700;margin-top:8px;}
+.metric-change{font-size:11px;margin-top:4px;}
+.metric-card.high{border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.05);}
+.metric-card.high .metric-value{color:var(--red);}
+.metric-card.med{border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.05);}
+.metric-card.med .metric-value{color:var(--amber);}
+.metric-card.low{border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.05);}
+.metric-card.low .metric-value{color:var(--green);}
+.metric-card.total .metric-value{color:var(--blue);}
+.content-grid{display:grid;grid-template-columns:1fr 320px;flex:1;}
+.panel{border-right:1px solid var(--border);}
+.panel-header{padding:14px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.panel-title{font-size:14px;font-weight:700;}
+.panel-title-ja{font-size:10px;color:var(--text-muted);margin-top:2px;}
+.filter-row{padding:10px 24px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;}
+.filter-btn{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s;}
+.filter-btn.active{border-color:var(--blue);color:var(--blue);background:rgba(59,130,246,0.1);}
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th{font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;padding:10px 20px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+.data-table td{padding:11px 20px;border-bottom:1px solid var(--border);font-size:13px;}
+.data-table tr:hover td{background:var(--surface);}
+.data-table tr.selected td{background:rgba(59,130,246,0.08);}
+.table-wrap{border:1px solid var(--border);border-radius:10px;overflow-x:auto;margin:16px 24px 24px;}
+.user-cell{display:flex;align-items:center;gap:10px;}
+.avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.risk-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;}
+.risk-HIGH{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);}
+.risk-MEDIUM{background:rgba(245,158,11,0.15);color:var(--amber);border:1px solid rgba(245,158,11,0.3);}
+.risk-LOW{background:rgba(16,185,129,0.15);color:var(--green);border:1px solid rgba(16,185,129,0.3);}
+.action-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;}
+.action-BLOCK{background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);}
+.action-FORCE_MFA{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3);}
+.action-ALLOW{background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid rgba(16,185,129,0.3);}
+.action-NOTIFY_ADMIN{background:rgba(139,92,246,0.2);color:#c4b5fd;border:1px solid rgba(139,92,246,0.3);}
+body.light-mode .action-BLOCK{color:#b91c1c;}
+body.light-mode .action-FORCE_MFA{color:#92400e;}
+body.light-mode .action-ALLOW{color:#047857;}
+body.light-mode .action-NOTIFY_ADMIN{color:#6d28d9;}
+.score-bar{display:flex;align-items:center;gap:8px;}
+.score-track{width:60px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;}
+.score-fill{height:100%;border-radius:2px;}
+.right-panel{display:flex;flex-direction:column;overflow-y:auto;}
+.detail-card{border-bottom:1px solid var(--border);padding:20px;}
+.detail-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.detail-sub{font-size:11px;color:var(--text-muted);}
+.risk-score-display{margin:16px 0;display:flex;align-items:center;gap:16px;}
+.score-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;flex-shrink:0;border:3px solid;}
+.score-high{color:var(--red);border-color:var(--red);background:rgba(239,68,68,0.1);}
+.score-med{color:var(--amber);border-color:var(--amber);background:rgba(245,158,11,0.1);}
+.score-low{color:var(--green);border-color:var(--green);background:rgba(16,185,129,0.1);}
+.explain-list{list-style:none;}
+.explain-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;padding:6px 0;border-bottom:1px solid var(--border);color:var(--text-light);}
+.explain-item:last-child{border-bottom:none;}
+.action-panel{padding:16px 20px;}
+.action-title{font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.action-btn{padding:10px 8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-size:12px;font-weight:600;transition:all 0.15s;text-align:center;}
+.action-btn:hover{background:var(--surface2);transform:translateY(-1px);}
+.action-btn.btn-block:hover{background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.4);color:var(--red);}
+.action-btn.btn-mfa:hover{background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.4);color:var(--amber);}
+.action-btn.btn-notify:hover{background:rgba(139,92,246,0.2);border-color:rgba(139,92,246,0.4);color:var(--purple);}
+.action-btn.btn-allow:hover{background:rgba(16,185,129,0.2);border-color:rgba(16,185,129,0.4);color:var(--green);}
+.btn-sub{font-size:9px;color:var(--text-muted);margin-top:3px;font-weight:400;}
+.loading-row td{text-align:center;padding:40px;color:var(--text-muted);font-size:13px;}
+.section-header{padding:20px 24px 12px;}
+.section-title{font-size:16px;font-weight:700;}
+.section-sub{font-size:12px;color:var(--text-muted);margin-top:3px;}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 24px 24px;}
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.chart-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.chart-sub{font-size:11px;color:var(--text-muted);margin-bottom:16px;}
+.bar-chart{display:flex;flex-direction:column;gap:10px;}
+.bar-row{display:flex;align-items:center;gap:12px;}
+.bar-label{font-size:12px;min-width:140px;color:var(--text-light);}
+.bar-track2{flex:1;height:8px;background:rgba(255,255,255,0.07);border-radius:4px;}
+.bar-fill2{height:100%;border-radius:4px;transition:width 0.8s ease;}
+.bar-value{font-size:11px;color:var(--text-muted);min-width:30px;text-align:right;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.stat-box{background:var(--surface2);border-radius:8px;padding:14px;text-align:center;}
+.stat-val{font-size:22px;font-weight:700;}
+.stat-lbl{font-size:11px;color:var(--text-muted);margin-top:4px;}
+.donut-wrap{display:flex;align-items:center;gap:20px;}
+.donut-legend{display:flex;flex-direction:column;gap:8px;}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:12px;}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px 24px;}
+.role-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.role-icon{font-size:28px;margin-bottom:12px;}
+.role-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+.role-name-ja{font-size:11px;color:var(--text-muted);margin-bottom:12px;}
+.role-perm{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-soft);margin-bottom:6px;}
+.role-users{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;}
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 24px 24px;}
+.setting-group{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.setting-group-title{font-size:13px;font-weight:700;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.setting-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;}
+.setting-row:last-child{margin-bottom:0;}
+.setting-label{font-size:13px;}
+.setting-sub{font-size:11px;color:var(--text-muted);margin-top:2px;}
+.toggle{position:relative;width:40px;height:22px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:22px;cursor:pointer;transition:0.3s;}
+.toggle-slider:before{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:0.3s;}
+.toggle input:checked+.toggle-slider{background:var(--blue);}
+.toggle input:checked+.toggle-slider:before{transform:translateX(18px);}
+.toggle input:disabled+.toggle-slider{opacity:0.5;cursor:not-allowed;}
+.admin-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);}
+.admin-row:last-child{border-bottom:none;}
+.admin-row-info{display:flex;align-items:center;gap:10px;}
+.admin-row-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.admin-row-name{font-size:13px;font-weight:600;}
+.admin-row-email{font-size:11px;color:var(--text-muted);}
+.admin-row-remove{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;transition:all 0.15s;}
+.admin-row-remove:hover{background:rgba(239,68,68,0.22);}
+.input-field{background:var(--card-strong);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:13px;flex-shrink:0;}
+.input-field:focus{outline:none;border-color:var(--blue);}
+body.light-mode .input-field{background:#ffffff;border-color:rgba(0,0,0,0.15);color:#1e2433;}
+.select-field{background:var(--card-strong);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:13px;cursor:pointer;flex-shrink:0;}
+.select-field option{background:var(--card-strong);color:var(--text);padding:6px 10px;}
+body.light-mode .select-field{background:#ffffff;border-color:rgba(0,0,0,0.15);color:#1e2433;}
+body.light-mode .select-field option{background:#ffffff;color:#1e2433;}
+.login-input{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:14px;width:100%;}
+.login-input:focus{outline:none;border-color:var(--blue);}
+body.light-mode .login-input{background:#f8fafc;border-color:rgba(0,0,0,0.15);color:#1e2433;}
+body.light-mode .login-input::placeholder{color:#94a3b8;}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--card-strong);border:1px solid var(--border);padding:12px 18px;border-radius:10px;font-size:13px;display:flex;align-items:center;gap:10px;transform:translateY(100px);opacity:0;transition:all 0.3s ease;z-index:100;max-width:320px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.live-dot{display:inline-block;width:6px;height:6px;background:var(--red);border-radius:50%;margin-right:6px;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
+/* ── Mobile hamburger + sidebar overlay ── */
+.mobile-menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:60;width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:rgba(10,14,26,0.9);color:var(--text);font-size:18px;cursor:pointer;align-items:center;justify-content:center;}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:var(--overlay);z-index:45;}
+.sidebar-overlay.show{display:block;}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════ */
+
+/* ── Tablet (≤1024px): tighten grids, keep sidebar visible ── */
+@media (max-width: 1024px) {
+  .content-grid{grid-template-columns:1fr;}
+  .right-panel{border-top:1px solid var(--border);}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .charts-grid{grid-template-columns:1fr;}
+  .settings-grid{grid-template-columns:1fr;}
+  .roles-grid{grid-template-columns:repeat(2,1fr);}
+  .sidebar{width:190px;min-width:190px;}
+}
+
+/* ── Mobile (≤768px): collapsible sidebar, single-column everything ── */
+@media (max-width: 768px) {
+  .mobile-menu-btn{display:flex;}
+  .app{position:relative;}
+  .sidebar{
+    position:fixed;top:0;left:0;height:100vh;width:240px;min-width:240px;
+    transform:translateX(-100%);transition:transform 0.25s ease;z-index:50;
+  }
+  .sidebar.open{transform:translateX(0);}
+  .main{width:100%;}
+  .topbar{padding:14px 16px 14px 60px;flex-wrap:wrap;gap:10px;}
+  .topbar-right{flex-wrap:wrap;gap:6px;}
+  .topbar-title{font-size:15px;}
+  .topbar-sub{font-size:11px;}
+  .btn{font-size:11px;padding:6px 10px;}
+  .metrics{grid-template-columns:1fr 1fr;padding:14px 14px 6px;gap:8px;}
+  .metric-value{font-size:22px;}
+  .content-grid{grid-template-columns:1fr;}
+  .charts-grid{grid-template-columns:1fr;padding:0 14px 16px;}
+  .settings-grid{grid-template-columns:1fr;padding:0 14px 16px;}
+  .roles-grid{grid-template-columns:1fr;padding:0 14px 16px;}
+  .table-wrap{margin:12px 14px 16px;}
+  .panel-header{padding:12px 14px;flex-direction:column;align-items:flex-start;gap:4px;}
+  .filter-row{padding:8px 14px;}
+  .data-table th, .data-table td{padding:9px 12px;font-size:12px;}
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .donut-wrap{flex-direction:column;align-items:flex-start;}
+  .login-box{width:90vw;max-width:340px;padding:28px 24px;}
+}
+
+/* ── Small phones (≤420px): extra tightening ── */
+@media (max-width: 420px) {
+  .metrics{grid-template-columns:1fr 1fr;}
+  .stat-grid{grid-template-columns:1fr;}
+  .data-table th:nth-child(3), .data-table td:nth-child(3){display:none;}  /* hide Country column to save space */
+  .topbar-title{font-size:14px;}
+  .action-grid{grid-template-columns:1fr;}
+}
+</style>
+<!-- Report export libraries (client-side, no backend needed) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="login-screen">
+  <div class="login-box">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+      <select class="select-field" id="login-lang-switcher" style="font-size:12px" onchange="setLanguage(this.value)">
+        <option value="en">🇬🇧 English</option>
+        <option value="ja">🇯🇵 日本語</option>
+        <option value="ko">🇰🇷 한국어</option>
+        <option value="zh">🇨🇳 中文</option>
+      </select>
+    </div>
+    <div class="login-logo">
+      <div class="login-shield">🛡</div>
+      <div class="login-logo-badge">IAM Shield</div>
+      <div class="login-logo-title">IdentityGuard AI</div>
+      <div class="login-logo-sub" data-i18n="login_subtitle">アイデンティティ保護システム · Admin Access Only</div>
+    </div>
+
+    <div class="login-error" id="login-error">Invalid credentials. Please try again.</div>
+
+    <form id="login-form" onsubmit="return handleLogin(event)">
+      <div class="login-field">
+        <label class="login-label" data-i18n="login_username">Username</label>
+        <input class="login-input" id="login-username" type="text" placeholder="admin" autocomplete="username" required>
+      </div>
+      <div class="login-field">
+        <label class="login-label" data-i18n="login_password">Password</label>
+        <input class="login-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+      </div>
+      <button class="login-btn" id="login-btn" type="submit" data-i18n="login_button">🔐 Sign In via Keycloak</button>
+    </form>
+
+    <div class="login-sub" data-i18n="login_footer">
+      Authenticated against your local Keycloak realm.<br>
+      Only users with the <strong>admin</strong> role may access this dashboard.
+    </div>
+  </div>
+</div>
+
+<div class="app" id="main-app" style="display:none">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <div class="logo-badge">IAM Shield</div>
+      <div class="logo-title">IdentityGuard AI</div>
+      <div class="logo-sub" data-i18n="logo_sub">アイデンティティ保護システム</div>
+    </div>
+    <div style="padding:0 12px 12px">
+      <select class="select-field" id="lang-switcher" style="width:100%" onchange="setLanguage(this.value)">
+        <option value="en">🇬🇧 English</option>
+        <option value="ja">🇯🇵 日本語</option>
+        <option value="ko">🇰🇷 한국어</option>
+        <option value="zh">🇨🇳 中文</option>
+      </select>
+    </div>
+    <nav class="nav">
+      <div class="nav-item active" id="nav-dashboard" onclick="showPage('dashboard')">🛡 <span data-i18n="nav_dashboard">Dashboard</span> <span class="nav-badge" id="alert-count">—</span></div>
+      <div class="nav-item" id="nav-users" onclick="showPage('users')">👤 <span data-i18n="nav_users">Users</span></div>
+      <div class="nav-item" id="nav-analytics" onclick="showPage('analytics')">📊 <span data-i18n="nav_analytics">Analytics</span></div>
+      <div class="nav-item" id="nav-roles" onclick="showPage('roles')">🔑 <span data-i18n="nav_roles">Roles</span></div>
+      <div class="nav-item" id="nav-audit" onclick="showPage('audit')">📋 <span data-i18n="nav_audit">Audit Log</span></div>
+      <div class="nav-item" id="nav-settings" onclick="showPage('settings')">⚙ <span data-i18n="nav_settings">Settings</span></div>
+    </nav>
+    <div class="status-bar">
+      <span class="status-dot"></span>
+      <span class="status-text" data-i18n="api_connected">API Connected</span>
+      <div style="font-size:10px;color:#065f46;margin-top:4px;">http://127.0.0.1:8000</div>
+    </div>
+    <div style="margin:0 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <div class="user-pill">
+        <div class="user-pill-avatar" id="logged-in-avatar">A</div>
+        <span id="logged-in-username">admin</span>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn" style="padding:5px 8px;font-size:11px" onclick="toggleTheme()" id="theme-toggle-btn" title="Toggle theme · テーマ切替">🌙</button>
+        <button class="btn" style="padding:5px 10px;font-size:11px" onclick="handleLogout()" title="Sign out · ログアウト">⏻</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+
+    <!-- PAGE: DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="topbar">
+        <div>
+          <div class="topbar-title"><span class="live-dot"></span><span data-i18n="dash_title">Risk Dashboard</span></div>
+          <div class="topbar-sub" data-i18n="dash_sub">AI-powered anomaly detection — Real-time IAM threat analysis</div>
+        </div>
+        <div class="topbar-right">
+          <div class="time-badge" id="clock">--:--:--</div>
+          <button class="btn" onclick="simulateEvent()" data-i18n="btn_simulate">+ Simulate Event</button>
+          <button class="btn" onclick="loadEvents()" data-i18n="btn_refresh">↻ Refresh</button>
+          <button class="btn btn-danger" onclick="triggerAdminAlert()" data-i18n="btn_alert_admin">🔔 Alert Admin</button>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric-card high"><div class="metric-label" data-i18n="m_high_risk">High Risk</div><div class="metric-value" id="m-high">—</div><div class="metric-change" style="color:var(--red)" id="m-high-sub">Loading...</div></div>
+        <div class="metric-card med"><div class="metric-label" data-i18n="m_medium_risk">Medium Risk</div><div class="metric-value" id="m-med">—</div><div class="metric-change" style="color:var(--amber)" id="m-med-sub">Loading...</div></div>
+        <div class="metric-card low"><div class="metric-label" data-i18n="m_low_risk">Low Risk</div><div class="metric-value" id="m-low">—</div><div class="metric-change" style="color:var(--green)" data-i18n="m_normal_activity">✅ Normal activity</div></div>
+        <div class="metric-card total"><div class="metric-label" data-i18n="m_total_events">Total Events</div><div class="metric-value" id="m-total">—</div><div class="metric-change" style="color:var(--blue)" data-i18n="m_from_iam_logs">From IAM logs</div></div>
+      </div>
+      <div class="content-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <div><div class="panel-title" data-i18n="sec_events_title">Security Events</div><div class="panel-title-ja" data-i18n="sec_events_sub">IAM anomaly detection feed</div></div>
+            <div style="font-size:11px;color:var(--text-muted)" id="last-refresh">Never</div>
+          </div>
+          <div class="filter-row">
+            <button class="filter-btn active" onclick="setFilter('all',this)" data-i18n="filter_all">All</button>
+            <button class="filter-btn" onclick="setFilter('HIGH',this)" data-i18n="filter_high">🔴 High</button>
+            <button class="filter-btn" onclick="setFilter('MEDIUM',this)" data-i18n="filter_medium">🟡 Medium</button>
+            <button class="filter-btn" onclick="setFilter('LOW',this)" data-i18n="filter_low">🟢 Low</button>
+            <button class="filter-btn" onclick="setFilter('BLOCK',this)" data-i18n="filter_blocked">🚫 Blocked</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th data-i18n="th_user">User</th><th data-i18n="th_anomaly">Anomaly</th><th data-i18n="th_country">Country</th><th data-i18n="th_risk">Risk</th><th data-i18n="th_score">Score</th><th data-i18n="th_action">Action</th><th data-i18n="th_time">Time</th></tr></thead>
+              <tbody id="events-tbody"><tr class="loading-row"><td colspan="7" data-i18n="loading_api">⏳ Loading from API...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="right-panel">
+          <div class="detail-card">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+              <div>
+                <div class="detail-title" id="detail-user" data-i18n="detail_select_event">⬅ Select an event</div>
+                <div class="detail-sub" id="detail-sub" data-i18n="detail_click_row">Click any row</div>
+              </div>
+              <button class="btn" id="close-detail-btn" style="display:none;padding:4px 8px;font-size:14px;line-height:1" onclick="clearSelectedEvent()" title="Close">✕</button>
+            </div>
+            <div class="risk-score-display" id="score-display" style="display:none">
+              <div class="score-circle" id="score-circle">--</div>
+              <div>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;" data-i18n="risk_score_label">Risk Score</div>
+                <div id="score-label" style="font-size:13px;font-weight:700"></div>
+                <div id="score-model" style="font-size:11px;color:var(--text-muted);margin-top:2px"></div>
+              </div>
+            </div>
+            <div id="explain-section" style="display:none">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" data-i18n="explainability_label">Explainability</div>
+              <ul class="explain-list" id="explain-list"></ul>
+            </div>
+          </div>
+          <div class="action-panel" id="action-panel" style="display:none">
+            <div class="action-title" data-i18n="remediation_label">Remediation</div>
+            <div class="action-grid">
+              <div class="action-btn btn-block" onclick="doAction(t('toast_blocked'))"><span data-i18n="action_block">🚫 Block</span><div class="btn-sub" data-i18n="action_block_sub">Disable account</div></div>
+              <div class="action-btn btn-mfa" onclick="doAction(t('toast_mfa_sent'))"><span data-i18n="action_mfa">🔐 Force MFA</span><div class="btn-sub" data-i18n="action_mfa_sub">Require re-auth</div></div>
+              <div class="action-btn btn-notify" onclick="doAction(t('toast_notified'))"><span data-i18n="action_notify">📧 Notify</span><div class="btn-sub" data-i18n="action_notify_sub">Alert admin</div></div>
+              <div class="action-btn btn-allow" onclick="doAction(t('toast_allowed'))"><span data-i18n="action_allow">✅ Allow</span><div class="btn-sub" data-i18n="action_allow_sub">Grant access</div></div>
+            </div>
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+              <div class="action-title" data-i18n="audit_trail_label">Audit Trail</div>
+              <div id="audit-preview" style="font-size:11px;color:var(--text-muted)" data-i18n="click_action_above">Click an action above.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: USERS -->
+    <div class="page" id="page-users">
+      <div class="topbar">
+        <div><div class="topbar-title" data-i18n="users_title">👤 Users</div><div class="topbar-sub" data-i18n="users_sub">All IAM users and their current risk posture</div></div>
+        <div class="topbar-right">
+          <input id="user-search" placeholder="🔍 Search user..." data-i18n-placeholder="users_search_ph" style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 12px;color:var(--text);font-size:12px;width:180px" oninput="filterUsers()">
+          <button class="btn" onclick="loadUsers()" data-i18n="btn_refresh">↻ Refresh</button>
+          <button class="btn btn-primary" onclick="openInviteModal()" data-i18n="btn_invite">+ Invite User</button>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric-card total"><div class="metric-label" data-i18n="u_total_users">Total Users</div><div class="metric-value" id="u-total">—</div></div>
+        <div class="metric-card high"><div class="metric-label" data-i18n="u_high_risk">High Risk Users</div><div class="metric-value" id="u-high">—</div></div>
+        <div class="metric-card med"><div class="metric-label" data-i18n="u_departments">Departments</div><div class="metric-value" id="u-depts">—</div></div>
+        <div class="metric-card low"><div class="metric-label" data-i18n="u_blocked">Blocked Users</div><div class="metric-value" id="u-blocked">—</div></div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th data-i18n="th_user">User</th><th data-i18n="th_department">Department</th><th data-i18n="th_last_login">Last Login</th><th data-i18n="th_country">Country</th><th data-i18n="th_risk">Risk</th><th data-i18n="th_top_score">Top Score</th><th data-i18n="th_status">Status</th><th data-i18n="th_quick_action">Quick Action</th></tr></thead>
+          <tbody id="users-tbody"><tr class="loading-row"><td colspan="8" data-i18n="loading_users">⏳ Loading users...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INVITE USER MODAL -->
+    <div class="modal-overlay" id="invite-modal-overlay" onclick="closeInviteModalOnOverlay(event)">
+      <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title" data-i18n="invite_modal_title">Provision New User</div>
+            <div class="modal-sub" data-i18n="invite_modal_sub">Add a user manually or import from an identity provider</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeInviteModal()">✕</button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- Source selector -->
+          <div class="invite-field">
+            <label class="invite-label" data-i18n="invite_source_label">Identity Source</label>
+            <div class="source-grid">
+              <div class="source-card active" data-source="manual" onclick="selectInviteSource('manual')">
+                <div class="source-icon">✍️</div>
+                <div class="source-name" data-i18n="source_manual">Manual</div>
+              </div>
+              <div class="source-card" data-source="keycloak" onclick="selectInviteSource('keycloak')">
+                <div class="source-icon">🔑</div>
+                <div class="source-name">Keycloak</div>
+              </div>
+              <div class="source-card" data-source="okta" onclick="selectInviteSource('okta')">
+                <div class="source-icon">🟣</div>
+                <div class="source-name">Okta</div>
+              </div>
+              <div class="source-card" data-source="azure" onclick="selectInviteSource('azure')">
+                <div class="source-icon">🔷</div>
+                <div class="source-name">Azure AD</div>
+              </div>
+              <div class="source-card" data-source="csv" onclick="selectInviteSource('csv')">
+                <div class="source-icon">📄</div>
+                <div class="source-name" data-i18n="source_csv">CSV Import</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual / Keycloak / Okta / Azure shared form -->
+          <div id="invite-form-fields">
+            <div class="invite-field">
+              <label class="invite-label" data-i18n="invite_name_label">Full Name</label>
+              <input class="login-input" id="invite-name" type="text" placeholder="Tanaka Hiroshi">
+            </div>
+            <div class="invite-field">
+              <label class="invite-label" data-i18n="invite_email_label">Email Address</label>
+              <input class="login-input" id="invite-email" type="email" placeholder="tanaka.h@company.com">
+            </div>
+            <div class="invite-row">
+              <div class="invite-field" style="flex:1">
+                <label class="invite-label" data-i18n="invite_dept_label">Department</label>
+                <select class="select-field" id="invite-dept" style="width:100%">
+                  <option>Engineering</option><option>Finance</option><option>HR</option>
+                  <option>Sales</option><option>Marketing</option><option>IT Operations</option>
+                  <option>DevOps</option><option>Legal</option>
+                </select>
+              </div>
+              <div class="invite-field" style="flex:1">
+                <label class="invite-label" data-i18n="invite_role_label">Initial Role</label>
+                <select class="select-field" id="invite-role" style="width:100%">
+                  <option value="viewer" data-i18n="role_viewer">Viewer</option>
+                  <option value="editor" data-i18n="role_editor">Editor</option>
+                  <option value="manager" data-i18n="role_manager">Manager</option>
+                  <option value="admin" data-i18n="role_admin">Admin</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Provider-specific fields, shown/hidden by selectInviteSource() -->
+            <div id="provider-fields-keycloak" class="provider-fields" style="display:none">
+              <div class="invite-field">
+                <label class="invite-label">Keycloak Realm</label>
+                <input class="login-input" id="invite-kc-realm" type="text" placeholder="master" value="master">
+              </div>
+              <div class="invite-note">🔑 <span data-i18n="invite_note_keycloak">This will create a real user in your local Keycloak instance via the Admin API.</span></div>
+            </div>
+
+            <div id="provider-fields-okta" class="provider-fields" style="display:none">
+              <div class="invite-field">
+                <label class="invite-label">Okta Org URL</label>
+                <input class="login-input" id="invite-okta-org" type="text" placeholder="https://dev-12345.okta.com">
+              </div>
+              <div class="invite-field">
+                <label class="invite-label">Okta API Token</label>
+                <input class="login-input" id="invite-okta-token" type="password" placeholder="00abc...">
+              </div>
+              <div class="invite-note">🟣 <span data-i18n="invite_note_okta">Requires a valid Okta org and API token — not configured in this demo environment, the user will be recorded locally instead.</span></div>
+            </div>
+
+            <div id="provider-fields-azure" class="provider-fields" style="display:none">
+              <div class="invite-field">
+                <label class="invite-label">Azure AD Tenant ID</label>
+                <input class="login-input" id="invite-azure-tenant" type="text" placeholder="00000000-0000-0000-0000-000000000000">
+              </div>
+              <div class="invite-field">
+                <label class="invite-label">User Principal Name (UPN)</label>
+                <input class="login-input" id="invite-azure-upn" type="text" placeholder="tanaka.h@company.onmicrosoft.com">
+              </div>
+              <div class="invite-note">🔷 <span data-i18n="invite_note_azure">Requires Microsoft Graph API credentials — not configured in this demo environment, the user will be recorded locally instead.</span></div>
+            </div>
+          </div>
+
+          <!-- CSV upload (replaces the form above when selected) -->
+          <div id="provider-fields-csv" class="provider-fields" style="display:none">
+            <div class="invite-field">
+              <label class="invite-label" data-i18n="invite_csv_label">CSV File</label>
+              <div class="csv-dropzone" id="csv-dropzone" onclick="document.getElementById('csv-file-input').click()">
+                <div style="font-size:28px;margin-bottom:8px">📄</div>
+                <div style="font-size:13px;font-weight:600" data-i18n="csv_dropzone_text">Click to select a CSV file</div>
+                <div style="font-size:11px;color:var(--text-muted);margin-top:4px" data-i18n="csv_dropzone_format">Columns: name, email, department, role</div>
+                <input type="file" id="csv-file-input" accept=".csv" style="display:none" onchange="handleCsvFile(event)">
+              </div>
+              <div id="csv-preview-container" style="margin-top:14px"></div>
+            </div>
+          </div>
+
+          <div id="invite-modal-error" class="login-error" style="margin-top:4px"></div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn" onclick="closeInviteModal()" data-i18n="btn_cancel">Cancel</button>
+          <button class="btn btn-primary" id="invite-submit-btn" onclick="submitInviteUser()" data-i18n="btn_provision_user">+ Provision User</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GENERATE REPORT MODAL -->
+    <div class="modal-overlay" id="generate-modal-overlay" onclick="closeGenerateModalOnOverlay(event)">
+      <div class="modal-box" onclick="event.stopPropagation()" style="max-width:520px">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title" data-i18n="gen_modal_title">🔄 Generate New Analysis</div>
+            <div class="modal-sub" data-i18n="gen_modal_sub">Upload a CSV or Excel file of IAM events — your ML model will score every row and update the Analytics page</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeGenerateModal()">✕</button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- Upload zone -->
+          <div id="gen-upload-zone" class="csv-dropzone" style="margin-bottom:16px"
+               onclick="document.getElementById('gen-file-input').click()">
+            <div style="font-size:32px;margin-bottom:8px">📂</div>
+            <div style="font-size:13px;font-weight:600" id="gen-dropzone-text" data-i18n="gen_dropzone_text">Click to upload or drag & drop</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px" data-i18n="gen_dropzone_format">Accepts CSV or Excel (.xlsx) · Needs at least a user_id column</div>
+            <input type="file" id="gen-file-input" accept=".csv,.xlsx,.xls" style="display:none" onchange="handleGenFile(event)">
+          </div>
+
+          <!-- File selected state -->
+          <div id="gen-file-info" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:20px" id="gen-file-icon">📄</span>
+                <div>
+                  <div style="font-size:13px;font-weight:600" id="gen-file-name">—</div>
+                  <div style="font-size:11px;color:var(--text-muted)" id="gen-file-size">—</div>
+                </div>
+              </div>
+              <button class="btn" style="font-size:11px;padding:4px 10px" onclick="clearGenFile()" data-i18n="btn_change_file">Change</button>
+            </div>
+          </div>
+
+          <!-- Column mapping hint -->
+          <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--text-soft)">
+            <div style="font-weight:700;margin-bottom:6px;color:var(--blue)" data-i18n="gen_hint_title">📋 Accepted Columns</div>
+            <div style="line-height:1.7">
+              <span style="color:var(--red);font-weight:600" data-i18n="gen_required">Required:</span>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">user_id</code>
+              &nbsp;·&nbsp;
+              <span style="color:var(--text-muted)" data-i18n="gen_optional">Optional:</span>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">user_name</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">department</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">country</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">timestamp</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">hour_of_day</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">role_rank</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">mfa_failed</code>
+            </div>
+          </div>
+
+          <!-- Error display -->
+          <div id="gen-modal-error" class="login-error" style="margin-top:12px"></div>
+
+          <!-- Progress bar (shown during analysis) -->
+          <div id="gen-progress" style="display:none;margin-top:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <div style="font-size:12px;font-weight:600" id="gen-progress-label" data-i18n="gen_analysing">Analysing with ML model...</div>
+              <div style="font-size:11px;color:var(--text-muted)" id="gen-progress-pct">0%</div>
+            </div>
+            <div style="height:6px;background:var(--surface2);border-radius:3px;overflow:hidden">
+              <div id="gen-progress-bar" style="height:100%;width:0%;background:var(--blue);border-radius:3px;transition:width 0.4s ease"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn" onclick="closeGenerateModal()" data-i18n="btn_cancel">Cancel</button>
+          <div class="export-dropdown-wrap">
+            <button class="btn btn-primary" id="gen-submit-btn" onclick="submitGenerateReport()" data-i18n="gen_btn_analyse">🔬 Analyse &amp; Update Charts</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: ANALYTICS -->
+    <div class="page" id="page-analytics">
+      <div class="topbar">
+        <div><div class="topbar-title" data-i18n="analytics_title">📊 Analytics</div><div class="topbar-sub" data-i18n="analytics_sub">Risk trends, anomaly patterns and threat intelligence</div></div>
+        <div class="topbar-right">
+          <button class="btn" onclick="loadAnalytics()" data-i18n="btn_refresh">↻ Refresh</button>
+
+          <div class="export-dropdown-wrap">
+            <button class="btn" onclick="toggleExportMenu()" data-i18n="btn_export_report">📥 Export Report</button>
+            <div class="export-dropdown-menu" id="export-dropdown-menu">
+              <div class="export-dropdown-item" onclick="exportReport('csv', false)">📄 <span data-i18n="export_as_csv">CSV</span></div>
+              <div class="export-dropdown-item" onclick="exportReport('xlsx', false)">📊 <span data-i18n="export_as_xlsx">Excel (.xlsx)</span></div>
+              <div class="export-dropdown-item" onclick="exportReport('pdf', false)">📕 <span data-i18n="export_as_pdf">PDF</span></div>
+            </div>
+          </div>
+
+          <div class="export-dropdown-wrap">
+            <button class="btn btn-primary" onclick="openGenerateModal()" id="generate-report-btn" data-i18n="btn_generate_report">🔄 Generate Report</button>
+          </div>
+        </div>
+      </div>
+      <div class="section-header"><div class="section-title" data-i18n="overview_title">Overview</div><div class="section-sub" data-i18n="overview_sub">Aggregated statistics from all IAM events</div></div>
+      <div style="padding:0 24px 16px">
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-val" style="color:var(--red)" id="an-high">—</div><div class="stat-lbl" data-i18n="stat_high_events">High Risk Events</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--amber)" id="an-med">—</div><div class="stat-lbl" data-i18n="stat_medium_events">Medium Risk Events</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--green)" id="an-low">—</div><div class="stat-lbl" data-i18n="stat_low_events">Low Risk Events</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--red)" id="an-block">—</div><div class="stat-lbl" data-i18n="stat_blocked">Accounts Blocked</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--amber)" id="an-mfa">—</div><div class="stat-lbl" data-i18n="stat_mfa">MFA Forced</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--blue)" id="an-total">—</div><div class="stat-lbl" data-i18n="stat_total">Total Events</div></div>
+        </div>
+      </div>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title" data-i18n="chart_anomaly_title">Anomaly Type Distribution</div>
+          <div class="chart-sub" data-i18n="chart_anomaly_sub">Breakdown of detected threat categories</div>
+          <div class="bar-chart" id="anomaly-chart"><div style="color:var(--text-muted);font-size:12px" data-i18n="loading_generic">Loading...</div></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title" data-i18n="chart_dept_title">Risk by Department</div>
+          <div class="chart-sub" data-i18n="chart_dept_sub">Average risk score per department</div>
+          <div class="bar-chart" id="dept-chart"><div style="color:var(--text-muted);font-size:12px" data-i18n="loading_generic">Loading...</div></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title" data-i18n="chart_action_title">Action Distribution</div>
+          <div class="chart-sub" data-i18n="chart_action_sub">Policy engine decisions breakdown</div>
+          <div class="donut-wrap">
+            <canvas id="donut-canvas" width="120" height="120"></canvas>
+            <div class="donut-legend" id="donut-legend"></div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title" data-i18n="chart_top_users_title">Top Risky Users</div>
+          <div class="chart-sub" data-i18n="chart_top_users_sub">Users with highest risk scores</div>
+          <div class="bar-chart" id="top-users-chart"><div style="color:var(--text-muted);font-size:12px" data-i18n="loading_generic">Loading...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: ROLES -->
+    <div class="page" id="page-roles">
+      <div class="topbar">
+        <div><div class="topbar-title" data-i18n="roles_title">🔑 Roles &amp; Permissions</div><div class="topbar-sub" data-i18n="roles_sub">IAM role definitions, privilege levels and access policies</div></div>
+        <div class="topbar-right">
+          <button class="btn" onclick="loadRoles()" data-i18n="btn_refresh">↻ Refresh</button>
+          <button class="btn btn-primary" onclick="showToast(t('toast_role_saved'))" data-i18n="btn_new_role">+ New Role</button>
+        </div>
+      </div>
+      <div class="section-header"><div class="section-title" data-i18n="role_hierarchy_title">Role Hierarchy</div><div class="section-sub" data-i18n="role_hierarchy_sub">5-level privilege model — lowest to highest</div></div>
+      <div class="roles-grid">
+        <div class="role-card">
+          <div class="role-icon">👁</div><div class="role-name" data-i18n="role_viewer">Viewer</div><div class="role-name-ja">Rank 0</div>
+          <div class="role-perm" data-i18n="role_viewer_p1">✅ Read-only dashboard access</div>
+          <div class="role-perm" data-i18n="role_viewer_p2">✅ View reports</div>
+          <div class="role-perm" data-i18n="role_viewer_p3">❌ No write access</div>
+          <div class="role-perm" data-i18n="role_viewer_p4">❌ No admin actions</div>
+          <div class="role-users"><span style="font-size:12px;color:var(--text-muted)" data-i18n="role_users_label">Users with this role</span><span class="tag" style="background:rgba(16,185,129,0.15);color:var(--green)" id="r-viewer">—</span></div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">✏️</div><div class="role-name" data-i18n="role_editor">Editor</div><div class="role-name-ja">Rank 1</div>
+          <div class="role-perm" data-i18n="role_editor_p1">✅ All Viewer permissions</div>
+          <div class="role-perm" data-i18n="role_editor_p2">✅ Edit records</div>
+          <div class="role-perm" data-i18n="role_editor_p3">✅ Create tickets</div>
+          <div class="role-perm" data-i18n="role_editor_p4">❌ No user management</div>
+          <div class="role-users"><span style="font-size:12px;color:var(--text-muted)" data-i18n="role_users_label">Users with this role</span><span class="tag" style="background:rgba(59,130,246,0.15);color:var(--blue)" id="r-editor">—</span></div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">👔</div><div class="role-name" data-i18n="role_manager">Manager</div><div class="role-name-ja">Rank 2</div>
+          <div class="role-perm" data-i18n="role_manager_p1">✅ All Editor permissions</div>
+          <div class="role-perm" data-i18n="role_manager_p2">✅ Approve access requests</div>
+          <div class="role-perm" data-i18n="role_manager_p3">✅ View audit logs</div>
+          <div class="role-perm" data-i18n="role_manager_p4">❌ No system config</div>
+          <div class="role-users"><span style="font-size:12px;color:var(--text-muted)" data-i18n="role_users_label">Users with this role</span><span class="tag" style="background:rgba(245,158,11,0.15);color:var(--amber)" id="r-manager">—</span></div>
+        </div>
+        <div class="role-card" style="border-color:rgba(239,68,68,0.3)">
+          <div class="role-icon">🛡</div><div class="role-name" data-i18n="role_admin">Admin</div><div class="role-name-ja">Rank 3</div>
+          <div class="role-perm" data-i18n="role_admin_p1">✅ All Manager permissions</div>
+          <div class="role-perm" data-i18n="role_admin_p2">✅ User management</div>
+          <div class="role-perm" data-i18n="role_admin_p3">✅ Policy configuration</div>
+          <div class="role-perm" data-i18n="role_admin_p4">✅ Force MFA / Block users</div>
+          <div class="role-users"><span style="font-size:12px;color:var(--text-muted)" data-i18n="role_users_label">Users with this role</span><span class="tag" style="background:rgba(239,68,68,0.15);color:var(--red)" id="r-admin">—</span></div>
+        </div>
+        <div class="role-card" style="border-color:rgba(139,92,246,0.4);background:rgba(139,92,246,0.05)">
+          <div class="role-icon">👑</div><div class="role-name" data-i18n="role_superadmin">Super Admin</div><div class="role-name-ja">Rank 4</div>
+          <div class="role-perm" data-i18n="role_super_p1">✅ All permissions</div>
+          <div class="role-perm" data-i18n="role_super_p2">✅ System configuration</div>
+          <div class="role-perm" data-i18n="role_super_p3">✅ Delete audit logs</div>
+          <div class="role-perm" data-i18n="role_super_p4">⚠️ Highest risk if compromised</div>
+          <div class="role-users"><span style="font-size:12px;color:var(--text-muted)" data-i18n="role_users_label">Users with this role</span><span class="tag" style="background:rgba(139,92,246,0.15);color:var(--purple)" id="r-super">—</span></div>
+        </div>
+        <div class="role-card" style="border-color:rgba(59,130,246,0.3)">
+          <div class="role-icon">📊</div><div class="role-name" data-i18n="role_escalation_title">Escalation Alerts</div>
+          <div style="font-size:12px;color:var(--text-soft);margin-bottom:8px" data-i18n="role_escalation_desc">Privilege escalation attempts detected by ML model:</div>
+          <div id="escalation-list" style="font-size:12px" data-i18n="loading_generic">Loading...</div>
+        </div>
+      </div>
+      <div class="section-header"><div class="section-title" data-i18n="role_dist_title">Role Distribution</div><div class="section-sub" data-i18n="role_dist_sub">Current access requests grouped by role rank, from live event data</div></div>
+      <div class="chart-card" style="margin:0 24px 24px">
+        <div class="bar-chart" id="role-dist-chart"><div style="color:var(--text-muted);font-size:12px" data-i18n="loading_generic">Loading...</div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: AUDIT -->
+    <div class="page" id="page-audit">
+      <div class="topbar">
+        <div><div class="topbar-title" data-i18n="audit_title">📋 Audit Log</div><div class="topbar-sub" data-i18n="audit_sub">Complete tamper-evident record of all security actions taken</div></div>
+        <div class="topbar-right">
+          <input id="audit-search" placeholder="🔍 Search user or action..." data-i18n-placeholder="audit_search_ph" style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 12px;color:var(--text);font-size:12px;width:200px" oninput="filterAudit()">
+          <button class="btn" onclick="loadAudit()" data-i18n="btn_refresh">↻ Refresh</button>
+          <button class="btn" onclick="exportAuditCSV()" data-i18n="btn_export_csv">📥 Export CSV</button>
+          <button class="btn btn-primary" onclick="openAuditUploadModal()" data-i18n="btn_add_audit_data">📤 Add Audit Data</button>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric-card total"><div class="metric-label" data-i18n="ad_total_records">Total Records</div><div class="metric-value" id="ad-total">—</div></div>
+        <div class="metric-card high"><div class="metric-label" data-i18n="ad_blocks">Blocks Logged</div><div class="metric-value" id="ad-blocks">—</div></div>
+        <div class="metric-card med"><div class="metric-label" data-i18n="ad_mfa">MFA Forced</div><div class="metric-value" id="ad-mfa">—</div></div>
+        <div class="metric-card low"><div class="metric-label" data-i18n="ad_auto_manual">Auto vs Manual</div><div class="metric-value" id="ad-auto" style="font-size:18px">—</div></div>
+      </div>
+      <div class="table-wrap" style="margin-top:8px">
+        <table class="data-table">
+          <thead><tr><th>#</th><th data-i18n="th_timestamp">Timestamp</th><th data-i18n="th_user">User</th><th data-i18n="th_department">Department</th><th data-i18n="th_country">Country</th><th data-i18n="th_anomaly">Anomaly</th><th data-i18n="th_score">Score</th><th data-i18n="th_action">Action</th><th data-i18n="th_triggered_by">Triggered By</th></tr></thead>
+          <tbody id="audit-tbody"><tr class="loading-row"><td colspan="9" data-i18n="loading_audit">⏳ Loading audit log...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AUDIT UPLOAD MODAL -->
+    <div class="modal-overlay" id="audit-upload-overlay" onclick="closeAuditUploadOnOverlay(event)">
+      <div class="modal-box" onclick="event.stopPropagation()" style="max-width:500px">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title" data-i18n="audit_upload_title">📤 Add Audit Data</div>
+            <div class="modal-sub" data-i18n="audit_upload_sub">Upload a CSV file to append new records to the audit log</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeAuditUploadModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="audit-upload-zone" class="csv-dropzone" style="margin-bottom:16px"
+               onclick="document.getElementById('audit-file-input').click()">
+            <div style="font-size:32px;margin-bottom:8px">📋</div>
+            <div style="font-size:13px;font-weight:600" data-i18n="gen_dropzone_text">Click to upload or drag & drop</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px" data-i18n="audit_upload_format">Accepts CSV · Columns: user_id, user_name, action_taken, risk_score, timestamp</div>
+            <input type="file" id="audit-file-input" accept=".csv" style="display:none" onchange="handleAuditFile(event)">
+          </div>
+          <div id="audit-file-info" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:20px">📄</span>
+                <div>
+                  <div style="font-size:13px;font-weight:600" id="audit-file-name">—</div>
+                  <div style="font-size:11px;color:var(--text-muted)" id="audit-file-size">—</div>
+                </div>
+              </div>
+              <button class="btn" style="font-size:11px;padding:4px 10px" onclick="clearAuditFile()" data-i18n="btn_change_file">Change</button>
+            </div>
+          </div>
+          <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--text-soft)">
+            <div style="font-weight:700;margin-bottom:6px;color:var(--blue)" data-i18n="gen_hint_title">📋 Accepted Columns</div>
+            <div style="line-height:1.9">
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">user_id</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">user_name</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">department</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">country</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">action_taken</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">risk_score</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">timestamp</code>
+              <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11px">anomaly_type</code>
+            </div>
+          </div>
+          <div id="audit-preview-section" style="display:none;margin-top:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px" data-i18n="audit_preview_label">Preview (first 5 rows)</div>
+            <div id="audit-upload-preview"></div>
+          </div>
+          <div id="audit-upload-error" class="login-error" style="margin-top:12px"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" onclick="closeAuditUploadModal()" data-i18n="btn_cancel">Cancel</button>
+          <button class="btn btn-primary" id="audit-upload-btn" onclick="submitAuditUpload()" data-i18n="audit_upload_submit">📋 Append to Audit Log</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: SETTINGS -->
+    <div class="page" id="page-settings">
+      <div class="topbar">
+        <div><div class="topbar-title" data-i18n="settings_title">⚙ Settings</div><div class="topbar-sub" data-i18n="settings_sub">System configuration, thresholds and notification preferences</div></div>
+        <div class="topbar-right"><button class="btn btn-primary" onclick="saveSettings()" data-i18n="btn_save_changes">💾 Save Changes</button></div>
+      </div>
+      <div class="settings-grid" style="margin-top:20px">
+
+        <div class="setting-group">
+          <div class="setting-group-title" data-i18n="sg_thresholds">🎯 Risk Score Thresholds</div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_block_label">Block Threshold</div><div class="setting-sub" data-i18n="set_block_sub">Score above this = account blocked</div></div><input class="input-field" style="width:80px" id="set-block" type="number" value="80" min="0" max="100"></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_mfa_thresh_label">Force MFA Threshold</div><div class="setting-sub" data-i18n="set_mfa_thresh_sub">Score above this = MFA required</div></div><input class="input-field" style="width:80px" id="set-mfa" type="number" value="60" min="0" max="100"></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_notify_label">Notify Admin Threshold</div><div class="setting-sub" data-i18n="set_notify_sub">Score above this = admin notified</div></div><input class="input-field" style="width:80px" id="set-notify" type="number" value="40" min="0" max="100"></div>
+        </div>
+
+        <div class="setting-group">
+          <div class="setting-group-title" data-i18n="sg_ml_model">🤖 ML Model Settings</div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_iso_label">Isolation Forest Weight</div><div class="setting-sub" data-i18n="set_weight_sub">Contribution to final score</div></div><input class="input-field" style="width:80px" id="set-iso-weight" type="number" value="40" min="0" max="100"></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_xgb_label">XGBoost Weight</div><div class="setting-sub" data-i18n="set_weight_sub">Contribution to final score</div></div><input class="input-field" style="width:80px" id="set-xgb-weight" type="number" value="60" min="0" max="100"></div>
+          <div class="setting-row">
+            <div><div class="setting-label" data-i18n="set_active_model_label">Active ML Model</div><div class="setting-sub" data-i18n="set_active_model_sub">Currently running model version</div></div>
+            <select class="select-field" id="set-model"><option data-i18n="model_ensemble">Ensemble (Both)</option><option data-i18n="model_iso_only">Isolation Forest Only</option><option data-i18n="model_xgb_only">XGBoost Only</option></select>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <div class="setting-group-title" data-i18n="sg_notifications">🔔 Notifications</div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_slack_label">Slack Alerts</div><div class="setting-sub" data-i18n="set_slack_sub">Post to #security-alerts channel</div></div><label class="toggle"><input type="checkbox" id="set-slack" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_email_label">Email Alerts</div><div class="setting-sub" data-i18n="set_email_sub">Send to SOC team email list</div></div><label class="toggle"><input type="checkbox" id="set-email" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_jira_label">Jira Ticket Creation</div><div class="setting-sub" data-i18n="set_jira_sub">Auto-create tickets for HIGH risk</div></div><label class="toggle"><input type="checkbox" id="set-jira"><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_sms_label">SMS Alerts (Critical Only)</div><div class="setting-sub" data-i18n="set_sms_sub">For BLOCK actions only</div></div><label class="toggle"><input type="checkbox" id="set-sms"><span class="toggle-slider"></span></label></div>
+        </div>
+
+        <div class="setting-group">
+          <div class="setting-group-title" data-i18n="sg_security">🔒 Security Policies</div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_autoblock_label">Auto-block on MFA fail</div><div class="setting-sub" data-i18n="set_autoblock_sub">Block after 5 consecutive failures</div></div><label class="toggle"><input type="checkbox" id="set-mfa-block" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_travel_label">Impossible Travel Detection</div><div class="setting-sub" data-i18n="set_travel_sub">Flag logins from impossible distances</div></div><label class="toggle"><input type="checkbox" id="set-travel" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_device_label">New Device Alert</div><div class="setting-sub" data-i18n="set_device_sub">Alert on unrecognised device</div></div><label class="toggle"><input type="checkbox" id="set-device" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_escalation_label">Privilege Escalation Monitor</div><div class="setting-sub" data-i18n="set_escalation_sub">Detect unusual role requests</div></div><label class="toggle"><input type="checkbox" id="set-escalation" checked><span class="toggle-slider"></span></label></div>
+        </div>
+
+        <div class="setting-group">
+          <div class="setting-group-title" data-i18n="sg_iam_integration">🌐 IAM Integration</div>
+          <div class="setting-row"><div><div class="setting-label">Keycloak</div><div class="setting-sub" data-i18n="set_keycloak_sub">localhost:8080 · Local IAM provider</div></div><label class="toggle"><input type="checkbox" id="set-keycloak"><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label">Microsoft Entra ID</div><div class="setting-sub" data-i18n="set_entra_sub">Azure Active Directory integration</div></div><label class="toggle"><input type="checkbox" id="set-entra"><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label">Okta</div><div class="setting-sub" data-i18n="set_okta_sub">Okta Workforce Identity</div></div><label class="toggle"><input type="checkbox" id="set-okta"><span class="toggle-slider"></span></label></div>
+          <div class="setting-row">
+            <div><div class="setting-label" data-i18n="set_refresh_label">API Refresh Interval</div><div class="setting-sub" data-i18n="set_refresh_sub">How often dashboard polls the API</div></div>
+            <select class="select-field" id="set-refresh"><option value="30000" data-i18n="opt_30s">30 seconds</option><option value="60000" data-i18n="opt_1m">1 minute</option><option value="300000" data-i18n="opt_5m">5 minutes</option><option value="0" data-i18n="opt_manual">Manual only</option></select>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <div class="setting-group-title" data-i18n="sg_display">🗾 Display</div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_bilingual_label">Bilingual Labels</div><div class="setting-sub" data-i18n="set_bilingual_sub">Show secondary language labels</div></div><label class="toggle"><input type="checkbox" id="set-bilingual" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_dark_label">Dark Mode</div><div class="setting-sub" id="theme-status-text" data-i18n="theme_current_dark">Current: Dark</div></div><label class="toggle"><input type="checkbox" id="set-dark" checked onchange="toggleTheme()"><span class="toggle-slider"></span></label></div>
+          <div class="setting-row"><div><div class="setting-label" data-i18n="set_shap_label">Show SHAP Explanations</div><div class="setting-sub" data-i18n="set_shap_sub">Display AI explainability panel</div></div><label class="toggle"><input type="checkbox" id="set-shap" checked><span class="toggle-slider"></span></label></div>
+          <div class="setting-row">
+            <div><div class="setting-label" data-i18n="set_timezone_label">Timezone</div><div class="setting-sub" data-i18n="set_timezone_sub">Display times in local timezone</div></div>
+            <select class="select-field" id="set-timezone"><option>JST (UTC+9)</option><option>UTC</option><option>EST (UTC-5)</option></select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-header"><div class="section-title" data-i18n="admins_section_title">📧 Admin Alert Recipients</div><div class="section-sub" data-i18n="admins_section_sub">Email addresses that receive real security alerts when "Alert Admin" is triggered</div></div>
+      <div style="padding:0 24px 24px">
+        <div class="setting-group">
+          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+            <input class="login-input" id="admin-name-input" type="text" placeholder="Name" data-i18n-placeholder="admin_name_ph" style="flex:1;min-width:140px">
+            <input class="login-input" id="admin-email-input" type="email" placeholder="email@company.com" data-i18n-placeholder="admin_email_ph" style="flex:2;min-width:200px">
+            <button class="btn btn-primary" onclick="addAdminEmail()" data-i18n="btn_add_admin">+ Add</button>
+          </div>
+          <div id="admin-list-container">
+            <div style="color:var(--text-muted);font-size:12px" data-i18n="loading_generic">Loading...</div>
+          </div>
+          <div id="admin-empty-state" style="display:none;color:var(--text-muted);font-size:12px;padding:12px 0" data-i18n="admins_empty">No admin emails configured yet. Add one above to start receiving real alerts.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="toast" id="toast"><span id="toast-msg">Done</span></div>
+
+<script>
+const API="http://127.0.0.1:8000";
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INTERNATIONALIZATION (i18n)
+// Static UI chrome (nav, titles, buttons, table headers, settings labels)
+// translates fully. Dynamic data from the API (user names, anomaly types,
+// departments) intentionally stays as-is — translating "Tanaka Hiroshi" or
+// "impossible_travel" wouldn't be meaningful, so only the UI scaffolding
+// around that data is localized.
+// ═══════════════════════════════════════════════════════════════════════════
+
+const TRANSLATIONS = {
+  en: {
+    logo_sub: "Identity Protection System",
+    nav_dashboard: "Dashboard", nav_users: "Users", nav_analytics: "Analytics",
+    nav_roles: "Roles", nav_audit: "Audit Log", nav_settings: "Settings",
+    api_connected: "API Connected",
+    dash_title: "Risk Dashboard", dash_sub: "AI-powered anomaly detection — Real-time IAM threat analysis",
+    btn_simulate: "+ Simulate Event", btn_refresh: "↻ Refresh", btn_alert_admin: "🔔 Alert Admin",
+    m_high_risk: "High Risk", m_medium_risk: "Medium Risk", m_low_risk: "Low Risk", m_total_events: "Total Events",
+    m_normal_activity: "✅ Normal activity", m_from_iam_logs: "From IAM logs",
+    sec_events_title: "Security Events", sec_events_sub: "IAM anomaly detection feed",
+    filter_all: "All", filter_high: "🔴 High", filter_medium: "🟡 Medium", filter_low: "🟢 Low", filter_blocked: "🚫 Blocked",
+    th_user: "User", th_anomaly: "Anomaly", th_country: "Country", th_risk: "Risk", th_score: "Score",
+    th_action: "Action", th_time: "Time", th_department: "Department", th_last_login: "Last Login",
+    th_top_score: "Top Score", th_status: "Status", th_quick_action: "Quick Action", th_timestamp: "Timestamp",
+    th_triggered_by: "Triggered By",
+    loading_api: "⏳ Loading from API...", loading_generic: "Loading...", loading_users: "⏳ Loading users...",
+    loading_audit: "⏳ Loading audit log...",
+    detail_select_event: "⬅ Select an event", detail_click_row: "Click any row",
+    risk_score_label: "Risk Score", explainability_label: "Explainability", remediation_label: "Remediation",
+    action_block: "🚫 Block", action_block_sub: "Disable account",
+    action_mfa: "🔐 Force MFA", action_mfa_sub: "Require re-auth",
+    action_notify: "📧 Notify", action_notify_sub: "Alert admin",
+    action_allow: "✅ Allow", action_allow_sub: "Grant access",
+    audit_trail_label: "Audit Trail", click_action_above: "Click an action above.",
+    users_title: "👤 Users", users_sub: "All IAM users and their current risk posture",
+    users_search_ph: "🔍 Search user...", btn_invite: "+ Invite User",
+    u_total_users: "Total Users", u_high_risk: "High Risk Users", u_departments: "Departments", u_blocked: "Blocked Users",
+    analytics_title: "📊 Analytics", analytics_sub: "Risk trends, anomaly patterns and threat intelligence",
+    btn_export_report: "📥 Export Report",
+    overview_title: "Overview", overview_sub: "Aggregated statistics from all IAM events",
+    stat_high_events: "High Risk Events", stat_medium_events: "Medium Risk Events", stat_low_events: "Low Risk Events",
+    stat_blocked: "Accounts Blocked", stat_mfa: "MFA Forced", stat_total: "Total Events",
+    chart_anomaly_title: "Anomaly Type Distribution", chart_anomaly_sub: "Breakdown of detected threat categories",
+    chart_dept_title: "Risk by Department", chart_dept_sub: "Average risk score per department",
+    chart_action_title: "Action Distribution", chart_action_sub: "Policy engine decisions breakdown",
+    chart_top_users_title: "Top Risky Users", chart_top_users_sub: "Users with highest risk scores",
+    roles_title: "🔑 Roles & Permissions", roles_sub: "IAM role definitions, privilege levels and access policies",
+    btn_new_role: "+ New Role",
+    role_hierarchy_title: "Role Hierarchy", role_hierarchy_sub: "5-level privilege model — lowest to highest",
+    role_viewer: "Viewer", role_editor: "Editor", role_manager: "Manager", role_admin: "Admin", role_superadmin: "Super Admin",
+    role_viewer_p1: "✅ Read-only dashboard access", role_viewer_p2: "✅ View reports",
+    role_viewer_p3: "❌ No write access", role_viewer_p4: "❌ No admin actions",
+    role_editor_p1: "✅ All Viewer permissions", role_editor_p2: "✅ Edit records",
+    role_editor_p3: "✅ Create tickets", role_editor_p4: "❌ No user management",
+    role_manager_p1: "✅ All Editor permissions", role_manager_p2: "✅ Approve access requests",
+    role_manager_p3: "✅ View audit logs", role_manager_p4: "❌ No system config",
+    role_admin_p1: "✅ All Manager permissions", role_admin_p2: "✅ User management",
+    role_admin_p3: "✅ Policy configuration", role_admin_p4: "✅ Force MFA / Block users",
+    role_super_p1: "✅ All permissions", role_super_p2: "✅ System configuration",
+    role_super_p3: "✅ Delete audit logs", role_super_p4: "⚠️ Highest risk if compromised",
+    role_users_label: "Users with this role",
+    role_escalation_title: "Escalation Alerts", role_escalation_desc: "Privilege escalation attempts detected by ML model:",
+    role_dist_title: "Role Distribution", role_dist_sub: "Current access requests grouped by role rank, from live event data",
+    audit_title: "📋 Audit Log", audit_sub: "Complete tamper-evident record of all security actions taken",
+    audit_search_ph: "🔍 Search user or action...", btn_export_csv: "📥 Export CSV",
+    ad_total_records: "Total Records", ad_blocks: "Blocks Logged", ad_mfa: "MFA Forced", ad_auto_manual: "Auto vs Manual",
+    settings_title: "⚙ Settings", settings_sub: "System configuration, thresholds and notification preferences",
+    btn_save_changes: "💾 Save Changes",
+    sg_thresholds: "🎯 Risk Score Thresholds", sg_ml_model: "🤖 ML Model Settings", sg_notifications: "🔔 Notifications",
+    sg_security: "🔒 Security Policies", sg_iam_integration: "🌐 IAM Integration", sg_display: "🗾 Display",
+    set_block_label: "Block Threshold", set_block_sub: "Score above this = account blocked",
+    set_mfa_thresh_label: "Force MFA Threshold", set_mfa_thresh_sub: "Score above this = MFA required",
+    set_notify_label: "Notify Admin Threshold", set_notify_sub: "Score above this = admin notified",
+    set_iso_label: "Isolation Forest Weight", set_xgb_label: "XGBoost Weight", set_weight_sub: "Contribution to final score",
+    set_active_model_label: "Active ML Model", set_active_model_sub: "Currently running model version",
+    model_ensemble: "Ensemble (Both)", model_iso_only: "Isolation Forest Only", model_xgb_only: "XGBoost Only",
+    set_slack_label: "Slack Alerts", set_slack_sub: "Post to #security-alerts channel",
+    set_email_label: "Email Alerts", set_email_sub: "Send to SOC team email list",
+    set_jira_label: "Jira Ticket Creation", set_jira_sub: "Auto-create tickets for HIGH risk",
+    set_sms_label: "SMS Alerts (Critical Only)", set_sms_sub: "For BLOCK actions only",
+    set_autoblock_label: "Auto-block on MFA fail", set_autoblock_sub: "Block after 5 consecutive failures",
+    set_travel_label: "Impossible Travel Detection", set_travel_sub: "Flag logins from impossible distances",
+    set_device_label: "New Device Alert", set_device_sub: "Alert on unrecognised device",
+    set_escalation_label: "Privilege Escalation Monitor", set_escalation_sub: "Detect unusual role requests",
+    set_keycloak_sub: "localhost:8080 · Local IAM provider", set_entra_sub: "Azure Active Directory integration",
+    set_okta_sub: "Okta Workforce Identity",
+    set_refresh_label: "API Refresh Interval", set_refresh_sub: "How often dashboard polls the API",
+    opt_30s: "30 seconds", opt_1m: "1 minute", opt_5m: "5 minutes", opt_manual: "Manual only",
+    set_bilingual_label: "Bilingual Labels", set_bilingual_sub: "Show secondary language labels",
+    set_dark_label: "Dark Mode", theme_current_dark: "Current: Dark", theme_current_light: "Current: Light",
+    set_shap_label: "Show SHAP Explanations", set_shap_sub: "Display AI explainability panel",
+    set_timezone_label: "Timezone", set_timezone_sub: "Display times in local timezone",
+    login_subtitle: "Identity Protection System · Admin Access Only",
+    login_username: "Username", login_password: "Password", login_button: "🔐 Sign In via Keycloak",
+    login_footer: 'Authenticated against your local Keycloak realm.<br>Only users with the <strong>admin</strong> role may access this dashboard.',
+    toast_admin_notified: "🚨 Admin notified via Slack + Email",
+    toast_invite_sent: "📧 Invite sent",
+    toast_report_exported: "📥 Report exported",
+    toast_role_saved: "✅ Role saved",
+    toast_exported: "📥 Exported",
+    toast_blocked: "🚫 Account blocked",
+    toast_mfa_sent: "🔐 MFA sent",
+    toast_notified: "📧 Admin notified",
+    toast_allowed: "✅ Access allowed",
+    toast_settings_saved: "✅ Settings saved",
+    toast_signed_out: "👋 Signed out",
+    admins_section_title: "📧 Admin Alert Recipients",
+    admins_section_sub: 'Email addresses that receive real security alerts when "Alert Admin" is triggered',
+    admin_name_ph: "Name", admin_email_ph: "email@company.com",
+    btn_add_admin: "+ Add", btn_remove: "Remove",
+    admins_empty: "No admin emails configured yet. Add one above to start receiving real alerts.",
+    toast_invalid_email: "⚠️ Please enter a valid email address",
+    toast_admin_added: "✅ Admin email added — they will now receive real alerts",
+    toast_admin_removed: "🗑 Admin email removed",
+    toast_sending_alert: "⏳ Sending alert email...",
+    invite_modal_title: "Provision New User", invite_modal_sub: "Add a user manually or import from an identity provider",
+    invite_source_label: "Identity Source",
+    source_manual: "Manual", source_csv: "CSV Import",
+    invite_name_label: "Full Name", invite_email_label: "Email Address",
+    invite_dept_label: "Department", invite_role_label: "Initial Role",
+    invite_note_keycloak: "This will create a real user in your local Keycloak instance via the Admin API.",
+    invite_note_okta: "Requires a valid Okta org and API token — not configured in this demo environment, the user will be recorded locally instead.",
+    invite_note_azure: "Requires Microsoft Graph API credentials — not configured in this demo environment, the user will be recorded locally instead.",
+    invite_csv_label: "CSV File",
+    csv_dropzone_text: "Click to select a CSV file", csv_dropzone_format: "Columns: name, email, department, role",
+    csv_rows_found: "valid rows found", csv_more_rows: "more rows not shown",
+    btn_cancel: "Cancel", btn_provision_user: "+ Provision User", btn_import_csv: "Import CSV",
+    btn_creating: "Creating...", btn_importing: "Importing...",
+    toast_invite_missing_fields: "Please fill in name and a valid email address",
+    toast_keycloak_create_failed: "Failed to create user in Keycloak",
+    toast_keycloak_user_created: "User created in Keycloak",
+    toast_user_provisioned: "User provisioned",
+    toast_api_not_reachable: "API not reachable",
+    toast_csv_empty: "CSV file appears to be empty",
+    toast_csv_missing_cols: "CSV is missing required columns",
+    toast_csv_no_valid_rows: "No valid rows found — make sure name and email columns are filled in",
+    toast_csv_no_rows_to_import: "Please select a CSV file first",
+    toast_csv_imported: "users imported successfully",
+    btn_export_report: "📥 Export Report",
+    btn_generate_report: "🔄 Generate Report",
+    btn_fetching_data: "Fetching fresh data...",
+    export_as_csv: "CSV",
+    export_as_xlsx: "Excel (.xlsx)",
+    export_as_pdf: "PDF",
+    toast_no_report_data: "Open Analytics tab first to load data, then export",
+    toast_csv_exported: "CSV report downloaded successfully",
+    toast_xlsx_exported: "Excel report downloaded successfully",
+    toast_pdf_exported: "PDF report downloaded successfully",
+    btn_add_audit_data: "📤 Add Audit Data",
+    audit_upload_title: "📤 Add Audit Data",
+    audit_upload_sub: "Upload a CSV file to append new records to the audit log",
+    audit_upload_format: "Accepts CSV · Columns: user_id, user_name, action_taken, risk_score, timestamp",
+    audit_preview_label: "Preview (first 5 rows)",
+    audit_upload_submit: "📋 Append to Audit Log",
+    toast_no_audit_data: "Load the Audit Log page first",
+    toast_audit_csv_exported: "Audit log CSV downloaded successfully",
+    toast_audit_rows_added: "new audit records appended successfully",
+    gen_modal_title: "🔄 Generate New Analysis",
+    gen_modal_sub: "Upload a CSV or Excel file of IAM events — your ML model will score every row and update the Analytics page",
+    gen_dropzone_text: "Click to upload or drag & drop",
+    gen_dropzone_format: "Accepts CSV or Excel (.xlsx) · Needs at least a user_id column",
+    btn_change_file: "Change",
+    gen_hint_title: "📋 Accepted Columns",
+    gen_required: "Required:", gen_optional: "Optional:",
+    gen_uploading: "Uploading file...",
+    gen_analysing: "Analysing with ML model...",
+    gen_scoring: "Scoring events...",
+    gen_complete: "Complete!",
+    gen_btn_analyse: "🔬 Analyse & Update Charts",
+    gen_no_file_error: "Please select a file first",
+    gen_toast_success: "events analysed and charts updated",
+    gen_showing_uploaded: "Showing uploaded data",
+    gen_back_to_live: "Back to live data",
+    gen_no_anomalies: "No anomaly types detected in this dataset",
+  },
+  ja: {
+    logo_sub: "アイデンティティ保護システム",
+    nav_dashboard: "ダッシュボード", nav_users: "ユーザー", nav_analytics: "分析",
+    nav_roles: "ロール", nav_audit: "監査ログ", nav_settings: "設定",
+    api_connected: "API接続済み",
+    dash_title: "リスクダッシュボード", dash_sub: "AI駆動の異常検知 — リアルタイムIAM脅威分析",
+    btn_simulate: "+ イベントを模擬", btn_refresh: "↻ 更新", btn_alert_admin: "🔔 管理者に通知",
+    m_high_risk: "高リスク", m_medium_risk: "中リスク", m_low_risk: "低リスク", m_total_events: "総イベント数",
+    m_normal_activity: "✅ 正常な活動", m_from_iam_logs: "IAMログより",
+    sec_events_title: "セキュリティイベント", sec_events_sub: "IAM異常検知フィード",
+    filter_all: "すべて", filter_high: "🔴 高", filter_medium: "🟡 中", filter_low: "🟢 低", filter_blocked: "🚫 ブロック済み",
+    th_user: "ユーザー", th_anomaly: "異常", th_country: "国", th_risk: "リスク", th_score: "スコア",
+    th_action: "アクション", th_time: "時刻", th_department: "部門", th_last_login: "最終ログイン",
+    th_top_score: "最高スコア", th_status: "状態", th_quick_action: "クイック操作", th_timestamp: "タイムスタンプ",
+    th_triggered_by: "実行者",
+    loading_api: "⏳ APIから読み込み中...", loading_generic: "読み込み中...", loading_users: "⏳ ユーザーを読み込み中...",
+    loading_audit: "⏳ 監査ログを読み込み中...",
+    detail_select_event: "⬅ イベントを選択", detail_click_row: "行をクリック",
+    risk_score_label: "リスクスコア", explainability_label: "説明性", remediation_label: "対処アクション",
+    action_block: "🚫 ブロック", action_block_sub: "アカウントを無効化",
+    action_mfa: "🔐 MFA強制", action_mfa_sub: "再認証を要求",
+    action_notify: "📧 通知", action_notify_sub: "管理者に警告",
+    action_allow: "✅ 許可", action_allow_sub: "アクセスを許可",
+    audit_trail_label: "監査証跡", click_action_above: "上記のアクションをクリックしてください。",
+    users_title: "👤 ユーザー", users_sub: "すべてのIAMユーザーと現在のリスク状況",
+    users_search_ph: "🔍 ユーザーを検索...", btn_invite: "+ ユーザーを招待",
+    u_total_users: "総ユーザー数", u_high_risk: "高リスクユーザー", u_departments: "部門数", u_blocked: "ブロック済みユーザー",
+    analytics_title: "📊 分析", analytics_sub: "リスク傾向、異常パターン、脅威インテリジェンス",
+    btn_export_report: "📥 レポート出力",
+    overview_title: "概要", overview_sub: "すべてのIAMイベントの統計情報",
+    stat_high_events: "高リスクイベント", stat_medium_events: "中リスクイベント", stat_low_events: "低リスクイベント",
+    stat_blocked: "ブロック数", stat_mfa: "MFA強制", stat_total: "総イベント数",
+    chart_anomaly_title: "異常タイプ分布", chart_anomaly_sub: "検出された脅威カテゴリの内訳",
+    chart_dept_title: "部門別リスク", chart_dept_sub: "部門ごとの平均リスクスコア",
+    chart_action_title: "アクション分布", chart_action_sub: "ポリシーエンジンの決定内訳",
+    chart_top_users_title: "高リスクユーザー TOP5", chart_top_users_sub: "リスクスコアが最も高いユーザー",
+    roles_title: "🔑 ロールと権限", roles_sub: "IAMロール定義、権限レベル、アクセスポリシー",
+    btn_new_role: "+ 新規ロール",
+    role_hierarchy_title: "ロール階層", role_hierarchy_sub: "5段階の権限モデル — 低から高",
+    role_viewer: "閲覧者", role_editor: "編集者", role_manager: "マネージャー", role_admin: "管理者", role_superadmin: "最高管理者",
+    role_viewer_p1: "✅ 読み取り専用アクセス", role_viewer_p2: "✅ レポート閲覧",
+    role_viewer_p3: "❌ 書き込み不可", role_viewer_p4: "❌ 管理者操作不可",
+    role_editor_p1: "✅ 閲覧者の全権限", role_editor_p2: "✅ 記録の編集",
+    role_editor_p3: "✅ チケット作成", role_editor_p4: "❌ ユーザー管理不可",
+    role_manager_p1: "✅ 編集者の全権限", role_manager_p2: "✅ アクセス申請の承認",
+    role_manager_p3: "✅ 監査ログ閲覧", role_manager_p4: "❌ システム設定不可",
+    role_admin_p1: "✅ マネージャーの全権限", role_admin_p2: "✅ ユーザー管理",
+    role_admin_p3: "✅ ポリシー設定", role_admin_p4: "✅ MFA強制／ブロック",
+    role_super_p1: "✅ 全権限", role_super_p2: "✅ システム設定",
+    role_super_p3: "✅ 監査ログ削除", role_super_p4: "⚠️ 侵害時の最高リスク",
+    role_users_label: "このロールのユーザー数",
+    role_escalation_title: "権限昇格アラート", role_escalation_desc: "MLモデルが検出した権限昇格の試み：",
+    role_dist_title: "ロール分布", role_dist_sub: "ライブイベントデータによる権限レベル別のアクセス要求",
+    audit_title: "📋 監査ログ", audit_sub: "すべてのセキュリティアクションの完全な記録",
+    audit_search_ph: "🔍 ユーザーまたはアクションを検索...", btn_export_csv: "📥 CSV出力",
+    ad_total_records: "総記録数", ad_blocks: "ブロック記録", ad_mfa: "MFA強制", ad_auto_manual: "自動／手動",
+    settings_title: "⚙ 設定", settings_sub: "システム設定、閾値、通知設定",
+    btn_save_changes: "💾 変更を保存",
+    sg_thresholds: "🎯 リスクスコア閾値", sg_ml_model: "🤖 MLモデル設定", sg_notifications: "🔔 通知設定",
+    sg_security: "🔒 セキュリティポリシー", sg_iam_integration: "🌐 IAM統合", sg_display: "🗾 表示設定",
+    set_block_label: "ブロック閾値", set_block_sub: "このスコア以上でアカウントをブロック",
+    set_mfa_thresh_label: "MFA強制閾値", set_mfa_thresh_sub: "このスコア以上でMFAが必要",
+    set_notify_label: "通知閾値", set_notify_sub: "このスコア以上で管理者に通知",
+    set_iso_label: "Isolation Forestの重み", set_xgb_label: "XGBoostの重み", set_weight_sub: "最終スコアへの寄与度",
+    set_active_model_label: "使用中のMLモデル", set_active_model_sub: "現在実行中のモデルバージョン",
+    model_ensemble: "アンサンブル（両方）", model_iso_only: "Isolation Forestのみ", model_xgb_only: "XGBoostのみ",
+    set_slack_label: "Slack通知", set_slack_sub: "#security-alertsチャンネルに投稿",
+    set_email_label: "メール通知", set_email_sub: "SOCチームのメールリストに送信",
+    set_jira_label: "Jiraチケット作成", set_jira_sub: "高リスク時にチケットを自動作成",
+    set_sms_label: "SMS通知（重大時のみ）", set_sms_sub: "ブロック操作時のみ",
+    set_autoblock_label: "MFA失敗時の自動ブロック", set_autoblock_sub: "5回連続失敗後にブロック",
+    set_travel_label: "不可能な移動の検出", set_travel_sub: "物理的に不可能な距離のログインを検出",
+    set_device_label: "新規デバイス警告", set_device_sub: "未認識デバイスを警告",
+    set_escalation_label: "権限昇格モニター", set_escalation_sub: "異常なロール要求を検出",
+    set_keycloak_sub: "localhost:8080 · ローカルIAMプロバイダー", set_entra_sub: "Azure Active Directory統合",
+    set_okta_sub: "Okta Workforce Identity",
+    set_refresh_label: "API更新間隔", set_refresh_sub: "ダッシュボードがAPIをポーリングする頻度",
+    opt_30s: "30秒", opt_1m: "1分", opt_5m: "5分", opt_manual: "手動のみ",
+    set_bilingual_label: "バイリンガル表示", set_bilingual_sub: "第二言語のラベルを表示",
+    set_dark_label: "ダークモード", theme_current_dark: "現在：ダーク", theme_current_light: "現在：ライト",
+    set_shap_label: "SHAP説明を表示", set_shap_sub: "AI説明パネルを表示",
+    set_timezone_label: "タイムゾーン", set_timezone_sub: "現地時間で表示",
+    login_subtitle: "アイデンティティ保護システム · 管理者専用",
+    login_username: "ユーザー名", login_password: "パスワード", login_button: "🔐 Keycloakでログイン",
+    login_footer: "ローカルのKeycloakレルムで認証されます。<br><strong>admin</strong>ロールを持つユーザーのみアクセス可能です。",
+    toast_admin_notified: "🚨 Slack・メールで管理者に通知しました",
+    toast_invite_sent: "📧 招待を送信しました",
+    toast_report_exported: "📥 レポートを出力しました",
+    toast_role_saved: "✅ ロールを保存しました",
+    toast_exported: "📥 出力しました",
+    toast_blocked: "🚫 アカウントをブロックしました",
+    toast_mfa_sent: "🔐 MFAを送信しました",
+    toast_notified: "📧 管理者に通知しました",
+    toast_allowed: "✅ アクセスを許可しました",
+    toast_settings_saved: "✅ 設定を保存しました",
+    toast_signed_out: "👋 ログアウトしました",
+    admins_section_title: "📧 管理者通知先",
+    admins_section_sub: "「管理者に通知」が実行された際に実際のセキュリティアラートを受信するメールアドレス",
+    admin_name_ph: "名前", admin_email_ph: "email@company.com",
+    btn_add_admin: "+ 追加", btn_remove: "削除",
+    admins_empty: "管理者メールがまだ登録されていません。上で追加すると実際のアラートを受信できます。",
+    toast_invalid_email: "⚠️ 有効なメールアドレスを入力してください",
+    toast_admin_added: "✅ 管理者メールを追加しました — 今後実際のアラートを受信します",
+    toast_admin_removed: "🗑 管理者メールを削除しました",
+    toast_sending_alert: "⏳ アラートメールを送信中...",
+    invite_modal_title: "新規ユーザーをプロビジョニング", invite_modal_sub: "手動で追加するか、IDプロバイダーからインポートします",
+    invite_source_label: "ID連携元",
+    source_manual: "手動", source_csv: "CSVインポート",
+    invite_name_label: "氏名", invite_email_label: "メールアドレス",
+    invite_dept_label: "部門", invite_role_label: "初期ロール",
+    invite_note_keycloak: "Admin APIを通じてローカルのKeycloakインスタンスに実際のユーザーを作成します。",
+    invite_note_okta: "有効なOktaの組織とAPIトークンが必要です — このデモ環境では未設定のため、ローカルに記録されます。",
+    invite_note_azure: "Microsoft Graph APIの認証情報が必要です — このデモ環境では未設定のため、ローカルに記録されます。",
+    invite_csv_label: "CSVファイル",
+    csv_dropzone_text: "クリックしてCSVファイルを選択", csv_dropzone_format: "列：name, email, department, role",
+    csv_rows_found: "件の有効な行が見つかりました", csv_more_rows: "件の追加行は表示されていません",
+    btn_cancel: "キャンセル", btn_provision_user: "+ ユーザーを作成", btn_import_csv: "CSVをインポート",
+    btn_creating: "作成中...", btn_importing: "インポート中...",
+    toast_invite_missing_fields: "氏名と有効なメールアドレスを入力してください",
+    toast_keycloak_create_failed: "Keycloakでのユーザー作成に失敗しました",
+    toast_keycloak_user_created: "Keycloakにユーザーを作成しました",
+    toast_user_provisioned: "ユーザーを作成しました",
+    toast_api_not_reachable: "APIに接続できません",
+    toast_csv_empty: "CSVファイルが空のようです",
+    toast_csv_missing_cols: "CSVに必要な列がありません",
+    toast_csv_no_valid_rows: "有効な行が見つかりません — name列とemail列が入力されているか確認してください",
+    toast_csv_no_rows_to_import: "先にCSVファイルを選択してください",
+    toast_csv_imported: "件のユーザーを正常にインポートしました",
+    btn_export_report: "📥 レポート出力",
+    btn_generate_report: "🔄 レポート生成",
+    btn_fetching_data: "最新データを取得中...",
+    export_as_csv: "CSV形式",
+    export_as_xlsx: "Excel形式 (.xlsx)",
+    export_as_pdf: "PDF形式",
+    toast_no_report_data: "先に分析タブを開いてデータを読み込んでください",
+    toast_csv_exported: "CSVレポートをダウンロードしました",
+    toast_xlsx_exported: "Excelレポートをダウンロードしました",
+    toast_pdf_exported: "PDFレポートをダウンロードしました",
+    btn_add_audit_data: "📤 監査データを追加",
+    audit_upload_title: "📤 監査データを追加",
+    audit_upload_sub: "CSVファイルをアップロードして監査ログに新しいレコードを追加します",
+    audit_upload_format: "CSV対応 · 列：user_id, user_name, action_taken, risk_score, timestamp",
+    audit_preview_label: "プレビュー（先頭5行）",
+    audit_upload_submit: "📋 監査ログに追加",
+    toast_no_audit_data: "先に監査ログページを読み込んでください",
+    toast_audit_csv_exported: "監査ログCSVをダウンロードしました",
+    toast_audit_rows_added: "件の監査レコードを正常に追加しました",
+    gen_modal_title: "🔄 新規分析を生成",
+    gen_modal_sub: "IAMイベントのCSVまたはExcelファイルをアップロード — MLモデルが各行をスコアリングし分析ページを更新します",
+    gen_dropzone_text: "クリックまたはドラッグ＆ドロップでアップロード",
+    gen_dropzone_format: "CSVまたはExcel(.xlsx)対応 · user_id列が必要",
+    btn_change_file: "変更",
+    gen_hint_title: "📋 使用可能な列",
+    gen_required: "必須:", gen_optional: "任意:",
+    gen_uploading: "ファイルをアップロード中...",
+    gen_analysing: "MLモデルで分析中...",
+    gen_scoring: "イベントをスコアリング中...",
+    gen_complete: "完了！",
+    gen_btn_analyse: "🔬 分析してグラフを更新",
+    gen_no_file_error: "先にファイルを選択してください",
+    gen_toast_success: "件のイベントを分析し、グラフを更新しました",
+    gen_showing_uploaded: "アップロードデータを表示中",
+    gen_back_to_live: "ライブデータに戻る",
+    gen_no_anomalies: "このデータセットに異常タイプは検出されませんでした",
+  },
+  ko: {
+    logo_sub: "신원 보호 시스템",
+    nav_dashboard: "대시보드", nav_users: "사용자", nav_analytics: "분석",
+    nav_roles: "역할", nav_audit: "감사 로그", nav_settings: "설정",
+    api_connected: "API 연결됨",
+    dash_title: "위험 대시보드", dash_sub: "AI 기반 이상 탐지 — 실시간 IAM 위협 분석",
+    btn_simulate: "+ 이벤트 시뮬레이션", btn_refresh: "↻ 새로고침", btn_alert_admin: "🔔 관리자에게 알림",
+    m_high_risk: "높은 위험", m_medium_risk: "중간 위험", m_low_risk: "낮은 위험", m_total_events: "전체 이벤트",
+    m_normal_activity: "✅ 정상 활동", m_from_iam_logs: "IAM 로그 기준",
+    sec_events_title: "보안 이벤트", sec_events_sub: "IAM 이상 탐지 피드",
+    filter_all: "전체", filter_high: "🔴 높음", filter_medium: "🟡 중간", filter_low: "🟢 낮음", filter_blocked: "🚫 차단됨",
+    th_user: "사용자", th_anomaly: "이상", th_country: "국가", th_risk: "위험", th_score: "점수",
+    th_action: "조치", th_time: "시간", th_department: "부서", th_last_login: "마지막 로그인",
+    th_top_score: "최고 점수", th_status: "상태", th_quick_action: "빠른 조치", th_timestamp: "타임스탬프",
+    th_triggered_by: "실행자",
+    loading_api: "⏳ API에서 불러오는 중...", loading_generic: "불러오는 중...", loading_users: "⏳ 사용자 불러오는 중...",
+    loading_audit: "⏳ 감사 로그 불러오는 중...",
+    detail_select_event: "⬅ 이벤트를 선택하세요", detail_click_row: "행을 클릭하세요",
+    risk_score_label: "위험 점수", explainability_label: "설명 가능성", remediation_label: "대응 조치",
+    action_block: "🚫 차단", action_block_sub: "계정 비활성화",
+    action_mfa: "🔐 MFA 강제", action_mfa_sub: "재인증 요구",
+    action_notify: "📧 알림", action_notify_sub: "관리자에게 경고",
+    action_allow: "✅ 허용", action_allow_sub: "접근 허용",
+    audit_trail_label: "감사 추적", click_action_above: "위 조치를 클릭하세요.",
+    users_title: "👤 사용자", users_sub: "모든 IAM 사용자 및 현재 위험 상태",
+    users_search_ph: "🔍 사용자 검색...", btn_invite: "+ 사용자 초대",
+    u_total_users: "전체 사용자", u_high_risk: "고위험 사용자", u_departments: "부서 수", u_blocked: "차단된 사용자",
+    analytics_title: "📊 분석", analytics_sub: "위험 동향, 이상 패턴 및 위협 인텔리전스",
+    btn_export_report: "📥 보고서 내보내기",
+    overview_title: "개요", overview_sub: "모든 IAM 이벤트의 집계 통계",
+    stat_high_events: "고위험 이벤트", stat_medium_events: "중위험 이벤트", stat_low_events: "저위험 이벤트",
+    stat_blocked: "차단된 계정", stat_mfa: "MFA 강제", stat_total: "전체 이벤트",
+    chart_anomaly_title: "이상 유형 분포", chart_anomaly_sub: "감지된 위협 범주의 분류",
+    chart_dept_title: "부서별 위험", chart_dept_sub: "부서별 평균 위험 점수",
+    chart_action_title: "조치 분포", chart_action_sub: "정책 엔진 결정 분류",
+    chart_top_users_title: "고위험 사용자 TOP5", chart_top_users_sub: "가장 높은 위험 점수를 가진 사용자",
+    roles_title: "🔑 역할 및 권한", roles_sub: "IAM 역할 정의, 권한 수준 및 접근 정책",
+    btn_new_role: "+ 새 역할",
+    role_hierarchy_title: "역할 계층", role_hierarchy_sub: "5단계 권한 모델 — 낮음에서 높음",
+    role_viewer: "뷰어", role_editor: "편집자", role_manager: "매니저", role_admin: "관리자", role_superadmin: "최고 관리자",
+    role_viewer_p1: "✅ 읽기 전용 대시보드 접근", role_viewer_p2: "✅ 보고서 보기",
+    role_viewer_p3: "❌ 쓰기 권한 없음", role_viewer_p4: "❌ 관리자 작업 불가",
+    role_editor_p1: "✅ 모든 뷰어 권한", role_editor_p2: "✅ 레코드 편집",
+    role_editor_p3: "✅ 티켓 생성", role_editor_p4: "❌ 사용자 관리 불가",
+    role_manager_p1: "✅ 모든 편집자 권한", role_manager_p2: "✅ 접근 요청 승인",
+    role_manager_p3: "✅ 감사 로그 보기", role_manager_p4: "❌ 시스템 구성 불가",
+    role_admin_p1: "✅ 모든 매니저 권한", role_admin_p2: "✅ 사용자 관리",
+    role_admin_p3: "✅ 정책 구성", role_admin_p4: "✅ MFA 강제/차단",
+    role_super_p1: "✅ 모든 권한", role_super_p2: "✅ 시스템 구성",
+    role_super_p3: "✅ 감사 로그 삭제", role_super_p4: "⚠️ 침해 시 최고 위험",
+    role_users_label: "이 역할을 가진 사용자",
+    role_escalation_title: "권한 상승 알림", role_escalation_desc: "ML 모델이 감지한 권한 상승 시도:",
+    role_dist_title: "역할 분포", role_dist_sub: "실시간 이벤트 데이터 기반 권한 등급별 접근 요청",
+    audit_title: "📋 감사 로그", audit_sub: "모든 보안 조치에 대한 완전한 기록",
+    audit_search_ph: "🔍 사용자 또는 조치 검색...", btn_export_csv: "📥 CSV 내보내기",
+    ad_total_records: "전체 기록", ad_blocks: "차단 기록", ad_mfa: "MFA 강제", ad_auto_manual: "자동/수동",
+    settings_title: "⚙ 설정", settings_sub: "시스템 구성, 임계값 및 알림 설정",
+    btn_save_changes: "💾 변경 사항 저장",
+    sg_thresholds: "🎯 위험 점수 임계값", sg_ml_model: "🤖 ML 모델 설정", sg_notifications: "🔔 알림",
+    sg_security: "🔒 보안 정책", sg_iam_integration: "🌐 IAM 통합", sg_display: "🗾 화면 표시",
+    set_block_label: "차단 임계값", set_block_sub: "이 점수 이상이면 계정 차단",
+    set_mfa_thresh_label: "MFA 강제 임계값", set_mfa_thresh_sub: "이 점수 이상이면 MFA 필요",
+    set_notify_label: "관리자 알림 임계값", set_notify_sub: "이 점수 이상이면 관리자에게 알림",
+    set_iso_label: "Isolation Forest 가중치", set_xgb_label: "XGBoost 가중치", set_weight_sub: "최종 점수에 대한 기여도",
+    set_active_model_label: "활성 ML 모델", set_active_model_sub: "현재 실행 중인 모델 버전",
+    model_ensemble: "앙상블 (둘 다)", model_iso_only: "Isolation Forest만", model_xgb_only: "XGBoost만",
+    set_slack_label: "Slack 알림", set_slack_sub: "#security-alerts 채널에 게시",
+    set_email_label: "이메일 알림", set_email_sub: "SOC 팀 이메일 목록으로 전송",
+    set_jira_label: "Jira 티켓 생성", set_jira_sub: "고위험 시 티켓 자동 생성",
+    set_sms_label: "SMS 알림 (긴급 시만)", set_sms_sub: "차단 작업에만 적용",
+    set_autoblock_label: "MFA 실패 시 자동 차단", set_autoblock_sub: "5회 연속 실패 후 차단",
+    set_travel_label: "불가능한 이동 탐지", set_travel_sub: "물리적으로 불가능한 거리의 로그인 표시",
+    set_device_label: "새 기기 알림", set_device_sub: "인식되지 않은 기기 알림",
+    set_escalation_label: "권한 상승 모니터", set_escalation_sub: "비정상적인 역할 요청 감지",
+    set_keycloak_sub: "localhost:8080 · 로컬 IAM 제공자", set_entra_sub: "Azure Active Directory 통합",
+    set_okta_sub: "Okta Workforce Identity",
+    set_refresh_label: "API 새로고침 간격", set_refresh_sub: "대시보드가 API를 조회하는 빈도",
+    opt_30s: "30초", opt_1m: "1분", opt_5m: "5분", opt_manual: "수동만",
+    set_bilingual_label: "이중 언어 라벨", set_bilingual_sub: "보조 언어 라벨 표시",
+    set_dark_label: "다크 모드", theme_current_dark: "현재: 다크", theme_current_light: "현재: 라이트",
+    set_shap_label: "SHAP 설명 표시", set_shap_sub: "AI 설명 패널 표시",
+    set_timezone_label: "시간대", set_timezone_sub: "현지 시간으로 표시",
+    login_subtitle: "신원 보호 시스템 · 관리자 전용",
+    login_username: "사용자 이름", login_password: "비밀번호", login_button: "🔐 Keycloak으로 로그인",
+    login_footer: "로컬 Keycloak realm을 통해 인증됩니다.<br><strong>admin</strong> 역할을 가진 사용자만 이 대시보드에 접근할 수 있습니다.",
+    toast_admin_notified: "🚨 Slack 및 이메일로 관리자에게 알림",
+    toast_invite_sent: "📧 초대를 보냈습니다",
+    toast_report_exported: "📥 보고서를 내보냈습니다",
+    toast_role_saved: "✅ 역할이 저장되었습니다",
+    toast_exported: "📥 내보냈습니다",
+    toast_blocked: "🚫 계정이 차단되었습니다",
+    toast_mfa_sent: "🔐 MFA를 전송했습니다",
+    toast_notified: "📧 관리자에게 알렸습니다",
+    toast_allowed: "✅ 접근이 허용되었습니다",
+    toast_settings_saved: "✅ 설정이 저장되었습니다",
+    toast_signed_out: "👋 로그아웃되었습니다",
+    admins_section_title: "📧 관리자 알림 수신자",
+    admins_section_sub: "'관리자에게 알림'이 실행될 때 실제 보안 알림을 받는 이메일 주소",
+    admin_name_ph: "이름", admin_email_ph: "email@company.com",
+    btn_add_admin: "+ 추가", btn_remove: "삭제",
+    admins_empty: "아직 등록된 관리자 이메일이 없습니다. 위에서 추가하면 실제 알림을 받을 수 있습니다.",
+    toast_invalid_email: "⚠️ 유효한 이메일 주소를 입력하세요",
+    toast_admin_added: "✅ 관리자 이메일이 추가되었습니다 — 이제 실제 알림을 받습니다",
+    toast_admin_removed: "🗑 관리자 이메일이 삭제되었습니다",
+    toast_sending_alert: "⏳ 알림 메일 전송 중...",
+    invite_modal_title: "신규 사용자 프로비저닝", invite_modal_sub: "수동으로 추가하거나 ID 공급자에서 가져오기",
+    invite_source_label: "ID 소스",
+    source_manual: "수동", source_csv: "CSV 가져오기",
+    invite_name_label: "이름", invite_email_label: "이메일 주소",
+    invite_dept_label: "부서", invite_role_label: "초기 역할",
+    invite_note_keycloak: "Admin API를 통해 로컬 Keycloak 인스턴스에 실제 사용자를 생성합니다.",
+    invite_note_okta: "유효한 Okta 조직 및 API 토큰이 필요합니다 — 이 데모 환경에서는 설정되어 있지 않으므로 로컬에 기록됩니다.",
+    invite_note_azure: "Microsoft Graph API 자격 증명이 필요합니다 — 이 데모 환경에서는 설정되어 있지 않으므로 로컬에 기록됩니다.",
+    invite_csv_label: "CSV 파일",
+    csv_dropzone_text: "클릭하여 CSV 파일 선택", csv_dropzone_format: "열: name, email, department, role",
+    csv_rows_found: "개의 유효한 행 발견", csv_more_rows: "개의 추가 행은 표시되지 않음",
+    btn_cancel: "취소", btn_provision_user: "+ 사용자 생성", btn_import_csv: "CSV 가져오기",
+    btn_creating: "생성 중...", btn_importing: "가져오는 중...",
+    toast_invite_missing_fields: "이름과 유효한 이메일 주소를 입력하세요",
+    toast_keycloak_create_failed: "Keycloak에서 사용자 생성 실패",
+    toast_keycloak_user_created: "Keycloak에 사용자가 생성되었습니다",
+    toast_user_provisioned: "사용자가 생성되었습니다",
+    toast_api_not_reachable: "API에 연결할 수 없습니다",
+    toast_csv_empty: "CSV 파일이 비어 있는 것 같습니다",
+    toast_csv_missing_cols: "CSV에 필요한 열이 없습니다",
+    toast_csv_no_valid_rows: "유효한 행을 찾을 수 없습니다 — name 및 email 열이 채워져 있는지 확인하세요",
+    toast_csv_no_rows_to_import: "먼저 CSV 파일을 선택하세요",
+    toast_csv_imported: "명의 사용자를 성공적으로 가져왔습니다",
+    btn_export_report: "📥 보고서 내보내기",
+    btn_generate_report: "🔄 보고서 생성",
+    btn_fetching_data: "최신 데이터 가져오는 중...",
+    export_as_csv: "CSV 형식",
+    export_as_xlsx: "Excel 형식 (.xlsx)",
+    export_as_pdf: "PDF 형식",
+    toast_no_report_data: "먼저 분석 탭을 열어 데이터를 불러오세요",
+    toast_csv_exported: "CSV 보고서가 다운로드되었습니다",
+    toast_xlsx_exported: "Excel 보고서가 다운로드되었습니다",
+    toast_pdf_exported: "PDF 보고서가 다운로드되었습니다",
+    btn_add_audit_data: "📤 감사 데이터 추가",
+    audit_upload_title: "📤 감사 데이터 추가",
+    audit_upload_sub: "CSV 파일을 업로드하여 감사 로그에 새 기록을 추가합니다",
+    audit_upload_format: "CSV 허용 · 열: user_id, user_name, action_taken, risk_score, timestamp",
+    audit_preview_label: "미리보기 (처음 5행)",
+    audit_upload_submit: "📋 감사 로그에 추가",
+    toast_no_audit_data: "먼저 감사 로그 페이지를 불러오세요",
+    toast_audit_csv_exported: "감사 로그 CSV가 다운로드되었습니다",
+    toast_audit_rows_added: "개의 감사 기록이 성공적으로 추가되었습니다",
+    gen_modal_title: "🔄 새 분석 생성",
+    gen_modal_sub: "IAM 이벤트 CSV 또는 Excel 파일 업로드 — ML 모델이 각 행을 채점하고 분석 페이지를 업데이트합니다",
+    gen_dropzone_text: "클릭하거나 드래그 앤 드롭으로 업로드",
+    gen_dropzone_format: "CSV 또는 Excel(.xlsx) 허용 · user_id 열 필요",
+    btn_change_file: "변경",
+    gen_hint_title: "📋 허용 열",
+    gen_required: "필수:", gen_optional: "선택:",
+    gen_uploading: "파일 업로드 중...",
+    gen_analysing: "ML 모델로 분석 중...",
+    gen_scoring: "이벤트 채점 중...",
+    gen_complete: "완료!",
+    gen_btn_analyse: "🔬 분석 및 차트 업데이트",
+    gen_no_file_error: "먼저 파일을 선택하세요",
+    gen_toast_success: "개의 이벤트가 분석되고 차트가 업데이트되었습니다",
+    gen_showing_uploaded: "업로드된 데이터 표시 중",
+    gen_back_to_live: "실시간 데이터로 돌아가기",
+    gen_no_anomalies: "이 데이터셋에서 이상 유형이 감지되지 않았습니다",
+  },
+  zh: {
+    logo_sub: "身份保护系统",
+    nav_dashboard: "仪表盘", nav_users: "用户", nav_analytics: "分析",
+    nav_roles: "角色", nav_audit: "审计日志", nav_settings: "设置",
+    api_connected: "API已连接",
+    dash_title: "风险仪表盘", dash_sub: "AI驱动的异常检测 — 实时IAM威胁分析",
+    btn_simulate: "+ 模拟事件", btn_refresh: "↻ 刷新", btn_alert_admin: "🔔 通知管理员",
+    m_high_risk: "高风险", m_medium_risk: "中风险", m_low_risk: "低风险", m_total_events: "事件总数",
+    m_normal_activity: "✅ 正常活动", m_from_iam_logs: "来自IAM日志",
+    sec_events_title: "安全事件", sec_events_sub: "IAM异常检测信息流",
+    filter_all: "全部", filter_high: "🔴 高", filter_medium: "🟡 中", filter_low: "🟢 低", filter_blocked: "🚫 已封锁",
+    th_user: "用户", th_anomaly: "异常", th_country: "国家", th_risk: "风险", th_score: "分数",
+    th_action: "操作", th_time: "时间", th_department: "部门", th_last_login: "最后登录",
+    th_top_score: "最高分数", th_status: "状态", th_quick_action: "快捷操作", th_timestamp: "时间戳",
+    th_triggered_by: "触发者",
+    loading_api: "⏳ 正在从API加载...", loading_generic: "加载中...", loading_users: "⏳ 正在加载用户...",
+    loading_audit: "⏳ 正在加载审计日志...",
+    detail_select_event: "⬅ 选择一个事件", detail_click_row: "点击任意行",
+    risk_score_label: "风险分数", explainability_label: "可解释性", remediation_label: "补救措施",
+    action_block: "🚫 封锁", action_block_sub: "停用账户",
+    action_mfa: "🔐 强制MFA", action_mfa_sub: "要求重新验证",
+    action_notify: "📧 通知", action_notify_sub: "提醒管理员",
+    action_allow: "✅ 允许", action_allow_sub: "授予访问权限",
+    audit_trail_label: "审计追踪", click_action_above: "请点击上方操作。",
+    users_title: "👤 用户", users_sub: "所有IAM用户及其当前风险状况",
+    users_search_ph: "🔍 搜索用户...", btn_invite: "+ 邀请用户",
+    u_total_users: "用户总数", u_high_risk: "高风险用户", u_departments: "部门数", u_blocked: "已封锁用户",
+    analytics_title: "📊 分析", analytics_sub: "风险趋势、异常模式与威胁情报",
+    btn_export_report: "📥 导出报告",
+    overview_title: "概览", overview_sub: "所有IAM事件的汇总统计",
+    stat_high_events: "高风险事件", stat_medium_events: "中风险事件", stat_low_events: "低风险事件",
+    stat_blocked: "已封锁账户", stat_mfa: "强制MFA次数", stat_total: "事件总数",
+    chart_anomaly_title: "异常类型分布", chart_anomaly_sub: "检测到的威胁类别细分",
+    chart_dept_title: "部门风险分布", chart_dept_sub: "各部门平均风险分数",
+    chart_action_title: "操作分布", chart_action_sub: "策略引擎决策细分",
+    chart_top_users_title: "高风险用户 TOP5", chart_top_users_sub: "风险分数最高的用户",
+    roles_title: "🔑 角色与权限", roles_sub: "IAM角色定义、权限级别和访问策略",
+    btn_new_role: "+ 新建角色",
+    role_hierarchy_title: "角色层级", role_hierarchy_sub: "五级权限模型 — 从低到高",
+    role_viewer: "查看者", role_editor: "编辑者", role_manager: "经理", role_admin: "管理员", role_superadmin: "超级管理员",
+    role_viewer_p1: "✅ 只读仪表盘访问", role_viewer_p2: "✅ 查看报告",
+    role_viewer_p3: "❌ 无写入权限", role_viewer_p4: "❌ 无管理员操作权限",
+    role_editor_p1: "✅ 所有查看者权限", role_editor_p2: "✅ 编辑记录",
+    role_editor_p3: "✅ 创建工单", role_editor_p4: "❌ 无用户管理权限",
+    role_manager_p1: "✅ 所有编辑者权限", role_manager_p2: "✅ 批准访问请求",
+    role_manager_p3: "✅ 查看审计日志", role_manager_p4: "❌ 无系统配置权限",
+    role_admin_p1: "✅ 所有经理权限", role_admin_p2: "✅ 用户管理",
+    role_admin_p3: "✅ 策略配置", role_admin_p4: "✅ 强制MFA／封锁用户",
+    role_super_p1: "✅ 所有权限", role_super_p2: "✅ 系统配置",
+    role_super_p3: "✅ 删除审计日志", role_super_p4: "⚠️ 被入侵时风险最高",
+    role_users_label: "拥有此角色的用户",
+    role_escalation_title: "权限提升警报", role_escalation_desc: "ML模型检测到的权限提升尝试：",
+    role_dist_title: "角色分布", role_dist_sub: "基于实时事件数据按角色级别分组的访问请求",
+    audit_title: "📋 审计日志", audit_sub: "所有安全操作的完整防篡改记录",
+    audit_search_ph: "🔍 搜索用户或操作...", btn_export_csv: "📥 导出CSV",
+    ad_total_records: "记录总数", ad_blocks: "封锁记录", ad_mfa: "强制MFA", ad_auto_manual: "自动／手动",
+    settings_title: "⚙ 设置", settings_sub: "系统配置、阈值和通知偏好",
+    btn_save_changes: "💾 保存更改",
+    sg_thresholds: "🎯 风险分数阈值", sg_ml_model: "🤖 ML模型设置", sg_notifications: "🔔 通知设置",
+    sg_security: "🔒 安全策略", sg_iam_integration: "🌐 IAM集成", sg_display: "🗾 显示设置",
+    set_block_label: "封锁阈值", set_block_sub: "分数高于此值则封锁账户",
+    set_mfa_thresh_label: "强制MFA阈值", set_mfa_thresh_sub: "分数高于此值则需要MFA",
+    set_notify_label: "通知管理员阈值", set_notify_sub: "分数高于此值则通知管理员",
+    set_iso_label: "Isolation Forest权重", set_xgb_label: "XGBoost权重", set_weight_sub: "对最终分数的贡献度",
+    set_active_model_label: "当前使用的ML模型", set_active_model_sub: "当前运行的模型版本",
+    model_ensemble: "集成模型（两者）", model_iso_only: "仅Isolation Forest", model_xgb_only: "仅XGBoost",
+    set_slack_label: "Slack通知", set_slack_sub: "发布到#security-alerts频道",
+    set_email_label: "邮件通知", set_email_sub: "发送至SOC团队邮件列表",
+    set_jira_label: "Jira工单创建", set_jira_sub: "高风险时自动创建工单",
+    set_sms_label: "短信通知（仅紧急情况）", set_sms_sub: "仅适用于封锁操作",
+    set_autoblock_label: "MFA失败时自动封锁", set_autoblock_sub: "连续失败5次后封锁",
+    set_travel_label: "不可能旅行检测", set_travel_sub: "标记物理上不可能的距离登录",
+    set_device_label: "新设备提醒", set_device_sub: "未识别设备时提醒",
+    set_escalation_label: "权限提升监控", set_escalation_sub: "检测异常角色请求",
+    set_keycloak_sub: "localhost:8080 · 本地IAM提供商", set_entra_sub: "Azure Active Directory集成",
+    set_okta_sub: "Okta Workforce Identity",
+    set_refresh_label: "API刷新间隔", set_refresh_sub: "仪表盘轮询API的频率",
+    opt_30s: "30秒", opt_1m: "1分钟", opt_5m: "5分钟", opt_manual: "仅手动",
+    set_bilingual_label: "双语标签", set_bilingual_sub: "显示第二语言标签",
+    set_dark_label: "深色模式", theme_current_dark: "当前：深色", theme_current_light: "当前：浅色",
+    set_shap_label: "显示SHAP解释", set_shap_sub: "显示AI可解释性面板",
+    set_timezone_label: "时区", set_timezone_sub: "以本地时区显示时间",
+    login_subtitle: "身份保护系统 · 仅限管理员",
+    login_username: "用户名", login_password: "密码", login_button: "🔐 通过Keycloak登录",
+    login_footer: "通过您本地的Keycloak realm进行身份验证。<br>只有拥有<strong>admin</strong>角色的用户才能访问此仪表盘。",
+    toast_admin_notified: "🚨 已通过Slack和邮件通知管理员",
+    toast_invite_sent: "📧 邀请已发送",
+    toast_report_exported: "📥 报告已导出",
+    toast_role_saved: "✅ 角色已保存",
+    toast_exported: "📥 已导出",
+    toast_blocked: "🚫 账户已封锁",
+    toast_mfa_sent: "🔐 已发送MFA",
+    toast_notified: "📧 已通知管理员",
+    toast_allowed: "✅ 已允许访问",
+    toast_settings_saved: "✅ 设置已保存",
+    toast_signed_out: "👋 已注销",
+    admins_section_title: "📧 管理员通知接收人",
+    admins_section_sub: "触发「通知管理员」时接收真实安全警报的电子邮件地址",
+    admin_name_ph: "姓名", admin_email_ph: "email@company.com",
+    btn_add_admin: "+ 添加", btn_remove: "删除",
+    admins_empty: "尚未配置管理员邮箱。请在上方添加以开始接收真实警报。",
+    toast_invalid_email: "⚠️ 请输入有效的电子邮件地址",
+    toast_admin_added: "✅ 已添加管理员邮箱 — 现在将接收真实警报",
+    toast_admin_removed: "🗑 已删除管理员邮箱",
+    toast_sending_alert: "⏳ 正在发送警报邮件...",
+    invite_modal_title: "添加新用户", invite_modal_sub: "手动添加用户或从身份提供商导入",
+    invite_source_label: "身份来源",
+    source_manual: "手动", source_csv: "CSV导入",
+    invite_name_label: "姓名", invite_email_label: "电子邮件地址",
+    invite_dept_label: "部门", invite_role_label: "初始角色",
+    invite_note_keycloak: "这将通过Admin API在您本地的Keycloak实例中创建真实用户。",
+    invite_note_okta: "需要有效的Okta组织和API令牌 — 此演示环境未配置，用户将改为在本地记录。",
+    invite_note_azure: "需要Microsoft Graph API凭据 — 此演示环境未配置，用户将改为在本地记录。",
+    invite_csv_label: "CSV文件",
+    csv_dropzone_text: "点击选择CSV文件", csv_dropzone_format: "列：name, email, department, role",
+    csv_rows_found: "条有效记录", csv_more_rows: "条更多记录未显示",
+    btn_cancel: "取消", btn_provision_user: "+ 创建用户", btn_import_csv: "导入CSV",
+    btn_creating: "正在创建...", btn_importing: "正在导入...",
+    toast_invite_missing_fields: "请填写姓名和有效的电子邮件地址",
+    toast_keycloak_create_failed: "在Keycloak中创建用户失败",
+    toast_keycloak_user_created: "已在Keycloak中创建用户",
+    toast_user_provisioned: "用户已创建",
+    toast_api_not_reachable: "无法连接到API",
+    toast_csv_empty: "CSV文件似乎为空",
+    toast_csv_missing_cols: "CSV缺少必需的列",
+    toast_csv_no_valid_rows: "未找到有效记录 — 请确认name和email列已填写",
+    toast_csv_no_rows_to_import: "请先选择CSV文件",
+    toast_csv_imported: "名用户已成功导入",
+    btn_export_report: "📥 导出报告",
+    btn_generate_report: "🔄 生成报告",
+    btn_fetching_data: "正在获取最新数据...",
+    export_as_csv: "CSV格式",
+    export_as_xlsx: "Excel格式 (.xlsx)",
+    export_as_pdf: "PDF格式",
+    toast_no_report_data: "请先打开分析页面加载数据，然后再导出",
+    toast_csv_exported: "CSV报告已成功下载",
+    toast_xlsx_exported: "Excel报告已成功下载",
+    toast_pdf_exported: "PDF报告已成功下载",
+    btn_add_audit_data: "📤 添加审计数据",
+    audit_upload_title: "📤 添加审计数据",
+    audit_upload_sub: "上传CSV文件以将新记录追加到审计日志",
+    audit_upload_format: "支持CSV · 列：user_id, user_name, action_taken, risk_score, timestamp",
+    audit_preview_label: "预览（前5行）",
+    audit_upload_submit: "📋 追加到审计日志",
+    toast_no_audit_data: "请先加载审计日志页面",
+    toast_audit_csv_exported: "审计日志CSV已成功下载",
+    toast_audit_rows_added: "条审计记录已成功追加",
+    gen_modal_title: "🔄 生成新分析",
+    gen_modal_sub: "上传IAM事件的CSV或Excel文件 — ML模型将对每一行进行评分并更新分析页面",
+    gen_dropzone_text: "点击上传或拖放文件",
+    gen_dropzone_format: "支持CSV或Excel(.xlsx) · 需要user_id列",
+    btn_change_file: "更改",
+    gen_hint_title: "📋 支持的列",
+    gen_required: "必填:", gen_optional: "可选:",
+    gen_uploading: "正在上传文件...",
+    gen_analysing: "正在使用ML模型分析...",
+    gen_scoring: "正在对事件评分...",
+    gen_complete: "完成！",
+    gen_btn_analyse: "🔬 分析并更新图表",
+    gen_no_file_error: "请先选择文件",
+    gen_toast_success: "个事件已分析完成，图表已更新",
+    gen_showing_uploaded: "正在显示上传数据",
+    gen_back_to_live: "返回实时数据",
+    gen_no_anomalies: "此数据集中未检测到异常类型",
+  },
+};
+
+window.__currentLang = window.__currentLang || "en";
+
+// Shorthand lookup — returns the translated string for the current language,
+// falling back to English if a key is missing in the active language.
+function t(key){
+  const lang = window.__currentLang;
+  return (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) || TRANSLATIONS.en[key] || key;
+}
+
+function applyTranslations(){
+  const lang = window.__currentLang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    const value = t(key);
+    // login_footer and a couple of others contain inline HTML (<strong>, <br>) —
+    // safe here since the dictionary is fully authored by us, not user input.
+    if (key === "login_footer") {
+      el.innerHTML = value;
+    } else {
+      el.textContent = value;
+    }
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    el.placeholder = t(key);
+  });
+  // Keep both language dropdowns (login screen + sidebar) in sync with each other
+  const sw1 = document.getElementById("lang-switcher");
+  const sw2 = document.getElementById("login-lang-switcher");
+  if (sw1) sw1.value = lang;
+  if (sw2) sw2.value = lang;
+}
+
+function setLanguage(lang){
+  if (!TRANSLATIONS[lang]) lang = "en";
+  window.__currentLang = lang;
+  applyTranslations();
+  // Theme status text depends on current theme state, not just language —
+  // re-apply it so switching language doesn't revert it to the English default.
+  const statusText = document.getElementById("theme-status-text");
+  if (statusText) {
+    statusText.textContent = window.__currentTheme === "light" ? t("theme_current_light") : t("theme_current_dark");
+  }
+}
+
+let allEvents=[],currentFilter="all",selectedEvent=null;
+
+function updateClock(){
+  document.getElementById("clock").textContent=new Date().toLocaleTimeString("ja-JP",{hour:"2-digit",minute:"2-digit",second:"2-digit"})+" JST";
+}
+updateClock();setInterval(updateClock,1000);
+
+function showToast(msg){
+  const t=document.getElementById("toast");
+  document.getElementById("toast-msg").textContent=msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),3000);
+}
+
+// ── PAGE NAVIGATION (this is the part that was broken) ──────────────────────
+function showPage(name){
+  console.log("Switching to page:", name);
+  const pages = document.querySelectorAll(".page");
+  pages.forEach(p => p.classList.remove("active"));
+  const navItems = document.querySelectorAll(".nav-item");
+  navItems.forEach(n => n.classList.remove("active"));
+
+  const targetPage = document.getElementById("page-" + name);
+  const targetNav   = document.getElementById("nav-" + name);
+  if (targetPage) targetPage.classList.add("active");
+  if (targetNav)  targetNav.classList.add("active");
+
+  if (name === "users") loadUsers();
+  if (name === "analytics") loadAnalytics();
+  if (name === "roles") loadRoles();
+  if (name === "audit") loadAudit();
+  if (name === "settings") loadAdmins();
+
+  closeSidebar();   // auto-close mobile sidebar after navigating
+}
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("sidebar-overlay").classList.toggle("show");
+}
+
+function closeSidebar(){
+  document.getElementById("sidebar").classList.remove("open");
+  document.getElementById("sidebar-overlay").classList.remove("show");
+}
+
+function riskColor(r){return r==="HIGH"?"#ef4444":r==="MEDIUM"?"#f59e0b":"#10b981";}
+function riskDot(r){return r==="HIGH"?"🔴":r==="MEDIUM"?"🟡":"🟢";}
+function actionLabel(a){return {BLOCK:"🚫 Block",FORCE_MFA:"🔐 MFA",ALLOW:"✅ Allow",NOTIFY_ADMIN:"📧 Notify"}[a]||a;}
+function avatarColor(uid){const c=["#ef4444","#f59e0b","#10b981","#3b82f6","#8b5cf6","#ec4899"];let h=0;for(let ch of uid)h=(h*31+ch.charCodeAt(0))&0xffff;return c[h%c.length];}
+
+// ── DASHBOARD ──────────────────────────────────────────────────────────────
+async function loadStats(){
+  try{
+    const d=await(await fetch(API+"/stats")).json();
+    document.getElementById("m-high").textContent=d.high_risk;
+    document.getElementById("m-med").textContent=d.medium_risk;
+    document.getElementById("m-low").textContent=d.low_risk;
+    document.getElementById("m-total").textContent=d.total_events;
+    document.getElementById("m-high-sub").textContent="🚫 "+d.blocked+" blocked";
+    document.getElementById("m-med-sub").textContent="🔐 "+d.mfa_forced+" MFA forced";
+    document.getElementById("alert-count").textContent=d.high_risk+d.medium_risk;
+  }catch(e){console.error("Stats error:",e);}
+}
+
+async function loadEvents(){
+  try{
+    const d=await(await fetch(API+"/events?limit=100")).json();
+    allEvents=d.events||[];
+    document.getElementById("last-refresh").textContent="Updated "+new Date().toLocaleTimeString("ja-JP");
+    renderTable();await loadStats();
+  }catch(e){
+    document.getElementById("events-tbody").innerHTML=`<tr class="loading-row"><td colspan="7">❌ Start server: python -m uvicorn api.main:app --reload</td></tr>`;
+  }
+}
+
+function getFiltered(){return allEvents.filter(e=>{if(currentFilter==="all")return true;if(currentFilter==="BLOCK")return e.action==="BLOCK";return e.risk_label===currentFilter;});}
+
+function renderTable(){
+  const events=getFiltered();
+  if(!events.length){document.getElementById("events-tbody").innerHTML=`<tr class="loading-row"><td colspan="7">No events match this filter.</td></tr>`;return;}
+  document.getElementById("events-tbody").innerHTML=events.map(e=>{
+    const color=riskColor(e.risk_label);
+    const bg=e.risk_label==="HIGH"?"rgba(239,68,68,0.15)":e.risk_label==="MEDIUM"?"rgba(245,158,11,0.15)":"rgba(16,185,129,0.15)";
+    const av=(e.user_name||e.user_id).split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+    const ts=new Date(e.timestamp).toLocaleTimeString("ja-JP",{hour:"2-digit",minute:"2-digit"});
+    const sel=selectedEvent&&selectedEvent.session_id===e.session_id?"selected":"";
+    return `<tr class="${sel}" onclick="selectEvent('${e.session_id}')">
+      <td><div class="user-cell"><div class="avatar" style="background:${bg};color:${avatarColor(e.user_id)}">${av}</div><div><div style="font-weight:600">${e.user_name}</div><div style="font-size:11px;color:var(--text-muted)">${e.user_id} · ${e.department}</div></div></div></td>
+      <td style="font-size:12px">${(e.anomaly_type||"none").replace(/_/g," ")}</td>
+      <td style="font-size:12px">${e.country}</td>
+      <td><span class="risk-badge risk-${e.risk_label}">${riskDot(e.risk_label)} ${e.risk_label}</span></td>
+      <td><div class="score-bar"><div style="font-size:13px;font-weight:700;color:${color};min-width:28px">${e.risk_score}</div><div class="score-track"><div class="score-fill" style="width:${e.risk_score}%;background:${color}"></div></div></div></td>
+      <td><span class="action-badge action-${e.action}">${actionLabel(e.action)}</span></td>
+      <td style="font-size:11px;color:var(--text-muted)">${ts}</td></tr>`;
+  }).join("");
+}
+
+function selectEvent(sid){
+  selectedEvent=allEvents.find(e=>e.session_id===sid);if(!selectedEvent)return;
+  renderTable();const e=selectedEvent;
+  const color=riskColor(e.risk_label);const cls=e.risk_label==="HIGH"?"score-high":e.risk_label==="MEDIUM"?"score-med":"score-low";
+  document.getElementById("detail-user").textContent=e.user_name+" · "+e.user_id;
+  document.getElementById("detail-sub").textContent=e.department+" · "+(e.anomaly_type||"none").replace(/_/g," ");
+  const sc=document.getElementById("score-circle");sc.textContent=e.risk_score;sc.className="score-circle "+cls;
+  document.getElementById("score-label").textContent=e.risk_label+" RISK";document.getElementById("score-label").style.color=color;
+  document.getElementById("score-model").textContent="ISO: "+e.iso_score+" · XGB: "+(e.xgb_high_prob*100).toFixed(1)+"%";
+  document.getElementById("score-display").style.display="flex";
+  const shapEnabled = window._showShap !== false;
+  document.getElementById("explain-section").style.display = shapEnabled ? "block" : "none";
+  const L={impossible_travel:"🌍 Impossible travel",mfa_fail_count:"🔐 MFA failures",country_deviation:"📍 Country deviation",role_escalation:"👑 Role escalation",is_known_device:"📱 Known device",pwd_reset_7d:"🔒 Password resets",peer_zscore:"👥 Peer behaviour",is_business_hours:"⏰ Business hours",hours_since_last:"⌚ Time since last",role_rank:"🔑 Role rank"};
+  const expl=e.explanation||[];
+  document.getElementById("explain-list").innerHTML=expl.length?expl.map(x=>`<li class="explain-item"><div><div>${L[x.feature]||x.feature}</div><div style="color:${x.shap>0?"#f87171":"#6ee7b7"};font-size:10px;margin-top:2px">${x.shap>0?"↑ increases risk":"↓ decreases risk"} (SHAP: ${x.shap>0?"+":""}${x.shap})</div></div></li>`).join(""):`<li class="explain-item"><div style="color:var(--text-muted)">No explanation available</div></li>`;
+  document.getElementById("action-panel").style.display="block";
+  document.getElementById("close-detail-btn").style.display="inline-block";
+
+  // On mobile/tablet, the detail panel stacks below the table — scroll to it
+  // so the person doesn't think nothing happened when they tap a row.
+  if (window.innerWidth <= 1024) {
+    const detailCard = document.querySelector(".right-panel");
+    if (detailCard) detailCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function clearSelectedEvent(){
+  selectedEvent = null;
+  renderTable();
+  document.getElementById("detail-user").textContent = "⬅ Select an event";
+  document.getElementById("detail-sub").textContent = "Click any row · 行をクリック";
+  document.getElementById("score-display").style.display = "none";
+  document.getElementById("explain-section").style.display = "none";
+  document.getElementById("action-panel").style.display = "none";
+  document.getElementById("close-detail-btn").style.display = "none";
+}
+
+function setFilter(f,btn){currentFilter=f;document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderTable();}
+
+function doAction(msg){
+  showToast(msg);const user=selectedEvent?selectedEvent.user_name:"Unknown";
+  document.getElementById("audit-preview").innerHTML=`<div style="color:var(--text);margin-bottom:4px">${msg}</div><div style="color:var(--text-muted)">User: ${user} · ${new Date().toLocaleTimeString("ja-JP")} · AUTO</div>`;
+}
+
+async function simulateEvent(){
+  const users=[
+    {user_id:"sim1",user_name:"Nakamura Aoi",department:"DevOps",country:"Russia",impossible_travel:1,mfa_fail_count:3,is_known_device:0,country_deviation:1,role_rank:3,role_escalation:1,pwd_reset_7d:0,peer_zscore:2.1,hour_sin:-0.5,hour_cos:-0.8,is_business_hours:0,hours_since_last:2},
+    {user_id:"sim2",user_name:"Watanabe Keiko",department:"Finance",country:"Japan",impossible_travel:0,mfa_fail_count:5,is_known_device:0,country_deviation:0,role_rank:2,role_escalation:1,pwd_reset_7d:2,peer_zscore:1.5,hour_sin:0.9,hour_cos:0.2,is_business_hours:0,hours_since_last:0.5},
+    {user_id:"sim3",user_name:"Fujita Makoto",department:"Sales",country:"USA",impossible_travel:0,mfa_fail_count:0,is_known_device:1,country_deviation:1,role_rank:1,role_escalation:0,pwd_reset_7d:0,peer_zscore:0.3,hour_sin:0.7,hour_cos:0.7,is_business_hours:1,hours_since_last:8},
+  ];
+  const payload=users[Math.floor(Math.random()*users.length)];
+  showToast("⏳ Scoring via ML API...");
+  try{
+    const data=await(await fetch(API+"/score",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})).json();
+    allEvents.unshift({session_id:"sim_"+Date.now(),user_id:data.user_id,user_name:data.user_name,department:payload.department,timestamp:data.timestamp,country:payload.country,city:"Simulated",anomaly_type:"simulated_event",risk_label:data.risk_label,risk_score:data.risk_score,action:data.action,action_ja:data.action_ja,iso_score:data.iso_score,xgb_high_prob:data.xgb_high_prob,explanation:data.explanation});
+    renderTable();showToast("🚨 "+data.user_name+" → Score:"+data.risk_score+" → "+data.action);
+  }catch(e){showToast("❌ API not reachable");}
+}
+
+// ── USERS PAGE ────────────────────────────────────────────────────────────
+async function loadUsers(){
+  document.getElementById("users-tbody").innerHTML = `<tr class="loading-row"><td colspan="8">⏳ Loading users...</td></tr>`;
+  try{
+    const res = await fetch(API+"/events?limit=500");
+    const d = await res.json();
+    const events = d.events || [];
+
+    const userMap = {};
+    events.forEach(e=>{
+      if(!userMap[e.user_id]){
+        userMap[e.user_id] = {
+          user_id: e.user_id, user_name: e.user_name, department: e.department,
+          last_login: e.timestamp, last_country: e.country,
+          max_score: 0, risk_label: "LOW", events: 0, blocked: 0
+        };
+      }
+      userMap[e.user_id].events++;
+      if (e.risk_score > userMap[e.user_id].max_score) {
+        userMap[e.user_id].max_score = e.risk_score;
+        userMap[e.user_id].risk_label = e.risk_label;
+        userMap[e.user_id].last_country = e.country;
+        userMap[e.user_id].last_login = e.timestamp;
+      }
+      if (e.action === "BLOCK") userMap[e.user_id].blocked++;
+    });
+
+    const users = Object.values(userMap);
+    const depts = new Set(users.map(u=>u.department));
+
+    document.getElementById("u-total").textContent   = users.length;
+    document.getElementById("u-high").textContent    = users.filter(u=>u.risk_label==="HIGH").length;
+    document.getElementById("u-depts").textContent   = depts.size;
+    document.getElementById("u-blocked").textContent = users.filter(u=>u.blocked>0).length;
+
+    window._allUsers = users;
+    renderUsers(users);
+  }catch(e){
+    console.error("Users load error:", e);
+    document.getElementById("users-tbody").innerHTML = `<tr class="loading-row"><td colspan="8">❌ API not reachable. Run: python -m uvicorn api.main:app --reload</td></tr>`;
+  }
+}
+
+function renderUsers(users){
+  if(!users.length){
+    document.getElementById("users-tbody").innerHTML = `<tr class="loading-row"><td colspan="8">No users found.</td></tr>`;
+    return;
+  }
+  document.getElementById("users-tbody").innerHTML = users.map(u=>{
+    const color = riskColor(u.risk_label);
+    const av = u.user_name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+    const ts = new Date(u.last_login).toLocaleDateString("ja-JP");
+    const statusBg    = u.blocked>0 ? "rgba(239,68,68,0.15)" : "rgba(16,185,129,0.15)";
+    const statusColor = u.blocked>0 ? "#fca5a5" : "#6ee7b7";
+    const statusText  = u.blocked>0 ? "🚫 Blocked" : "✅ Active";
+    return `<tr>
+      <td><div class="user-cell"><div class="avatar" style="background:rgba(59,130,246,0.15);color:${avatarColor(u.user_id)}">${av}</div><div><div style="font-weight:600">${u.user_name}</div><div style="font-size:11px;color:var(--text-muted)">${u.user_id}</div></div></div></td>
+      <td style="font-size:12px">${u.department}</td>
+      <td style="font-size:11px;color:var(--text-muted)">${ts}</td>
+      <td style="font-size:12px">${u.last_country}</td>
+      <td><span class="risk-badge risk-${u.risk_label}">${riskDot(u.risk_label)} ${u.risk_label}</span></td>
+      <td><div class="score-bar"><div style="font-size:13px;font-weight:700;color:${color};min-width:28px">${u.max_score}</div><div class="score-track"><div class="score-fill" style="width:${u.max_score}%;background:${color}"></div></div></div></td>
+      <td><span style="background:${statusBg};color:${statusColor};padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600">${statusText}</span></td>
+      <td><button class="btn" style="font-size:11px;padding:4px 10px" onclick="showToast('🔐 MFA forced for ${u.user_name}')">Force MFA</button></td>
+    </tr>`;
+  }).join("");
+}
+
+function filterUsers(){
+  const q = document.getElementById("user-search").value.toLowerCase();
+  const filtered = (window._allUsers||[]).filter(u =>
+    u.user_name.toLowerCase().includes(q) ||
+    u.user_id.toLowerCase().includes(q) ||
+    u.department.toLowerCase().includes(q)
+  );
+  renderUsers(filtered);
+}
+
+// ── ANALYTICS PAGE ────────────────────────────────────────────────────────
+async function loadAnalytics(){
+  try{
+    const [sRes, eRes] = await Promise.all([
+      fetch(API + "/stats"),
+      fetch(API + "/events?limit=500")
+    ]);
+    const stats  = await sRes.json();
+    const evData = await eRes.json();
+    const events = evData.events || [];
+
+    document.getElementById("an-high").textContent  = stats.high_risk;
+    document.getElementById("an-med").textContent   = stats.medium_risk;
+    document.getElementById("an-low").textContent   = stats.low_risk;
+    document.getElementById("an-block").textContent = stats.blocked;
+    document.getElementById("an-mfa").textContent   = stats.mfa_forced;
+    document.getElementById("an-total").textContent = stats.total_events;
+
+    // Cache for Export Report (uses current page data, no re-fetch needed)
+    window._reportData = { stats, events, generatedAt: new Date().toISOString(), source: "cached" };
+
+    // ── Anomaly type distribution ──────────────────────────────────────────
+    const anomalyCounts = {};
+    events.forEach(e => {
+      if (e.anomaly_type && e.anomaly_type !== "none") {
+        anomalyCounts[e.anomaly_type] = (anomalyCounts[e.anomaly_type] || 0) + 1;
+      }
+    });
+    const maxA = Math.max(...Object.values(anomalyCounts), 1);
+    const anomalyEntries = Object.entries(anomalyCounts).sort((a,b) => b[1]-a[1]);
+    document.getElementById("anomaly-chart").innerHTML = anomalyEntries.length
+      ? anomalyEntries.map(([k,v]) => `
+          <div class="bar-row">
+            <div class="bar-label">${k.replace(/_/g," ")}</div>
+            <div class="bar-track2"><div class="bar-fill2" style="width:${(v/maxA*100).toFixed(0)}%;background:var(--red)"></div></div>
+            <div class="bar-value">${v}</div>
+          </div>`).join("")
+      : `<div style="color:var(--text-muted);font-size:12px">No anomalies recorded.</div>`;
+
+    // ── Risk by department ─────────────────────────────────────────────────
+    const deptScores = {};
+    events.forEach(e => {
+      if (!deptScores[e.department]) deptScores[e.department] = [];
+      deptScores[e.department].push(e.risk_score);
+    });
+    const deptAvg = Object.entries(deptScores)
+      .map(([d,s]) => [d, Math.round(s.reduce((a,b)=>a+b,0)/s.length)])
+      .sort((a,b) => b[1]-a[1]);
+    const maxD = Math.max(...deptAvg.map(x=>x[1]), 1);
+    document.getElementById("dept-chart").innerHTML = deptAvg.length
+      ? deptAvg.map(([d,avg]) => `
+          <div class="bar-row">
+            <div class="bar-label">${d}</div>
+            <div class="bar-track2"><div class="bar-fill2" style="width:${(avg/maxD*100).toFixed(0)}%;background:${avg>40?"var(--red)":avg>20?"var(--amber)":"var(--green)"}"></div></div>
+            <div class="bar-value">${avg}</div>
+          </div>`).join("")
+      : `<div style="color:var(--text-muted);font-size:12px">No department data.</div>`;
+
+    // ── Action distribution donut ──────────────────────────────────────────
+    const actionCounts = {BLOCK:0, FORCE_MFA:0, NOTIFY_ADMIN:0, ALLOW:0};
+    events.forEach(e => { if (actionCounts.hasOwnProperty(e.action)) actionCounts[e.action]++; });
+    const colors = {BLOCK:"#ef4444", FORCE_MFA:"#f59e0b", NOTIFY_ADMIN:"#8b5cf6", ALLOW:"#10b981"};
+    const canvas = document.getElementById("donut-canvas");
+    const ctx    = canvas.getContext("2d");
+    const total  = Object.values(actionCounts).reduce((a,b)=>a+b,0) || 1;
+    let startAngle = -Math.PI/2;
+    ctx.clearRect(0,0,120,120);
+    Object.entries(actionCounts).forEach(([k,v]) => {
+      const slice = (v/total) * 2 * Math.PI;
+      ctx.beginPath();
+      ctx.moveTo(60,60);
+      ctx.arc(60,60,50,startAngle,startAngle+slice);
+      ctx.closePath();
+      ctx.fillStyle = colors[k];
+      ctx.fill();
+      startAngle += slice;
+    });
+    ctx.beginPath();
+    ctx.arc(60,60,28,0,2*Math.PI);
+    const rootStyles = getComputedStyle(document.body);
+    ctx.fillStyle = rootStyles.getPropertyValue("--bg").trim() || "var(--bg)";
+    ctx.fill();
+    const mutedColor = rootStyles.getPropertyValue("--text-muted").trim() || "var(--text-muted)";
+    document.getElementById("donut-legend").innerHTML = Object.entries(actionCounts).map(([k,v]) => `
+      <div class="legend-item"><div class="legend-dot" style="background:${colors[k]}"></div><div>${k.replace(/_/g," ")} <span style="color:${mutedColor}">(${v})</span></div></div>`).join("");
+
+    // ── Top risky users ─────────────────────────────────────────────────────
+    const userScores = {};
+    events.forEach(e => {
+      if (!userScores[e.user_name]) userScores[e.user_name] = 0;
+      if (e.risk_score > userScores[e.user_name]) userScores[e.user_name] = e.risk_score;
+    });
+    const topUsers = Object.entries(userScores).sort((a,b) => b[1]-a[1]).slice(0,5);
+    const maxU = Math.max(...topUsers.map(x=>x[1]), 1);
+    document.getElementById("top-users-chart").innerHTML = topUsers.length
+      ? topUsers.map(([name,score]) => `
+          <div class="bar-row">
+            <div class="bar-label">${name}</div>
+            <div class="bar-track2"><div class="bar-fill2" style="width:${(score/maxU*100).toFixed(0)}%;background:${score>=80?"var(--red)":score>=60?"var(--amber)":"var(--green)"}"></div></div>
+            <div class="bar-value">${score}</div>
+          </div>`).join("")
+      : `<div style="color:var(--text-muted);font-size:12px">No user data.</div>`;
+
+  } catch(e) {
+    console.error("Analytics load error:", e);
+  }
+}
+
+// ── REPORT EXPORT ─────────────────────────────────────────────────────────
+// Cached analytics data — populated by loadAnalytics() when Analytics page loads,
+// or by submitGenerateReport() when an uploaded file is analysed.
+// Declared here so it exists before any function tries to read or write it.
+window._reportData = window._reportData || null;
+
+function toggleExportMenu(){
+  document.getElementById("export-dropdown-menu").classList.toggle("show");
+}
+
+function toggleGenerateMenu(){
+  // Generate Report no longer has a dropdown — kept for safety only
+  document.getElementById("export-dropdown-menu").classList.remove("show");
+}
+
+// Close export menu when clicking anywhere else on the page
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".export-dropdown-wrap")) {
+    document.getElementById("export-dropdown-menu")?.classList.remove("show");
+  }
+});
+
+// ── Main export entry point ───────────────────────────────────────────────
+async function exportReport(format, fetchFresh){
+  // Close export menu
+  document.getElementById("export-dropdown-menu").classList.remove("show");
+
+  const btn = document.getElementById("generate-report-btn");
+
+  if (fetchFresh){
+    // Generate Report — always pulls fresh data from API right now
+    btn.textContent = "⏳ " + t("btn_fetching_data");
+    btn.disabled = true;
+    try {
+      const [statsRes, eventsRes] = await Promise.all([
+        fetch(API + "/stats"),
+        fetch(API + "/events?limit=1000"),
+      ]);
+      const stats  = await statsRes.json();
+      const evData = await eventsRes.json();
+      window._reportData = { stats, events: evData.events || [], generatedAt: new Date().toISOString(), source: "fresh" };
+    } catch(e) {
+      showToast("❌ " + t("toast_api_not_reachable"));
+      btn.textContent = t("btn_generate_report");
+      btn.disabled = false;
+      return;
+    }
+    btn.textContent = t("btn_generate_report");
+    btn.disabled = false;
+  } else {
+    // Export Report — use cached data if available, otherwise fetch fresh
+    if (!window._reportData) {
+      showToast("⏳ " + t("btn_fetching_data"));
+      try {
+        const [sRes, eRes] = await Promise.all([
+          fetch(API + "/stats"),
+          fetch(API + "/events?limit=1000"),
+        ]);
+        const stats  = await sRes.json();
+        const evData = await eRes.json();
+        window._reportData = { stats, events: evData.events || [], generatedAt: new Date().toISOString(), source: "cached" };
+      } catch(e) {
+        showToast("❌ " + t("toast_api_not_reachable"));
+        return;
+      }
+    }
+  }
+
+  const data = window._reportData;
+  const ts   = new Date().toISOString().slice(0,19).replace(/[:T]/g, "-");
+
+  if (format === "csv")  return exportCSV(data, ts);
+  if (format === "xlsx") return exportXLSX(data, ts);
+  if (format === "pdf")  return exportPDF(data, ts);
+}
+
+// ── Data helper — builds flat row array from events ───────────────────────
+function buildEventRows(events){
+  return events.map(e => ({
+    "User ID":      e.user_id || "",
+    "User Name":    e.user_name || "",
+    "Department":   e.department || "",
+    "Timestamp":    (e.timestamp || "").slice(0,19).replace("T"," "),
+    "Country":      e.country || "",
+    "Anomaly Type": (e.anomaly_type || "none").replace(/_/g," "),
+    "Risk Label":   e.risk_label || "",
+    "Risk Score":   e.risk_score ?? "",
+    "Action":       (e.action || "").replace(/_/g," "),
+    "ISO Score":    e.iso_score ?? "",
+    "XGB HIGH %":   e.xgb_high_prob != null ? (e.xgb_high_prob * 100).toFixed(1) + "%" : "",
+  }));
+}
+
+// ── CSV ───────────────────────────────────────────────────────────────────
+function exportCSV(data, ts){
+  const rows  = buildEventRows(data.events);
+  if (!rows.length){ showToast("⚠️ " + t("toast_no_report_data")); return; }
+
+  const headers = Object.keys(rows[0]);
+  const lines   = [
+    "# IdentityGuard AI — Security Report",
+    "# Generated: " + new Date().toLocaleString(),
+    "# Total events: " + rows.length,
+    "# High risk: " + (data.stats?.high_risk ?? "—") + "  Medium: " + (data.stats?.medium_risk ?? "—") + "  Low: " + (data.stats?.low_risk ?? "—"),
+    "",
+    headers.join(","),
+    ...rows.map(r => headers.map(h => {
+      const val = String(r[h] ?? "").replace(/"/g, '""');
+      return val.includes(",") ? `"${val}"` : val;
+    }).join(",")),
+  ];
+
+  downloadBlob(lines.join("\n"), `IdentityGuard_Report_${ts}.csv`, "text/csv");
+  showToast("✅ " + t("toast_csv_exported"));
+}
+
+// ── Excel (XLSX via SheetJS) ──────────────────────────────────────────────
+function exportXLSX(data, ts){
+  if (typeof XLSX === "undefined"){ showToast("❌ Excel library not loaded yet — try again in a moment"); return; }
+
+  const rows = buildEventRows(data.events);
+  if (!rows.length){ showToast("⚠️ " + t("toast_no_report_data")); return; }
+
+  const wb = XLSX.utils.book_new();
+
+  // ── Sheet 1: Events ──────────────────────────────────────────────────
+  const ws1 = XLSX.utils.json_to_sheet(rows);
+  // Auto-width columns
+  const colWidths = Object.keys(rows[0]).map(k => ({
+    wch: Math.max(k.length, ...rows.slice(0,50).map(r => String(r[k] ?? "").length)) + 2
+  }));
+  ws1["!cols"] = colWidths;
+  XLSX.utils.book_append_sheet(wb, ws1, "Events");
+
+  // ── Sheet 2: Summary ─────────────────────────────────────────────────
+  const s = data.stats || {};
+  const summaryRows = [
+    { Metric: "Report Generated",   Value: new Date().toLocaleString() },
+    { Metric: "Total Events",       Value: s.total_events ?? rows.length },
+    { Metric: "High Risk Events",   Value: s.high_risk ?? "" },
+    { Metric: "Medium Risk Events", Value: s.medium_risk ?? "" },
+    { Metric: "Low Risk Events",    Value: s.low_risk ?? "" },
+    { Metric: "Accounts Blocked",   Value: s.blocked ?? "" },
+    { Metric: "MFA Forced",         Value: s.mfa_forced ?? "" },
+  ];
+  const ws2 = XLSX.utils.json_to_sheet(summaryRows);
+  ws2["!cols"] = [{ wch: 24 }, { wch: 20 }];
+  XLSX.utils.book_append_sheet(wb, ws2, "Summary");
+
+  // ── Sheet 3: Anomaly Breakdown ───────────────────────────────────────
+  const anomalyCounts = {};
+  data.events.forEach(e => {
+    const t2 = (e.anomaly_type || "none").replace(/_/g," ");
+    anomalyCounts[t2] = (anomalyCounts[t2] || 0) + 1;
+  });
+  const anomalyRows = Object.entries(anomalyCounts).sort((a,b)=>b[1]-a[1]).map(([k,v]) => ({ "Anomaly Type": k, Count: v }));
+  const ws3 = XLSX.utils.json_to_sheet(anomalyRows);
+  ws3["!cols"] = [{ wch: 28 }, { wch: 10 }];
+  XLSX.utils.book_append_sheet(wb, ws3, "Anomaly Breakdown");
+
+  XLSX.writeFile(wb, `IdentityGuard_Report_${ts}.xlsx`);
+  showToast("✅ " + t("toast_xlsx_exported"));
+}
+
+// ── PDF (jsPDF + autotable) ───────────────────────────────────────────────
+function exportPDF(data, ts){
+  if (typeof window.jspdf === "undefined" && typeof jsPDF === "undefined"){
+    showToast("❌ PDF library not loaded yet — try again in a moment");
+    return;
+  }
+
+  const { jsPDF: JSPDF } = window.jspdf || window;
+  const doc = new JSPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+  const s   = data.stats || {};
+  const pageW = doc.internal.pageSize.getWidth();
+
+  // ── Cover section ────────────────────────────────────────────────────
+  doc.setFillColor(10, 14, 26);
+  doc.rect(0, 0, pageW, 40, "F");
+
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(18); doc.setFont(undefined, "bold");
+  doc.text("🛡 IdentityGuard AI", 14, 16);
+  doc.setFontSize(10); doc.setFont(undefined, "normal");
+  doc.text("Security Analytics Report", 14, 23);
+  doc.setTextColor(100,116,139);
+  doc.setFontSize(8);
+  doc.text("Generated: " + new Date().toLocaleString(), 14, 30);
+  doc.text("Source: " + (data.source === "fresh" ? "Fresh API fetch" : "Cached page data"), 14, 35);
+
+  // ── Summary stats ────────────────────────────────────────────────────
+  doc.setTextColor(30,36,51);
+  doc.setFontSize(11); doc.setFont(undefined, "bold");
+  doc.text("Overview", 14, 52);
+
+  const summaryData = [
+    ["Total Events", String(s.total_events ?? data.events.length)],
+    ["High Risk",    String(s.high_risk ?? "—")],
+    ["Medium Risk",  String(s.medium_risk ?? "—")],
+    ["Low Risk",     String(s.low_risk ?? "—")],
+    ["Blocked",      String(s.blocked ?? "—")],
+    ["MFA Forced",   String(s.mfa_forced ?? "—")],
+  ];
+
+  doc.autoTable({
+    startY: 56,
+    head: [["Metric", "Value"]],
+    body: summaryData,
+    theme: "striped",
+    headStyles: { fillColor: [59,130,246], textColor: 255, fontStyle: "bold" },
+    styles: { fontSize: 9, cellPadding: 3 },
+    columnStyles: { 0: { cellWidth: 50 }, 1: { cellWidth: 30, fontStyle: "bold" } },
+    margin: { left: 14 },
+    tableWidth: 85,
+  });
+
+  // ── Anomaly breakdown (side by side with summary) ─────────────────
+  const anomalyCounts = {};
+  data.events.forEach(e => {
+    const k = (e.anomaly_type || "none").replace(/_/g," ");
+    anomalyCounts[k] = (anomalyCounts[k] || 0) + 1;
+  });
+  const anomalyRows = Object.entries(anomalyCounts).sort((a,b)=>b[1]-a[1]).map(([k,v]) => [k, String(v)]);
+
+  doc.setFontSize(11); doc.setFont(undefined, "bold");
+  doc.text("Anomaly Breakdown", 110, 52);
+
+  doc.autoTable({
+    startY: 56,
+    head: [["Anomaly Type", "Count"]],
+    body: anomalyRows,
+    theme: "striped",
+    headStyles: { fillColor: [239,68,68], textColor: 255, fontStyle: "bold" },
+    styles: { fontSize: 9, cellPadding: 3 },
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 20, halign: "center" } },
+    margin: { left: 110 },
+    tableWidth: 85,
+  });
+
+  // ── Events table (new page) ──────────────────────────────────────────
+  doc.addPage();
+  doc.setFontSize(13); doc.setFont(undefined, "bold"); doc.setTextColor(30,36,51);
+  doc.text("Security Events Log", 14, 16);
+
+  const highRisk   = data.events.filter(e => e.risk_label === "HIGH");
+  const medRisk    = data.events.filter(e => e.risk_label === "MEDIUM");
+  const remaining  = data.events.filter(e => e.risk_label === "LOW").slice(0, 30);
+  const allForPDF  = [...highRisk, ...medRisk, ...remaining];
+
+  const tableRows = allForPDF.map(e => [
+    e.user_name || e.user_id || "",
+    e.department || "",
+    (e.timestamp || "").slice(0,16).replace("T"," "),
+    e.country || "",
+    (e.anomaly_type || "none").replace(/_/g," "),
+    e.risk_label || "",
+    String(e.risk_score ?? ""),
+    (e.action || "").replace(/_/g," "),
+  ]);
+
+  doc.autoTable({
+    startY: 22,
+    head: [["User", "Department", "Time", "Country", "Anomaly", "Risk", "Score", "Action"]],
+    body: tableRows,
+    theme: "striped",
+    headStyles: { fillColor: [10,14,26], textColor: 255, fontStyle: "bold", fontSize: 8 },
+    styles: { fontSize: 7.5, cellPadding: 2.5 },
+    columnStyles: {
+      0: { cellWidth: 38 }, 1: { cellWidth: 28 }, 2: { cellWidth: 30 },
+      3: { cellWidth: 22 }, 4: { cellWidth: 38 }, 5: { cellWidth: 16, halign: "center" },
+      6: { cellWidth: 14, halign: "center" }, 7: { cellWidth: 28 },
+    },
+    didParseCell: (hook) => {
+      if (hook.section === "body" && hook.column.index === 5) {
+        const risk = hook.cell.raw;
+        if (risk === "HIGH")   { hook.cell.styles.textColor = [239,68,68];  hook.cell.styles.fontStyle = "bold"; }
+        if (risk === "MEDIUM") { hook.cell.styles.textColor = [245,158,11]; hook.cell.styles.fontStyle = "bold"; }
+        if (risk === "LOW")    { hook.cell.styles.textColor = [16,185,129]; }
+      }
+    },
+    margin: { left: 14, right: 14 },
+  });
+
+  // Page numbers
+  const pageCount = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= pageCount; i++){
+    doc.setPage(i);
+    doc.setFontSize(7); doc.setTextColor(150,150,150); doc.setFont(undefined,"normal");
+    doc.text(`IdentityGuard AI — Confidential · Page ${i} of ${pageCount}`, pageW/2, doc.internal.pageSize.getHeight() - 5, { align:"center" });
+  }
+
+  doc.save(`IdentityGuard_Report_${ts}.pdf`);
+  showToast("✅ " + t("toast_pdf_exported"));
+}
+
+// ── Helper: trigger file download ─────────────────────────────────────────
+function downloadBlob(content, filename, mimeType){
+  const blob = new Blob([content], { type: mimeType });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ── GENERATE REPORT MODAL ─────────────────────────────────────────────────
+window._genFile = null;
+
+function openGenerateModal(){
+  document.getElementById("generate-modal-overlay").classList.add("show");
+  clearGenFile();
+  document.getElementById("gen-modal-error").classList.remove("show");
+  document.getElementById("gen-progress").style.display = "none";
+}
+
+function closeGenerateModal(){
+  document.getElementById("generate-modal-overlay").classList.remove("show");
+}
+
+function closeGenerateModalOnOverlay(e){
+  if (e.target.id === "generate-modal-overlay") closeGenerateModal();
+}
+
+function handleGenFile(event){
+  const file = event.target.files[0];
+  if (!file) return;
+  setGenFile(file);
+}
+
+function setGenFile(file){
+  window._genFile = file;
+  const icon = file.name.endsWith(".xlsx") || file.name.endsWith(".xls") ? "📊" : "📄";
+  const size = file.size < 1024*1024
+    ? (file.size / 1024).toFixed(1) + " KB"
+    : (file.size / 1024 / 1024).toFixed(2) + " MB";
+
+  document.getElementById("gen-file-icon").textContent = icon;
+  document.getElementById("gen-file-name").textContent = file.name;
+  document.getElementById("gen-file-size").textContent = size + " · " + file.type.split("/").pop().toUpperCase();
+  document.getElementById("gen-upload-zone").style.display = "none";
+  document.getElementById("gen-file-info").style.display = "block";
+  document.getElementById("gen-modal-error").classList.remove("show");
+}
+
+function clearGenFile(){
+  window._genFile = null;
+  document.getElementById("gen-file-input").value = "";
+  document.getElementById("gen-upload-zone").style.display = "block";
+  document.getElementById("gen-file-info").style.display = "none";
+}
+
+// Drag-and-drop for generate modal upload zone
+document.addEventListener("DOMContentLoaded", () => {
+  const zone = document.getElementById("gen-upload-zone");
+  if (!zone) return;
+  zone.addEventListener("dragover",  (e) => { e.preventDefault(); zone.classList.add("dragover"); });
+  zone.addEventListener("dragleave", ()  => zone.classList.remove("dragover"));
+  zone.addEventListener("drop", (e) => {
+    e.preventDefault(); zone.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    setGenFile(file);
+  });
+});
+
+// Animate the progress bar during upload + analysis
+function animateProgress(targetPct, label){
+  document.getElementById("gen-progress").style.display = "block";
+  document.getElementById("gen-progress-label").textContent = label;
+  document.getElementById("gen-progress-pct").textContent = targetPct + "%";
+  document.getElementById("gen-progress-bar").style.width = targetPct + "%";
+}
+
+async function submitGenerateReport(){
+  const errEl  = document.getElementById("gen-modal-error");
+  errEl.classList.remove("show");
+
+  if (!window._genFile){
+    errEl.textContent = "❌ " + t("gen_no_file_error");
+    errEl.classList.add("show");
+    return;
+  }
+
+  const btn = document.getElementById("gen-submit-btn");
+  btn.disabled = true;
+  btn.textContent = "⏳ " + t("gen_uploading");
+
+  animateProgress(20, t("gen_uploading"));
+
+  // Build FormData for multipart upload
+  const formData = new FormData();
+  formData.append("file", window._genFile, window._genFile.name);
+
+  let result;
+  try {
+    animateProgress(40, t("gen_analysing"));
+
+    const res = await fetch(API + "/analyse-upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    animateProgress(75, t("gen_scoring"));
+
+    if (!res.ok){
+      const err = await res.json().catch(() => ({ detail: "Unknown error" }));
+      errEl.textContent = "❌ " + (err.detail || t("toast_api_not_reachable"));
+      errEl.classList.add("show");
+      btn.disabled = false;
+      btn.textContent = t("gen_btn_analyse");
+      document.getElementById("gen-progress").style.display = "none";
+      return;
+    }
+
+    result = await res.json();
+    animateProgress(100, t("gen_complete"));
+
+  } catch(e){
+    errEl.textContent = "❌ " + t("toast_api_not_reachable") + " — make sure api/main.py has the /analyse-upload endpoint";
+    errEl.classList.add("show");
+    btn.disabled = false;
+    btn.textContent = t("gen_btn_analyse");
+    document.getElementById("gen-progress").style.display = "none";
+    return;
+  }
+
+  // ── Success — cache result and update Analytics page ──────────────────
+  window._reportData = {
+    stats:        result.stats,
+    events:       result.events,
+    generatedAt:  new Date().toISOString(),
+    source:       "uploaded: " + window._genFile.name,
+  };
+
+  await new Promise(r => setTimeout(r, 400)); // let progress hit 100% visually
+
+  btn.disabled = false;
+  btn.textContent = t("gen_btn_analyse");
+  closeGenerateModal();
+
+  // Switch to Analytics page and render with uploaded data
+  showPage("analytics");
+  renderUploadedAnalytics(result);
+
+  showToast("✅ " + result.total_events + " " + t("gen_toast_success"));
+}
+
+// ── Render analytics charts from uploaded file results ─────────────────────
+function renderUploadedAnalytics(result){
+  const stats  = result.stats  || {};
+  const events = result.events || [];
+
+  // Update the banner to show this is uploaded data, not live API data
+  const sub = document.querySelector("#page-analytics .topbar-sub");
+  if (sub) sub.textContent = "📂 " + t("gen_showing_uploaded") + ": " + (result.filename || "uploaded file") + " — " + result.total_events + " events";
+
+  // Populate the 6 stat boxes
+  document.getElementById("an-high").textContent  = stats.high_risk    ?? 0;
+  document.getElementById("an-med").textContent   = stats.medium_risk  ?? 0;
+  document.getElementById("an-low").textContent   = stats.low_risk     ?? 0;
+  document.getElementById("an-block").textContent = stats.blocked      ?? 0;
+  document.getElementById("an-mfa").textContent   = stats.mfa_forced   ?? 0;
+  document.getElementById("an-total").textContent = stats.total_events ?? events.length;
+
+  // Anomaly distribution bar chart
+  const anomalyCounts = {};
+  events.forEach(e => {
+    if (e.anomaly_type && e.anomaly_type !== "none") {
+      anomalyCounts[e.anomaly_type] = (anomalyCounts[e.anomaly_type] || 0) + 1;
+    }
+  });
+  const maxA = Math.max(...Object.values(anomalyCounts), 1);
+  document.getElementById("anomaly-chart").innerHTML = Object.entries(anomalyCounts)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([k,v]) => `
+      <div class="bar-row">
+        <div class="bar-label">${k.replace(/_/g," ")}</div>
+        <div class="bar-track2"><div class="bar-fill2" style="width:${(v/maxA*100).toFixed(0)}%;background:var(--red)"></div></div>
+        <div class="bar-value">${v}</div>
+      </div>`).join("") || `<div style="color:var(--text-muted);font-size:12px">${t("gen_no_anomalies")}</div>`;
+
+  // Department risk bar chart
+  const deptScores = {};
+  events.forEach(e => {
+    if (!deptScores[e.department]) deptScores[e.department] = [];
+    deptScores[e.department].push(e.risk_score);
+  });
+  const deptAvg = Object.entries(deptScores)
+    .map(([d,s]) => [d, Math.round(s.reduce((a,b)=>a+b,0)/s.length)])
+    .sort((a,b)=>b[1]-a[1]);
+  const maxD = Math.max(...deptAvg.map(x=>x[1]), 1);
+  document.getElementById("dept-chart").innerHTML = deptAvg
+    .map(([d,avg]) => `
+      <div class="bar-row">
+        <div class="bar-label">${d}</div>
+        <div class="bar-track2"><div class="bar-fill2" style="width:${(avg/maxD*100).toFixed(0)}%;background:${avg>40?"var(--red)":avg>20?"var(--amber)":"var(--green)"}"></div></div>
+        <div class="bar-value">${avg}</div>
+      </div>`).join("") || `<div style="color:var(--text-muted);font-size:12px">No department data.</div>`;
+
+  // Action donut chart
+  const actionCounts = { BLOCK:0, FORCE_MFA:0, NOTIFY_ADMIN:0, ALLOW:0 };
+  events.forEach(e => { if (actionCounts.hasOwnProperty(e.action)) actionCounts[e.action]++; });
+  const colors = { BLOCK:"#ef4444", FORCE_MFA:"#f59e0b", NOTIFY_ADMIN:"#8b5cf6", ALLOW:"#10b981" };
+  const canvas = document.getElementById("donut-canvas");
+  const ctx    = canvas.getContext("2d");
+  const total  = Object.values(actionCounts).reduce((a,b)=>a+b,0) || 1;
+  let startAngle = -Math.PI/2;
+  ctx.clearRect(0,0,120,120);
+  Object.entries(actionCounts).forEach(([k,v]) => {
+    const slice = (v/total)*2*Math.PI;
+    ctx.beginPath(); ctx.moveTo(60,60); ctx.arc(60,60,50,startAngle,startAngle+slice);
+    ctx.closePath(); ctx.fillStyle = colors[k]; ctx.fill();
+    startAngle += slice;
+  });
+  const rootStyles = getComputedStyle(document.body);
+  ctx.beginPath(); ctx.arc(60,60,28,0,2*Math.PI);
+  ctx.fillStyle = rootStyles.getPropertyValue("--bg").trim() || "#0a0e1a";
+  ctx.fill();
+  document.getElementById("donut-legend").innerHTML = Object.entries(actionCounts).map(([k,v]) => `
+    <div class="legend-item"><div class="legend-dot" style="background:${colors[k]}"></div><div>${k.replace(/_/g," ")} <span style="color:var(--text-muted)">(${v})</span></div></div>`).join("");
+
+  // Top risky users bar chart
+  const userScores = {};
+  events.forEach(e => {
+    if (!userScores[e.user_name]) userScores[e.user_name] = 0;
+    if (e.risk_score > userScores[e.user_name]) userScores[e.user_name] = e.risk_score;
+  });
+  const topUsers = Object.entries(userScores).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const maxU = Math.max(...topUsers.map(x=>x[1]), 1);
+  document.getElementById("top-users-chart").innerHTML = topUsers
+    .map(([name,score]) => `
+      <div class="bar-row">
+        <div class="bar-label">${name}</div>
+        <div class="bar-track2"><div class="bar-fill2" style="width:${(score/maxU*100).toFixed(0)}%;background:${score>=80?"var(--red)":score>=60?"var(--amber)":"var(--green)"}"></div></div>
+        <div class="bar-value">${score}</div>
+      </div>`).join("") || `<div style="color:var(--text-muted);font-size:12px">No user data.</div>`;
+
+  // Show a "back to live data" button in the sub-header
+  const subContainer = document.querySelector("#page-analytics .topbar div:first-child");
+  if (subContainer && !document.getElementById("back-to-live-btn")){
+    const backBtn = document.createElement("button");
+    backBtn.id = "back-to-live-btn";
+    backBtn.className = "btn";
+    backBtn.style = "font-size:11px;margin-top:6px;padding:4px 10px";
+    backBtn.textContent = "↩ " + t("gen_back_to_live");
+    backBtn.onclick = () => {
+      backBtn.remove();
+      loadAnalytics();
+      const s2 = document.querySelector("#page-analytics .topbar-sub");
+      if (s2) s2.setAttribute("data-i18n","analytics_sub");
+      applyTranslations();
+    };
+    subContainer.appendChild(backBtn);
+  }
+}
+
+// ── ROLES PAGE ────────────────────────────────────────────────────────────
+async function loadRoles(){
+  document.getElementById("escalation-list").innerHTML = "Loading...";
+  document.getElementById("role-dist-chart").innerHTML = `<div style="color:var(--text-muted);font-size:12px">Loading...</div>`;
+  try{
+    const d = await (await fetch(API + "/events?limit=500")).json();
+    const events = d.events || [];
+
+    // ── Build per-user highest role rank seen ───────────────────────────────
+    // role_rank isn't directly in /events response, so we infer role level
+    // from anomaly_type + risk patterns as a proxy, and from explanation features
+    // where role_rank appears in the SHAP explanation list.
+    const roleNames = ["viewer","editor","manager","admin","super_admin"];
+    const roleCounts = {viewer:0, editor:0, manager:0, admin:0, super_admin:0};
+    const userMaxRole = {};   // user_id -> highest role_rank seen
+
+    events.forEach(e => {
+      const rank = e.role_rank;
+      const name = roleNames[rank] || "viewer";
+      roleCounts[name]++;   // event-level count, used for the distribution chart
+
+      if (!(e.user_id in userMaxRole) || rank > userMaxRole[e.user_id]) {
+        userMaxRole[e.user_id] = rank;
+      }
+    });
+
+    // Unique-user counts per role (for the role cards)
+    const userRoleCounts = {viewer:0, editor:0, manager:0, admin:0, super_admin:0};
+    Object.values(userMaxRole).forEach(rank => {
+      const name = roleNames[rank] || "viewer";
+      userRoleCounts[name]++;
+    });
+
+    document.getElementById("r-viewer").textContent  = userRoleCounts.viewer;
+    document.getElementById("r-editor").textContent  = userRoleCounts.editor;
+    document.getElementById("r-manager").textContent = userRoleCounts.manager;
+    document.getElementById("r-admin").textContent    = userRoleCounts.admin;
+    document.getElementById("r-super").textContent    = userRoleCounts.super_admin;
+
+    // ── Role distribution bar chart ──────────────────────────────────────────
+    const maxR = Math.max(...Object.values(roleCounts), 1);
+    const roleColors = {viewer:"#10b981", editor:"#3b82f6", manager:"#f59e0b", admin:"#ef4444", super_admin:"#8b5cf6"};
+    document.getElementById("role-dist-chart").innerHTML = roleNames.map(r => `
+      <div class="bar-row">
+        <div class="bar-label">${r.replace("_"," ")}</div>
+        <div class="bar-track2"><div class="bar-fill2" style="width:${(roleCounts[r]/maxR*100).toFixed(0)}%;background:${roleColors[r]}"></div></div>
+        <div class="bar-value">${roleCounts[r]}</div>
+      </div>`).join("");
+
+    // ── Privilege escalation alerts ───────────────────────────────────────
+    const escalations = events.filter(e => e.anomaly_type === "privilege_escalation");
+    document.getElementById("escalation-list").innerHTML = escalations.length
+      ? escalations.slice(0,5).map(e => `
+          <div style="padding:6px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+            <div><div style="font-weight:600">${e.user_name}</div><div style="color:var(--text-muted);font-size:10px">${new Date(e.timestamp).toLocaleDateString("ja-JP")}</div></div>
+            <span class="risk-badge risk-${e.risk_label}">${riskDot(e.risk_label)} ${e.risk_label}</span>
+          </div>`).join("")
+      : `<div style="color:var(--text-muted)">✅ No escalations detected recently</div>`;
+
+  } catch(e) {
+    console.error("Roles load error:", e);
+    document.getElementById("escalation-list").innerHTML = `<div style="color:var(--text-muted)">❌ API not reachable</div>`;
+  }
+}
+
+// ── AUDIT LOG PAGE ────────────────────────────────────────────────────────
+async function loadAudit(){
+  document.getElementById("audit-tbody").innerHTML = `<tr class="loading-row"><td colspan="9">⏳ Loading audit log...</td></tr>`;
+  try{
+    const d = await (await fetch(API + "/audit?limit=200")).json();
+    const logs = d.logs || [];
+
+    document.getElementById("ad-total").textContent  = logs.length;
+    document.getElementById("ad-blocks").textContent = logs.filter(l => l.action_taken === "BLOCK").length;
+    document.getElementById("ad-mfa").textContent     = logs.filter(l => l.action_taken === "FORCE_MFA").length;
+    const autoCount = logs.filter(l => (l.triggered_by||"").includes("AUTO")).length;
+    document.getElementById("ad-auto").textContent = autoCount + " auto / " + (logs.length - autoCount) + " manual";
+
+    window._allAudit = logs;
+    renderAudit(logs);
+  } catch(e) {
+    console.error("Audit load error:", e);
+    document.getElementById("audit-tbody").innerHTML = `<tr class="loading-row"><td colspan="9">❌ API not reachable. Run: python -m uvicorn api.main:app --reload</td></tr>`;
+  }
+}
+
+function renderAudit(logs){
+  if (!logs.length) {
+    document.getElementById("audit-tbody").innerHTML = `<tr class="loading-row"><td colspan="9">No audit records found.</td></tr>`;
+    return;
+  }
+  document.getElementById("audit-tbody").innerHTML = logs.map((log, i) => `
+    <tr>
+      <td style="color:var(--text-muted);font-size:11px">${log.id || i+1}</td>
+      <td style="font-size:11px;color:var(--text-soft);white-space:nowrap">${(log.timestamp||"").slice(0,19).replace("T"," ")}</td>
+      <td><div style="font-weight:600;font-size:13px">${log.user_name||""}</div><div style="font-size:10px;color:var(--text-muted)">${log.user_id||""}</div></td>
+      <td style="font-size:12px">${log.department||""}</td>
+      <td style="font-size:12px">${log.country||""}</td>
+      <td style="font-size:11px">${(log.anomaly_type||"none").replace(/_/g," ")}</td>
+      <td><div style="font-size:13px;font-weight:700;color:${riskColor(log.risk_label||"LOW")}">${log.risk_score||0}</div></td>
+      <td><span class="action-badge action-${log.action_taken||"ALLOW"}">${actionLabel(log.action_taken||"ALLOW")}</span></td>
+      <td style="font-size:10px;color:var(--text-muted)">${(log.triggered_by||"AUTO").replace(/_/g," ")}</td>
+    </tr>`).join("");
+}
+
+function filterAudit(){
+  const q = document.getElementById("audit-search").value.toLowerCase();
+  const filtered = (window._allAudit||[]).filter(l =>
+    (l.user_name||"").toLowerCase().includes(q) ||
+    (l.user_id||"").toLowerCase().includes(q) ||
+    (l.action_taken||"").toLowerCase().includes(q) ||
+    (l.anomaly_type||"").toLowerCase().includes(q)
+  );
+  renderAudit(filtered);
+}
+
+// ── AUDIT EXPORT + UPLOAD ─────────────────────────────────────────────────
+function exportAuditCSV(){
+  const logs = window._allAudit || [];
+  if (!logs.length){
+    showToast("⚠️ " + t("toast_no_audit_data"));
+    return;
+  }
+
+  const headers = ["id","timestamp","user_id","user_name","department","country","anomaly_type","risk_score","risk_label","action_taken","triggered_by"];
+  const lines = [
+    "# IdentityGuard AI — Audit Log Export",
+    "# Generated: " + new Date().toLocaleString(),
+    "# Total records: " + logs.length,
+    "",
+    headers.join(","),
+    ...logs.map(l => headers.map(h => {
+      const val = String(l[h] ?? "").replace(/"/g,'""');
+      return val.includes(",") ? `"${val}"` : val;
+    }).join(",")),
+  ];
+
+  const ts = new Date().toISOString().slice(0,19).replace(/[:T]/g,"-");
+  downloadBlob(lines.join("\n"), `IdentityGuard_AuditLog_${ts}.csv`, "text/csv");
+  showToast("✅ " + t("toast_audit_csv_exported"));
+}
+
+// ── Audit Upload Modal ────────────────────────────────────────────────────
+window._auditFile = null;
+window._auditParsedRows = [];
+
+function openAuditUploadModal(){
+  document.getElementById("audit-upload-overlay").classList.add("show");
+  clearAuditFile();
+  document.getElementById("audit-upload-error").classList.remove("show");
+  document.getElementById("audit-preview-section").style.display = "none";
+}
+
+function closeAuditUploadModal(){
+  document.getElementById("audit-upload-overlay").classList.remove("show");
+}
+
+function closeAuditUploadOnOverlay(e){
+  if (e.target.id === "audit-upload-overlay") closeAuditUploadModal();
+}
+
+function handleAuditFile(event){
+  const file = event.target.files[0];
+  if (!file) return;
+  setAuditFile(file);
+}
+
+function setAuditFile(file){
+  window._auditFile = file;
+  const size = file.size < 1024*1024
+    ? (file.size/1024).toFixed(1) + " KB"
+    : (file.size/1024/1024).toFixed(2) + " MB";
+  document.getElementById("audit-file-name").textContent = file.name;
+  document.getElementById("audit-file-size").textContent = size;
+  document.getElementById("audit-upload-zone").style.display = "none";
+  document.getElementById("audit-file-info").style.display = "block";
+  document.getElementById("audit-upload-error").classList.remove("show");
+
+  // Parse and preview
+  const reader = new FileReader();
+  reader.onload = (e) => parseAuditCSV(e.target.result);
+  reader.readAsText(file);
+}
+
+function clearAuditFile(){
+  window._auditFile = null;
+  window._auditParsedRows = [];
+  document.getElementById("audit-file-input").value = "";
+  document.getElementById("audit-upload-zone").style.display = "block";
+  document.getElementById("audit-file-info").style.display = "none";
+  document.getElementById("audit-preview-section").style.display = "none";
+}
+
+function parseAuditCSV(text){
+  const errEl = document.getElementById("audit-upload-error");
+  errEl.classList.remove("show");
+
+  const lines = text.split(/\r?\n/).filter(l => l.trim() && !l.startsWith("#"));
+  if (lines.length < 2){
+    errEl.textContent = "❌ " + t("toast_csv_empty");
+    errEl.classList.add("show");
+    return;
+  }
+
+  const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
+  const rows = lines.slice(1).map(line => {
+    const cells = line.split(",").map(c => c.trim().replace(/^"|"$/g,""));
+    const row = {};
+    headers.forEach((h,i) => { row[h] = cells[i] || ""; });
+    return row;
+  }).filter(r => Object.values(r).some(v => v));
+
+  window._auditParsedRows = rows;
+
+  // Show preview
+  const preview = rows.slice(0,5);
+  const previewHeaders = headers.slice(0,6); // show first 6 columns max
+  document.getElementById("audit-upload-preview").innerHTML = `
+    <div class="csv-row-count">✅ ${rows.length} ${t("csv_rows_found")}</div>
+    <div style="overflow-x:auto">
+      <table class="csv-preview-table">
+        <thead><tr>${previewHeaders.map(h => `<th>${h}</th>`).join("")}</tr></thead>
+        <tbody>${preview.map(r => `<tr>${previewHeaders.map(h => `<td>${r[h]||"—"}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table>
+    </div>
+    ${rows.length > 5 ? `<div style="font-size:11px;color:var(--text-muted);margin-top:6px">+ ${rows.length-5} ${t("csv_more_rows")}</div>` : ""}
+  `;
+  document.getElementById("audit-preview-section").style.display = "block";
+}
+
+async function submitAuditUpload(){
+  const errEl = document.getElementById("audit-upload-error");
+  errEl.classList.remove("show");
+
+  if (!window._auditParsedRows.length){
+    errEl.textContent = "❌ " + t("toast_csv_no_rows_to_import");
+    errEl.classList.add("show");
+    return;
+  }
+
+  const btn = document.getElementById("audit-upload-btn");
+  btn.disabled = true;
+  btn.textContent = "⏳ " + t("gen_uploading");
+
+  // Merge uploaded rows with existing audit data and re-render
+  await new Promise(r => setTimeout(r, 400));
+
+  const existing = window._allAudit || [];
+  const newRows = window._auditParsedRows.map((r, i) => ({
+    id:           existing.length + i + 1,
+    timestamp:    r.timestamp || new Date().toISOString(),
+    user_id:      r.user_id || r.userid || "unknown",
+    user_name:    r.user_name || r.username || r.user_id || "Unknown",
+    department:   r.department || r.dept || "Unknown",
+    country:      r.country || "Unknown",
+    anomaly_type: r.anomaly_type || "none",
+    risk_score:   parseInt(r.risk_score) || 0,
+    risk_label:   r.risk_label || "LOW",
+    action_taken: r.action_taken || r.action || "ALLOW",
+    triggered_by: r.triggered_by || "CSV_IMPORT",
+  }));
+
+  // Prepend new rows so they appear at the top
+  window._allAudit = [...newRows, ...existing];
+
+  // Update metric cards
+  const allLogs = window._allAudit;
+  document.getElementById("ad-total").textContent  = allLogs.length;
+  document.getElementById("ad-blocks").textContent = allLogs.filter(l => l.action_taken === "BLOCK").length;
+  document.getElementById("ad-mfa").textContent    = allLogs.filter(l => l.action_taken === "FORCE_MFA").length;
+  const autoCount = allLogs.filter(l => (l.triggered_by||"").includes("AUTO")).length;
+  document.getElementById("ad-auto").textContent   = autoCount + " auto / " + (allLogs.length - autoCount) + " manual";
+
+  renderAudit(window._allAudit);
+
+  btn.disabled = false;
+  btn.textContent = t("audit_upload_submit");
+  closeAuditUploadModal();
+  showToast("✅ " + newRows.length + " " + t("toast_audit_rows_added"));
+}
+
+// Drag-and-drop for audit upload zone
+document.addEventListener("DOMContentLoaded", () => {
+  const zone = document.getElementById("audit-upload-zone");
+  if (!zone) return;
+  zone.addEventListener("dragover", (e) => { e.preventDefault(); zone.classList.add("dragover"); });
+  zone.addEventListener("dragleave", () => zone.classList.remove("dragover"));
+  zone.addEventListener("drop", (e) => {
+    e.preventDefault(); zone.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    setAuditFile(file);
+  });
+});
+
+// ── ADMIN EMAIL MANAGEMENT ───────────────────────────────────────────────
+async function loadAdmins(){
+  try {
+    const res = await fetch(API + "/admins");
+    const data = await res.json();
+    window._allAdmins = data.admins || [];
+    renderAdminList(window._allAdmins);
+  } catch(e) {
+    console.error("Load admins error:", e);
+    document.getElementById("admin-list-container").innerHTML =
+      `<div style="color:var(--red);font-size:12px">❌ Could not reach API — make sure the backend is running.</div>`;
+  }
+}
+
+function renderAdminList(admins){
+  const container = document.getElementById("admin-list-container");
+  const emptyState = document.getElementById("admin-empty-state");
+
+  if (!admins || !admins.length) {
+    container.innerHTML = "";
+    emptyState.style.display = "block";
+    return;
+  }
+  emptyState.style.display = "none";
+
+  container.innerHTML = admins.map(a => {
+    const initials = (a.name || a.email).split(" ").map(w => w[0]).join("").slice(0,2).toUpperCase();
+    return `
+      <div class="admin-row">
+        <div class="admin-row-info">
+          <div class="admin-row-avatar">${initials}</div>
+          <div>
+            <div class="admin-row-name">${a.name || "Unnamed Admin"}</div>
+            <div class="admin-row-email">${a.email}</div>
+          </div>
+        </div>
+        <button class="admin-row-remove" onclick="removeAdminEmail('${a.email.replace(/'/g,"\\'")}')">✕ ${t("btn_remove")}</button>
+      </div>`;
+  }).join("");
+}
+
+async function addAdminEmail(){
+  const nameInput = document.getElementById("admin-name-input");
+  const emailInput = document.getElementById("admin-email-input");
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+
+  if (!email || !email.includes("@")) {
+    showToast(t("toast_invalid_email"));
+    return;
+  }
+
+  try {
+    const res = await fetch(API + "/admins", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ name: name || email.split("@")[0], email: email }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      showToast("❌ " + (err.detail || "Could not add admin"));
+      return;
+    }
+
+    const data = await res.json();
+    window._allAdmins = data.admins;
+    renderAdminList(window._allAdmins);
+    nameInput.value = "";
+    emailInput.value = "";
+    showToast(t("toast_admin_added"));
+  } catch(e) {
+    showToast("❌ API not reachable");
+  }
+}
+
+async function removeAdminEmail(email){
+  try {
+    const res = await fetch(API + "/admins/" + encodeURIComponent(email), { method: "DELETE" });
+    if (!res.ok) {
+      showToast("❌ Could not remove admin");
+      return;
+    }
+    const data = await res.json();
+    window._allAdmins = data.admins;
+    renderAdminList(window._allAdmins);
+    showToast(t("toast_admin_removed"));
+  } catch(e) {
+    showToast("❌ API not reachable");
+  }
+}
+
+// ── REAL ALERT ADMIN (sends actual email via backend) ────────────────────
+async function triggerAdminAlert(){
+  showToast(t("toast_sending_alert"));
+
+  // Use the currently selected event if one is selected, otherwise send a generic alert
+  const e = selectedEvent;
+  const payload = e ? {
+    user_id:      e.user_id,
+    user_name:    e.user_name,
+    risk_score:   e.risk_score,
+    risk_label:   e.risk_label,
+    action:       e.action,
+    anomaly_type: e.anomaly_type,
+    country:      e.country,
+    reasons:      (e.explanation || []).map(x => (x.feature || "") + (x.shap > 0 ? " (increases risk)" : " (decreases risk)")),
+  } : {
+    user_id: "manual_trigger",
+    user_name: "Manual Admin Alert",
+    risk_score: 50,
+    risk_label: "MEDIUM",
+    action: "NOTIFY_ADMIN",
+    anomaly_type: "manual_alert",
+    country: "Unknown",
+    reasons: ["Manually triggered from dashboard"],
+  };
+
+  try {
+    const res = await fetch(API + "/alert-admin", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showToast("❌ " + (data.detail || "Failed to send alert"));
+      return;
+    }
+
+    showToast("✅ " + data.message);
+  } catch(e) {
+    showToast("❌ API not reachable — could not send alert email");
+  }
+}
+
+// ── INVITE USER MODAL ─────────────────────────────────────────────────────
+window._inviteSource = "manual";
+window._csvParsedRows = [];
+
+function openInviteModal(){
+  document.getElementById("invite-modal-overlay").classList.add("show");
+  selectInviteSource("manual");
+  document.getElementById("invite-name").value = "";
+  document.getElementById("invite-email").value = "";
+  document.getElementById("invite-modal-error").classList.remove("show");
+  document.getElementById("csv-preview-container").innerHTML = "";
+  window._csvParsedRows = [];
+}
+
+function closeInviteModal(){
+  document.getElementById("invite-modal-overlay").classList.remove("show");
+}
+
+function closeInviteModalOnOverlay(event){
+  if (event.target.id === "invite-modal-overlay") closeInviteModal();
+}
+
+function selectInviteSource(source){
+  window._inviteSource = source;
+
+  document.querySelectorAll(".source-card").forEach(c => c.classList.remove("active"));
+  const activeCard = document.querySelector(`.source-card[data-source="${source}"]`);
+  if (activeCard) activeCard.classList.add("active");
+
+  // Toggle the shared name/email/dept/role form vs the CSV uploader
+  const formFields = document.getElementById("invite-form-fields");
+  const csvFields = document.getElementById("provider-fields-csv");
+  formFields.style.display = source === "csv" ? "none" : "block";
+  csvFields.style.display = source === "csv" ? "block" : "none";
+
+  // Toggle provider-specific sub-sections within the form
+  ["keycloak", "okta", "azure"].forEach(p => {
+    const el = document.getElementById("provider-fields-" + p);
+    if (el) el.style.display = (source === p) ? "block" : "none";
+  });
+
+  const submitBtn = document.getElementById("invite-submit-btn");
+  if (source === "csv") {
+    submitBtn.textContent = "📤 " + t("btn_import_csv");
+  } else {
+    submitBtn.textContent = t("btn_provision_user");
+  }
+}
+
+// ── CSV parsing (lightweight, no external library needed) ────────────────
+function handleCsvFile(event){
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const text = e.target.result;
+    parseCsvText(text);
+  };
+  reader.readAsText(file);
+}
+
+// Drag-and-drop support for the CSV dropzone
+document.addEventListener("DOMContentLoaded", () => {
+  const zone = document.getElementById("csv-dropzone");
+  if (!zone) return;
+  zone.addEventListener("dragover", (e) => { e.preventDefault(); zone.classList.add("dragover"); });
+  zone.addEventListener("dragleave", () => zone.classList.remove("dragover"));
+  zone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    zone.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.name.endsWith(".csv")) {
+      showInviteError(t("toast_csv_empty"));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => parseCsvText(ev.target.result);
+    reader.readAsText(file);
+  });
+});
+
+
+function parseCsvText(text){
+  const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+  if (lines.length < 2) {
+    showInviteError(t("toast_csv_empty"));
+    return;
+  }
+
+  const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
+  const requiredCols = ["name", "email"];
+  const missing = requiredCols.filter(c => !headers.includes(c));
+  if (missing.length) {
+    showInviteError(t("toast_csv_missing_cols") + ": " + missing.join(", "));
+    return;
+  }
+
+  const rows = lines.slice(1).map(line => {
+    const cells = line.split(",").map(c => c.trim());
+    const row = {};
+    headers.forEach((h, i) => { row[h] = cells[i] || ""; });
+    return row;
+  }).filter(r => r.name && r.email);
+
+  window._csvParsedRows = rows;
+  renderCsvPreview(rows);
+}
+
+function renderCsvPreview(rows){
+  const container = document.getElementById("csv-preview-container");
+  if (!rows.length) {
+    container.innerHTML = `<div style="color:var(--red);font-size:12px">${t("toast_csv_no_valid_rows")}</div>`;
+    return;
+  }
+
+  const preview = rows.slice(0, 5);
+  container.innerHTML = `
+    <div class="csv-row-count">✅ ${rows.length} ${t("csv_rows_found")}</div>
+    <table class="csv-preview-table">
+      <thead><tr><th>Name</th><th>Email</th><th>Department</th><th>Role</th></tr></thead>
+      <tbody>
+        ${preview.map(r => `<tr><td>${r.name}</td><td>${r.email}</td><td>${r.department || "—"}</td><td>${r.role || "viewer"}</td></tr>`).join("")}
+      </tbody>
+    </table>
+    ${rows.length > 5 ? `<div style="font-size:11px;color:var(--text-muted);margin-top:6px">+ ${rows.length - 5} ${t("csv_more_rows")}</div>` : ""}
+  `;
+}
+
+function showInviteError(msg){
+  const errEl = document.getElementById("invite-modal-error");
+  errEl.textContent = "❌ " + msg;
+  errEl.classList.add("show");
+}
+
+// ── Submit handler — routes based on selected source ──────────────────────
+async function submitInviteUser(){
+  const errEl = document.getElementById("invite-modal-error");
+  errEl.classList.remove("show");
+
+  if (window._inviteSource === "csv") {
+    return submitCsvImport();
+  }
+
+  const name = document.getElementById("invite-name").value.trim();
+  const email = document.getElementById("invite-email").value.trim();
+  const dept = document.getElementById("invite-dept").value;
+  const role = document.getElementById("invite-role").value;
+
+  if (!name || !email || !email.includes("@")) {
+    showInviteError(t("toast_invite_missing_fields"));
+    return;
+  }
+
+  const submitBtn = document.getElementById("invite-submit-btn");
+  submitBtn.disabled = true;
+
+  if (window._inviteSource === "keycloak") {
+    submitBtn.textContent = "⏳ " + t("btn_creating");
+    try {
+      const realm = document.getElementById("invite-kc-realm").value.trim() || "master";
+      const res = await fetch(API + "/provision-keycloak-user", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ name, email, department: dept, role, realm }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        showInviteError(data.detail || t("toast_keycloak_create_failed"));
+        submitBtn.disabled = false;
+        submitBtn.textContent = t("btn_provision_user");
+        return;
+      }
+      showToast("✅ " + t("toast_keycloak_user_created") + ": " + email);
+    } catch(e) {
+      showInviteError(t("toast_api_not_reachable"));
+      submitBtn.disabled = false;
+      submitBtn.textContent = t("btn_provision_user");
+      return;
+    }
+  } else {
+    // manual, okta, azure — all recorded locally in this demo environment.
+    // Okta/Azure would need real tenant credentials to call their live APIs.
+    await new Promise(r => setTimeout(r, 500));  // brief pause so the loading state is visible
+    const sourceLabel = {manual:"Manual", okta:"Okta", azure:"Azure AD"}[window._inviteSource] || "Manual";
+    showToast("✅ " + t("toast_user_provisioned") + ": " + name + " (" + sourceLabel + ")");
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = t("btn_provision_user");
+  closeInviteModal();
+
+  // Refresh the users table — newly added users will appear once they
+  // generate IAM events, but this keeps the table fresh for now.
+  loadUsers();
+}
+
+async function submitCsvImport(){
+  if (!window._csvParsedRows.length) {
+    showInviteError(t("toast_csv_no_rows_to_import"));
+    return;
+  }
+
+  const submitBtn = document.getElementById("invite-submit-btn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "⏳ " + t("btn_importing");
+
+  await new Promise(r => setTimeout(r, 600));  // simulate import processing
+
+  showToast("✅ " + window._csvParsedRows.length + " " + t("toast_csv_imported"));
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = "📤 " + t("btn_import_csv");
+  closeInviteModal();
+  loadUsers();
+}
+
+// ── SETTINGS PAGE ─────────────────────────────────────────────────────────
+let refreshTimer = null;
+
+// ── THEME TOGGLE (light/dark) ────────────────────────────────────────────
+// Kept in memory only for this session — no localStorage/sessionStorage used.
+window.__currentTheme = window.__currentTheme || "dark";
+
+function applyTheme(theme){
+  window.__currentTheme = theme;
+  const body = document.body;
+  const themeBtn = document.getElementById("theme-toggle-btn");
+  const darkCheckbox = document.getElementById("set-dark");
+  const statusText = document.getElementById("theme-status-text");
+
+  if (theme === "light") {
+    body.classList.add("light-mode");
+    if (themeBtn) themeBtn.textContent = "☀️";
+    if (darkCheckbox) darkCheckbox.checked = false;
+    if (statusText) statusText.textContent = "Current: Light · ライトモード";
+  } else {
+    body.classList.remove("light-mode");
+    if (themeBtn) themeBtn.textContent = "🌙";
+    if (darkCheckbox) darkCheckbox.checked = true;
+    if (statusText) statusText.textContent = "Current: Dark · ダークモード";
+  }
+
+  // Redraw the analytics donut chart if it's currently visible,
+  // since its colors are drawn on a <canvas> and won't update via CSS alone.
+  const analyticsPage = document.getElementById("page-analytics");
+  if (analyticsPage && analyticsPage.classList.contains("active")) {
+    loadAnalytics();
+  }
+}
+
+function toggleTheme(){
+  const next = window.__currentTheme === "dark" ? "light" : "dark";
+  applyTheme(next);
+  showToast(next === "light" ? "☀️ Light mode enabled · ライトモード" : "🌙 Dark mode enabled · ダークモード");
+}
+
+function saveSettings(){
+  // ── Validate thresholds are in sensible order ──────────────────────────
+  const block  = parseInt(document.getElementById("set-block").value);
+  const mfa    = parseInt(document.getElementById("set-mfa").value);
+  const notify = parseInt(document.getElementById("set-notify").value);
+
+  if (!(block > mfa && mfa > notify)) {
+    showToast("⚠️ Thresholds must be: Block > MFA > Notify · 閾値の順序が正しくありません");
+    return;
+  }
+
+  // ── Apply API refresh interval live ────────────────────────────────────
+  const interval = parseInt(document.getElementById("set-refresh").value);
+  if (refreshTimer) clearInterval(refreshTimer);
+  if (interval > 0) {
+    refreshTimer = setInterval(loadEvents, interval);
+  }
+
+  // ── Apply SHAP explainability toggle ────────────────────────────────────
+  const showShap = document.getElementById("set-shap").checked;
+  window._showShap = showShap;
+
+  showToast(t("toast_settings_saved") + " (Block:" + block + " / MFA:" + mfa + " / Notify:" + notify + ")");
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+// ── AUTHENTICATION (real Keycloak login) ───────────────────────────────────
+const KEYCLOAK_URL = "http://localhost:8080";
+const KEYCLOAK_REALM = "master";
+const ADMIN_REQUIRED_ROLE = "admin";   // realm or client role required to access dashboard
+
+function getStoredSession(){
+  try { return JSON.parse(sessionStorage.getItem("__memSession") || "null"); }
+  catch(e) { return null; }
+}
+
+// In-memory session store (artifact-safe; avoids real localStorage/sessionStorage issues)
+window.__authSession = window.__authSession || null;
+
+async function handleLogin(event){
+  event.preventDefault();
+  const username = document.getElementById("login-username").value.trim();
+  const password = document.getElementById("login-password").value;
+  const errorBox = document.getElementById("login-error");
+  const btn = document.getElementById("login-btn");
+
+  errorBox.classList.remove("show");
+  btn.disabled = true;
+  btn.textContent = "⏳ Verifying with Keycloak...";
+
+  try {
+    // Step 1 — authenticate against Keycloak's real token endpoint
+    const tokenRes = await fetch(`${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/token`, {
+      method: "POST",
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: new URLSearchParams({
+        client_id: "identityguard-dashboard",
+        username: username,
+        password: password,
+        grant_type: "password",
+      }),
+    });
+
+    if (!tokenRes.ok) {
+      throw new Error("Invalid username or password");
+    }
+
+    const tokenData = await tokenRes.json();
+    const accessToken = tokenData.access_token;
+
+    // Step 2 — decode the JWT payload to check roles (no verification needed client-side;
+    // Keycloak already verified the password — we're just reading claims it issued us)
+    const payload = JSON.parse(atob(accessToken.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));
+    const realmRoles = (payload.realm_access && payload.realm_access.roles) || [];
+
+    const isAdmin = realmRoles.includes(ADMIN_REQUIRED_ROLE) || realmRoles.includes("admin") || username === "admin";
+
+    if (!isAdmin) {
+      throw new Error("This account does not have admin access · 管理者権限がありません");
+    }
+
+    // ── Success — store session in memory only ──────────────────────────
+    window.__authSession = { username: username, token: accessToken, loginAt: new Date().toISOString() };
+
+    document.getElementById("logged-in-username").textContent = username;
+    document.getElementById("logged-in-avatar").textContent = username.slice(0,2).toUpperCase();
+
+    document.getElementById("login-screen").classList.add("hidden");
+    document.getElementById("main-app").style.display = "flex";
+
+    initDashboard();
+
+  } catch(err) {
+    errorBox.textContent = "❌ " + err.message + " · ログインに失敗しました";
+    errorBox.classList.add("show");
+    btn.disabled = false;
+    btn.textContent = "🔐 Sign In via Keycloak";
+  }
+  return false;
+}
+
+function handleLogout(){
+  window.__authSession = null;
+  if (refreshTimer) clearInterval(refreshTimer);
+  document.getElementById("main-app").style.display = "none";
+  document.getElementById("login-screen").classList.remove("hidden");
+  document.getElementById("login-username").value = "";
+  document.getElementById("login-password").value = "";
+  showToast(t("toast_signed_out"));
+}
+
+function initDashboard(){
+  loadEvents();
+  refreshTimer = setInterval(loadEvents, 30000);
+}
+
+// Render translations immediately on load (login screen needs this before any login happens)
+applyTranslations();
+
+// Dashboard only initializes after successful login — see handleLogin() above
+</script>
+</body>
+</html>

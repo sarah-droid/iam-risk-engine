@@ -1,0 +1,30 @@
+{
+  "feature_cols": [
+    "impossible_travel",
+    "hours_since_last",
+    "mfa_fail_count",
+    "is_known_device",
+    "country_deviation",
+    "hour_sin",
+    "hour_cos",
+    "is_business_hours",
+    "role_rank",
+    "role_escalation",
+    "pwd_reset_7d",
+    "peer_zscore"
+  ],
+  "label_map": {
+    "LOW": 0,
+    "MEDIUM": 1,
+    "HIGH": 2
+  },
+  "label_map_inv": {
+    "0": "LOW",
+    "1": "MEDIUM",
+    "2": "HIGH"
+  },
+  "iso_min": -0.10319303430481086,
+  "iso_max": 0.221423880937357,
+  "iso_weight": 0.4,
+  "xgb_weight": 0.6
+}

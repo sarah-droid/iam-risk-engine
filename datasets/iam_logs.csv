@@ -1,0 +1,703 @@
+session_id,user_id,user_name,department,timestamp,hour_of_day,event_type,source_ip,city,country,latitude,longitude,device_id,is_known_device,role_requested,role_rank,mfa_failed,mfa_success,password_reset,anomaly_type,risk_label
+6fc8700e,kim_j,Kim Junho,Sales,2025-01-01T02:00:00,2,login,103.5.222.26,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+0fd0f831,kim_j,Kim Junho,Sales,2025-01-01T02:15:00,2,login,103.5.72.117,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+ceebe667,kim_j,Kim Junho,Sales,2025-01-01T02:30:00,2,login,103.5.42.95,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+8b812b71,sato_m,Sato Miyuki,Finance,2025-01-01T03:00:00,3,login,78.32.27.24,London,UK,51.5074,-0.1278,86f74848,False,manager,2,0,1,0,new_country_login,MEDIUM
+723a107d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T08:30:00,8,login,103.5.57.115,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+b9b57322,kim_j,Kim Junho,Sales,2025-01-01T08:42:00,8,login,103.5.253.21,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+30f7d4e4,ito_k,Ito Kenji,Finance,2025-01-01T08:55:00,8,login,119.2.161.41,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+965d52da,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T09:01:00,9,login,103.5.58.36,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+d79033ba,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T09:13:00,9,login,103.5.144.51,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+61178fe4,admin45,Admin User 45,IT Operations,2025-01-01T09:22:00,9,login,103.5.207.12,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+e1a58a17,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T09:43:00,9,login,103.5.9.8,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+21b49fca,nakamura_a,Nakamura Aoi,DevOps,2025-01-01T09:43:00,9,login,103.5.29.76,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+2820c8a9,yamada_r,Yamada Riko,HR,2025-01-01T10:34:00,10,login,103.5.119.98,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+2d6d7dcb,sato_m,Sato Miyuki,Finance,2025-01-01T10:44:00,10,login,126.1.72.40,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+26236ba7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-01T10:45:00,10,login,77.88.151.72,Moscow,Russia,55.7558,37.6173,e6a5e1b8,False,admin,3,0,1,0,impossible_travel,HIGH
+7c6388f6,yamada_r,Yamada Riko,HR,2025-01-01T11:42:00,11,login,103.5.156.163,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+9e2ed0d2,suzuki_t,Suzuki Takeshi,Engineering,2025-01-01T11:52:00,11,login,103.5.103.69,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+8c38c009,chen_w,Chen Wei,Engineering,2025-01-01T11:58:00,11,login,103.5.168.128,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+eb5d2f77,yamada_r,Yamada Riko,HR,2025-01-01T13:00:00,13,login,103.5.176.84,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,super_admin,4,0,1,0,privilege_escalation,HIGH
+aa49f16f,ito_k,Ito Kenji,Finance,2025-01-01T13:14:00,13,login,119.2.24.194,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+87ce3bac,nakamura_a,Nakamura Aoi,DevOps,2025-01-01T14:38:00,14,login,103.5.98.153,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+50d0713d,nakamura_a,Nakamura Aoi,DevOps,2025-01-01T15:33:00,15,login,103.5.175.185,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+dd17a9f0,admin45,Admin User 45,IT Operations,2025-01-01T15:34:00,15,login,103.5.21.142,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+f5a946a1,park_s,Park Soyeon,Marketing,2025-01-01T16:34:00,16,login,103.5.230.150,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+421443d7,park_s,Park Soyeon,Marketing,2025-01-01T18:29:00,18,login,103.5.36.64,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+0460823a,admin45,Admin User 45,IT Operations,2025-01-01T22:00:00,22,login,103.5.76.213,Tokyo,Japan,35.6762,139.6503,0e8d0585,False,admin,3,1,0,0,mfa_brute_force,MEDIUM
+fb2acc4c,admin45,Admin User 45,IT Operations,2025-01-01T22:02:00,22,login,103.5.161.159,Tokyo,Japan,35.6762,139.6503,1624e68c,False,admin,3,2,0,0,mfa_brute_force,MEDIUM
+ab3175c4,admin45,Admin User 45,IT Operations,2025-01-01T22:04:00,22,login,103.5.227.221,Tokyo,Japan,35.6762,139.6503,78557915,False,admin,3,3,0,0,mfa_brute_force,HIGH
+33fa5c79,admin45,Admin User 45,IT Operations,2025-01-01T22:06:00,22,login,103.5.93.148,Tokyo,Japan,35.6762,139.6503,e6948037,False,admin,3,4,0,0,mfa_brute_force,HIGH
+ea2583ef,admin45,Admin User 45,IT Operations,2025-01-01T22:08:00,22,login,103.5.50.181,Tokyo,Japan,35.6762,139.6503,2acc441c,False,admin,3,5,0,0,mfa_brute_force,HIGH
+eccafc89,yamada_r,Yamada Riko,HR,2025-01-02T09:15:00,9,login,103.5.87.6,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+60657a69,ito_k,Ito Kenji,Finance,2025-01-02T09:15:00,9,login,119.2.138.115,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+e087b571,sato_m,Sato Miyuki,Finance,2025-01-02T09:59:00,9,login,126.1.62.15,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+e76ae77d,kim_j,Kim Junho,Sales,2025-01-02T10:08:00,10,login,103.5.68.136,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+26182f43,ito_k,Ito Kenji,Finance,2025-01-02T10:27:00,10,login,119.2.119.64,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+0423fbfc,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-02T10:29:00,10,login,103.5.249.129,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+f654c022,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-02T10:32:00,10,login,103.5.216.164,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+64d11b6c,suzuki_t,Suzuki Takeshi,Engineering,2025-01-02T11:34:00,11,login,103.5.63.201,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+069c913b,suzuki_t,Suzuki Takeshi,Engineering,2025-01-02T13:04:00,13,login,103.5.172.125,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+c380c4d1,chen_w,Chen Wei,Engineering,2025-01-02T13:27:00,13,login,103.5.222.187,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+3dff4341,chen_w,Chen Wei,Engineering,2025-01-02T14:12:00,14,login,103.5.169.111,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+1dd7f9fe,kim_j,Kim Junho,Sales,2025-01-02T14:42:00,14,login,103.5.231.133,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+20118166,nakamura_a,Nakamura Aoi,DevOps,2025-01-02T15:51:00,15,login,103.5.167.139,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+52a55993,sato_m,Sato Miyuki,Finance,2025-01-02T16:49:00,16,login,126.1.126.5,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+936c7bfa,admin45,Admin User 45,IT Operations,2025-01-02T17:05:00,17,login,103.5.209.18,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+120e9702,sato_m,Sato Miyuki,Finance,2025-01-02T17:12:00,17,login,126.1.196.42,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+9a73a51f,kim_j,Kim Junho,Sales,2025-01-02T17:27:00,17,login,103.5.183.80,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+5b69c308,yamada_r,Yamada Riko,HR,2025-01-02T17:35:00,17,login,103.5.2.19,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+e6758937,suzuki_t,Suzuki Takeshi,Engineering,2025-01-02T18:03:00,18,login,103.5.232.9,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+eff823d4,park_s,Park Soyeon,Marketing,2025-01-02T18:41:00,18,login,103.5.104.187,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+04a2449c,sato_m,Sato Miyuki,Finance,2025-01-03T08:24:00,8,login,126.1.74.109,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+6b2cddf6,nakamura_a,Nakamura Aoi,DevOps,2025-01-03T09:40:00,9,login,103.5.12.1,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+14aa4929,park_s,Park Soyeon,Marketing,2025-01-03T09:47:00,9,login,103.5.73.155,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+3205a1b7,park_s,Park Soyeon,Marketing,2025-01-03T09:56:00,9,login,103.5.30.228,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+c6f2743a,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-03T09:59:00,9,login,103.5.105.125,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+d816f066,kim_j,Kim Junho,Sales,2025-01-03T10:04:00,10,login,103.5.104.31,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+35685867,admin45,Admin User 45,IT Operations,2025-01-03T11:03:00,11,login,103.5.15.13,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+deef1a59,yamada_r,Yamada Riko,HR,2025-01-03T11:37:00,11,login,103.5.108.169,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+16530a50,sato_m,Sato Miyuki,Finance,2025-01-03T11:55:00,11,login,126.1.43.98,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+5553c54e,suzuki_t,Suzuki Takeshi,Engineering,2025-01-03T12:29:00,12,login,103.5.3.118,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+b3aabb5b,park_s,Park Soyeon,Marketing,2025-01-03T12:39:00,12,login,103.5.239.170,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+e7bf313b,ito_k,Ito Kenji,Finance,2025-01-03T13:13:00,13,login,119.2.65.232,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+29a17b0a,yamada_r,Yamada Riko,HR,2025-01-03T13:15:00,13,login,103.5.34.172,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+da938090,chen_w,Chen Wei,Engineering,2025-01-03T13:18:00,13,login,103.5.214.140,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+cda86998,suzuki_t,Suzuki Takeshi,Engineering,2025-01-03T16:16:00,16,login,103.5.226.18,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+7d68d75b,admin45,Admin User 45,IT Operations,2025-01-03T16:42:00,16,login,103.5.49.76,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+82227f98,admin45,Admin User 45,IT Operations,2025-01-03T17:30:00,17,login,103.5.246.131,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+5e5d43a7,yamada_r,Yamada Riko,HR,2025-01-03T17:36:00,17,login,103.5.53.172,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+9fee2c2d,suzuki_t,Suzuki Takeshi,Engineering,2025-01-03T17:36:00,17,login,103.5.138.55,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+b1c90faa,suzuki_t,Suzuki Takeshi,Engineering,2025-01-04T08:06:00,8,login,103.5.187.202,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+44fc72ba,admin45,Admin User 45,IT Operations,2025-01-04T08:11:00,8,login,103.5.206.172,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+7c386484,kim_j,Kim Junho,Sales,2025-01-04T08:54:00,8,login,103.5.52.210,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+d058969f,sato_m,Sato Miyuki,Finance,2025-01-04T08:57:00,8,login,126.1.175.64,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+a1e6145c,admin45,Admin User 45,IT Operations,2025-01-04T09:22:00,9,login,103.5.237.239,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+225f24da,park_s,Park Soyeon,Marketing,2025-01-04T09:46:00,9,login,103.5.171.105,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+c11f04d6,yamada_r,Yamada Riko,HR,2025-01-04T09:56:00,9,login,103.5.149.247,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+2b3828f0,sato_m,Sato Miyuki,Finance,2025-01-04T10:27:00,10,login,126.1.79.94,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+c9f31eb1,sato_m,Sato Miyuki,Finance,2025-01-04T10:34:00,10,login,126.1.150.142,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+76657621,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-04T10:40:00,10,login,103.5.190.114,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+0d9d2653,kim_j,Kim Junho,Sales,2025-01-04T11:17:00,11,login,103.5.98.224,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+b7df4935,yamada_r,Yamada Riko,HR,2025-01-04T11:25:00,11,login,103.5.222.18,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+24b91121,admin45,Admin User 45,IT Operations,2025-01-04T11:55:00,11,login,103.5.226.106,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+cac45ab3,chen_w,Chen Wei,Engineering,2025-01-04T12:02:00,12,login,103.5.134.237,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+d7c188bd,nakamura_a,Nakamura Aoi,DevOps,2025-01-04T12:18:00,12,login,103.5.202.149,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+e9b71b74,yamada_r,Yamada Riko,HR,2025-01-04T12:22:00,12,login,103.5.241.8,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+8dc84512,suzuki_t,Suzuki Takeshi,Engineering,2025-01-04T13:27:00,13,login,103.5.231.148,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+ee41f69f,ito_k,Ito Kenji,Finance,2025-01-04T14:44:00,14,login,119.2.50.108,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+36811189,kim_j,Kim Junho,Sales,2025-01-04T15:22:00,15,login,103.5.58.7,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+cc909a36,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-04T16:45:00,16,login,103.5.29.20,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+d0ffd323,ito_k,Ito Kenji,Finance,2025-01-04T18:24:00,18,login,119.2.104.141,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+baa2ba6b,park_s,Park Soyeon,Marketing,2025-01-04T18:46:00,18,login,103.5.111.18,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+837f2c78,park_s,Park Soyeon,Marketing,2025-01-04T18:58:00,18,login,103.5.170.218,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+e67f088b,park_s,Park Soyeon,Marketing,2025-01-05T09:08:00,9,login,103.5.99.178,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+61a04391,kim_j,Kim Junho,Sales,2025-01-05T10:41:00,10,login,103.5.200.109,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+b256c6df,park_s,Park Soyeon,Marketing,2025-01-05T10:45:00,10,login,103.5.107.105,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+194bc1b4,kim_j,Kim Junho,Sales,2025-01-05T11:11:00,11,login,103.5.143.64,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+16c27629,admin45,Admin User 45,IT Operations,2025-01-05T11:30:00,11,login,103.5.107.227,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+95d3ed1b,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-05T11:32:00,11,login,103.5.169.22,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+b4a27709,chen_w,Chen Wei,Engineering,2025-01-05T12:15:00,12,login,103.5.82.229,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+53d5cab8,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-05T12:32:00,12,login,103.5.210.244,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+accb7cc3,ito_k,Ito Kenji,Finance,2025-01-05T13:19:00,13,login,119.2.138.192,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+c2bca472,park_s,Park Soyeon,Marketing,2025-01-05T13:34:00,13,login,103.5.16.53,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+162f15b1,nakamura_a,Nakamura Aoi,DevOps,2025-01-05T14:31:00,14,login,103.5.87.172,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+9e152fe8,ito_k,Ito Kenji,Finance,2025-01-05T14:57:00,14,login,119.2.123.2,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+d3f8fe28,yamada_r,Yamada Riko,HR,2025-01-05T15:08:00,15,login,103.5.244.194,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+6e935962,suzuki_t,Suzuki Takeshi,Engineering,2025-01-05T15:28:00,15,login,103.5.216.164,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+2e0a5274,chen_w,Chen Wei,Engineering,2025-01-05T16:31:00,16,login,103.5.113.20,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+0f4e06a3,nakamura_a,Nakamura Aoi,DevOps,2025-01-05T16:51:00,16,login,103.5.57.70,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+a8ef9e35,kim_j,Kim Junho,Sales,2025-01-05T17:12:00,17,login,103.5.103.63,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+b3424629,suzuki_t,Suzuki Takeshi,Engineering,2025-01-05T17:52:00,17,login,103.5.230.41,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+408ec868,sato_m,Sato Miyuki,Finance,2025-01-05T18:19:00,18,login,126.1.38.7,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+20536231,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-05T18:20:00,18,login,103.5.114.173,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+ca83f266,nakamura_a,Nakamura Aoi,DevOps,2025-01-05T18:51:00,18,login,103.5.216.120,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+857e8f79,kim_j,Kim Junho,Sales,2025-01-06T02:00:00,2,login,103.5.102.242,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+5b5609a9,kim_j,Kim Junho,Sales,2025-01-06T02:15:00,2,login,103.5.20.152,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+f60b983a,kim_j,Kim Junho,Sales,2025-01-06T02:30:00,2,login,103.5.27.179,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+02a2d2a5,sato_m,Sato Miyuki,Finance,2025-01-06T03:00:00,3,login,69.89.214.21,New York,USA,40.7128,-74.006,f0b12e95,False,manager,2,0,1,0,new_country_login,MEDIUM
+c3470399,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-06T08:30:00,8,login,103.5.22.165,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+6ca9acac,admin45,Admin User 45,IT Operations,2025-01-06T08:47:00,8,login,103.5.58.167,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+1c802942,ito_k,Ito Kenji,Finance,2025-01-06T09:15:00,9,login,119.2.143.195,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+190c9653,chen_w,Chen Wei,Engineering,2025-01-06T09:17:00,9,login,103.5.193.119,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+7ce595e8,suzuki_t,Suzuki Takeshi,Engineering,2025-01-06T09:27:00,9,login,103.5.182.40,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+c560d521,kim_j,Kim Junho,Sales,2025-01-06T09:37:00,9,login,103.5.148.174,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+509e09b6,admin45,Admin User 45,IT Operations,2025-01-06T09:49:00,9,login,103.5.244.64,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+ca7d82f3,sato_m,Sato Miyuki,Finance,2025-01-06T10:03:00,10,login,126.1.84.55,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+7735ec82,park_s,Park Soyeon,Marketing,2025-01-06T10:31:00,10,login,103.5.205.67,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+6281147f,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-06T10:45:00,10,login,77.88.110.35,Moscow,Russia,55.7558,37.6173,1c3af81a,False,admin,3,0,1,0,impossible_travel,HIGH
+788b4770,kim_j,Kim Junho,Sales,2025-01-06T11:29:00,11,login,103.5.43.156,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+262fc65b,park_s,Park Soyeon,Marketing,2025-01-06T13:17:00,13,login,103.5.133.243,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+5c15233b,yamada_r,Yamada Riko,HR,2025-01-06T14:00:00,14,login,103.5.218.108,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,super_admin,4,0,1,0,privilege_escalation,HIGH
+55386360,suzuki_t,Suzuki Takeshi,Engineering,2025-01-06T14:11:00,14,login,103.5.120.112,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+a92b5407,yamada_r,Yamada Riko,HR,2025-01-06T14:42:00,14,login,103.5.130.166,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+734eec0c,sato_m,Sato Miyuki,Finance,2025-01-06T15:20:00,15,login,126.1.72.193,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+ea747577,nakamura_a,Nakamura Aoi,DevOps,2025-01-06T15:41:00,15,login,103.5.203.5,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+13427ec2,chen_w,Chen Wei,Engineering,2025-01-06T17:17:00,17,login,103.5.213.240,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+0a6b2d53,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-06T17:34:00,17,login,103.5.152.145,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+5b48888c,chen_w,Chen Wei,Engineering,2025-01-06T17:39:00,17,login,103.5.8.127,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+541eb7ae,kim_j,Kim Junho,Sales,2025-01-06T17:47:00,17,login,103.5.247.80,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+d5968974,yamada_r,Yamada Riko,HR,2025-01-06T18:38:00,18,login,103.5.89.137,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+71aac6b8,admin45,Admin User 45,IT Operations,2025-01-06T22:00:00,22,login,103.5.52.215,Tokyo,Japan,35.6762,139.6503,38418bd4,False,admin,3,1,0,0,mfa_brute_force,MEDIUM
+0b93da87,admin45,Admin User 45,IT Operations,2025-01-06T22:02:00,22,login,103.5.6.160,Tokyo,Japan,35.6762,139.6503,977ee7f3,False,admin,3,2,0,0,mfa_brute_force,MEDIUM
+7f9382a9,admin45,Admin User 45,IT Operations,2025-01-06T22:04:00,22,login,103.5.40.62,Tokyo,Japan,35.6762,139.6503,ca07c1a6,False,admin,3,3,0,0,mfa_brute_force,HIGH
+21b0357c,admin45,Admin User 45,IT Operations,2025-01-06T22:06:00,22,login,103.5.33.122,Tokyo,Japan,35.6762,139.6503,e06568b1,False,admin,3,4,0,0,mfa_brute_force,HIGH
+39fcfdc4,admin45,Admin User 45,IT Operations,2025-01-06T22:08:00,22,login,103.5.172.30,Tokyo,Japan,35.6762,139.6503,a15a62bb,False,admin,3,5,0,0,mfa_brute_force,HIGH
+a2814678,suzuki_t,Suzuki Takeshi,Engineering,2025-01-07T08:09:00,8,login,103.5.22.64,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+ba23ccae,kim_j,Kim Junho,Sales,2025-01-07T08:36:00,8,login,103.5.123.113,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+7eb20d66,yamada_r,Yamada Riko,HR,2025-01-07T09:25:00,9,login,103.5.148.162,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+672208fb,suzuki_t,Suzuki Takeshi,Engineering,2025-01-07T09:35:00,9,login,103.5.199.134,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+83b59e9a,yamada_r,Yamada Riko,HR,2025-01-07T10:03:00,10,login,103.5.30.211,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+b44169c2,admin45,Admin User 45,IT Operations,2025-01-07T10:12:00,10,login,103.5.71.186,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+7b724b92,sato_m,Sato Miyuki,Finance,2025-01-07T11:07:00,11,login,126.1.31.191,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+036b6018,park_s,Park Soyeon,Marketing,2025-01-07T11:11:00,11,login,103.5.1.105,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+af4f580c,chen_w,Chen Wei,Engineering,2025-01-07T11:40:00,11,login,103.5.170.21,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+29f27f3f,nakamura_a,Nakamura Aoi,DevOps,2025-01-07T11:41:00,11,login,103.5.212.37,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+d1295076,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-07T12:14:00,12,login,103.5.79.170,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+fbcd854a,admin45,Admin User 45,IT Operations,2025-01-07T12:14:00,12,login,103.5.78.4,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+58156be6,chen_w,Chen Wei,Engineering,2025-01-07T12:36:00,12,login,103.5.243.196,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+9771862b,ito_k,Ito Kenji,Finance,2025-01-07T12:44:00,12,login,119.2.176.60,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+c476737c,sato_m,Sato Miyuki,Finance,2025-01-07T13:22:00,13,login,126.1.79.65,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+ed52494b,sato_m,Sato Miyuki,Finance,2025-01-07T13:30:00,13,login,126.1.191.141,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+dc4ca67a,suzuki_t,Suzuki Takeshi,Engineering,2025-01-07T14:28:00,14,login,103.5.221.151,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+2bab9bd9,kim_j,Kim Junho,Sales,2025-01-07T16:08:00,16,login,103.5.250.14,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+665b340e,kim_j,Kim Junho,Sales,2025-01-07T16:18:00,16,login,103.5.27.224,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+21120d6e,ito_k,Ito Kenji,Finance,2025-01-07T17:30:00,17,login,119.2.60.74,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+a3017bc9,admin45,Admin User 45,IT Operations,2025-01-07T17:48:00,17,login,103.5.214.50,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+048cb70c,nakamura_a,Nakamura Aoi,DevOps,2025-01-07T18:37:00,18,login,103.5.30.140,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+f40b6248,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-08T08:10:00,8,login,103.5.113.32,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+60c9efc6,park_s,Park Soyeon,Marketing,2025-01-08T09:29:00,9,login,103.5.128.239,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+6d679a06,admin45,Admin User 45,IT Operations,2025-01-08T10:30:00,10,login,103.5.47.150,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+60da4555,chen_w,Chen Wei,Engineering,2025-01-08T11:17:00,11,login,103.5.113.226,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+b396cc0c,ito_k,Ito Kenji,Finance,2025-01-08T12:32:00,12,login,119.2.214.124,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+c08973ed,park_s,Park Soyeon,Marketing,2025-01-08T12:35:00,12,login,103.5.24.58,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+fdadb058,sato_m,Sato Miyuki,Finance,2025-01-08T12:44:00,12,login,126.1.129.139,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+dcda67f1,nakamura_a,Nakamura Aoi,DevOps,2025-01-08T12:53:00,12,login,103.5.115.138,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+a090b8b2,suzuki_t,Suzuki Takeshi,Engineering,2025-01-08T13:07:00,13,login,103.5.169.223,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+e2088946,admin45,Admin User 45,IT Operations,2025-01-08T13:38:00,13,login,103.5.24.59,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+b8ec224d,nakamura_a,Nakamura Aoi,DevOps,2025-01-08T13:59:00,13,login,103.5.73.186,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+7d1fe136,kim_j,Kim Junho,Sales,2025-01-08T14:21:00,14,login,103.5.220.42,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+15cd2124,yamada_r,Yamada Riko,HR,2025-01-08T14:44:00,14,login,103.5.170.242,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+6d0ba4c5,yamada_r,Yamada Riko,HR,2025-01-08T14:52:00,14,login,103.5.23.81,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+ee88e225,park_s,Park Soyeon,Marketing,2025-01-08T15:07:00,15,login,103.5.182.41,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+db807f0b,ito_k,Ito Kenji,Finance,2025-01-08T15:15:00,15,login,119.2.99.49,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+bed3191d,sato_m,Sato Miyuki,Finance,2025-01-08T15:28:00,15,login,126.1.228.111,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+bdcd5df0,suzuki_t,Suzuki Takeshi,Engineering,2025-01-08T16:29:00,16,login,103.5.49.133,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+61dbab0c,ito_k,Ito Kenji,Finance,2025-01-08T17:32:00,17,login,119.2.71.198,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+bb527cdf,chen_w,Chen Wei,Engineering,2025-01-08T17:48:00,17,login,103.5.195.14,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+1d74c8f1,kim_j,Kim Junho,Sales,2025-01-08T18:52:00,18,login,103.5.121.90,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+709b7fbc,admin45,Admin User 45,IT Operations,2025-01-08T18:53:00,18,login,103.5.148.11,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+ea7d50bd,sato_m,Sato Miyuki,Finance,2025-01-09T08:20:00,8,login,126.1.99.254,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+c5bcf458,chen_w,Chen Wei,Engineering,2025-01-09T08:20:00,8,login,103.5.92.96,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+e227fd97,chen_w,Chen Wei,Engineering,2025-01-09T09:28:00,9,login,103.5.232.8,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+dbf29cfd,kim_j,Kim Junho,Sales,2025-01-09T09:33:00,9,login,103.5.185.37,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+3d64b77a,park_s,Park Soyeon,Marketing,2025-01-09T10:11:00,10,login,103.5.159.175,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+0db42a24,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-09T11:44:00,11,login,103.5.60.220,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+286abdd7,suzuki_t,Suzuki Takeshi,Engineering,2025-01-09T12:14:00,12,login,103.5.251.26,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+6238e0a2,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-09T13:21:00,13,login,103.5.239.83,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+5650208b,yamada_r,Yamada Riko,HR,2025-01-09T13:39:00,13,login,103.5.219.85,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+23399562,chen_w,Chen Wei,Engineering,2025-01-09T14:09:00,14,login,103.5.145.175,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+e15d2136,kim_j,Kim Junho,Sales,2025-01-09T14:55:00,14,login,103.5.121.201,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+250edbef,nakamura_a,Nakamura Aoi,DevOps,2025-01-09T15:16:00,15,login,103.5.231.74,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+d709a20b,ito_k,Ito Kenji,Finance,2025-01-09T15:58:00,15,login,119.2.119.164,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+3b7aefcd,suzuki_t,Suzuki Takeshi,Engineering,2025-01-09T16:02:00,16,login,103.5.162.176,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+bbded20e,admin45,Admin User 45,IT Operations,2025-01-09T16:37:00,16,login,103.5.224.217,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+a4254192,nakamura_a,Nakamura Aoi,DevOps,2025-01-09T18:34:00,18,login,103.5.114.242,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+f37fdeb7,sato_m,Sato Miyuki,Finance,2025-01-09T18:50:00,18,login,126.1.247.10,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+86475fd8,yamada_r,Yamada Riko,HR,2025-01-09T18:54:00,18,login,103.5.161.184,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+3cf5e38d,ito_k,Ito Kenji,Finance,2025-01-10T08:02:00,8,login,119.2.30.25,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+16ed8a0c,chen_w,Chen Wei,Engineering,2025-01-10T08:16:00,8,login,103.5.95.173,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+6847d8fa,kim_j,Kim Junho,Sales,2025-01-10T08:19:00,8,login,103.5.149.94,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+c7cd6957,admin45,Admin User 45,IT Operations,2025-01-10T08:58:00,8,login,103.5.199.205,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+1ed8d538,kim_j,Kim Junho,Sales,2025-01-10T10:05:00,10,login,103.5.192.107,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+16aff855,kim_j,Kim Junho,Sales,2025-01-10T10:12:00,10,login,103.5.136.129,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+cfd8e70d,yamada_r,Yamada Riko,HR,2025-01-10T10:16:00,10,login,103.5.192.223,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+bdd6c698,admin45,Admin User 45,IT Operations,2025-01-10T11:38:00,11,login,103.5.163.49,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+f308d9ca,suzuki_t,Suzuki Takeshi,Engineering,2025-01-10T11:55:00,11,login,103.5.24.203,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+bee15e37,ito_k,Ito Kenji,Finance,2025-01-10T11:56:00,11,login,119.2.117.95,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+8b016a64,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-10T12:12:00,12,login,103.5.28.61,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+42ba1e0a,nakamura_a,Nakamura Aoi,DevOps,2025-01-10T13:13:00,13,login,103.5.244.61,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+7c5686b8,yamada_r,Yamada Riko,HR,2025-01-10T13:51:00,13,login,103.5.247.20,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+4131b9dd,park_s,Park Soyeon,Marketing,2025-01-10T15:01:00,15,login,103.5.166.17,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+28f73be2,nakamura_a,Nakamura Aoi,DevOps,2025-01-10T15:39:00,15,login,103.5.9.177,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+71c43f32,ito_k,Ito Kenji,Finance,2025-01-10T15:58:00,15,login,119.2.30.36,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+39d525d3,nakamura_a,Nakamura Aoi,DevOps,2025-01-10T16:26:00,16,login,103.5.168.26,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+53d120d4,admin45,Admin User 45,IT Operations,2025-01-10T17:16:00,17,login,103.5.232.161,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+5f60baaa,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-10T17:19:00,17,login,103.5.117.217,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+c8da2a67,sato_m,Sato Miyuki,Finance,2025-01-10T17:22:00,17,login,126.1.6.251,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+8ec2025b,chen_w,Chen Wei,Engineering,2025-01-10T18:16:00,18,login,103.5.28.173,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+49bab359,sato_m,Sato Miyuki,Finance,2025-01-10T18:25:00,18,login,126.1.145.222,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+936a8870,sato_m,Sato Miyuki,Finance,2025-01-11T01:00:00,1,login,78.32.213.196,London,UK,51.5074,-0.1278,e4ba0952,False,manager,2,0,1,0,new_country_login,MEDIUM
+047ca005,kim_j,Kim Junho,Sales,2025-01-11T02:00:00,2,login,103.5.191.17,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+66338b92,kim_j,Kim Junho,Sales,2025-01-11T02:15:00,2,login,103.5.115.200,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+1d5a3d30,kim_j,Kim Junho,Sales,2025-01-11T02:30:00,2,login,103.5.132.152,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+ba34a3fd,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T08:30:00,8,login,103.5.165.164,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+a8d54505,suzuki_t,Suzuki Takeshi,Engineering,2025-01-11T08:30:00,8,login,103.5.176.28,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+a7c72049,sato_m,Sato Miyuki,Finance,2025-01-11T08:50:00,8,login,126.1.254.33,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+fc12f780,ito_k,Ito Kenji,Finance,2025-01-11T09:05:00,9,login,119.2.191.190,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+5f36e1bf,chen_w,Chen Wei,Engineering,2025-01-11T09:08:00,9,login,103.5.98.153,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+bfe33e21,ito_k,Ito Kenji,Finance,2025-01-11T09:20:00,9,login,119.2.171.66,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+66b0a3a7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T09:43:00,9,login,103.5.16.102,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+d354fd14,park_s,Park Soyeon,Marketing,2025-01-11T09:54:00,9,login,103.5.116.228,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+76eea534,admin45,Admin User 45,IT Operations,2025-01-11T10:08:00,10,login,103.5.29.170,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+b5e55701,kim_j,Kim Junho,Sales,2025-01-11T10:16:00,10,login,103.5.190.108,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+49fda337,nakamura_a,Nakamura Aoi,DevOps,2025-01-11T10:35:00,10,login,103.5.172.32,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+179c83fb,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T10:45:00,10,login,77.88.153.249,Moscow,Russia,55.7558,37.6173,dea72b2e,False,admin,3,0,1,0,impossible_travel,HIGH
+d9535a05,admin45,Admin User 45,IT Operations,2025-01-11T10:50:00,10,login,103.5.220.252,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+5377edf9,park_s,Park Soyeon,Marketing,2025-01-11T11:26:00,11,login,103.5.103.107,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+7e06862f,admin45,Admin User 45,IT Operations,2025-01-11T11:37:00,11,login,103.5.85.199,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+6bf9bd45,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-11T12:12:00,12,login,103.5.24.170,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+24189aae,park_s,Park Soyeon,Marketing,2025-01-11T12:29:00,12,login,103.5.204.180,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+344f23db,ito_k,Ito Kenji,Finance,2025-01-11T13:09:00,13,login,119.2.24.213,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+87e33620,nakamura_a,Nakamura Aoi,DevOps,2025-01-11T14:22:00,14,login,103.5.248.74,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+70a9fe05,chen_w,Chen Wei,Engineering,2025-01-11T15:04:00,15,login,103.5.156.38,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+67977322,yamada_r,Yamada Riko,HR,2025-01-11T15:32:00,15,login,103.5.187.201,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+32b46b3e,yamada_r,Yamada Riko,HR,2025-01-11T17:00:00,17,login,103.5.118.165,Tokyo,Japan,35.6762,139.6503,22081100,True,super_admin,4,0,1,0,privilege_escalation,HIGH
+a8bc9477,admin45,Admin User 45,IT Operations,2025-01-11T22:00:00,22,login,103.5.222.7,Tokyo,Japan,35.6762,139.6503,a204a6d2,False,admin,3,1,0,0,mfa_brute_force,MEDIUM
+308f9a5f,admin45,Admin User 45,IT Operations,2025-01-11T22:02:00,22,login,103.5.34.4,Tokyo,Japan,35.6762,139.6503,879cd3c8,False,admin,3,2,0,0,mfa_brute_force,MEDIUM
+1101ec69,admin45,Admin User 45,IT Operations,2025-01-11T22:04:00,22,login,103.5.92.203,Tokyo,Japan,35.6762,139.6503,b40d7b9c,False,admin,3,3,0,0,mfa_brute_force,HIGH
+5238d179,admin45,Admin User 45,IT Operations,2025-01-11T22:06:00,22,login,103.5.202.61,Tokyo,Japan,35.6762,139.6503,460e4501,False,admin,3,4,0,0,mfa_brute_force,HIGH
+68c34a68,admin45,Admin User 45,IT Operations,2025-01-11T22:08:00,22,login,103.5.151.83,Tokyo,Japan,35.6762,139.6503,7df8d1ec,False,admin,3,5,0,0,mfa_brute_force,HIGH
+0519cb8c,chen_w,Chen Wei,Engineering,2025-01-12T08:27:00,8,login,103.5.236.20,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+70868eef,suzuki_t,Suzuki Takeshi,Engineering,2025-01-12T08:31:00,8,login,103.5.34.98,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+4fb4a0aa,kim_j,Kim Junho,Sales,2025-01-12T08:43:00,8,login,103.5.114.170,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+3bf1ea33,park_s,Park Soyeon,Marketing,2025-01-12T10:51:00,10,login,103.5.23.112,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+52fdbbd0,sato_m,Sato Miyuki,Finance,2025-01-12T10:55:00,10,login,126.1.18.37,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+98f7c08a,ito_k,Ito Kenji,Finance,2025-01-12T11:27:00,11,login,119.2.102.223,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+9154d94b,chen_w,Chen Wei,Engineering,2025-01-12T11:32:00,11,login,103.5.102.221,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+d80b617b,yamada_r,Yamada Riko,HR,2025-01-12T11:49:00,11,login,103.5.75.84,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+50849ff8,park_s,Park Soyeon,Marketing,2025-01-12T12:07:00,12,login,103.5.248.84,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+0cc505af,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-12T12:22:00,12,login,103.5.40.169,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+1597ba01,sato_m,Sato Miyuki,Finance,2025-01-12T12:44:00,12,login,126.1.90.2,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+496978e3,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-12T13:07:00,13,login,103.5.207.110,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+33e55903,nakamura_a,Nakamura Aoi,DevOps,2025-01-12T13:14:00,13,login,103.5.20.131,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+2ab0a002,chen_w,Chen Wei,Engineering,2025-01-12T13:36:00,13,login,103.5.182.164,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+88ab8aff,admin45,Admin User 45,IT Operations,2025-01-12T13:49:00,13,login,103.5.40.41,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+8914d3d1,kim_j,Kim Junho,Sales,2025-01-12T14:31:00,14,login,103.5.70.56,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+5af0a117,yamada_r,Yamada Riko,HR,2025-01-12T14:38:00,14,login,103.5.53.78,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+a1606b15,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-12T15:14:00,15,login,103.5.217.143,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+9521ccff,admin45,Admin User 45,IT Operations,2025-01-12T15:21:00,15,login,103.5.80.185,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+46da1a3b,kim_j,Kim Junho,Sales,2025-01-12T16:07:00,16,login,103.5.29.73,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+76b06c49,sato_m,Sato Miyuki,Finance,2025-01-12T17:39:00,17,login,126.1.8.47,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+72cd1da9,admin45,Admin User 45,IT Operations,2025-01-12T18:01:00,18,login,103.5.97.108,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+ab5fe60f,nakamura_a,Nakamura Aoi,DevOps,2025-01-12T18:07:00,18,login,103.5.90.187,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+da49a0ba,yamada_r,Yamada Riko,HR,2025-01-12T18:37:00,18,login,103.5.12.57,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+ddded3d7,admin45,Admin User 45,IT Operations,2025-01-13T08:03:00,8,login,103.5.20.166,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+b31056dd,kim_j,Kim Junho,Sales,2025-01-13T08:28:00,8,login,103.5.155.122,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+361c850b,yamada_r,Yamada Riko,HR,2025-01-13T08:50:00,8,login,103.5.85.25,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+27137938,sato_m,Sato Miyuki,Finance,2025-01-13T09:30:00,9,login,126.1.204.71,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+36f9b8eb,ito_k,Ito Kenji,Finance,2025-01-13T09:32:00,9,login,119.2.225.197,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+2a881355,admin45,Admin User 45,IT Operations,2025-01-13T09:39:00,9,login,103.5.149.142,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+5e8cfa69,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-13T10:15:00,10,login,103.5.66.51,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+b4e211a8,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-13T10:38:00,10,login,103.5.46.244,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+865142a0,nakamura_a,Nakamura Aoi,DevOps,2025-01-13T10:38:00,10,login,103.5.42.47,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+10b5da08,ito_k,Ito Kenji,Finance,2025-01-13T11:14:00,11,login,119.2.20.76,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+12d3206e,yamada_r,Yamada Riko,HR,2025-01-13T12:24:00,12,login,103.5.174.154,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+758c5614,park_s,Park Soyeon,Marketing,2025-01-13T13:19:00,13,login,103.5.88.243,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+2aa750e0,nakamura_a,Nakamura Aoi,DevOps,2025-01-13T13:43:00,13,login,103.5.157.73,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+d5737c76,kim_j,Kim Junho,Sales,2025-01-13T13:45:00,13,login,103.5.11.64,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+57e5a83b,chen_w,Chen Wei,Engineering,2025-01-13T14:41:00,14,login,103.5.172.180,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+d4c4d21b,yamada_r,Yamada Riko,HR,2025-01-13T15:28:00,15,login,103.5.96.235,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+395d3c36,kim_j,Kim Junho,Sales,2025-01-13T16:09:00,16,login,103.5.27.208,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+0b03a881,sato_m,Sato Miyuki,Finance,2025-01-13T17:03:00,17,login,126.1.80.119,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+8ab8c8f1,nakamura_a,Nakamura Aoi,DevOps,2025-01-13T17:51:00,17,login,103.5.12.106,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+6d231f64,suzuki_t,Suzuki Takeshi,Engineering,2025-01-13T18:09:00,18,login,103.5.248.168,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+06ad79e1,suzuki_t,Suzuki Takeshi,Engineering,2025-01-13T18:24:00,18,login,103.5.186.219,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+433ff28a,chen_w,Chen Wei,Engineering,2025-01-13T18:25:00,18,login,103.5.80.144,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+ab970f83,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-13T18:31:00,18,login,103.5.175.237,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+2be4c89b,sato_m,Sato Miyuki,Finance,2025-01-13T18:40:00,18,login,126.1.39.113,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+c67dbd24,suzuki_t,Suzuki Takeshi,Engineering,2025-01-13T18:58:00,18,login,103.5.21.150,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+b1eacb99,chen_w,Chen Wei,Engineering,2025-01-13T18:58:00,18,login,103.5.131.93,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+1f1ee4bf,ito_k,Ito Kenji,Finance,2025-01-14T08:39:00,8,login,119.2.147.107,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+8ef989a7,ito_k,Ito Kenji,Finance,2025-01-14T08:40:00,8,login,119.2.75.110,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+48f9f9c3,suzuki_t,Suzuki Takeshi,Engineering,2025-01-14T08:57:00,8,login,103.5.66.56,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+173f18b8,sato_m,Sato Miyuki,Finance,2025-01-14T10:55:00,10,login,126.1.165.124,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+d0fc5e0a,yamada_r,Yamada Riko,HR,2025-01-14T11:01:00,11,login,103.5.215.183,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+e6cdf682,park_s,Park Soyeon,Marketing,2025-01-14T12:07:00,12,login,103.5.108.164,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+c94ff133,admin45,Admin User 45,IT Operations,2025-01-14T12:28:00,12,login,103.5.24.243,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+cf3240d4,sato_m,Sato Miyuki,Finance,2025-01-14T13:35:00,13,login,126.1.73.22,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+82cbdcad,suzuki_t,Suzuki Takeshi,Engineering,2025-01-14T13:50:00,13,login,103.5.10.74,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+4e3392e8,ito_k,Ito Kenji,Finance,2025-01-14T15:04:00,15,login,119.2.153.138,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+c49bb4ce,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-14T15:14:00,15,login,103.5.248.208,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+ed1986b6,suzuki_t,Suzuki Takeshi,Engineering,2025-01-14T15:44:00,15,login,103.5.115.158,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+07b012da,kim_j,Kim Junho,Sales,2025-01-14T15:56:00,15,login,103.5.107.14,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+1058d2e1,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-14T15:57:00,15,login,103.5.174.243,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+0dfb91bd,yamada_r,Yamada Riko,HR,2025-01-14T16:23:00,16,login,103.5.21.96,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+c10cf4a9,sato_m,Sato Miyuki,Finance,2025-01-14T16:26:00,16,login,126.1.206.155,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+b1f38cf5,chen_w,Chen Wei,Engineering,2025-01-14T16:46:00,16,login,103.5.199.74,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+6a19940d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-14T17:28:00,17,login,103.5.200.98,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+cfbe9a63,nakamura_a,Nakamura Aoi,DevOps,2025-01-14T18:42:00,18,login,103.5.18.245,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+0b937b50,chen_w,Chen Wei,Engineering,2025-01-15T08:04:00,8,login,103.5.132.206,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+d1bdeb12,admin45,Admin User 45,IT Operations,2025-01-15T08:18:00,8,login,103.5.203.52,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+102d03e8,admin45,Admin User 45,IT Operations,2025-01-15T08:20:00,8,login,103.5.254.209,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+b3c37331,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-15T08:22:00,8,login,103.5.62.188,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+c75a9afe,park_s,Park Soyeon,Marketing,2025-01-15T08:38:00,8,login,103.5.243.95,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+7a4cf531,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-15T08:40:00,8,login,103.5.65.192,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+f2a2dd38,kim_j,Kim Junho,Sales,2025-01-15T08:55:00,8,login,103.5.32.205,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+23415086,nakamura_a,Nakamura Aoi,DevOps,2025-01-15T10:31:00,10,login,103.5.68.199,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+3ddd49c8,suzuki_t,Suzuki Takeshi,Engineering,2025-01-15T10:34:00,10,login,103.5.27.21,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+a8492fee,yamada_r,Yamada Riko,HR,2025-01-15T13:11:00,13,login,103.5.95.237,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+3b6d96c6,kim_j,Kim Junho,Sales,2025-01-15T13:27:00,13,login,103.5.230.245,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+496d0a83,chen_w,Chen Wei,Engineering,2025-01-15T13:39:00,13,login,103.5.164.251,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+f6e61350,suzuki_t,Suzuki Takeshi,Engineering,2025-01-15T13:42:00,13,login,103.5.115.155,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+9a8f64cb,suzuki_t,Suzuki Takeshi,Engineering,2025-01-15T14:10:00,14,login,103.5.115.11,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+d558affd,ito_k,Ito Kenji,Finance,2025-01-15T14:20:00,14,login,119.2.246.30,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+5a8337f5,park_s,Park Soyeon,Marketing,2025-01-15T15:02:00,15,login,103.5.61.200,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+a592d035,kim_j,Kim Junho,Sales,2025-01-15T15:16:00,15,login,103.5.74.92,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+de419bcc,sato_m,Sato Miyuki,Finance,2025-01-15T15:40:00,15,login,126.1.17.184,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+be30fff4,ito_k,Ito Kenji,Finance,2025-01-15T15:48:00,15,login,119.2.136.94,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+34cc2e44,yamada_r,Yamada Riko,HR,2025-01-15T16:17:00,16,login,103.5.21.111,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+2546fcc1,sato_m,Sato Miyuki,Finance,2025-01-15T16:21:00,16,login,126.1.252.179,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+16d55ecc,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-15T16:32:00,16,login,103.5.224.121,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+8c82ea04,sato_m,Sato Miyuki,Finance,2025-01-15T18:06:00,18,login,126.1.12.91,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+91289696,chen_w,Chen Wei,Engineering,2025-01-15T18:10:00,18,login,103.5.218.156,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+91cd8625,park_s,Park Soyeon,Marketing,2025-01-15T18:23:00,18,login,103.5.244.146,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+62a7d899,sato_m,Sato Miyuki,Finance,2025-01-16T02:00:00,2,login,175.125.203.36,Seoul,South Korea,37.5665,126.978,1aca23a0,False,manager,2,0,1,0,new_country_login,MEDIUM
+2551e5db,kim_j,Kim Junho,Sales,2025-01-16T02:00:00,2,login,103.5.197.248,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+9d380683,kim_j,Kim Junho,Sales,2025-01-16T02:15:00,2,login,103.5.111.129,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+2639e8f5,kim_j,Kim Junho,Sales,2025-01-16T02:30:00,2,login,103.5.213.32,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+a664050a,park_s,Park Soyeon,Marketing,2025-01-16T08:10:00,8,login,103.5.124.119,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+85ac1571,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T08:30:00,8,login,103.5.23.208,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+992f65f8,kim_j,Kim Junho,Sales,2025-01-16T09:08:00,9,login,103.5.116.120,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+1fbfd15c,nakamura_a,Nakamura Aoi,DevOps,2025-01-16T09:20:00,9,login,103.5.32.69,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+2ae72994,yamada_r,Yamada Riko,HR,2025-01-16T10:19:00,10,login,103.5.83.240,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+68ea435d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T10:45:00,10,login,77.88.175.248,Moscow,Russia,55.7558,37.6173,41c049f1,False,admin,3,0,1,0,impossible_travel,HIGH
+1138f759,sato_m,Sato Miyuki,Finance,2025-01-16T10:45:00,10,login,126.1.131.58,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+f30dcf3e,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T10:54:00,10,login,103.5.45.231,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+5323bef9,yamada_r,Yamada Riko,HR,2025-01-16T11:22:00,11,login,103.5.65.51,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+90bed409,park_s,Park Soyeon,Marketing,2025-01-16T12:41:00,12,login,103.5.63.207,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+651e3852,nakamura_a,Nakamura Aoi,DevOps,2025-01-16T13:25:00,13,login,103.5.132.144,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+c9d7d757,ito_k,Ito Kenji,Finance,2025-01-16T13:38:00,13,login,119.2.221.184,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+c39c595e,chen_w,Chen Wei,Engineering,2025-01-16T14:39:00,14,login,103.5.228.161,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+52965eeb,admin45,Admin User 45,IT Operations,2025-01-16T15:01:00,15,login,103.5.120.206,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+2cdd7806,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-16T15:13:00,15,login,103.5.52.32,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+e4a45c2e,kim_j,Kim Junho,Sales,2025-01-16T15:33:00,15,login,103.5.211.148,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+94171262,yamada_r,Yamada Riko,HR,2025-01-16T17:00:00,17,login,103.5.129.165,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,super_admin,4,0,1,0,privilege_escalation,HIGH
+36a43d8d,chen_w,Chen Wei,Engineering,2025-01-16T17:21:00,17,login,103.5.21.12,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+94ce1103,suzuki_t,Suzuki Takeshi,Engineering,2025-01-16T17:37:00,17,login,103.5.169.160,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+a858d63f,sato_m,Sato Miyuki,Finance,2025-01-16T18:22:00,18,login,126.1.229.77,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+3fda6be7,park_s,Park Soyeon,Marketing,2025-01-16T18:25:00,18,login,103.5.19.177,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+cdd79028,kim_j,Kim Junho,Sales,2025-01-16T18:33:00,18,login,103.5.225.213,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+1776f920,yamada_r,Yamada Riko,HR,2025-01-16T18:35:00,18,login,103.5.161.78,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+8454136b,chen_w,Chen Wei,Engineering,2025-01-16T18:49:00,18,login,103.5.197.147,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+28bc7720,admin45,Admin User 45,IT Operations,2025-01-16T22:00:00,22,login,103.5.252.142,Tokyo,Japan,35.6762,139.6503,6917d3c9,False,admin,3,1,0,0,mfa_brute_force,MEDIUM
+7fc19473,admin45,Admin User 45,IT Operations,2025-01-16T22:02:00,22,login,103.5.34.157,Tokyo,Japan,35.6762,139.6503,16530f87,False,admin,3,2,0,0,mfa_brute_force,MEDIUM
+605e82eb,admin45,Admin User 45,IT Operations,2025-01-16T22:04:00,22,login,103.5.227.23,Tokyo,Japan,35.6762,139.6503,20603b01,False,admin,3,3,0,0,mfa_brute_force,HIGH
+1958be2b,admin45,Admin User 45,IT Operations,2025-01-16T22:06:00,22,login,103.5.17.80,Tokyo,Japan,35.6762,139.6503,065b647a,False,admin,3,4,0,0,mfa_brute_force,HIGH
+cd2588b1,admin45,Admin User 45,IT Operations,2025-01-16T22:08:00,22,login,103.5.102.184,Tokyo,Japan,35.6762,139.6503,4f42a881,False,admin,3,5,0,0,mfa_brute_force,HIGH
+2a89f9f8,kim_j,Kim Junho,Sales,2025-01-17T08:03:00,8,login,103.5.153.226,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+5c0aab69,suzuki_t,Suzuki Takeshi,Engineering,2025-01-17T08:25:00,8,login,103.5.93.142,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+7d8e469f,admin45,Admin User 45,IT Operations,2025-01-17T09:25:00,9,login,103.5.56.150,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+97936bde,nakamura_a,Nakamura Aoi,DevOps,2025-01-17T10:20:00,10,login,103.5.101.254,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+7dfc88b0,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-17T11:09:00,11,login,103.5.75.243,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+d770fde6,suzuki_t,Suzuki Takeshi,Engineering,2025-01-17T12:04:00,12,login,103.5.196.141,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+6f4d4cb0,ito_k,Ito Kenji,Finance,2025-01-17T13:51:00,13,login,119.2.39.156,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+3015cba1,sato_m,Sato Miyuki,Finance,2025-01-17T13:59:00,13,login,126.1.196.41,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+386dbd93,yamada_r,Yamada Riko,HR,2025-01-17T14:08:00,14,login,103.5.196.104,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+60bc8e75,chen_w,Chen Wei,Engineering,2025-01-17T14:23:00,14,login,103.5.194.37,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+4e772db7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-17T14:55:00,14,login,103.5.247.222,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+00348933,admin45,Admin User 45,IT Operations,2025-01-17T16:29:00,16,login,103.5.128.6,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+0f0fae43,nakamura_a,Nakamura Aoi,DevOps,2025-01-17T16:34:00,16,login,103.5.122.209,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+4c9a38f8,park_s,Park Soyeon,Marketing,2025-01-17T17:32:00,17,login,103.5.12.10,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+54dfa7d0,chen_w,Chen Wei,Engineering,2025-01-17T17:43:00,17,login,103.5.250.25,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+2c41a6ae,nakamura_a,Nakamura Aoi,DevOps,2025-01-17T17:47:00,17,login,103.5.130.213,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+16c38e7d,kim_j,Kim Junho,Sales,2025-01-17T18:43:00,18,login,103.5.138.3,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+470a99b7,admin45,Admin User 45,IT Operations,2025-01-18T08:36:00,8,login,103.5.5.113,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+19a7da39,park_s,Park Soyeon,Marketing,2025-01-18T09:22:00,9,login,103.5.192.123,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+b0b1e75c,park_s,Park Soyeon,Marketing,2025-01-18T10:18:00,10,login,103.5.245.183,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+e71ceb41,sato_m,Sato Miyuki,Finance,2025-01-18T10:33:00,10,login,126.1.211.175,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+52c3843e,yamada_r,Yamada Riko,HR,2025-01-18T11:35:00,11,login,103.5.135.97,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+c38a0b61,ito_k,Ito Kenji,Finance,2025-01-18T11:52:00,11,login,119.2.36.28,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+30c4dc1e,suzuki_t,Suzuki Takeshi,Engineering,2025-01-18T12:35:00,12,login,103.5.242.250,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+a35116af,chen_w,Chen Wei,Engineering,2025-01-18T12:45:00,12,login,103.5.82.123,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+b9f69ebf,yamada_r,Yamada Riko,HR,2025-01-18T13:11:00,13,login,103.5.140.91,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+f2ad359b,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-18T13:21:00,13,login,103.5.150.79,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+e9c152e6,chen_w,Chen Wei,Engineering,2025-01-18T13:35:00,13,login,103.5.32.147,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+b092e214,nakamura_a,Nakamura Aoi,DevOps,2025-01-18T13:45:00,13,login,103.5.175.198,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+347259b9,kim_j,Kim Junho,Sales,2025-01-18T14:09:00,14,login,103.5.106.129,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+0242fae0,nakamura_a,Nakamura Aoi,DevOps,2025-01-18T16:14:00,16,login,103.5.26.106,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+fe6889af,park_s,Park Soyeon,Marketing,2025-01-18T16:24:00,16,login,103.5.245.198,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+d45a6f6a,nakamura_a,Nakamura Aoi,DevOps,2025-01-18T17:15:00,17,login,103.5.172.232,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+cd591f33,sato_m,Sato Miyuki,Finance,2025-01-18T17:36:00,17,login,126.1.150.123,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+e961d9fa,kim_j,Kim Junho,Sales,2025-01-18T17:58:00,17,login,103.5.181.36,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+3cc5b1b8,sato_m,Sato Miyuki,Finance,2025-01-18T18:01:00,18,login,126.1.248.168,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+3b8596bd,yamada_r,Yamada Riko,HR,2025-01-18T18:49:00,18,login,103.5.50.246,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+37aaedef,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-19T08:35:00,8,login,103.5.168.240,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+eab6c92b,park_s,Park Soyeon,Marketing,2025-01-19T08:42:00,8,login,103.5.79.41,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+cb273a27,admin45,Admin User 45,IT Operations,2025-01-19T08:58:00,8,login,103.5.226.215,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+8e514bbe,admin45,Admin User 45,IT Operations,2025-01-19T10:59:00,10,login,103.5.202.127,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+add77014,admin45,Admin User 45,IT Operations,2025-01-19T10:59:00,10,login,103.5.3.77,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+74852bd0,chen_w,Chen Wei,Engineering,2025-01-19T11:28:00,11,login,103.5.78.150,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+39d5384b,nakamura_a,Nakamura Aoi,DevOps,2025-01-19T13:04:00,13,login,103.5.213.141,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+b8c2bead,ito_k,Ito Kenji,Finance,2025-01-19T13:39:00,13,login,119.2.246.35,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+74c73edd,yamada_r,Yamada Riko,HR,2025-01-19T13:50:00,13,login,103.5.45.157,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+e444d9e4,chen_w,Chen Wei,Engineering,2025-01-19T13:59:00,13,login,103.5.67.99,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+d1884197,suzuki_t,Suzuki Takeshi,Engineering,2025-01-19T14:42:00,14,login,103.5.252.36,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+65fec5f5,park_s,Park Soyeon,Marketing,2025-01-19T14:43:00,14,login,103.5.164.235,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+e1b7190a,ito_k,Ito Kenji,Finance,2025-01-19T15:09:00,15,login,119.2.107.180,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+aa7e186c,kim_j,Kim Junho,Sales,2025-01-19T15:17:00,15,login,103.5.85.42,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+876e7419,sato_m,Sato Miyuki,Finance,2025-01-19T15:41:00,15,login,126.1.83.74,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+baf39006,yamada_r,Yamada Riko,HR,2025-01-19T15:41:00,15,login,103.5.4.189,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+254d2ba2,nakamura_a,Nakamura Aoi,DevOps,2025-01-19T15:48:00,15,login,103.5.175.194,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+f3af1a14,park_s,Park Soyeon,Marketing,2025-01-19T17:00:00,17,login,103.5.178.61,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+04a349f8,kim_j,Kim Junho,Sales,2025-01-19T17:06:00,17,login,103.5.117.254,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+c3513703,nakamura_a,Nakamura Aoi,DevOps,2025-01-19T17:55:00,17,login,103.5.136.181,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+dd78b31a,sato_m,Sato Miyuki,Finance,2025-01-19T18:03:00,18,login,126.1.137.190,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+99dda117,kim_j,Kim Junho,Sales,2025-01-19T18:34:00,18,login,103.5.218.130,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+ce989613,yamada_r,Yamada Riko,HR,2025-01-19T18:57:00,18,login,103.5.132.84,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+2d3bcd14,chen_w,Chen Wei,Engineering,2025-01-20T08:15:00,8,login,103.5.113.60,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+4aa12246,sato_m,Sato Miyuki,Finance,2025-01-20T08:47:00,8,login,126.1.12.109,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+0ee1e6c7,chen_w,Chen Wei,Engineering,2025-01-20T09:02:00,9,login,103.5.62.53,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+4797a3b1,chen_w,Chen Wei,Engineering,2025-01-20T09:06:00,9,login,103.5.154.173,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+b9281a7e,admin45,Admin User 45,IT Operations,2025-01-20T09:34:00,9,login,103.5.253.240,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+3d09b543,park_s,Park Soyeon,Marketing,2025-01-20T10:42:00,10,login,103.5.77.71,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+3beb2f14,suzuki_t,Suzuki Takeshi,Engineering,2025-01-20T11:29:00,11,login,103.5.71.49,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+dc1c337b,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-20T11:36:00,11,login,103.5.84.219,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+52fd5a72,park_s,Park Soyeon,Marketing,2025-01-20T11:48:00,11,login,103.5.129.75,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+d58dc7eb,park_s,Park Soyeon,Marketing,2025-01-20T11:52:00,11,login,103.5.61.78,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+931133bb,suzuki_t,Suzuki Takeshi,Engineering,2025-01-20T11:53:00,11,login,103.5.251.77,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+95ba5665,sato_m,Sato Miyuki,Finance,2025-01-20T12:46:00,12,login,126.1.66.210,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+1664c0c3,yamada_r,Yamada Riko,HR,2025-01-20T13:07:00,13,login,103.5.136.33,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+41f91494,nakamura_a,Nakamura Aoi,DevOps,2025-01-20T13:41:00,13,login,103.5.179.107,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+aab3fe29,yamada_r,Yamada Riko,HR,2025-01-20T14:24:00,14,login,103.5.168.221,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+b95e09c3,sato_m,Sato Miyuki,Finance,2025-01-20T14:29:00,14,login,126.1.173.207,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+8bc2186e,admin45,Admin User 45,IT Operations,2025-01-20T15:02:00,15,login,103.5.47.197,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+e5a6555a,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-20T15:05:00,15,login,103.5.117.34,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+816b52bf,suzuki_t,Suzuki Takeshi,Engineering,2025-01-20T15:43:00,15,login,103.5.211.59,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+78f90011,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-20T16:28:00,16,login,103.5.184.150,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+fc0b989c,ito_k,Ito Kenji,Finance,2025-01-20T16:37:00,16,login,119.2.143.127,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+ce67add6,kim_j,Kim Junho,Sales,2025-01-20T18:46:00,18,login,103.5.229.98,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+4efad14d,sato_m,Sato Miyuki,Finance,2025-01-21T01:00:00,1,login,175.125.49.206,Seoul,South Korea,37.5665,126.978,f090b9cb,False,manager,2,0,1,0,new_country_login,MEDIUM
+1128c97b,kim_j,Kim Junho,Sales,2025-01-21T02:00:00,2,login,103.5.195.215,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+aa9839e1,kim_j,Kim Junho,Sales,2025-01-21T02:15:00,2,login,103.5.235.53,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+86d7dcda,kim_j,Kim Junho,Sales,2025-01-21T02:30:00,2,login,103.5.81.106,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+bb24d9ad,ito_k,Ito Kenji,Finance,2025-01-21T08:00:00,8,login,119.2.5.136,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+bd206102,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T08:30:00,8,login,103.5.207.119,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+565e6a3f,sato_m,Sato Miyuki,Finance,2025-01-21T09:34:00,9,login,126.1.69.97,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+c5190cfe,admin45,Admin User 45,IT Operations,2025-01-21T09:47:00,9,login,103.5.179.155,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+0b90df69,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T10:19:00,10,login,103.5.194.138,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+868d319c,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T10:45:00,10,login,77.88.235.15,Moscow,Russia,55.7558,37.6173,6fd5c530,False,admin,3,0,1,0,impossible_travel,HIGH
+4dad7a3e,sato_m,Sato Miyuki,Finance,2025-01-21T11:21:00,11,login,126.1.217.95,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+e76736b5,ito_k,Ito Kenji,Finance,2025-01-21T12:34:00,12,login,119.2.129.209,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+9315126a,nakamura_a,Nakamura Aoi,DevOps,2025-01-21T12:52:00,12,login,103.5.204.102,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+65290c4b,chen_w,Chen Wei,Engineering,2025-01-21T13:10:00,13,login,103.5.48.235,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+e7ab30b3,suzuki_t,Suzuki Takeshi,Engineering,2025-01-21T13:14:00,13,login,103.5.128.141,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+e7f82988,admin45,Admin User 45,IT Operations,2025-01-21T13:19:00,13,login,103.5.240.49,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+401e0813,sato_m,Sato Miyuki,Finance,2025-01-21T14:26:00,14,login,126.1.63.66,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+6ae97243,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-21T15:15:00,15,login,103.5.220.182,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+4ace8c16,ito_k,Ito Kenji,Finance,2025-01-21T15:23:00,15,login,119.2.169.125,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+6b3e42f7,nakamura_a,Nakamura Aoi,DevOps,2025-01-21T16:09:00,16,login,103.5.159.135,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+965bca20,kim_j,Kim Junho,Sales,2025-01-21T16:41:00,16,login,103.5.67.93,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+a29a8133,kim_j,Kim Junho,Sales,2025-01-21T16:56:00,16,login,103.5.26.206,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+9f35df59,yamada_r,Yamada Riko,HR,2025-01-21T17:00:00,17,login,103.5.76.40,Tokyo,Japan,35.6762,139.6503,22081100,True,super_admin,4,0,1,0,privilege_escalation,HIGH
+05642b3b,yamada_r,Yamada Riko,HR,2025-01-21T17:55:00,17,login,103.5.5.67,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+740434fb,park_s,Park Soyeon,Marketing,2025-01-21T18:03:00,18,login,103.5.242.210,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+3a67acdc,park_s,Park Soyeon,Marketing,2025-01-21T18:03:00,18,login,103.5.36.216,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+d185592f,park_s,Park Soyeon,Marketing,2025-01-21T18:14:00,18,login,103.5.3.56,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+c02fc25e,chen_w,Chen Wei,Engineering,2025-01-21T18:21:00,18,login,103.5.248.186,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+96f21e0d,nakamura_a,Nakamura Aoi,DevOps,2025-01-21T18:27:00,18,login,103.5.236.25,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+d45b1ae9,admin45,Admin User 45,IT Operations,2025-01-21T18:35:00,18,login,103.5.54.223,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+afdebafe,chen_w,Chen Wei,Engineering,2025-01-21T18:47:00,18,login,103.5.44.188,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+1f0fa98d,admin45,Admin User 45,IT Operations,2025-01-21T22:00:00,22,login,103.5.181.53,Tokyo,Japan,35.6762,139.6503,9ec12370,False,admin,3,1,0,0,mfa_brute_force,MEDIUM
+ec5d1969,admin45,Admin User 45,IT Operations,2025-01-21T22:02:00,22,login,103.5.102.235,Tokyo,Japan,35.6762,139.6503,0bfce0b3,False,admin,3,2,0,0,mfa_brute_force,MEDIUM
+13a64a06,admin45,Admin User 45,IT Operations,2025-01-21T22:04:00,22,login,103.5.62.142,Tokyo,Japan,35.6762,139.6503,bec566c9,False,admin,3,3,0,0,mfa_brute_force,HIGH
+4f37c072,admin45,Admin User 45,IT Operations,2025-01-21T22:06:00,22,login,103.5.83.199,Tokyo,Japan,35.6762,139.6503,90e83282,False,admin,3,4,0,0,mfa_brute_force,HIGH
+6c5d8ca2,admin45,Admin User 45,IT Operations,2025-01-21T22:08:00,22,login,103.5.73.98,Tokyo,Japan,35.6762,139.6503,88fb5210,False,admin,3,5,0,0,mfa_brute_force,HIGH
+2b6c06a4,ito_k,Ito Kenji,Finance,2025-01-22T09:05:00,9,login,119.2.114.93,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+3c9f0b58,nakamura_a,Nakamura Aoi,DevOps,2025-01-22T09:08:00,9,login,103.5.111.115,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+16ab42a1,admin45,Admin User 45,IT Operations,2025-01-22T10:05:00,10,login,103.5.166.201,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+a0cf15f8,ito_k,Ito Kenji,Finance,2025-01-22T10:24:00,10,login,119.2.82.93,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+16a81803,chen_w,Chen Wei,Engineering,2025-01-22T10:50:00,10,login,103.5.14.26,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+c92368aa,sato_m,Sato Miyuki,Finance,2025-01-22T12:43:00,12,login,126.1.24.104,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+cf58517e,ito_k,Ito Kenji,Finance,2025-01-22T12:51:00,12,login,119.2.22.69,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+844d7907,yamada_r,Yamada Riko,HR,2025-01-22T12:57:00,12,login,103.5.238.218,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+4cced64d,yamada_r,Yamada Riko,HR,2025-01-22T13:01:00,13,login,103.5.193.211,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+a40d3a84,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-22T13:25:00,13,login,103.5.254.179,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+608518b0,chen_w,Chen Wei,Engineering,2025-01-22T14:14:00,14,login,103.5.155.197,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+aaf263eb,park_s,Park Soyeon,Marketing,2025-01-22T14:27:00,14,login,103.5.22.198,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+f631267c,admin45,Admin User 45,IT Operations,2025-01-22T14:35:00,14,login,103.5.164.3,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+b09fa99f,yamada_r,Yamada Riko,HR,2025-01-22T14:59:00,14,login,103.5.42.145,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+2f121b92,park_s,Park Soyeon,Marketing,2025-01-22T15:31:00,15,login,103.5.142.241,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+e3d75763,nakamura_a,Nakamura Aoi,DevOps,2025-01-22T16:35:00,16,login,103.5.7.23,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+9fceb4cb,kim_j,Kim Junho,Sales,2025-01-22T17:30:00,17,login,103.5.237.20,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+bb18dab8,chen_w,Chen Wei,Engineering,2025-01-22T17:38:00,17,login,103.5.8.163,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+824f0ce6,suzuki_t,Suzuki Takeshi,Engineering,2025-01-22T17:53:00,17,login,103.5.99.194,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+fe5e2685,kim_j,Kim Junho,Sales,2025-01-22T17:54:00,17,login,103.5.59.55,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,0,none,LOW
+444e5e98,yamada_r,Yamada Riko,HR,2025-01-23T08:25:00,8,login,103.5.206.221,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+d0c0d1eb,chen_w,Chen Wei,Engineering,2025-01-23T10:43:00,10,login,103.5.242.182,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+ab7e1e85,suzuki_t,Suzuki Takeshi,Engineering,2025-01-23T11:30:00,11,login,103.5.247.102,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+43dd6583,suzuki_t,Suzuki Takeshi,Engineering,2025-01-23T13:18:00,13,login,103.5.84.97,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+abc0d217,yamada_r,Yamada Riko,HR,2025-01-23T13:28:00,13,login,103.5.209.211,Tokyo,Japan,35.6762,139.6503,22081100,True,editor,1,0,1,0,none,LOW
+cf9907ce,nakamura_a,Nakamura Aoi,DevOps,2025-01-23T13:44:00,13,login,103.5.197.64,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,viewer,0,0,1,0,none,LOW
+546275bd,admin45,Admin User 45,IT Operations,2025-01-23T14:19:00,14,login,103.5.93.65,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+93d6f9f9,chen_w,Chen Wei,Engineering,2025-01-23T14:23:00,14,login,103.5.152.140,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+aa9cad50,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-23T14:24:00,14,login,103.5.147.134,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+1eb8ee3c,admin45,Admin User 45,IT Operations,2025-01-23T15:09:00,15,login,103.5.112.71,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+00536c6a,nakamura_a,Nakamura Aoi,DevOps,2025-01-23T15:37:00,15,login,103.5.140.10,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+2149cc0b,park_s,Park Soyeon,Marketing,2025-01-23T15:51:00,15,login,103.5.210.218,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+d17e284e,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-23T16:05:00,16,login,103.5.4.75,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+1aaec7ad,suzuki_t,Suzuki Takeshi,Engineering,2025-01-23T17:08:00,17,login,103.5.155.243,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+87d81c99,ito_k,Ito Kenji,Finance,2025-01-23T18:09:00,18,login,119.2.19.115,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+d13c099e,sato_m,Sato Miyuki,Finance,2025-01-23T18:24:00,18,login,126.1.69.78,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+0a8f7533,kim_j,Kim Junho,Sales,2025-01-23T18:31:00,18,login,103.5.28.35,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+97bda671,ito_k,Ito Kenji,Finance,2025-01-23T18:31:00,18,login,119.2.62.65,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+15576b73,nakamura_a,Nakamura Aoi,DevOps,2025-01-23T18:42:00,18,login,103.5.166.157,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+320a9334,sato_m,Sato Miyuki,Finance,2025-01-24T09:00:00,9,login,126.1.57.131,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+0f4aaef5,yamada_r,Yamada Riko,HR,2025-01-24T09:01:00,9,login,103.5.174.205,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+cf4a8d30,admin45,Admin User 45,IT Operations,2025-01-24T09:18:00,9,login,103.5.30.213,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+bcd834de,kim_j,Kim Junho,Sales,2025-01-24T10:22:00,10,login,103.5.117.201,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+0f2c041d,nakamura_a,Nakamura Aoi,DevOps,2025-01-24T10:23:00,10,login,103.5.118.30,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+7f125332,ito_k,Ito Kenji,Finance,2025-01-24T11:17:00,11,login,119.2.205.224,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,viewer,0,0,1,0,none,LOW
+af71af21,kim_j,Kim Junho,Sales,2025-01-24T11:33:00,11,login,103.5.122.25,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+85392976,suzuki_t,Suzuki Takeshi,Engineering,2025-01-24T11:33:00,11,login,103.5.85.144,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+2e5a5c90,nakamura_a,Nakamura Aoi,DevOps,2025-01-24T12:42:00,12,login,103.5.153.100,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+d092158d,chen_w,Chen Wei,Engineering,2025-01-24T15:14:00,15,login,103.5.48.164,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+a78e0495,park_s,Park Soyeon,Marketing,2025-01-24T15:37:00,15,login,103.5.2.181,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+5be34017,kim_j,Kim Junho,Sales,2025-01-24T15:46:00,15,login,103.5.18.77,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+3a813667,sato_m,Sato Miyuki,Finance,2025-01-24T16:35:00,16,login,126.1.96.101,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+02fa1308,nakamura_a,Nakamura Aoi,DevOps,2025-01-24T17:25:00,17,login,103.5.91.217,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+4ccf06cf,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-24T17:41:00,17,login,103.5.248.204,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+ab4b915f,chen_w,Chen Wei,Engineering,2025-01-24T18:27:00,18,login,103.5.189.158,Tokyo,Japan,35.6762,139.6503,1dc11660,True,viewer,0,0,1,0,none,LOW
+e9378de2,admin45,Admin User 45,IT Operations,2025-01-24T18:37:00,18,login,103.5.7.124,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+a8879a7b,yamada_r,Yamada Riko,HR,2025-01-25T08:50:00,8,login,103.5.9.71,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+99fa8b5c,chen_w,Chen Wei,Engineering,2025-01-25T09:28:00,9,login,103.5.54.208,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+20daf359,admin45,Admin User 45,IT Operations,2025-01-25T10:11:00,10,login,103.5.159.14,Tokyo,Japan,35.6762,139.6503,cf938fba,True,editor,1,0,1,0,none,LOW
+1900b0d1,nakamura_a,Nakamura Aoi,DevOps,2025-01-25T10:15:00,10,login,103.5.213.64,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+aa603dcf,sato_m,Sato Miyuki,Finance,2025-01-25T10:32:00,10,login,126.1.153.36,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+ba3ee313,chen_w,Chen Wei,Engineering,2025-01-25T11:19:00,11,login,103.5.68.90,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+3e863781,yamada_r,Yamada Riko,HR,2025-01-25T11:34:00,11,login,103.5.200.118,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+8a3253e6,park_s,Park Soyeon,Marketing,2025-01-25T11:52:00,11,login,103.5.146.90,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+28e134a4,ito_k,Ito Kenji,Finance,2025-01-25T12:18:00,12,login,119.2.35.247,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+7135e66a,ito_k,Ito Kenji,Finance,2025-01-25T12:38:00,12,login,119.2.251.181,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+50680a30,admin45,Admin User 45,IT Operations,2025-01-25T13:00:00,13,login,103.5.50.209,Tokyo,Japan,35.6762,139.6503,cf938fba,True,viewer,0,0,1,0,none,LOW
+7c463067,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-25T13:07:00,13,login,103.5.30.47,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+c79f3d68,kim_j,Kim Junho,Sales,2025-01-25T14:45:00,14,login,103.5.43.22,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+2049e401,ito_k,Ito Kenji,Finance,2025-01-25T14:58:00,14,login,119.2.222.168,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+7c06ce73,suzuki_t,Suzuki Takeshi,Engineering,2025-01-25T15:34:00,15,login,103.5.27.189,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+391a9d0a,kim_j,Kim Junho,Sales,2025-01-25T16:32:00,16,login,103.5.176.126,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+5ebeae29,suzuki_t,Suzuki Takeshi,Engineering,2025-01-25T16:52:00,16,login,103.5.195.185,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+a3849d48,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-25T17:11:00,17,login,103.5.173.35,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+da9da438,sato_m,Sato Miyuki,Finance,2025-01-25T17:24:00,17,login,126.1.125.163,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+a92f2982,chen_w,Chen Wei,Engineering,2025-01-25T17:44:00,17,login,103.5.43.158,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+e9719ad9,yamada_r,Yamada Riko,HR,2025-01-25T17:47:00,17,login,103.5.147.30,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+d241d36d,admin45,Admin User 45,IT Operations,2025-01-25T18:59:00,18,login,103.5.126.74,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+6c1db517,kim_j,Kim Junho,Sales,2025-01-26T02:00:00,2,login,103.5.186.180,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+5d77c5df,kim_j,Kim Junho,Sales,2025-01-26T02:15:00,2,login,103.5.110.168,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+6c845102,kim_j,Kim Junho,Sales,2025-01-26T02:30:00,2,login,103.5.181.25,Tokyo,Japan,35.6762,139.6503,f2449edb,True,viewer,0,0,1,1,password_reset_flood,MEDIUM
+ec754bda,sato_m,Sato Miyuki,Finance,2025-01-26T05:00:00,5,login,78.32.219.125,London,UK,51.5074,-0.1278,eb5e00c7,False,manager,2,0,1,0,new_country_login,MEDIUM
+efbc6ee8,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T08:30:00,8,login,103.5.149.1,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,viewer,0,0,1,0,none,LOW
+81f390e8,park_s,Park Soyeon,Marketing,2025-01-26T08:39:00,8,login,103.5.90.185,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+a8fabe29,suzuki_t,Suzuki Takeshi,Engineering,2025-01-26T09:06:00,9,login,103.5.226.77,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+89b2f5d9,ito_k,Ito Kenji,Finance,2025-01-26T09:37:00,9,login,119.2.247.110,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+ee1d6e59,sato_m,Sato Miyuki,Finance,2025-01-26T09:46:00,9,login,126.1.218.17,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+0e498bc3,nakamura_a,Nakamura Aoi,DevOps,2025-01-26T10:15:00,10,login,103.5.64.142,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+0a6dea1c,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T10:45:00,10,login,77.88.223.199,Moscow,Russia,55.7558,37.6173,5a2d925e,False,admin,3,0,1,0,impossible_travel,HIGH
+b248c7db,kim_j,Kim Junho,Sales,2025-01-26T10:55:00,10,login,103.5.168.93,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+74a1d787,yamada_r,Yamada Riko,HR,2025-01-26T11:30:00,11,login,103.5.152.58,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+7ae0bf1c,park_s,Park Soyeon,Marketing,2025-01-26T11:40:00,11,login,103.5.158.176,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+b46a3fe3,kim_j,Kim Junho,Sales,2025-01-26T12:05:00,12,login,103.5.14.102,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+60b261ba,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T12:44:00,12,login,103.5.244.125,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+7b57c38e,suzuki_t,Suzuki Takeshi,Engineering,2025-01-26T13:52:00,13,login,103.5.178.34,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+1f1bef11,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T14:28:00,14,login,103.5.104.132,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+3c3f9413,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-26T14:31:00,14,login,103.5.161.107,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+dd653702,chen_w,Chen Wei,Engineering,2025-01-26T14:49:00,14,login,103.5.18.136,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+643fb2a5,admin45,Admin User 45,IT Operations,2025-01-26T15:01:00,15,login,103.5.113.117,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+b2804dbd,suzuki_t,Suzuki Takeshi,Engineering,2025-01-26T15:04:00,15,login,103.5.23.188,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+262fa50f,sato_m,Sato Miyuki,Finance,2025-01-26T15:17:00,15,login,126.1.87.141,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+bc2ec990,park_s,Park Soyeon,Marketing,2025-01-26T15:55:00,15,login,103.5.230.26,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+210722ad,sato_m,Sato Miyuki,Finance,2025-01-26T16:25:00,16,login,126.1.212.55,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+6d1a2cf7,yamada_r,Yamada Riko,HR,2025-01-26T17:00:00,17,login,103.5.3.3,Tokyo,Japan,35.6762,139.6503,22081100,True,super_admin,4,0,1,0,privilege_escalation,HIGH
+bb858d26,nakamura_a,Nakamura Aoi,DevOps,2025-01-26T17:38:00,17,login,103.5.218.217,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+ad5a54e3,admin45,Admin User 45,IT Operations,2025-01-26T18:48:00,18,login,103.5.26.161,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+54f11d68,admin45,Admin User 45,IT Operations,2025-01-26T22:00:00,22,login,103.5.1.254,Tokyo,Japan,35.6762,139.6503,cde91609,False,admin,3,1,0,0,mfa_brute_force,MEDIUM
+3d50cd86,admin45,Admin User 45,IT Operations,2025-01-26T22:02:00,22,login,103.5.246.110,Tokyo,Japan,35.6762,139.6503,c3b88539,False,admin,3,2,0,0,mfa_brute_force,MEDIUM
+0bfdbcab,admin45,Admin User 45,IT Operations,2025-01-26T22:04:00,22,login,103.5.52.177,Tokyo,Japan,35.6762,139.6503,9c0a9b33,False,admin,3,3,0,0,mfa_brute_force,HIGH
+1322c947,admin45,Admin User 45,IT Operations,2025-01-26T22:06:00,22,login,103.5.233.34,Tokyo,Japan,35.6762,139.6503,8848aef6,False,admin,3,4,0,0,mfa_brute_force,HIGH
+7225d991,admin45,Admin User 45,IT Operations,2025-01-26T22:08:00,22,login,103.5.226.167,Tokyo,Japan,35.6762,139.6503,53269454,False,admin,3,5,0,0,mfa_brute_force,HIGH
+5a10ad33,admin45,Admin User 45,IT Operations,2025-01-27T08:16:00,8,login,103.5.237.16,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+fa4a91d6,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-27T08:50:00,8,login,103.5.99.29,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+bc0d5394,kim_j,Kim Junho,Sales,2025-01-27T09:40:00,9,login,103.5.22.80,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+9736bec7,park_s,Park Soyeon,Marketing,2025-01-27T10:07:00,10,login,103.5.180.3,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+26880f82,sato_m,Sato Miyuki,Finance,2025-01-27T10:24:00,10,login,126.1.140.175,Osaka,Japan,34.6937,135.5023,a9e93c52,True,editor,1,0,1,0,none,LOW
+b0a075b2,park_s,Park Soyeon,Marketing,2025-01-27T10:31:00,10,login,103.5.43.96,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+cb3fb16c,park_s,Park Soyeon,Marketing,2025-01-27T10:47:00,10,login,103.5.198.231,Tokyo,Japan,35.6762,139.6503,e8096f19,True,viewer,0,0,1,0,none,LOW
+02179d9a,sato_m,Sato Miyuki,Finance,2025-01-27T10:48:00,10,login,126.1.5.151,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+529872b4,suzuki_t,Suzuki Takeshi,Engineering,2025-01-27T11:03:00,11,login,103.5.237.112,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+df50216f,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-27T11:31:00,11,login,103.5.253.93,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+ee9522d7,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-27T12:13:00,12,login,103.5.76.166,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+bf2971cd,nakamura_a,Nakamura Aoi,DevOps,2025-01-27T13:03:00,13,login,103.5.95.41,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+ccd10d37,ito_k,Ito Kenji,Finance,2025-01-27T13:51:00,13,login,119.2.135.17,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+40f801d5,chen_w,Chen Wei,Engineering,2025-01-27T15:39:00,15,login,103.5.171.190,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+a7c1db67,kim_j,Kim Junho,Sales,2025-01-27T16:18:00,16,login,103.5.180.103,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+8a94c982,yamada_r,Yamada Riko,HR,2025-01-27T16:58:00,16,login,103.5.138.84,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+6b41ffc1,suzuki_t,Suzuki Takeshi,Engineering,2025-01-27T17:40:00,17,login,103.5.179.112,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+04f39785,nakamura_a,Nakamura Aoi,DevOps,2025-01-27T17:40:00,17,login,103.5.117.131,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+6e66509d,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-28T08:02:00,8,login,103.5.12.121,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+da61ef66,suzuki_t,Suzuki Takeshi,Engineering,2025-01-28T08:09:00,8,login,103.5.12.236,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+80728cba,yamada_r,Yamada Riko,HR,2025-01-28T08:21:00,8,login,103.5.218.189,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+79616c23,kim_j,Kim Junho,Sales,2025-01-28T08:25:00,8,login,103.5.222.73,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+58b888b4,sato_m,Sato Miyuki,Finance,2025-01-28T08:35:00,8,login,126.1.83.64,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+22e1de68,nakamura_a,Nakamura Aoi,DevOps,2025-01-28T09:10:00,9,login,103.5.56.214,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,viewer,0,0,1,0,none,LOW
+02a07998,chen_w,Chen Wei,Engineering,2025-01-28T09:37:00,9,login,103.5.164.210,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+88fd1583,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-28T09:57:00,9,login,103.5.190.131,Tokyo,Japan,35.6762,139.6503,4d915325,True,viewer,0,0,1,0,none,LOW
+59741a79,chen_w,Chen Wei,Engineering,2025-01-28T10:15:00,10,login,103.5.218.81,Tokyo,Japan,35.6762,139.6503,1dc11660,True,editor,1,0,1,0,none,LOW
+dc9134f4,park_s,Park Soyeon,Marketing,2025-01-28T11:08:00,11,login,103.5.28.43,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+08853a20,kim_j,Kim Junho,Sales,2025-01-28T11:18:00,11,login,103.5.119.95,Tokyo,Japan,35.6762,139.6503,44edebe2,True,viewer,0,0,1,0,none,LOW
+14ee9907,ito_k,Ito Kenji,Finance,2025-01-28T11:28:00,11,login,119.2.68.219,Nagoya,Japan,35.1815,136.9066,00aec655,True,editor,1,0,1,0,none,LOW
+86dde963,suzuki_t,Suzuki Takeshi,Engineering,2025-01-28T11:57:00,11,login,103.5.118.250,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+1e1f3ccc,suzuki_t,Suzuki Takeshi,Engineering,2025-01-28T12:06:00,12,login,103.5.108.126,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,viewer,0,0,1,0,none,LOW
+4ad83a51,kim_j,Kim Junho,Sales,2025-01-28T12:20:00,12,login,103.5.3.95,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+cafdb1de,admin45,Admin User 45,IT Operations,2025-01-28T13:17:00,13,login,103.5.31.129,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+b8c234f1,park_s,Park Soyeon,Marketing,2025-01-28T13:20:00,13,login,103.5.60.20,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+32df23f2,yamada_r,Yamada Riko,HR,2025-01-28T14:01:00,14,login,103.5.163.215,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+1c47e926,chen_w,Chen Wei,Engineering,2025-01-28T14:04:00,14,login,103.5.170.247,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+fb3c46ac,sato_m,Sato Miyuki,Finance,2025-01-28T14:58:00,14,login,126.1.239.246,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+951ab0b2,ito_k,Ito Kenji,Finance,2025-01-28T15:20:00,15,login,119.2.138.92,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+38b17126,yamada_r,Yamada Riko,HR,2025-01-28T15:49:00,15,login,103.5.39.2,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,viewer,0,0,1,0,none,LOW
+fd1a1463,admin45,Admin User 45,IT Operations,2025-01-28T18:57:00,18,login,103.5.58.206,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+7dade785,sato_m,Sato Miyuki,Finance,2025-01-29T08:25:00,8,login,126.1.25.119,Osaka,Japan,34.6937,135.5023,a9e93c52,True,viewer,0,0,1,0,none,LOW
+59e531c9,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-29T08:43:00,8,login,103.5.210.254,Tokyo,Japan,35.6762,139.6503,2bbe1681,True,editor,1,0,1,0,none,LOW
+e6ec9c11,yamada_r,Yamada Riko,HR,2025-01-29T09:37:00,9,login,103.5.6.17,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+39340c27,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-29T10:05:00,10,login,103.5.102.132,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+ca2a80d5,admin45,Admin User 45,IT Operations,2025-01-29T10:07:00,10,login,103.5.213.200,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+c5185000,kim_j,Kim Junho,Sales,2025-01-29T10:12:00,10,login,103.5.176.162,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+fbb91b55,suzuki_t,Suzuki Takeshi,Engineering,2025-01-29T10:17:00,10,login,103.5.227.39,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+04b5cc7b,nakamura_a,Nakamura Aoi,DevOps,2025-01-29T11:42:00,11,login,103.5.137.209,Tokyo,Japan,35.6762,139.6503,16b13f0b,True,editor,1,0,1,0,none,LOW
+9a8f2182,yamada_r,Yamada Riko,HR,2025-01-29T11:57:00,11,login,103.5.24.232,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+50741b76,yamada_r,Yamada Riko,HR,2025-01-29T13:07:00,13,login,103.5.13.44,Tokyo,Japan,35.6762,139.6503,1641d4b1,True,editor,1,0,1,0,none,LOW
+499815af,ito_k,Ito Kenji,Finance,2025-01-29T13:24:00,13,login,119.2.7.82,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+1c266214,park_s,Park Soyeon,Marketing,2025-01-29T13:30:00,13,login,103.5.234.145,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+56c51016,park_s,Park Soyeon,Marketing,2025-01-29T14:12:00,14,login,103.5.254.98,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,viewer,0,0,1,0,none,LOW
+379c9498,suzuki_t,Suzuki Takeshi,Engineering,2025-01-29T14:52:00,14,login,103.5.8.98,Tokyo,Japan,35.6762,139.6503,9328b483,True,editor,1,0,1,0,none,LOW
+a6b55fd9,park_s,Park Soyeon,Marketing,2025-01-29T15:03:00,15,login,103.5.99.36,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+eea9e2c4,ito_k,Ito Kenji,Finance,2025-01-29T15:33:00,15,login,119.2.250.41,Nagoya,Japan,35.1815,136.9066,00aec655,True,viewer,0,0,1,0,none,LOW
+ae300309,ito_k,Ito Kenji,Finance,2025-01-29T17:14:00,17,login,119.2.15.208,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+e794e47e,chen_w,Chen Wei,Engineering,2025-01-29T17:39:00,17,login,103.5.128.106,Tokyo,Japan,35.6762,139.6503,e60fd493,True,editor,1,0,1,0,none,LOW
+fb88e0dd,suzuki_t,Suzuki Takeshi,Engineering,2025-01-29T18:27:00,18,login,103.5.55.233,Tokyo,Japan,35.6762,139.6503,42d8fe54,True,editor,1,0,1,0,none,LOW
+05853fe5,nakamura_a,Nakamura Aoi,DevOps,2025-01-30T08:03:00,8,login,103.5.188.108,Tokyo,Japan,35.6762,139.6503,af76cb5a,True,editor,1,0,1,0,none,LOW
+4405f1c3,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-30T08:48:00,8,login,103.5.91.240,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+fef10f33,park_s,Park Soyeon,Marketing,2025-01-30T09:15:00,9,login,103.5.43.163,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+de6a2c43,park_s,Park Soyeon,Marketing,2025-01-30T09:52:00,9,login,103.5.3.68,Tokyo,Japan,35.6762,139.6503,e8096f19,True,editor,1,0,1,0,none,LOW
+540ea218,kim_j,Kim Junho,Sales,2025-01-30T10:10:00,10,login,103.5.167.82,Tokyo,Japan,35.6762,139.6503,44edebe2,True,editor,1,0,1,0,none,LOW
+ed10d752,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-30T10:11:00,10,login,103.5.207.189,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+759e303a,sato_m,Sato Miyuki,Finance,2025-01-30T10:31:00,10,login,126.1.15.60,Osaka,Japan,34.6937,135.5023,07614c6e,True,viewer,0,0,1,0,none,LOW
+14d0a9a9,sato_m,Sato Miyuki,Finance,2025-01-30T10:36:00,10,login,126.1.139.80,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+fa6d1e82,admin45,Admin User 45,IT Operations,2025-01-30T10:49:00,10,login,103.5.246.19,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+45cf3cd2,park_s,Park Soyeon,Marketing,2025-01-30T11:40:00,11,login,103.5.37.85,Tokyo,Japan,35.6762,139.6503,bb3b46ec,True,editor,1,0,1,0,none,LOW
+95014485,ito_k,Ito Kenji,Finance,2025-01-30T11:44:00,11,login,119.2.66.202,Nagoya,Japan,35.1815,136.9066,2dbb2a65,True,editor,1,0,1,0,none,LOW
+5e997dcf,admin45,Admin User 45,IT Operations,2025-01-30T11:51:00,11,login,103.5.184.46,Tokyo,Japan,35.6762,139.6503,71edf8be,True,editor,1,0,1,0,none,LOW
+b2673f8a,admin45,Admin User 45,IT Operations,2025-01-30T13:03:00,13,login,103.5.151.181,Tokyo,Japan,35.6762,139.6503,71edf8be,True,viewer,0,0,1,0,none,LOW
+2f672808,tanaka_h,Tanaka Hiroshi,Engineering,2025-01-30T13:58:00,13,login,103.5.243.146,Tokyo,Japan,35.6762,139.6503,4d915325,True,editor,1,0,1,0,none,LOW
+eec62b6c,suzuki_t,Suzuki Takeshi,Engineering,2025-01-30T14:19:00,14,login,103.5.46.187,Tokyo,Japan,35.6762,139.6503,9328b483,True,viewer,0,0,1,0,none,LOW
+9a60ada2,yamada_r,Yamada Riko,HR,2025-01-30T16:44:00,16,login,103.5.171.151,Tokyo,Japan,35.6762,139.6503,22081100,True,viewer,0,0,1,0,none,LOW
+d80b818a,sato_m,Sato Miyuki,Finance,2025-01-30T17:14:00,17,login,126.1.1.85,Osaka,Japan,34.6937,135.5023,07614c6e,True,editor,1,0,1,0,none,LOW
+c2fe75b9,chen_w,Chen Wei,Engineering,2025-01-30T17:25:00,17,login,103.5.155.82,Tokyo,Japan,35.6762,139.6503,e60fd493,True,viewer,0,0,1,0,none,LOW
+cb9b97b4,kim_j,Kim Junho,Sales,2025-01-30T18:25:00,18,login,103.5.78.83,Tokyo,Japan,35.6762,139.6503,f2449edb,True,editor,1,0,1,0,none,LOW
+ly02npPc,admin,Unknown User,Unknown,2026-06-23T12:30:54.532000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,1,0,none,LOW
+fB8sftLA,945bcb78-2b9e-4afd-9960-268238238b31,Unknown User,Unknown,2026-06-23T12:29:58.957000,12,code_to_token,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,0,0,none,LOW
+fB8sftLA,admin,Unknown User,Unknown,2026-06-23T12:29:58.554000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,1,0,none,LOW
+1782198055,admin,Unknown User,Unknown,2026-06-23T12:29:53.040000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,1,0,0,failed_login,MEDIUM
+1782198055,admin,Unknown User,Unknown,2026-06-23T12:29:46.217000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,1,0,0,failed_login,MEDIUM
+1782198055,admin,Unknown User,Unknown,2026-06-23T12:29:41.813000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,1,0,0,failed_login,HIGH
+KIzstasi,945bcb78-2b9e-4afd-9960-268238238b31,Unknown User,Unknown,2026-06-23T12:29:19.659000,12,code_to_token,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,0,0,none,LOW
+KIzstasi,admin,Unknown User,Unknown,2026-06-23T12:29:18.328000,12,login,172.17.0.1,Unknown,Unknown,0.0,0.0,unknown_device,True,viewer,0,0,1,0,none,LOW
