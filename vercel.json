@@ -1,5 +1,6 @@
 {
-  "buildCommand": "",
+  "version": 2,
+  "buildCommand": "echo 'static'",
   "outputDirectory": "dashboard",
-  "installCommand": ""
+  "installCommand": "echo 'skip'"
 }
