@@ -4,8 +4,7 @@ __pycache__/
 *.pyo
 .env
 
-# ML models (too large for GitHub, we'll handle separately)
-ml_models/*.pkl
+# ml_models/*.pkl
 
 # Sensitive data
 config/admin_emails.json
