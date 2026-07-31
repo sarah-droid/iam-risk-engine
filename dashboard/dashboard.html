@@ -408,7 +408,7 @@ body.light-mode .login-input::placeholder{color:#94a3b8;}
     <div class="status-bar">
       <span class="status-dot"></span>
       <span class="status-text" data-i18n="api_connected">API Connected</span>
-      <div style="font-size:10px;color:#065f46;margin-top:4px;">https://web-production-25ca0.up.railway.app</div>
+      <div style="font-size:10px;color:#065f46;margin-top:4px;">http://127.0.0.1:8000</div>
     </div>
     <div style="margin:0 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
       <div class="user-pill">
@@ -1027,7 +1027,7 @@ body.light-mode .login-input::placeholder{color:#94a3b8;}
 <div class="toast" id="toast"><span id="toast-msg">Done</span></div>
 
 <script>
-const API="https://web-production-25ca0.up.railway.app";
+const API="http://127.0.0.1:8000";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // INTERNATIONALIZATION (i18n)
@@ -1122,8 +1122,8 @@ const TRANSLATIONS = {
     set_shap_label: "Show SHAP Explanations", set_shap_sub: "Display AI explainability panel",
     set_timezone_label: "Timezone", set_timezone_sub: "Display times in local timezone",
     login_subtitle: "Identity Protection System · Admin Access Only",
-    login_username: "Username", login_password: "Password", login_button: "🔐 Sign In via Keycloak",
-    login_footer: 'Authenticated against your local Keycloak realm.<br>Only users with the <strong>admin</strong> role may access this dashboard.',
+    login_username: "Username", login_password: "Password", login_button: "🔐 Sign In via Auth0",
+    login_footer: 'Authenticated against Auth0. Only registered users may access this dashboard.',
     toast_admin_notified: "🚨 Admin notified via Slack + Email",
     toast_invite_sent: "📧 Invite sent",
     toast_report_exported: "📥 Report exported",
@@ -3361,16 +3361,12 @@ function saveSettings(){
 
 // ── Init ──────────────────────────────────────────────────────────────────
 // ── AUTHENTICATION (real Keycloak login) ───────────────────────────────────
-const KEYCLOAK_URL = "http://localhost:8080";
-const KEYCLOAK_REALM = "master";
-const ADMIN_REQUIRED_ROLE = "admin";   // realm or client role required to access dashboard
+// ── AUTH0 CONFIGURATION ────────────────────────────────────────────────────
+const AUTH0_DOMAIN   = "dev-3fsajqirig4kzhiv.us.auth0.com";
+const AUTH0_CLIENT_ID = "CH714H6FMYkXJz0iS7XbpA6DRQEd2RGc";
+const AUTH0_AUDIENCE  = `https://${AUTH0_DOMAIN}/api/v2/`;
 
-function getStoredSession(){
-  try { return JSON.parse(sessionStorage.getItem("__memSession") || "null"); }
-  catch(e) { return null; }
-}
-
-// In-memory session store (artifact-safe; avoids real localStorage/sessionStorage issues)
+// In-memory session store
 window.__authSession = window.__authSession || null;
 
 async function handleLogin(event){
@@ -3378,48 +3374,47 @@ async function handleLogin(event){
   const username = document.getElementById("login-username").value.trim();
   const password = document.getElementById("login-password").value;
   const errorBox = document.getElementById("login-error");
-  const btn = document.getElementById("login-btn");
+  const btn      = document.getElementById("login-btn");
 
   errorBox.classList.remove("show");
   btn.disabled = true;
-  btn.textContent = "⏳ Verifying with Keycloak...";
+  btn.textContent = "⏳ Verifying with Auth0...";
 
   try {
-    // Step 1 — authenticate against Keycloak's real token endpoint
-    const tokenRes = await fetch(`${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/token`, {
+    // Auth0 Resource Owner Password flow
+    const tokenRes = await fetch(`https://${AUTH0_DOMAIN}/oauth/token`, {
       method: "POST",
-      headers: {"Content-Type": "application/x-www-form-urlencoded"},
-      body: new URLSearchParams({
-        client_id: "identityguard-dashboard",
-        username: username,
-        password: password,
-        grant_type: "password",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        grant_type:  "password",
+        username:    username,
+        password:    password,
+        client_id:   AUTH0_CLIENT_ID,
+        audience:    AUTH0_AUDIENCE,
+        scope:       "openid profile email",
       }),
     });
 
     if (!tokenRes.ok) {
-      throw new Error("Invalid username or password");
+      const errData = await tokenRes.json().catch(() => ({}));
+      const msg = errData.error_description || errData.error || "Invalid username or password";
+      throw new Error(msg);
     }
 
-    const tokenData = await tokenRes.json();
-    const accessToken = tokenData.access_token;
+    const tokenData  = await tokenRes.json();
+    const accessToken = tokenData.access_token || tokenData.id_token;
 
-    // Step 2 — decode the JWT payload to check roles (no verification needed client-side;
-    // Keycloak already verified the password — we're just reading claims it issued us)
+    // Decode JWT to get user info (Auth0 signs it — we trust the server already verified credentials)
     const payload = JSON.parse(atob(accessToken.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));
-    const realmRoles = (payload.realm_access && payload.realm_access.roles) || [];
 
-    const isAdmin = realmRoles.includes(ADMIN_REQUIRED_ROLE) || realmRoles.includes("admin") || username === "admin";
+    const email    = payload.email || payload.sub || username;
+    const name     = payload.name  || payload.nickname || email.split("@")[0];
 
-    if (!isAdmin) {
-      throw new Error("This account does not have admin access · 管理者権限がありません");
-    }
+    // Store session
+    window.__authSession = { username: name, email, token: accessToken, loginAt: new Date().toISOString() };
 
-    // ── Success — store session in memory only ──────────────────────────
-    window.__authSession = { username: username, token: accessToken, loginAt: new Date().toISOString() };
-
-    document.getElementById("logged-in-username").textContent = username;
-    document.getElementById("logged-in-avatar").textContent = username.slice(0,2).toUpperCase();
+    document.getElementById("logged-in-username").textContent = name;
+    document.getElementById("logged-in-avatar").textContent   = name.slice(0,2).toUpperCase();
 
     document.getElementById("login-screen").classList.add("hidden");
     document.getElementById("main-app").style.display = "flex";
@@ -3427,10 +3422,10 @@ async function handleLogin(event){
     initDashboard();
 
   } catch(err) {
-    errorBox.textContent = "❌ " + err.message + " · ログインに失敗しました";
+    errorBox.textContent = "❌ " + err.message;
     errorBox.classList.add("show");
     btn.disabled = false;
-    btn.textContent = "🔐 Sign In via Keycloak";
+    btn.textContent = t("login_button");
   }
   return false;
 }
