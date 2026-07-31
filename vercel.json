@@ -1,6 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/dashboard/dashboard.html" },
-    { "source": "/(.*)", "destination": "/dashboard/dashboard.html" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "dashboard/dashboard.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/dashboard/dashboard.html" }
   ]
 }
