@@ -408,7 +408,7 @@ body.light-mode .login-input::placeholder{color:#94a3b8;}
     <div class="status-bar">
       <span class="status-dot"></span>
       <span class="status-text" data-i18n="api_connected">API Connected</span>
-      <div style="font-size:10px;color:#065f46;margin-top:4px;">https://web-production-25ca0.up.railway.app</div>
+      <div style="font-size:10px;color:#065f46;margin-top:4px;">web-production-25ca0.up.railway.app</div>
     </div>
     <div style="margin:0 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
       <div class="user-pill">
@@ -3364,7 +3364,6 @@ function saveSettings(){
 // ── AUTH0 CONFIGURATION ────────────────────────────────────────────────────
 const AUTH0_DOMAIN   = "dev-3fsajqirig4kzhiv.us.auth0.com";
 const AUTH0_CLIENT_ID = "CH714H6FMYkXJz0iS7XbpA6DRQEd2RGc";
-const AUTH0_AUDIENCE  = `https://${AUTH0_DOMAIN}/api/v2/`;
 
 // In-memory session store
 window.__authSession = window.__authSession || null;
@@ -3390,7 +3389,6 @@ async function handleLogin(event){
         username:    username,
         password:    password,
         client_id:   AUTH0_CLIENT_ID,
-        audience:    AUTH0_AUDIENCE,
         scope:       "openid profile email",
       }),
     });

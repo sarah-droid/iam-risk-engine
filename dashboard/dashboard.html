@@ -3364,7 +3364,6 @@ function saveSettings(){
 // ── AUTH0 CONFIGURATION ────────────────────────────────────────────────────
 const AUTH0_DOMAIN   = "dev-3fsajqirig4kzhiv.us.auth0.com";
 const AUTH0_CLIENT_ID = "CH714H6FMYkXJz0iS7XbpA6DRQEd2RGc";
-const AUTH0_AUDIENCE  = `https://${AUTH0_DOMAIN}/api/v2/`;
 
 // In-memory session store
 window.__authSession = window.__authSession || null;
@@ -3390,7 +3389,6 @@ async function handleLogin(event){
         username:    username,
         password:    password,
         client_id:   AUTH0_CLIENT_ID,
-        audience:    AUTH0_AUDIENCE,
         scope:       "openid profile email",
       }),
     });
