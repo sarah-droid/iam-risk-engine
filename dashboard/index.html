@@ -3399,8 +3399,26 @@ async function handleLogin(event){
       throw new Error(msg);
     }
 
-    const tokenData  = await tokenRes.json();
+    const rawText = await tokenRes.text();
+    if (!rawText || rawText.trim() === "") {
+      throw new Error("Auth0 returned empty response — please enable Password grant in Auth0 Advanced Settings → Grant Types");
+    }
+
+    let tokenData;
+    try {
+      tokenData = JSON.parse(rawText);
+    } catch(e) {
+      throw new Error("Auth0 response could not be parsed — " + rawText.slice(0, 100));
+    }
+
+    if (tokenData.error) {
+      throw new Error(tokenData.error_description || tokenData.error);
+    }
+
     const accessToken = tokenData.access_token || tokenData.id_token;
+    if (!accessToken) {
+      throw new Error("No access token received from Auth0. Check Password grant is enabled.");
+    }
 
     // Decode JWT to get user info (Auth0 signs it — we trust the server already verified credentials)
     const payload = JSON.parse(atob(accessToken.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));
