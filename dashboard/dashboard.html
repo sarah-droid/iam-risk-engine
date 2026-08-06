@@ -3415,16 +3415,21 @@ async function handleLogin(event){
       throw new Error(tokenData.error_description || tokenData.error);
     }
 
-    const accessToken = tokenData.access_token || tokenData.id_token;
-    if (!accessToken) {
-      throw new Error("No access token received from Auth0. Check Password grant is enabled.");
+    const accessToken = tokenData.access_token;
+    const idToken     = tokenData.id_token;
+    if (!accessToken && !idToken) {
+      throw new Error("No access token received from Auth0.");
     }
 
-    // Decode JWT to get user info (Auth0 signs it — we trust the server already verified credentials)
-    const payload = JSON.parse(atob(accessToken.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));
+    // id_token is a standard decodable JWT; access_token from Auth0 is encrypted
+    let payload = {};
+    try {
+      const b64 = idToken.split(".")[1].replace(/-/g,"+").replace(/_/g,"/");
+      payload = JSON.parse(atob(b64));
+    } catch(e) { console.warn("id_token decode failed:", e); }
 
-    const email    = payload.email || payload.sub || username;
-    const name     = payload.name  || payload.nickname || email.split("@")[0];
+    const email = payload.email || username;
+    const name  = payload.nickname || payload.name || email.split("@")[0];
 
     // Store session
     window.__authSession = { username: name, email, token: accessToken, loginAt: new Date().toISOString() };
